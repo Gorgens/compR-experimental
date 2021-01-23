@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cap. 7 Delineamento em blocos casualizados | Computação em R: estatística experimental</title>
+  <meta name="description" content="Cap. 7 Delineamento em blocos casualizados | Computação em R: estatística experimental" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Cap. 7 Delineamento em blocos casualizados | Computação em R: estatística experimental" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Cap. 7 Delineamento em blocos casualizados | Computação em R: estatística experimental" />
+  
+  
+  
+
+<meta name="author" content="Eric Bastos Gorgens &amp; Marcio Leles Romarco de Oliveira" />
+
+
+<meta name="date" content="2021-01-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="delineamento-inteiramente-casualizado.html"/>
+<link rel="next" href="fatorial-duplo-inteiramento-casualizado.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Experimental</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Sobre o livro</a></li>
+<li class="chapter" data-level="2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html"><i class="fa fa-check"></i><b>2</b> Delineamentos experimentais</a><ul>
+<li class="chapter" data-level="2.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova"><i class="fa fa-check"></i><b>2.1</b> ANOVA</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#partição-da-variação"><i class="fa fa-check"></i><b>2.1.1</b> Partição da variação</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#tipos-de-anova"><i class="fa fa-check"></i><b>2.2</b> Tipos de ANOVA</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-i"><i class="fa fa-check"></i><b>2.2.1</b> ANOVA Tipo I</a></li>
+<li class="chapter" data-level="2.2.2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-ii"><i class="fa fa-check"></i><b>2.2.2</b> ANOVA Tipo II</a></li>
+<li class="chapter" data-level="2.2.3" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-iii"><i class="fa fa-check"></i><b>2.2.3</b> ANOVA Tipo III</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html"><i class="fa fa-check"></i><b>3</b> Pressuposições e transformações</a><ul>
+<li class="chapter" data-level="3.1" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#logarítmica"><i class="fa fa-check"></i><b>3.1</b> Logarítmica</a></li>
+<li class="chapter" data-level="3.2" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#raiz-quadrada"><i class="fa fa-check"></i><b>3.2</b> Raiz quadrada</a></li>
+<li class="chapter" data-level="3.3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#arcoseno"><i class="fa fa-check"></i><b>3.3</b> Arcoseno</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="anova-no-r.html"><a href="anova-no-r.html"><i class="fa fa-check"></i><b>4</b> ANOVA no R</a><ul>
+<li class="chapter" data-level="4.1" data-path="anova-no-r.html"><a href="anova-no-r.html#pacote-expdes.pt"><i class="fa fa-check"></i><b>4.1</b> Pacote ExpDes.pt</a></li>
+<li class="chapter" data-level="4.2" data-path="anova-no-r.html"><a href="anova-no-r.html#pacote-easyanova"><i class="fa fa-check"></i><b>4.2</b> Pacote easyanova</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="investigando-os-dados.html"><a href="investigando-os-dados.html"><i class="fa fa-check"></i><b>5</b> Investigando os dados</a><ul>
+<li class="chapter" data-level="5.1" data-path="investigando-os-dados.html"><a href="investigando-os-dados.html#plot-gráfico-de-dispersão"><i class="fa fa-check"></i><b>5.1</b> Plot: Gráfico de dispersão</a></li>
+<li class="chapter" data-level="5.2" data-path="investigando-os-dados.html"><a href="investigando-os-dados.html#boxplot-gráfico-de-caixas"><i class="fa fa-check"></i><b>5.2</b> Boxplot: Gráfico de caixas</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html"><i class="fa fa-check"></i><b>6</b> Delineamento inteiramente casualizado</a><ul>
+<li class="chapter" data-level="6.1" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#recapitulando"><i class="fa fa-check"></i><b>6.1</b> Recapitulando</a></li>
+<li class="chapter" data-level="6.2" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#o-caso-balanceado"><i class="fa fa-check"></i><b>6.2</b> O caso balanceado</a></li>
+<li class="chapter" data-level="6.3" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#outro-caso-balanceado"><i class="fa fa-check"></i><b>6.3</b> Outro caso balanceado</a></li>
+<li class="chapter" data-level="6.4" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#o-caso-desbalanceado"><i class="fa fa-check"></i><b>6.4</b> O caso desbalanceado</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html"><i class="fa fa-check"></i><b>7</b> Delineamento em blocos casualizados</a><ul>
+<li class="chapter" data-level="7.1" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html#o-caso-balanceado-1"><i class="fa fa-check"></i><b>7.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="7.2" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html#o-caso-desbalanceado-1"><i class="fa fa-check"></i><b>7.2</b> O caso desbalanceado</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html"><i class="fa fa-check"></i><b>8</b> Fatorial duplo inteiramento casualizado</a><ul>
+<li class="chapter" data-level="8.1" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html#o-caso-balanceado-2"><i class="fa fa-check"></i><b>8.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="8.2" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html#o-caso-desbalanceado-2"><i class="fa fa-check"></i><b>8.2</b> O caso desbalanceado</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="fatorial-duplo-em-blocos-casualizados.html"><a href="fatorial-duplo-em-blocos-casualizados.html"><i class="fa fa-check"></i><b>9</b> Fatorial duplo em blocos casualizados</a><ul>
+<li class="chapter" data-level="9.1" data-path="fatorial-duplo-em-blocos-casualizados.html"><a href="fatorial-duplo-em-blocos-casualizados.html#o-caso-balanceado-3"><i class="fa fa-check"></i><b>9.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="9.2" data-path="fatorial-duplo-em-blocos-casualizados.html"><a href="fatorial-duplo-em-blocos-casualizados.html#o-caso-desbalanceado-3"><i class="fa fa-check"></i><b>9.2</b> O caso desbalanceado</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="parcela-subdividida.html"><a href="parcela-subdividida.html"><i class="fa fa-check"></i><b>10</b> Parcela subdividida</a><ul>
+<li class="chapter" data-level="10.1" data-path="parcela-subdividida.html"><a href="parcela-subdividida.html#o-caso-balanceado-4"><i class="fa fa-check"></i><b>10.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="10.2" data-path="parcela-subdividida.html"><a href="parcela-subdividida.html#o-caso-desbalanceado-4"><i class="fa fa-check"></i><b>10.2</b> O caso desbalanceado</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="análise-experimental-não-paramétrica.html"><a href="análise-experimental-não-paramétrica.html"><i class="fa fa-check"></i><b>11</b> Análise experimental não paramétrica</a><ul>
+<li class="chapter" data-level="11.1" data-path="análise-experimental-não-paramétrica.html"><a href="análise-experimental-não-paramétrica.html#kruskal-wallis-equivalente-ao-dic"><i class="fa fa-check"></i><b>11.1</b> Kruskal-Wallis (equivalente ao DIC)</a></li>
+<li class="chapter" data-level="11.2" data-path="análise-experimental-não-paramétrica.html"><a href="análise-experimental-não-paramétrica.html#friedman-equivalente-ao-dbc"><i class="fa fa-check"></i><b>11.2</b> Friedman (equivalente ao DBC)</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="proximos-passos.html"><a href="proximos-passos.html"><i class="fa fa-check"></i><b>12</b> Proximos passos</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computação em R: estatística experimental</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="delineamento-em-blocos-casualizados" class="section level1">
+<h1><span class="header-section-number">Cap. 7</span> Delineamento em blocos casualizados</h1>
+<p>Nos experimentos em blocos casualizados (DBC), além do tratamento uma segunda fonte de variação controlada é inserida no modelo e é denominada de bloco. O bloco é inserido pelo analista para controlar uma variação esperada do ambiente, como por exemplo tipo de solo, insolação e outros. Assim a ANOVA contará com três fontes de variação: duas fontes de variação conhecidas determinada pelo tratamento e pelo bloco, e uma fonte de variação desconhecida determinada pelo resíduo. Vale destacar, que no DBC, não há interesse pela interação do bloco com o tratamento, sendo o bloco apenas para controlar uma possível variação sobre os tratamentos induzida por uma possível variação do ambiente. O modelo estatístico do delineamento em blocos casualizados é:</p>
+<p><span class="math display">\[Y = Xmed + BLOCO + TRAT + Erro\]</span></p>
+<p>A análise começa pela determinação das somas de quadrados total, composta pela soma de quadrados do tratamento, pela soma de quadrados do bloco e pela soma de quadrados do resíduo. Em seguida, calculam-se os quadrados médios do tratamento e do resíduo e o valor da estatística F. Se F calculado for superior ao F tabelado, assume-se que existe um efeito devido aos tratamentos, ao passo que se F calculado for inferior ao F tabelado, não há evidências suficientes para rejeitar a hipótese nula, aceitando-se a hipótese de que não existe efeito dos tratamentos.</p>
+<p>Embora em alguns softwares o teste F para o bloco seja realizado, o mesmo não é necessário. O utilidade do bloco é é apenas isolar uma possível variação atribuída ao ambiente. Uma vez que tenha optado pelo uso do bloco, é irrelevante encontrar sua significância (ou não significância) , uma vez que não será alterado o design da análise. Sendo o efeito dos tratamentos significativo, realiza-se o desdobramento do efeito dos tratamentos através de um teste de médias se os tratamentos forem qualitativos, ou uma análise de regressão se os tratamentos forem quantitativos.</p>
+<p>Para a análise de experimentos em blocos casualizados, como não há no modelo estatístico a influência da interação, utiliza-se o pacote ExpDes.pt tanto para o caso balanceado, quanto para o desbalanceado.</p>
+<div id="o-caso-balanceado-1" class="section level2">
+<h2><span class="header-section-number">7.1</span> O caso balanceado</h2>
+<p>Para exemplificar o caso balanceado, será analisado um estudo sobre a influência de duas intensidades de desbaste no diâmetro de árvores. Os desbastes foram repetidos em 4 parcelas para cada um dos cinco blocos. Os blocos foram considerados para isolar o efeito dos diferentes tipos de solo. Os dados podem ser resumidos através dos seguintes tópicos:</p>
+<ul>
+<li>Tratamento: 2 intensidades de desbaste (30% e 50%)</li>
+<li>5 Blocos</li>
+<li>4 repetições</li>
+<li>Variável de interesse: diâmetro</li>
+</ul>
+<table>
+<caption><span id="tab:unnamed-chunk-50">Table 7.1: </span>Dados de delineamento em blocos casualizado</caption>
+<thead>
+<tr class="header">
+<th align="right">desbaste</th>
+<th align="right">bloco</th>
+<th align="right">rep</th>
+<th align="right">diametro</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">28.37041</td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">29.28010</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">30.84926</td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">27.89227</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">20.38856</td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">21.47290</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">24.39744</td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">24.65861</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">23.79856</td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">25.69388</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">24.45922</td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">27.94071</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">28.05501</td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="right">26.42934</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">23.09124</td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">22.54273</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">5</td>
+<td align="right">1</td>
+<td align="right">32.73052</td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
+<td align="right">5</td>
+<td align="right">2</td>
+<td align="right">29.17538</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">29.94747</td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
+<td align="right">5</td>
+<td align="right">4</td>
+<td align="right">29.35810</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">31.20701</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">40.85273</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">33.66891</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">33.15001</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">34.03869</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">36.24517</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">35.49081</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">31.58952</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">31.92634</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">28.82107</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">32.18963</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">31.55686</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">31.11534</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="right">31.05093</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">34.69215</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">32.95378</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">5</td>
+<td align="right">1</td>
+<td align="right">25.26880</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">5</td>
+<td align="right">2</td>
+<td align="right">30.48375</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">31.73922</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">5</td>
+<td align="right">4</td>
+<td align="right">26.21619</td>
+</tr>
+</tbody>
+</table>
+<p>O primeiro passo é importar o arquivo csv contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1">dbc1 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DBC 1.csv&quot;</span>)</a></code></pre></div>
+<p>Antes de partir para a análise, é fundamental explorar os dados de forma gráfica para conhecer melhor os dados e antecipar o resultado da análise estatística. A construção do gráfico ajuda na compreensão do fenômeno estudado e na validação da análise estatística escolhida. Por se tratar de um experimento com o tratamento formado por níveis qualitativos, recomenda-se o uso do boxplot().</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc1, diametro <span class="op">~</span><span class="st"> </span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<p>Note que os rótulo do eixo X são compostos pela união no desbaste e do bloco. Pode ser que dependendo do espaço disponível alguns rótulos sejam omitidos, mas ele devem ser lidos alternadamente, uma caixa para 30.1, outra para 50.1, depois 30.2, seguido de 50.2 e assim por diante.</p>
+<p>Os tratamentos podem ser analisados isoladamente em relação a cada bloco, utilizando um filtro para escolher qual bloco considerar.</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1"><span class="co"># Para bloco igual a 1</span></a>
+<a class="sourceLine" id="cb89-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc1[dbc1<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">1</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1"><span class="co"># Para bloco igual a 2</span></a>
+<a class="sourceLine" id="cb90-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc1[dbc1<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">2</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-53-2.png" width="672" /></p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1"><span class="co"># Para bloco igual a 3</span></a>
+<a class="sourceLine" id="cb91-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc1[dbc1<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">3</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-53-3.png" width="672" /></p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1"><span class="co"># Para bloco igual a 4</span></a>
+<a class="sourceLine" id="cb92-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc1[dbc1<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">4</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-53-4.png" width="672" /></p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="co"># Para bloco igual a 5</span></a>
+<a class="sourceLine" id="cb93-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc1[dbc1<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">5</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-53-5.png" width="672" /></p>
+<p>Pelo gráfico obtido, é razoável esperar que haja diferenças significativas entre as intensidades de desbaste (30% e 50%), pois existe um distanciamento entre os interquartis especialmente nos blocos 1 e 2. Também é possível esperar que não haja um efeito significativo dos blocos. Assim, espera-se que a análise estatística do experimento corrobore a conclusão empírica baseada no interpretação do gráfico.</p>
+<p>Com a função dbc() do pacote ExpDes.pt será possível realizar toda a análise de um experimento de delineamento em blocos casualizados, inclusive desdobramentos. Toda função no R tem uma sintaxe que pode ser consultada digitando no console ? seguido do nome da função:</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1">?dbc</a></code></pre></div>
+<p>Nas informações sobre a função ?dbc, você verá que a sintaxe básica da função dbc() é:</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1"><span class="kw">dbc</span>(trat, bloco, resp, <span class="dt">quali =</span> <span class="ot">TRUE</span>, <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>, </a>
+<a class="sourceLine" id="cb95-2" title="2">    <span class="dt">sigT =</span> <span class="fl">0.05</span>, <span class="dt">sigF =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<p>A análise do experimento em questão pode ser então realizada pelo comando:</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
+<a class="sourceLine" id="cb96-2" title="2"><span class="kw">dbc</span>(dbc1<span class="op">$</span>desbaste, dbc1<span class="op">$</span>bloco, dbc1<span class="op">$</span>diametro, <span class="dt">hvar=</span><span class="st">&#39;han&#39;</span>)</a></code></pre></div>
+<pre><code>## ------------------------------------------------------------------------
+## Quadro da analise de variancia
+## ------------------------------------------------------------------------
+##            GL     SQ QM      Fc    Pr&gt;Fc
+## Tratamento  1 323.34  4 30.4546 0.000004
+## Bloco       4  69.49  3  1.6363 0.187727
+## Residuo    34 360.98  2                 
+## Total      39 753.80  1                 
+## ------------------------------------------------------------------------
+## CV = 11.09 %
+## 
+## ------------------------------------------------------------------------
+## Teste de normalidade dos residuos 
+## valor-p:  0.9155415 
+## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
+## ------------------------------------------------------------------------
+## 
+## ------------------------------------------------------------------------
+## Teste de homogeneidade de variancia 
+## valor-p:  0.3001718 
+## De acordo com o teste de han a 5% de significancia, as variancias podem ser consideradas homogeneas.
+## ------------------------------------------------------------------------
+## 
+## Teste de Tukey
+## ------------------------------------------------------------------------
+## Grupos Tratamentos Medias
+## a     50      32.21285 
+##  b    30      26.52659 
+## ------------------------------------------------------------------------</code></pre>
+<p>A interpretação da saída de um delineamento em blocos casualizados é muito parecido com os experimento em DIC. A inclusão do bloco como fonte de variação, não trás nenhuma implicação já que o bloco visa apenas isolar um potencial efeito do ambiente não controlado durante a instalação do experimento.</p>
+<p>Neste primeiro exemplo, os resíduos apresentaram normalidade e o efeito dos tratamentos foi significativo. Como existem apenas dois tratamento, a significância do teste F já é conclusivo. De qualquer forma, a função dbc() realiza também um teste de médias que apenas reforça o resultado do teste F, indicando que o grupo a obteve média maior que o grupo b.</p>
+</div>
+<div id="o-caso-desbalanceado-1" class="section level2">
+<h2><span class="header-section-number">7.2</span> O caso desbalanceado</h2>
+<p>Embora o delineamento em blocos casualizados, tenha além do tratamento, o efeito do bloco, estes são analisados de forma independente sem considerar a interação entre eles. A rigor, a definição de blocos visa apenas controlar uma fonte de variação não controlada pelo experimento, e não inferir sobre seu efeito. Desta forma, por não haver interação, o caso de DBC desbalanceado pode ser analisado através da ANOVA do Tipo I.</p>
+<p>Neste exemplo, usaremos o mesmo exemplo anterior, mas assumindo que foi perdida uma parcela devido à um incêndio: a repetição 1, do bloco 2 do tratamento intensidade de desbaste de 30%:</p>
+<ul>
+<li>Tratamento: 2 intensidades de desbaste</li>
+<li>5 Blocos</li>
+<li>4 repetições</li>
+<li>Variável de interesse: diâmetro</li>
+<li>Parcela perdida: Tratamento 30, Bloco 2, Repetição 1.</li>
+</ul>
+<table>
+<caption><span id="tab:unnamed-chunk-57">Table 7.2: </span>Dados de outro delineamento em blocos casualizado, porém neste caso desbalanceado.</caption>
+<thead>
+<tr class="header">
+<th align="right">desbaste</th>
+<th align="right">bloco</th>
+<th align="right">rep</th>
+<th align="right">diametro</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">28.37041</td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">29.28010</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">30.84926</td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">27.89227</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">21.47290</td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">24.39744</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">24.65861</td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">23.79856</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">25.69388</td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">24.45922</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">27.94071</td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">28.05501</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="right">26.42934</td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">23.09124</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">22.54273</td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
+<td align="right">5</td>
+<td align="right">1</td>
+<td align="right">32.73052</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">5</td>
+<td align="right">2</td>
+<td align="right">29.17538</td>
+</tr>
+<tr class="even">
+<td align="right">30</td>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">29.94747</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">5</td>
+<td align="right">4</td>
+<td align="right">29.35810</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">31.20701</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">40.85273</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">33.66891</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">33.15001</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">34.03869</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">36.24517</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">2</td>
+<td align="right">3</td>
+<td align="right">35.49081</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">31.58952</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">31.92634</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">28.82107</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">32.18963</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">3</td>
+<td align="right">4</td>
+<td align="right">31.55686</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td align="right">31.11534</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="right">31.05093</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">34.69215</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">32.95378</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">5</td>
+<td align="right">1</td>
+<td align="right">25.26880</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">5</td>
+<td align="right">2</td>
+<td align="right">30.48375</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">5</td>
+<td align="right">3</td>
+<td align="right">31.73922</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">5</td>
+<td align="right">4</td>
+<td align="right">26.21619</td>
+</tr>
+</tbody>
+</table>
+<p>O primeiro passo é importar o arquivo csv contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1">dbc2 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DBC 2.csv&quot;</span>)</a></code></pre></div>
+<p>Mesmo no caso desbalanceado, a análise gráfica é fundamental e deve preceder qualquer análise estatística:</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc2, diametro <span class="op">~</span><span class="st"> </span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
+<p>Os tratamentos podem ser analisados isoladamente em relação a cada bloco, utilizando um filtro para escolher qual bloco considerar.</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1"><span class="co"># Para bloco igual a 1</span></a>
+<a class="sourceLine" id="cb100-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc2[dbc2<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">1</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1"><span class="co"># Para bloco igual a 2</span></a>
+<a class="sourceLine" id="cb101-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc2[dbc2<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">2</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-60-2.png" width="672" /></p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1"><span class="co"># Para bloco igual a 3</span></a>
+<a class="sourceLine" id="cb102-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc2[dbc2<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">3</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-60-3.png" width="672" /></p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1"><span class="co"># Para bloco igual a 4</span></a>
+<a class="sourceLine" id="cb103-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc2[dbc2<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">4</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-60-4.png" width="672" /></p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="co"># Para bloco igual a 5</span></a>
+<a class="sourceLine" id="cb104-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc2[dbc2<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">5</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-60-5.png" width="672" /></p>
+<p>Como já discutido anteriormente, por não haver cálculo de interação entre fontes de variação, o DBC pode ser analisado usando o pacote padrão ExpDes.pt e sua função dbc():</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
+<a class="sourceLine" id="cb105-2" title="2"><span class="kw">dbc</span>(dbc2<span class="op">$</span>desbaste, dbc2<span class="op">$</span>bloco, dbc2<span class="op">$</span>diametro, <span class="dt">hvar=</span><span class="st">&#39;han&#39;</span>)</a></code></pre></div>
+<pre><code>## ------------------------------------------------------------------------
+## Quadro da analise de variancia
+## ------------------------------------------------------------------------
+##            GL     SQ QM      Fc    Pr&gt;Fc
+## Tratamento  1 280.26  3 28.2071 0.000007
+## Bloco       4  62.92  2  1.5832 0.201872
+## Residuo    33 327.89  4                 
+## Total      38 671.07  1                 
+## ------------------------------------------------------------------------
+## CV = 10.65 %
+## 
+## ------------------------------------------------------------------------
+## Teste de normalidade dos residuos 
+## valor-p:  0.9523324 
+## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
+## ------------------------------------------------------------------------
+## 
+## ------------------------------------------------------------------------
+## Teste de homogeneidade de variancia 
+## valor-p:  0.3579419 
+## De acordo com o teste de han a 5% de significancia, as variancias podem ser consideradas homogeneas.
+## ------------------------------------------------------------------------
+## 
+## Teste de Tukey
+## ------------------------------------------------------------------------
+## Grupos Tratamentos Medias
+## a     50      32.21285 
+##  b    30      26.84964 
+## ------------------------------------------------------------------------</code></pre>
+<p>O teste de Shapiro-Wilk não aponta evidências para rejeitar a hipótese de normalidade de resíduos e portanto o modelo estatístico de blocos casualizados é considerado adequado.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="delineamento-inteiramente-casualizado.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="fatorial-duplo-inteiramento-casualizado.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/Gorgens/compR-experimental/edit/master/07-dbc.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/Gorgens/compR-experimental/blob/master/07-dbc.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

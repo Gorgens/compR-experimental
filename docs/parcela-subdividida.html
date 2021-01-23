@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cap. 10 Parcela subdividida | Computação em R: estatística experimental</title>
+  <meta name="description" content="Cap. 10 Parcela subdividida | Computação em R: estatística experimental" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Cap. 10 Parcela subdividida | Computação em R: estatística experimental" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Cap. 10 Parcela subdividida | Computação em R: estatística experimental" />
+  
+  
+  
+
+<meta name="author" content="Eric Bastos Gorgens &amp; Marcio Leles Romarco de Oliveira" />
+
+
+<meta name="date" content="2021-01-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="fatorial-duplo-em-blocos-casualizados.html"/>
+<link rel="next" href="análise-experimental-não-paramétrica.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Experimental</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Sobre o livro</a></li>
+<li class="chapter" data-level="2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html"><i class="fa fa-check"></i><b>2</b> Delineamentos experimentais</a><ul>
+<li class="chapter" data-level="2.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova"><i class="fa fa-check"></i><b>2.1</b> ANOVA</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#partição-da-variação"><i class="fa fa-check"></i><b>2.1.1</b> Partição da variação</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#tipos-de-anova"><i class="fa fa-check"></i><b>2.2</b> Tipos de ANOVA</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-i"><i class="fa fa-check"></i><b>2.2.1</b> ANOVA Tipo I</a></li>
+<li class="chapter" data-level="2.2.2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-ii"><i class="fa fa-check"></i><b>2.2.2</b> ANOVA Tipo II</a></li>
+<li class="chapter" data-level="2.2.3" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-iii"><i class="fa fa-check"></i><b>2.2.3</b> ANOVA Tipo III</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html"><i class="fa fa-check"></i><b>3</b> Pressuposições e transformações</a><ul>
+<li class="chapter" data-level="3.1" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#logarítmica"><i class="fa fa-check"></i><b>3.1</b> Logarítmica</a></li>
+<li class="chapter" data-level="3.2" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#raiz-quadrada"><i class="fa fa-check"></i><b>3.2</b> Raiz quadrada</a></li>
+<li class="chapter" data-level="3.3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#arcoseno"><i class="fa fa-check"></i><b>3.3</b> Arcoseno</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="anova-no-r.html"><a href="anova-no-r.html"><i class="fa fa-check"></i><b>4</b> ANOVA no R</a><ul>
+<li class="chapter" data-level="4.1" data-path="anova-no-r.html"><a href="anova-no-r.html#pacote-expdes.pt"><i class="fa fa-check"></i><b>4.1</b> Pacote ExpDes.pt</a></li>
+<li class="chapter" data-level="4.2" data-path="anova-no-r.html"><a href="anova-no-r.html#pacote-easyanova"><i class="fa fa-check"></i><b>4.2</b> Pacote easyanova</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="investigando-os-dados.html"><a href="investigando-os-dados.html"><i class="fa fa-check"></i><b>5</b> Investigando os dados</a><ul>
+<li class="chapter" data-level="5.1" data-path="investigando-os-dados.html"><a href="investigando-os-dados.html#plot-gráfico-de-dispersão"><i class="fa fa-check"></i><b>5.1</b> Plot: Gráfico de dispersão</a></li>
+<li class="chapter" data-level="5.2" data-path="investigando-os-dados.html"><a href="investigando-os-dados.html#boxplot-gráfico-de-caixas"><i class="fa fa-check"></i><b>5.2</b> Boxplot: Gráfico de caixas</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html"><i class="fa fa-check"></i><b>6</b> Delineamento inteiramente casualizado</a><ul>
+<li class="chapter" data-level="6.1" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#recapitulando"><i class="fa fa-check"></i><b>6.1</b> Recapitulando</a></li>
+<li class="chapter" data-level="6.2" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#o-caso-balanceado"><i class="fa fa-check"></i><b>6.2</b> O caso balanceado</a></li>
+<li class="chapter" data-level="6.3" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#outro-caso-balanceado"><i class="fa fa-check"></i><b>6.3</b> Outro caso balanceado</a></li>
+<li class="chapter" data-level="6.4" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#o-caso-desbalanceado"><i class="fa fa-check"></i><b>6.4</b> O caso desbalanceado</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html"><i class="fa fa-check"></i><b>7</b> Delineamento em blocos casualizados</a><ul>
+<li class="chapter" data-level="7.1" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html#o-caso-balanceado-1"><i class="fa fa-check"></i><b>7.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="7.2" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html#o-caso-desbalanceado-1"><i class="fa fa-check"></i><b>7.2</b> O caso desbalanceado</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html"><i class="fa fa-check"></i><b>8</b> Fatorial duplo inteiramento casualizado</a><ul>
+<li class="chapter" data-level="8.1" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html#o-caso-balanceado-2"><i class="fa fa-check"></i><b>8.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="8.2" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html#o-caso-desbalanceado-2"><i class="fa fa-check"></i><b>8.2</b> O caso desbalanceado</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="fatorial-duplo-em-blocos-casualizados.html"><a href="fatorial-duplo-em-blocos-casualizados.html"><i class="fa fa-check"></i><b>9</b> Fatorial duplo em blocos casualizados</a><ul>
+<li class="chapter" data-level="9.1" data-path="fatorial-duplo-em-blocos-casualizados.html"><a href="fatorial-duplo-em-blocos-casualizados.html#o-caso-balanceado-3"><i class="fa fa-check"></i><b>9.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="9.2" data-path="fatorial-duplo-em-blocos-casualizados.html"><a href="fatorial-duplo-em-blocos-casualizados.html#o-caso-desbalanceado-3"><i class="fa fa-check"></i><b>9.2</b> O caso desbalanceado</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="parcela-subdividida.html"><a href="parcela-subdividida.html"><i class="fa fa-check"></i><b>10</b> Parcela subdividida</a><ul>
+<li class="chapter" data-level="10.1" data-path="parcela-subdividida.html"><a href="parcela-subdividida.html#o-caso-balanceado-4"><i class="fa fa-check"></i><b>10.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="10.2" data-path="parcela-subdividida.html"><a href="parcela-subdividida.html#o-caso-desbalanceado-4"><i class="fa fa-check"></i><b>10.2</b> O caso desbalanceado</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="análise-experimental-não-paramétrica.html"><a href="análise-experimental-não-paramétrica.html"><i class="fa fa-check"></i><b>11</b> Análise experimental não paramétrica</a><ul>
+<li class="chapter" data-level="11.1" data-path="análise-experimental-não-paramétrica.html"><a href="análise-experimental-não-paramétrica.html#kruskal-wallis-equivalente-ao-dic"><i class="fa fa-check"></i><b>11.1</b> Kruskal-Wallis (equivalente ao DIC)</a></li>
+<li class="chapter" data-level="11.2" data-path="análise-experimental-não-paramétrica.html"><a href="análise-experimental-não-paramétrica.html#friedman-equivalente-ao-dbc"><i class="fa fa-check"></i><b>11.2</b> Friedman (equivalente ao DBC)</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="proximos-passos.html"><a href="proximos-passos.html"><i class="fa fa-check"></i><b>12</b> Proximos passos</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computação em R: estatística experimental</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="parcela-subdividida" class="section level1">
+<h1><span class="header-section-number">Cap. 10</span> Parcela subdividida</h1>
+<p>No delineamento em parcelas subdivididas existem dois tipos de tratamento: o principal e o secundário. As parcelas são subdivididas no espaço, ou no tempo. Depois que os tratamentos principais são sorteados nas parcelas, sorteia-se o tratamento secundário nas subparcelas de cada parcela.</p>
+<p>Indica-se o uso de parcelas subdivididas quando:</p>
+<ol style="list-style-type: decimal">
+<li>A parcela é uma “unidade” que pode receber vários tratamentos secundários. No setor florestal esta unidade pode ser uma vaso, ou mesmo uma árvore.</li>
+<li>Não é possível instalar o experimento no esquema fatorial.</li>
+<li>O tratamento principal exige parcelas custosas, seja do ponto de vista financeiro ou do esforço.</li>
+<li>A busca pela precisão está no tratamento secundário.</li>
+<li>Deseja-se que a Variação entre subparcelas seja menor que entre as parcelas.</li>
+</ol>
+<p>O modelo estatístico do delineamento fatorial duplo inteiramente casualizado é:</p>
+<p><span class="math display">\[Y = Xmed + BLOCO + TRAT A + Erro Parcela + TRAT B + (TRAT A * TRAT B) + Erro Subparcela\]</span></p>
+<div id="o-caso-balanceado-4" class="section level2">
+<h2><span class="header-section-number">10.1</span> O caso balanceado</h2>
+<p>Como exemplo de um desenho de parcela subdividida balanceado, vamos analisar um experimento de regeneração natural do sub bosque de três formações florestais. Nas parcelas de cada uma das área naturais estudadas, implantaram-se subparcelas correspondendo a três alturas de desrama. O efeito dos tratamentos foi medido através do número de indivíduos regenerantes.</p>
+<ul>
+<li>Fator na parcela: Floresta A, B e C</li>
+<li>Fator nas subparcelas: Desrama 2, 5 e 7 metros</li>
+<li>3 repetições</li>
+<li>Variável de interesse: número de indivíduos regenerantes</li>
+</ul>
+<table>
+<caption><span id="tab:unnamed-chunk-89">Table 10.1: </span>Dados de experimento em parcela subdividida</caption>
+<thead>
+<tr class="header">
+<th align="left">floresta</th>
+<th align="right">rep</th>
+<th align="right">desrama</th>
+<th align="right">indiv</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">48</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">47</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">47</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="right">79</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">2</td>
+<td align="right">5</td>
+<td align="right">62</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">65</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">1</td>
+<td align="right">7</td>
+<td align="right">101</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="right">2</td>
+<td align="right">7</td>
+<td align="right">105</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">3</td>
+<td align="right">7</td>
+<td align="right">112</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">90</td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">97</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">114</td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="right">123</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">2</td>
+<td align="right">5</td>
+<td align="right">145</td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">122</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">1</td>
+<td align="right">7</td>
+<td align="right">172</td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">2</td>
+<td align="right">7</td>
+<td align="right">157</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">3</td>
+<td align="right">7</td>
+<td align="right">177</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">100</td>
+</tr>
+<tr class="even">
+<td align="left">C</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">101</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">103</td>
+</tr>
+<tr class="even">
+<td align="left">C</td>
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="right">130</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">2</td>
+<td align="right">5</td>
+<td align="right">133</td>
+</tr>
+<tr class="even">
+<td align="left">C</td>
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">140</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">1</td>
+<td align="right">7</td>
+<td align="right">144</td>
+</tr>
+<tr class="even">
+<td align="left">C</td>
+<td align="right">2</td>
+<td align="right">7</td>
+<td align="right">147</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">3</td>
+<td align="right">7</td>
+<td align="right">148</td>
+</tr>
+</tbody>
+</table>
+<p>O primeiro passo é importar o arquivo csv contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" title="1">sub =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento Subdividida.csv&quot;</span>, </a>
+<a class="sourceLine" id="cb174-2" title="2">               <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
+<p>Você já sabe! Antes de ir para análise estatística explore graficamente seus dados. Veja alguns exemplos de gráficos que podem ajudá-lo a construir suas hipóteses e antecipar os resultados que serão apresentados pelas análise estatística:</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" title="1"><span class="co"># Considerando apenas tratamento principal</span></a>
+<a class="sourceLine" id="cb175-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub, indiv <span class="op">~</span><span class="st"> </span>floresta)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" title="1"><span class="co"># Considerando apenas tratamento secundário</span></a>
+<a class="sourceLine" id="cb176-2" title="2"><span class="kw">plot</span>(<span class="dt">data =</span> sub, indiv <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-91-2.png" width="672" /></p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" title="1"><span class="co"># Interação dos tratamentos</span></a>
+<a class="sourceLine" id="cb177-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub, indiv <span class="op">~</span><span class="st"> </span>floresta<span class="op">/</span>desrama)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-91-3.png" width="672" /></p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" title="1"><span class="co"># Isolando os níveis de desrana </span></a>
+<a class="sourceLine" id="cb178-2" title="2"><span class="co"># Fixando desrana até 2 metros</span></a>
+<a class="sourceLine" id="cb178-3" title="3"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub[sub<span class="op">$</span>desrama <span class="op">==</span><span class="st"> </span><span class="dv">2</span>,], indiv <span class="op">~</span><span class="st"> </span>floresta)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-91-4.png" width="672" /></p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" title="1"><span class="co"># Fixando desrana até 5 metros</span></a>
+<a class="sourceLine" id="cb179-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub[sub<span class="op">$</span>desrama <span class="op">==</span><span class="st"> </span><span class="dv">5</span>,], indiv <span class="op">~</span><span class="st"> </span>floresta)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-91-5.png" width="672" /></p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" title="1"><span class="co"># Fixando desrana até 7 metros</span></a>
+<a class="sourceLine" id="cb180-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub[sub<span class="op">$</span>desrama <span class="op">==</span><span class="st"> </span><span class="dv">7</span>,], indiv <span class="op">~</span><span class="st"> </span>floresta)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-91-6.png" width="672" /></p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" title="1"><span class="co"># Isolando os tipos de floresta</span></a>
+<a class="sourceLine" id="cb181-2" title="2"><span class="co"># Fixando floresta igual a A</span></a>
+<a class="sourceLine" id="cb181-3" title="3"><span class="kw">plot</span>(<span class="dt">data =</span> sub[sub<span class="op">$</span>floresta <span class="op">==</span><span class="st"> &quot;A&quot;</span>,], indiv <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-91-7.png" width="672" /></p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" title="1"><span class="co"># Fixando floresta igual a B</span></a>
+<a class="sourceLine" id="cb182-2" title="2"><span class="kw">plot</span>(<span class="dt">data =</span> sub[sub<span class="op">$</span>floresta <span class="op">==</span><span class="st"> &quot;B&quot;</span>,], indiv <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-91-8.png" width="672" /></p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" title="1"><span class="co"># Fixando floresta igual a C</span></a>
+<a class="sourceLine" id="cb183-2" title="2"><span class="kw">plot</span>(<span class="dt">data =</span> sub[sub<span class="op">$</span>floresta <span class="op">==</span><span class="st"> &quot;C&quot;</span>,], indiv <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-91-9.png" width="672" /></p>
+<p>Analisando os gráficos acima, os fatores parecem significativos, assim como a interação. Os dados apresentam-se consistentes, sem a presença pontos fora da tendência. Infelizmente o pacote ExpDes.pt não inclui as análises de pressuposição para o delineamento de parcelas subdivididas. Existem várias maneiras de contornar esta questão, uma delas é combinar as qualidades de diferentes pacotes. Aqui por exemplo, podemos rodar a ANOVA a partir de ambos os pacotes easyanova e ExpDes.pt. Assim podemos utilizar os testes estatísticos das pressuposições de um e a ANOVA e desdobramentos do outro.</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" title="1"><span class="kw">require</span>(easyanova)</a>
+<a class="sourceLine" id="cb184-2" title="2">r.aov =<span class="st"> </span><span class="kw">ea2</span>(sub, <span class="dt">design=</span><span class="dv">4</span>)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-92-1.png" width="672" /></p>
+<p>Para conferência, é possível verificar que a ANOVA é igual em ambos os pacotes.</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" title="1">r.aov[<span class="dv">1</span>]</a></code></pre></div>
+<pre><code>## $`Marginal anova (Type III Sum of Squares)`
+##                 numDF denDF   F-value p-value
+## plot                2     6 267.37381  &lt;.0001
+## split.plot          2    12  94.56819  &lt;.0001
+## plot:split.plot     4    12   2.55256  0.0935</code></pre>
+<p>Como já vimos anteriormente, o teste de normalidade e de homogeneidade de variâncias pode ser obtida através da posição 10 da lista de resultados da função easyanova.</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" title="1">r.aov[<span class="dv">10</span>]</a></code></pre></div>
+<pre><code>## $`Residual analysis`
+## $`Residual analysis`$values
+##                                           values
+## p.value Shapiro-Wilk test                 0.4583
+## p.value Bartlett test (plot)              0.0036
+## p.value Bartlett test (split.plot)        0.5945
+## p.value Bartlett test (plot*split.plot)   0.0264
+## AIC                                     171.9126
+## BIC                                     182.5971
+## first value most discrepant              14.0000
+## second value most discrepant             12.0000
+## third value most discrepant              17.0000
+## Mean Square of Error a                   35.6667
+## Mean Square of Error b                   64.0009
+## Coefficient of Variation a                5.3589
+## Coefficient of Variation b                7.1785
+## 
+## $`Residual analysis`$residuals
+##           1           2           3           4           5           6 
+##   0.6605916  -0.3252332  -0.3353584  10.3272582  -6.6585666  -3.6686917 
+##           7           8           9          10          11          12 
+##  -5.0060751  -0.9918999   5.9979750 -10.3191581  -3.3333333  13.6524915 
+##          13          14          15          16          17          18 
+##  -6.9858248  15.0000000  -8.0141752   3.3475085 -11.6666667   8.3191581 
+##          19          20          21          22          23          24 
+##  -1.3252332  -0.3323208   1.6575540  -4.3252332  -1.3323208   5.6575540 
+##          25          26          27 
+##  -2.3252332   0.6676792   1.6575540 
+## attr(,&quot;label&quot;)
+## [1] &quot;Residuals&quot;
+## 
+## $`Residual analysis`$`standardized residuals`
+##           1           2           3           4           5           6 
+##  0.09926874 -0.04887361 -0.05039514  1.55190283 -1.00059939 -0.55130344 
+##           7           8           9          10          11          12 
+## -0.75227538 -0.14905527  0.90133065 -1.55068561 -0.50090831  2.05159391 
+##          13          14          15          16          17          18 
+## -1.04977730  2.25408738 -1.20431008  0.50303845 -1.75317907  1.25014062 
+##          19          20          21          22          23          24 
+## -0.19914610 -0.04993868  0.24908478 -0.64996357 -0.20021117  0.85017474 
+##          25          26          27 
+## -0.34941859  0.10033381  0.24908478</code></pre>
+<p>A sintaxe da função para análise de parcela subdividida no pacote ExpDes.pt é:</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" title="1"><span class="kw">psub2.dic</span>(fator1, fator2, repet, resp, <span class="dt">quali =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb189-2" title="2">          <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>, <span class="dt">fac.names =</span> <span class="kw">c</span>(<span class="st">&quot;F1&quot;</span>, <span class="st">&quot;F2&quot;</span>), </a>
+<a class="sourceLine" id="cb189-3" title="3">          <span class="dt">sigT =</span> <span class="fl">0.05</span>, <span class="dt">sigF =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<p>No nosso exemplo temos o fator principal (fator 1) como qualitativo e o fator secundário (fator 2) como quantitativo. Assim informando os parâmetros obrigatórios juntamente com os parâmetros quali e fac.names (nomes dos fatores) temos:</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
+<a class="sourceLine" id="cb190-2" title="2"><span class="kw">psub2.dic</span>(sub<span class="op">$</span>floresta, sub<span class="op">$</span>desrama, sub<span class="op">$</span>rep, sub<span class="op">$</span>indiv,</a>
+<a class="sourceLine" id="cb190-3" title="3">          <span class="dt">quali =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>), </a>
+<a class="sourceLine" id="cb190-4" title="4">          <span class="dt">fac.names =</span> <span class="kw">c</span>(<span class="st">&quot;Floresta&quot;</span>, <span class="st">&quot;Desrama&quot;</span>))</a></code></pre></div>
+<pre><code>## ------------------------------------------------------------------------
+## Legenda:
+## FATOR 1    (parcela):  Floresta 
+## FATOR 2 (subparcela):  Desrama 
+## ------------------------------------------------------------------------
+## 
+## ------------------------------------------------------------------------
+## $`Quadro da analise de variancia`
+##                  GL    SQ QM Fc Pr(&gt;Fc)
+## Floresta          2 19073  6  3       4
+## Erro a            6   214  3  1       1
+## Desrama           2 14795  4  4       2
+## Floresta*Desrama  4   799  2  2       3
+## Erro b           12   939  5           
+## Total            26 35819  1  1       1
+## 
+## ------------------------------------------------------------------------
+## CV 1 = 5.358865 %
+## CV 2 = 7.936091 %
+## 
+## ------------------------------------------------------------------------
+## #Teste de normalidade dos residuos (Shapiro-Wilk)
+## valor-p:  0.5769146 
+## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
+## ------------------------------------------------------------------------
+## 
+## Interacao nao significativa: analisando os efeitos simples
+## ------------------------------------------------------------------------
+## Floresta
+## Teste de Tukey
+## ------------------------------------------------------------------------
+## Grupos Tratamentos Medias
+## a     B   133 
+## a     C   127.3333 
+##  b    A   74 
+## ------------------------------------------------------------------------
+## 
+## Desrama
+## Ajuste de modelos polinomiais de regressao
+## ------------------------------------------------------------------------
+## 
+## Modelo Linear
+## =========================================
+##    Estimativa Erro.padrao   tc    valor.p
+## -----------------------------------------
+## b0  58.7193     4.2238    13.9021    0   
+## b1  11.2982     0.8284    13.6395    0   
+## -----------------------------------------
+## 
+## R2 do modelo linear
+## --------
+## 0.983607
+## --------
+## 
+## Analise de variancia do modelo linear
+## ==============================================================
+##                      GL     SQ          QM        Fc   valor.p
+## --------------------------------------------------------------
+## Efeito linear        1  14,552.1400 14,552.1400 186.04    0   
+## Desvios de Regressao 1   242.5263    242.5263    3.1   0.10371
+## Residuos             12  938.6667     78.2222                 
+## --------------------------------------------------------------
+## ------------------------------------------------------------------------
+## 
+## Modelo quadratico
+## ========================================
+##    Estimativa Erro.padrao   tc   valor.p
+## ----------------------------------------
+## b0     75       10.1652   7.3781 0.00001
+## b1   1.8667     5.4200    0.3444 0.7365 
+## b2   1.0667     0.6058    1.7608 0.1037 
+## ----------------------------------------
+## 
+## R2 do modelo quadratico
+## -
+## 1
+## -
+## 
+## Analise de variancia do modelo quadratico
+## ==============================================================
+##                      GL     SQ          QM        Fc   valor.p
+## --------------------------------------------------------------
+## Efeito linear        1  14,552.1400 14,552.1400 186.04    0   
+## Efeito quadratico    1   242.5263    242.5263    3.1   0.10371
+## Desvios de Regressao 0       0           0        0       1   
+## Residuos             12  938.6667     78.2222                 
+## --------------------------------------------------------------
+## ------------------------------------------------------------------------</code></pre>
+<p>Como esperado significância dos fatores: floresta e desrama. No entanto, a interação não foi significativa a 5%. Desta forma, não é necessário analisar a interação entre os fatores.</p>
+</div>
+<div id="o-caso-desbalanceado-4" class="section level2">
+<h2><span class="header-section-number">10.2</span> O caso desbalanceado</h2>
+<p>Neste exemplo desbalanceado vamos analisar um experimento em que três alturas de desrama são subdivididos em três espécies florestais. O efeito dos tratamentos foi medido através da produção de madeira em metros cúbicos.</p>
+<ul>
+<li>Fator na parcela: Espécie florestal: A, B ou C.</li>
+<li>Fator nas subparcelas: Desrama 2, 5 e 7 metros.</li>
+<li>3 repetições.</li>
+<li>Observações perdidas: Espécie A, desrama 2 metros e repetição 2. Espécie C, desrama 2 metros e repetição 2. Espécie C, desrama 5 metros e repetição 1. Espécie C, desrama 7 metros e repetição 1.</li>
+<li>Variável de interesse: número de indivíduos regenerantes.</li>
+</ul>
+<table>
+<caption><span id="tab:unnamed-chunk-97">Table 10.2: </span>Dados de outro experimento em parcela subdividida, porém desbalanceado.</caption>
+<thead>
+<tr class="header">
+<th align="left">especie</th>
+<th align="right">rep</th>
+<th align="right">desrama</th>
+<th align="right">volume</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">48</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">47</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="right">79</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="right">2</td>
+<td align="right">5</td>
+<td align="right">62</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">65</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="right">1</td>
+<td align="right">7</td>
+<td align="right">131</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">2</td>
+<td align="right">7</td>
+<td align="right">65</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="right">3</td>
+<td align="right">7</td>
+<td align="right">112</td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">80</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">97</td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">114</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="right">123</td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">2</td>
+<td align="right">5</td>
+<td align="right">145</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">122</td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">1</td>
+<td align="right">7</td>
+<td align="right">172</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">2</td>
+<td align="right">7</td>
+<td align="right">157</td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">3</td>
+<td align="right">7</td>
+<td align="right">177</td>
+</tr>
+<tr class="even">
+<td align="left">C</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">100</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">103</td>
+</tr>
+<tr class="even">
+<td align="left">C</td>
+<td align="right">2</td>
+<td align="right">5</td>
+<td align="right">133</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">3</td>
+<td align="right">5</td>
+<td align="right">104</td>
+</tr>
+<tr class="even">
+<td align="left">C</td>
+<td align="right">2</td>
+<td align="right">7</td>
+<td align="right">147</td>
+</tr>
+<tr class="odd">
+<td align="left">C</td>
+<td align="right">3</td>
+<td align="right">7</td>
+<td align="right">119</td>
+</tr>
+</tbody>
+</table>
+<p>O primeiro passo é importar o arquivo csv contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" title="1">sub2 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento Subdividida 2.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
+<p>Os dados devem ser explorados graficamente antes de seguir com a análise de variância do experimento. Veja os gráficos abaixo e tente antecipar os resultados dos testes estatísticos.</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" title="1"><span class="co"># Considerando apenas tratamento principal</span></a>
+<a class="sourceLine" id="cb193-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub2, volume <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" title="1"><span class="co"># Considerando apenas tratamento secundário</span></a>
+<a class="sourceLine" id="cb194-2" title="2"><span class="kw">plot</span>(<span class="dt">data =</span> sub2, volume <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-99-2.png" width="672" /></p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" title="1"><span class="co"># Interação dos tratamentos</span></a>
+<a class="sourceLine" id="cb195-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub2, volume <span class="op">~</span><span class="st"> </span>especie<span class="op">/</span>desrama)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-99-3.png" width="672" /></p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" title="1"><span class="co"># Isolando os níveis de desrama</span></a>
+<a class="sourceLine" id="cb196-2" title="2"><span class="co"># Fixando desrana até 2 metros</span></a>
+<a class="sourceLine" id="cb196-3" title="3"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub2[sub2<span class="op">$</span>desrama <span class="op">==</span><span class="st"> </span><span class="dv">2</span>,], volume <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-99-4.png" width="672" /></p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" title="1"><span class="co"># Fixando desrama até 5 metros</span></a>
+<a class="sourceLine" id="cb197-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub2[sub2<span class="op">$</span>desrama <span class="op">==</span><span class="st"> </span><span class="dv">5</span>,], volume <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-99-5.png" width="672" /></p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" title="1"><span class="co"># Fixando desrama até 7 metros</span></a>
+<a class="sourceLine" id="cb198-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub2[sub2<span class="op">$</span>desrama <span class="op">==</span><span class="st"> </span><span class="dv">7</span>,], volume <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-99-6.png" width="672" /></p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" title="1"><span class="co"># Isolando os tipos de floresta</span></a>
+<a class="sourceLine" id="cb199-2" title="2"><span class="co"># Fixando espécie igual a A</span></a>
+<a class="sourceLine" id="cb199-3" title="3"><span class="kw">plot</span>(<span class="dt">data =</span> sub2[sub2<span class="op">$</span>especie <span class="op">==</span><span class="st"> &quot;A&quot;</span>,], volume <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-99-7.png" width="672" /></p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" title="1"><span class="co"># Fixando espécie igual a B</span></a>
+<a class="sourceLine" id="cb200-2" title="2"><span class="kw">plot</span>(<span class="dt">data =</span> sub2[sub2<span class="op">$</span>especie <span class="op">==</span><span class="st"> &quot;B&quot;</span>,], volume <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-99-8.png" width="672" /></p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" title="1"><span class="co"># Fixando espécie igual a C</span></a>
+<a class="sourceLine" id="cb201-2" title="2"><span class="kw">plot</span>(<span class="dt">data =</span> sub2[sub2<span class="op">$</span>especie <span class="op">==</span><span class="st"> &quot;C&quot;</span>,], volume <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-99-9.png" width="672" /></p>
+<p>Os dados por se tratarem de experimento desbalanceados com efeito da interação relevante devem ser analisados com o pacote easyanova. A função será ea2() e possui a sintaxe básica:</p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" title="1"><span class="kw">ea2</span>(data, <span class="dt">design =</span> <span class="dv">1</span>, <span class="dt">alpha =</span> <span class="fl">0.05</span>, <span class="dt">cov =</span> <span class="dv">4</span>, <span class="dt">list =</span> <span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb202-2" title="2">    <span class="dt">p.adjust=</span><span class="dv">1</span>, <span class="dt">plot=</span><span class="dv">2</span>)</a></code></pre></div>
+<p>Os dados devem ser apresentados na ordem:</p>
+<ol style="list-style-type: decimal">
+<li>Fator nas parcelas</li>
+<li>Repetição</li>
+<li>Fator nas subparcelas</li>
+<li>Variável resposta</li>
+</ol>
+<p>O parâmetro design deve ser ajustado para 4, resultando no seguinte comando:</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" title="1"><span class="kw">require</span>(easyanova)</a>
+<a class="sourceLine" id="cb203-2" title="2">r.aov =<span class="st"> </span><span class="kw">ea2</span>(sub2, <span class="dt">design=</span><span class="dv">4</span>)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
+<p>Os resultados podem ser acessados escolhendo qual elemento da lista deseja ser visualizado:</p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" title="1">r.aov[<span class="dv">10</span>]</a></code></pre></div>
+<pre><code>## $`Residual analysis`
+## $`Residual analysis`$values
+##                                           values
+## p.value Shapiro-Wilk test                 0.8313
+## p.value Bartlett test (plot)              0.4160
+## p.value Bartlett test (split.plot)        0.2427
+## p.value Bartlett test (plot*split.plot)   0.6827
+## AIC                                     165.0415
+## BIC                                     172.7102
+## first value most discrepant               7.0000
+## second value most discrepant              6.0000
+## third value most discrepant              13.0000
+## Mean Square of Error a                  402.7662
+## Mean Square of Error b                  220.3501
+## Coefficient of Variation a               18.4488
+## Coefficient of Variation b               13.6457
+## 
+## $`Residual analysis`$residuals
+##           1           2           3           4           5           6 
+##  -2.8241221   2.8241221   1.6212788   4.1091983  -5.7304770  19.6212788 
+##           7           8           9          10          11          12 
+## -26.8908017   7.2695230 -12.9589104  -0.6517886  13.6106990  -2.9589104 
+##          13          14          15          16          17          18 
+##  14.3482114 -11.3893010   7.3744229 -12.3184553   4.9440324  -3.5066019 
+##          19          20          21          22          23 
+##   3.5066019   7.9988237  -7.9988237   7.4988237  -7.4988237 
+## attr(,&quot;label&quot;)
+## [1] &quot;Residuals&quot;
+## 
+## $`Residual analysis`$`standardized residuals`
+##           1           2           3           4           5           6 
+## -0.26911379  0.26911379  0.15449349  0.39157015 -0.54606364  1.86973386 
+##           7           8           9          10          11          12 
+## -2.56245492  0.69272107 -1.23486923 -0.06210968  1.29697891 -0.28195792 
+##          13          14          15          16          17          18 
+##  1.36725729 -1.08529938  0.70271711 -1.17383954  0.47112244 -0.33414806 
+##          19          20          21          22          23 
+##  0.33414806  0.76221696 -0.76221696  0.71457139 -0.71457139</code></pre>
+<pre><code>O teste de normalidade apresentou valor não significativo, indicando assim que não há evidências para rejeitar a normalidade dos resíduos.</code></pre>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" title="1">r.aov[<span class="dv">1</span>]</a></code></pre></div>
+<pre><code>## $`Marginal anova (Type III Sum of Squares)`
+##                 numDF denDF  F-value p-value
+## plot                2     6 16.07861  0.0039
+## split.plot          2     8 21.60633  0.0006
+## plot:split.plot     4     8  1.27547  0.3555</code></pre>
+<p>Sendo a interação não significativa, os fatores (da parcela e da subparcela) devem ser analisados independentemente.</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" title="1"><span class="co"># Comparação das parcelas</span></a>
+<a class="sourceLine" id="cb209-2" title="2">r.aov[<span class="dv">2</span>]</a></code></pre></div>
+<pre><code>## $`Adjusted means (plot)`
+##   plot adjusted.mean standard.error tukey snk duncan t
+## 1    B      131.8889         7.6958     a   a      a a
+## 2    C      118.3355         8.6638     a   a      a a
+## 3    A       71.1485         8.0186     b   b      b b</code></pre>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" title="1"><span class="co"># Comparação das subdivisões</span></a>
+<a class="sourceLine" id="cb211-2" title="2">r.aov[<span class="dv">4</span>]</a></code></pre></div>
+<pre><code>## $`Adjusted means (split.plot)`
+##   split.plot adjusted.mean standard.error tukey snk duncan t
+## 1          7      134.5013         6.4491     a   a      a a
+## 2          5      105.4458         6.4491     b   b      b b
+## 3          2       81.4258         6.8129     c   c      c c</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="fatorial-duplo-em-blocos-casualizados.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="análise-experimental-não-paramétrica.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/Gorgens/compR-experimental/edit/master/10-subdividida.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/Gorgens/compR-experimental/blob/master/10-subdividida.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

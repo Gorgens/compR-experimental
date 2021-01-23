@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cap. 6 Investigando os dados | Computação em R: estatística experimental</title>
+  <meta name="description" content="Cap. 6 Investigando os dados | Computação em R: estatística experimental" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Cap. 6 Investigando os dados | Computação em R: estatística experimental" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Cap. 6 Investigando os dados | Computação em R: estatística experimental" />
+  
+  
+  
+
+<meta name="author" content="Eric Bastos Gorgens &amp; Marcio Leles Romarco de Oliveira" />
+
+
+<meta name="date" content="2021-01-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="investigando-os-dados.html"/>
+<link rel="next" href="investigando-os-dados-2.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Experimental</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Sobre o livro</a></li>
+<li class="chapter" data-level="2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html"><i class="fa fa-check"></i><b>2</b> Delineamentos experimentais</a><ul>
+<li class="chapter" data-level="2.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova"><i class="fa fa-check"></i><b>2.1</b> ANOVA</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#partição-da-variação"><i class="fa fa-check"></i><b>2.1.1</b> Partição da variação</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#tipos-de-anova"><i class="fa fa-check"></i><b>2.2</b> Tipos de ANOVA</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-i"><i class="fa fa-check"></i><b>2.2.1</b> ANOVA Tipo I</a></li>
+<li class="chapter" data-level="2.2.2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-ii"><i class="fa fa-check"></i><b>2.2.2</b> ANOVA Tipo II</a></li>
+<li class="chapter" data-level="2.2.3" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-iii"><i class="fa fa-check"></i><b>2.2.3</b> ANOVA Tipo III</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html"><i class="fa fa-check"></i><b>3</b> Pressuposições e transformações</a><ul>
+<li class="chapter" data-level="3.1" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#logarítmica"><i class="fa fa-check"></i><b>3.1</b> Logarítmica</a></li>
+<li class="chapter" data-level="3.2" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#raiz-quadrada"><i class="fa fa-check"></i><b>3.2</b> Raiz quadrada</a></li>
+<li class="chapter" data-level="3.3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#arcoseno"><i class="fa fa-check"></i><b>3.3</b> Arcoseno</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="anova-no-r.html"><a href="anova-no-r.html"><i class="fa fa-check"></i><b>4</b> ANOVA no R</a><ul>
+<li class="chapter" data-level="4.1" data-path="anova-no-r.html"><a href="anova-no-r.html#pacote-expdes.pt"><i class="fa fa-check"></i><b>4.1</b> Pacote ExpDes.pt</a></li>
+<li class="chapter" data-level="4.2" data-path="anova-no-r.html"><a href="anova-no-r.html#pacote-easyanova"><i class="fa fa-check"></i><b>4.2</b> Pacote easyanova</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="investigando-os-dados.html"><a href="investigando-os-dados.html"><i class="fa fa-check"></i><b>5</b> Investigando os dados</a><ul>
+<li class="chapter" data-level="5.1" data-path="investigando-os-dados.html"><a href="investigando-os-dados.html#plot-gráfico-de-dispersão"><i class="fa fa-check"></i><b>5.1</b> Plot: Gráfico de dispersão</a></li>
+<li class="chapter" data-level="5.2" data-path="investigando-os-dados.html"><a href="investigando-os-dados.html#boxplot-gráfico-de-caixas"><i class="fa fa-check"></i><b>5.2</b> Boxplot: Gráfico de caixas</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="investigando-os-dados-1.html"><a href="investigando-os-dados-1.html"><i class="fa fa-check"></i><b>6</b> Investigando os dados</a><ul>
+<li class="chapter" data-level="6.1" data-path="investigando-os-dados-1.html"><a href="investigando-os-dados-1.html#recapitulando"><i class="fa fa-check"></i><b>6.1</b> Recapitulando</a></li>
+<li class="chapter" data-level="6.2" data-path="investigando-os-dados-1.html"><a href="investigando-os-dados-1.html#o-caso-balanceado"><i class="fa fa-check"></i><b>6.2</b> O caso balanceado</a></li>
+<li class="chapter" data-level="6.3" data-path="investigando-os-dados-1.html"><a href="investigando-os-dados-1.html#outro-caso-balanceado"><i class="fa fa-check"></i><b>6.3</b> Outro caso balanceado</a></li>
+<li class="chapter" data-level="6.4" data-path="investigando-os-dados-1.html"><a href="investigando-os-dados-1.html#o-caso-desbalanceado"><i class="fa fa-check"></i><b>6.4</b> O caso desbalanceado</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="investigando-os-dados-2.html"><a href="investigando-os-dados-2.html"><i class="fa fa-check"></i><b>7</b> Investigando os dados</a><ul>
+<li class="chapter" data-level="7.1" data-path="investigando-os-dados-2.html"><a href="investigando-os-dados-2.html#o-caso-balanceado-1"><i class="fa fa-check"></i><b>7.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="7.2" data-path="investigando-os-dados-2.html"><a href="investigando-os-dados-2.html#o-caso-desbalanceado-1"><i class="fa fa-check"></i><b>7.2</b> O caso desbalanceado</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="investigando-os-dados-3.html"><a href="investigando-os-dados-3.html"><i class="fa fa-check"></i><b>8</b> Investigando os dados</a><ul>
+<li class="chapter" data-level="8.1" data-path="investigando-os-dados-3.html"><a href="investigando-os-dados-3.html#o-caso-balanceado-2"><i class="fa fa-check"></i><b>8.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="8.2" data-path="investigando-os-dados-3.html"><a href="investigando-os-dados-3.html#o-caso-desbalanceado-2"><i class="fa fa-check"></i><b>8.2</b> O caso desbalanceado</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="investigando-os-dados-4.html"><a href="investigando-os-dados-4.html"><i class="fa fa-check"></i><b>9</b> Investigando os dados</a><ul>
+<li class="chapter" data-level="9.1" data-path="investigando-os-dados-4.html"><a href="investigando-os-dados-4.html#o-caso-balanceado-3"><i class="fa fa-check"></i><b>9.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="9.2" data-path="investigando-os-dados-4.html"><a href="investigando-os-dados-4.html#o-caso-desbalanceado-3"><i class="fa fa-check"></i><b>9.2</b> O caso desbalanceado</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="investigando-os-dados-5.html"><a href="investigando-os-dados-5.html"><i class="fa fa-check"></i><b>10</b> Investigando os dados</a><ul>
+<li class="chapter" data-level="10.1" data-path="investigando-os-dados-5.html"><a href="investigando-os-dados-5.html#o-caso-balanceado-4"><i class="fa fa-check"></i><b>10.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="10.2" data-path="investigando-os-dados-5.html"><a href="investigando-os-dados-5.html#o-caso-desbalanceado-4"><i class="fa fa-check"></i><b>10.2</b> O caso desbalanceado</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="investigando-os-dados-6.html"><a href="investigando-os-dados-6.html"><i class="fa fa-check"></i><b>11</b> Investigando os dados</a><ul>
+<li class="chapter" data-level="11.1" data-path="investigando-os-dados-6.html"><a href="investigando-os-dados-6.html#kruskal-wallis-equivalente-ao-dic"><i class="fa fa-check"></i><b>11.1</b> Kruskal-Wallis (equivalente ao DIC)</a></li>
+<li class="chapter" data-level="11.2" data-path="investigando-os-dados-6.html"><a href="investigando-os-dados-6.html#friedman-equivalente-ao-dbc"><i class="fa fa-check"></i><b>11.2</b> Friedman (equivalente ao DBC)</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="investigando-os-dados-7.html"><a href="investigando-os-dados-7.html"><i class="fa fa-check"></i><b>12</b> Investigando os dados</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computação em R: estatística experimental</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="investigando-os-dados-1" class="section level1">
+<h1><span class="header-section-number">Cap. 6</span> Investigando os dados</h1>
+<p>Este é sem dúvida o caso mais simples dos delineamentos experimentais. Aqui, o fenômeno de estudo se resume a apenas duas fontes de variação: uma fonte de variação conhecida determinada pelo tratamento e uma fonte de variação desconhecida determinada pelo resíduo.</p>
+<div id="recapitulando" class="section level2">
+<h2><span class="header-section-number">6.1</span> Recapitulando</h2>
+<p>A análise começa pela determinação das somas de quadrados total, composta pela soma de quadrados do tratamento e pela soma de quadrados do resíduo. Uma vez obtidas as somas de quadrados, calculam-se os quadrados médios e o valor da estatística F. Se F calculado for superior ao F tabelado, assume-se que existe um efeito devido aos tratamentos, ao passo que se F calculado for inferior ao F tabelado, não há evidências suficientes para rejeitar a hipótese nula, aceitando-se a hipótese de que não existe efeito dos tratamentos.</p>
+<p>Sendo o efeito dos tratamentos significativo, realiza-se o desdobramento do efeito dos tratamentos através de um teste de médias se os tratamentos forem qualitativos, ou uma análise de regressão se os tratamentos forem quantitativos.</p>
+</div>
+<div id="o-caso-balanceado" class="section level2">
+<h2><span class="header-section-number">6.2</span> O caso balanceado</h2>
+<p>Para exemplificar o caso balanceado, será analisado um estudo sobre a influência de três diferentes tipos de substrato no crescimento em altura de mudas. Cada tipo de substrato foi utilizado na germinação de 10 plantas. 90 dias após o semeio, as alturas das plântulas foram medidas e registradas numa planilha eletrônica (extensão .csv). Os dados podem ser resumidos através dos seguintes tópicos:</p>
+<ul>
+<li>Tratamento: 3 substratos</li>
+<li>10 repetições</li>
+<li>Variável de interesse: altura</li>
+</ul>
+<p>Abaixo seguem as medições de altura tabuladas. Embora o R seja compatível com diversas extensões de planilhas eletrônicas, utilizaremos ao longo do livro arquivos em extensão .csv.</p>
+<table>
+<caption><span id="tab:unnamed-chunk-36">Table 6.1: </span>Dados de delineamento inteiramente casualizado</caption>
+<thead>
+<tr class="header">
+<th align="left">tratamento</th>
+<th align="right">rep</th>
+<th align="right">altura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Substrato 1</td>
+<td align="right">1</td>
+<td align="right">1.2</td>
+</tr>
+<tr class="even">
+<td align="left">Substrato 1</td>
+<td align="right">2</td>
+<td align="right">8.6</td>
+</tr>
+<tr class="odd">
+<td align="left">Substrato 1</td>
+<td align="right">3</td>
+<td align="right">8.6</td>
+</tr>
+<tr class="even">
+<td align="left">Substrato 1</td>
+<td align="right">4</td>
+<td align="right">3.7</td>
+</tr>
+<tr class="odd">
+<td align="left">Substrato 1</td>
+<td align="right">5</td>
+<td align="right">9.9</td>
+</tr>
+<tr class="even">
+<td align="left">Substrato 1</td>
+<td align="right">6</td>
+<td align="right">2.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Substrato 1</td>
+<td align="right">7</td>
+<td align="right">6.2</td>
+</tr>
+<tr class="even">
+<td align="left">Substrato 1</td>
+<td align="right">8</td>
+<td align="right">6.2</td>
+</tr>
+<tr class="odd">
+<td align="left">Substrato 1</td>
+<td align="right">9</td>
+<td align="right">1.2</td>
+</tr>
+<tr class="even">
+<td align="left">Substrato 1</td>
+<td align="right">10</td>
+<td align="right">3.7</td>
+</tr>
+<tr class="odd">
+<td align="left">Substrato 2</td>
+<td align="right">1</td>
+<td align="right">2.5</td>
+</tr>
+<tr class="even">
+<td align="left">Substrato 2</td>
+<td align="right">2</td>
+<td align="right">8.6</td>
+</tr>
+<tr class="odd">
+<td align="left">Substrato 2</td>
+<td align="right">3</td>
+<td align="right">7.4</td>
+</tr>
+<tr class="even">
+<td align="left">Substrato 2</td>
+<td align="right">4</td>
+<td align="right">6.2</td>
+</tr>
+<tr class="odd">
+<td align="left">Substrato 2</td>
+<td align="right">5</td>
+<td align="right">9.9</td>
+</tr>
+<tr class="even">
+<td align="left">Substrato 2</td>
+<td align="right">6</td>
+<td align="right">2.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Substrato 2</td>
+<td align="right">7</td>
+<td align="right">6.2</td>
+</tr>
+<tr class="even">
+<td align="left">Substrato 2</td>
+<td align="right">8</td>
+<td align="right">6.2</td>
+</tr>
+<tr class="odd">
+<td align="left">Substrato 2</td>
+<td align="right">9</td>
+<td align="right">1.2</td>
+</tr>
+<tr class="even">
+<td align="left">Substrato 2</td>
+<td align="right">10</td>
+<td align="right">3.7</td>
+</tr>
+<tr class="odd">
+<td align="left">Substrato 3</td>
+<td align="right">1</td>
+<td align="right">3.7</td>
+</tr>
+<tr class="even">
+<td align="left">Substrato 3</td>
+<td align="right">2</td>
+<td align="right">9.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Substrato 3</td>
+<td align="right">3</td>
+<td align="right">11.1</td>
+</tr>
+<tr class="even">
+<td align="left">Substrato 3</td>
+<td align="right">4</td>
+<td align="right">7.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Substrato 3</td>
+<td align="right">5</td>
+<td align="right">7.4</td>
+</tr>
+<tr class="even">
+<td align="left">Substrato 3</td>
+<td align="right">6</td>
+<td align="right">3.7</td>
+</tr>
+<tr class="odd">
+<td align="left">Substrato 3</td>
+<td align="right">7</td>
+<td align="right">6.2</td>
+</tr>
+<tr class="even">
+<td align="left">Substrato 3</td>
+<td align="right">8</td>
+<td align="right">8.6</td>
+</tr>
+<tr class="odd">
+<td align="left">Substrato 3</td>
+<td align="right">9</td>
+<td align="right">11.1</td>
+</tr>
+<tr class="even">
+<td align="left">Substrato 3</td>
+<td align="right">10</td>
+<td align="right">11.1</td>
+</tr>
+</tbody>
+</table>
+<p>O primeiro passo é importar o arquivo csv contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1">dic1 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DIC 1.csv&quot;</span>)</a></code></pre></div>
+<p>Lembre-se que de acordo com a formatação regional do seu computador pode ser necessário informar o separador de coluna e/ou separador decimal. Veja alguns exemplos de sintaxe logo em sequência.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1"><span class="co"># Para o caso de separador decimal &#39;.&#39; e deparador de coluna&#39;,&#39;</span></a>
+<a class="sourceLine" id="cb79-2" title="2">dic1 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Experimento DIC 1.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a>
+<a class="sourceLine" id="cb79-3" title="3"></a>
+<a class="sourceLine" id="cb79-4" title="4"><span class="co"># Para o caso de separador decimal &#39;,&#39; e separador de colune &#39;;&#39;</span></a>
+<a class="sourceLine" id="cb79-5" title="5">dic1 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Experimento DIC 1.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>)</a></code></pre></div>
+<p>Com a importação, cria-se um objeto chamado dic1, contendo os dados do experimento num formato de dataframe. Antes de partir para a análise, é fundamental explorar os dados de forma gráfica para conhecer melhor os dados e antecipar o resultado da análise estatística. A construção do gráfico ajuda na compreensão do fenômeno estudado e na validação da análise estatística escolhida. Por se tratar de um experimento com o tratamento formado por níveis qualitativos, recomenda-se o uso do boxplot().</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dic1, altura <span class="op">~</span><span class="st"> </span>tratamento)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<p>Pelo gráfico obtido, é razoável esperar que não haja diferenças significativas entre os tratamentos (3 substratos), pois existe uma grande sobreposição entre os interquartis dos substratos. Assim, espera-se que a análise estatística do experimento corrobore a conclusão empírica baseada no interpretação do gráfico.</p>
+<p>Com a função dic() do pacote ExpDes.pt será possível realizar toda a análise de um experimento de delineamento inteiramente casualizado, inclusive o desdobramento caso o teste F seja significativo e o tratamento tenha três ou mais níveis.</p>
+<p>Lembre-se que O pacote ExpDes.pt não faz parte da instalação padrão do R, e precisa ser adicionado à parte. A sintaxe básica da função dic() é:</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1"><span class="kw">dic</span>(trat, resp, <span class="dt">quali =</span> <span class="ot">TRUE</span>, <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>, <span class="dt">sigT =</span> <span class="fl">0.05</span>, <span class="dt">sigF =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<p>No nosso experimento, não será necessário alterar nenhum parâmetro opcional, sendo então nosso comando construído da seguinte maneira:</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
+<a class="sourceLine" id="cb82-2" title="2"><span class="kw">dic</span>(dic1<span class="op">$</span>tratamento, dic1<span class="op">$</span>altura)</a></code></pre></div>
+<pre><code>## ------------------------------------------------------------------------
+## Quadro da analise de variancia
+## ------------------------------------------------------------------------
+##            GL      SQ QM     Fc    Pr&gt;Fc
+## Tratamento  2  49.299  2 2.7908 0.079121
+## Residuo    27 238.476  3                
+## Total      29 287.775  1                
+## ------------------------------------------------------------------------
+## CV = 47.83 %
+## 
+## ------------------------------------------------------------------------
+## Teste de normalidade dos residuos 
+## Valor-p:  0.06889791 
+## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
+## ------------------------------------------------------------------------
+## 
+## ------------------------------------------------------------------------
+## Teste de homogeneidade de variancia 
+## valor-p:  0.937449 
+## De acordo com o teste de bartlett a 5% de significancia, as variancias podem ser consideradas homogeneas.
+## ------------------------------------------------------------------------
+## 
+## De acordo com o teste F, as medias nao podem ser consideradas diferentes.
+## ------------------------------------------------------------------------
+##        Niveis Medias
+## 1 Substrato 1   5.18
+## 2 Substrato 2   5.44
+## 3 Substrato 3   8.02
+## ------------------------------------------------------------------------</code></pre>
+<p>A primeira parte da análise é o quadro da variância que apresenta as fontes de variação com seus respectivos graus de liberdade, somas de quadrados e quadrados médio. Neste quadro também é apresentado o resultado do F calculado, que é a razão do quadrado médio do resíduo com o quadrado médio do tratamento. No capítulo sobre a análise de variância, o quadro da ANOVA terminava aqui com o F calculado, sendo seguido pela análise de uma tabela da estatística F para comparar o valor do F calculado com o valor de F tabelado. Nos softwares, não é necessário recorrer à tabela F, já que o p-valor oferece uma interpretação direta da significância.</p>
+<p>O p-valor do <em>experimento’</em> foi 0.079121, o que equivale à um grau de significância de 7.9%. Sendo o nível de significância do nosso experimento é de 5%, o p-valor ficou acima da tolerância, indicando assim que o experimento não é significativo para um nível de 5%. Obviamente, também não é significativo para um nível de 1%.</p>
+<p>Logo abaixo do quadro da ANOVA, é apresentado o coeficiente de variação do experimento (CV): 47.83%. O CV é utilizado para medir a precisão do experimento, representado pelo o desvio-padrão expresso como porcentagem da média. A interpretação do CV é muito subjetiva e varia muito entre as áreas da ciência. Na área das ciências agrárias, convencionou-se que valores acima de 30% são considerados excessivos.</p>
+<p>Outra informação importante antes de aceitar o resultado da ANOVA, é verificar se os resíduos apresentam normalidade. Esta é uma pressuposição importante, uma vez que valida a escolha do modelo teórico do DIC para explicar o fenômeno:</p>
+<p><span class="math display">\[Y = Xmed + TRAT + Erro\]</span></p>
+<p>A não normalidade coloca em xeque o modelo teórico escolhido. Sendo então indicado a transformação dos dados e novo processamento da análise. A pressuposição deve então ser novamente verificada. Obtendo normalidade, os resultados obtidos com a variável transformada podem ser utilizados. Caso contrário, recomenda-se o uso de testes não paramétricos.</p>
+<p>No nosso exemplo, o teste de normalidade foi não significativo (p-valor = 0.06) e portanto não há evidências para rejeitar a hipótese de normalidade dos resíduos.</p>
+<p>A última parte da saída apresenta o resultado do desdobramento caso o teste F seja significativo. No nosso experimento, os tratamentos não são significativos e portanto, apresenta-se apenas a média de cada tratamento.</p>
+</div>
+<div id="outro-caso-balanceado" class="section level2">
+<h2><span class="header-section-number">6.3</span> Outro caso balanceado</h2>
+<p>Neste exemplo, segue um experimento em delineamento inteiramente casualizado, em que se avalia a resposta no desenvolvimento em altura das plantas de quatro níveis de um nutriente. Cada nível de nutriente foi repetido 6 vezes. Assim o experimento pode ser resumido como:</p>
+<ul>
+<li>Tratamento: 4 dosagens de um nutriente</li>
+<li>6 repetições</li>
+<li>Variável de interesse: altura</li>
+</ul>
+<table>
+<caption><span id="tab:unnamed-chunk-42">Table 6.2: </span>Dados de outro delineamento inteiramente casualizado</caption>
+<thead>
+<tr class="header">
+<th align="right">tratamento</th>
+<th align="right">rep</th>
+<th align="right">altura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">32.3</td>
+</tr>
+<tr class="even">
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">50.6</td>
+</tr>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">50.6</td>
+</tr>
+<tr class="even">
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">38.8</td>
+</tr>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">5</td>
+<td align="right">37.1</td>
+</tr>
+<tr class="even">
+<td align="right">0</td>
+<td align="right">6</td>
+<td align="right">26.3</td>
+</tr>
+<tr class="odd">
+<td align="right">25</td>
+<td align="right">1</td>
+<td align="right">46.3</td>
+</tr>
+<tr class="even">
+<td align="right">25</td>
+<td align="right">2</td>
+<td align="right">50.3</td>
+</tr>
+<tr class="odd">
+<td align="right">25</td>
+<td align="right">3</td>
+<td align="right">47.5</td>
+</tr>
+<tr class="even">
+<td align="right">25</td>
+<td align="right">4</td>
+<td align="right">45.6</td>
+</tr>
+<tr class="odd">
+<td align="right">25</td>
+<td align="right">5</td>
+<td align="right">63.9</td>
+</tr>
+<tr class="even">
+<td align="right">25</td>
+<td align="right">6</td>
+<td align="right">36.3</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">1</td>
+<td align="right">68.5</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">2</td>
+<td align="right">93.9</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">3</td>
+<td align="right">96.5</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">4</td>
+<td align="right">77.7</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">5</td>
+<td align="right">77.7</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">6</td>
+<td align="right">68.8</td>
+</tr>
+<tr class="odd">
+<td align="right">75</td>
+<td align="right">1</td>
+<td align="right">26.3</td>
+</tr>
+<tr class="even">
+<td align="right">75</td>
+<td align="right">2</td>
+<td align="right">40.3</td>
+</tr>
+<tr class="odd">
+<td align="right">75</td>
+<td align="right">3</td>
+<td align="right">37.7</td>
+</tr>
+<tr class="even">
+<td align="right">75</td>
+<td align="right">4</td>
+<td align="right">35.1</td>
+</tr>
+<tr class="odd">
+<td align="right">75</td>
+<td align="right">5</td>
+<td align="right">33.9</td>
+</tr>
+<tr class="even">
+<td align="right">75</td>
+<td align="right">6</td>
+<td align="right">26.3</td>
+</tr>
+</tbody>
+</table>
+<p>O primeiro passo é importar o arquivo csv contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1">dic2 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DIC 2.csv&quot;</span>)</a></code></pre></div>
+<p>Antes de chamar a análise estatística, recomenda-se explorar os dados graficamente. Por se tratar de um tratamento de níveis quantitativos, o gráfico de dispersão é mais adequado:</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> dic2, altura <span class="op">~</span><span class="st"> </span>tratamento)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<p>O gráfico indica que a dosagem de 50 apresenta um desenvolvimento em altura superior às demais dosagens. Outro ponto que fica claro com o gráfico, é que o tratamento tem um efeito quadrático sobre a altura. Por se tratar de um caso balanceado, a análise estatística pode ser realizada com a função dic() do pacote ExpDes.pt:</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
+<a class="sourceLine" id="cb86-2" title="2"><span class="kw">dic</span>(dic2<span class="op">$</span>tratamento, dic2<span class="op">$</span>altura, <span class="dt">quali =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<pre><code>## ------------------------------------------------------------------------
+## Quadro da analise de variancia
+## ------------------------------------------------------------------------
+##            GL     SQ QM     Fc     Pr&gt;Fc
+## Tratamento  3 7970.8  2 29.789 1.413e-07
+## Residuo    20 1783.8  3                 
+## Total      23 9754.7  1                 
+## ------------------------------------------------------------------------
+## CV = 18.76 %
+## 
+## ------------------------------------------------------------------------
+## Teste de normalidade dos residuos 
+## Valor-p:  0.1590112 
+## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
+## ------------------------------------------------------------------------
+## 
+## ------------------------------------------------------------------------
+## Teste de homogeneidade de variancia 
+## valor-p:  0.5117623 
+## De acordo com o teste de bartlett a 5% de significancia, as variancias podem ser consideradas homogeneas.
+## ------------------------------------------------------------------------
+## 
+## Ajuste de modelos polinomiais de regressao
+## ------------------------------------------------------------------------
+## 
+## Modelo Linear
+## =========================================
+##    Estimativa Erro.padrao   tc    valor.p
+## -----------------------------------------
+## b0  48.2233     3.2258    14.9493    0   
+## b1   0.0566     0.0690    0.8206  0.4215 
+## -----------------------------------------
+## 
+## R2 do modelo linear
+## --------
+## 0.007536
+## --------
+## 
+## Analise de variancia do modelo linear
+## ===========================================================
+##                      GL     SQ         QM      Fc   valor.p
+## -----------------------------------------------------------
+## Efeito linear        1   60.0668    60.0668   0.67  0.42152
+## Desvios de Regressao 2  7,910.7750 3,955.3870 44.35    0   
+## Residuos             20 1,783.8380  89.1919                
+## -----------------------------------------------------------
+## ------------------------------------------------------------------------
+## 
+## Modelo quadratico
+## =========================================
+##    Estimativa Erro.padrao   tc    valor.p
+## -----------------------------------------
+## b0  34.1525     3.7579    9.0881     0   
+## b1   1.7451     0.2414    7.2292     0   
+## b2  -0.0225     0.0031    -7.2990    0   
+## -----------------------------------------
+## 
+## R2 do modelo quadratico
+## --------
+## 0.603674
+## --------
+## 
+## Analise de variancia do modelo quadratico
+## ===========================================================
+##                      GL     SQ         QM      Fc   valor.p
+## -----------------------------------------------------------
+## Efeito linear        1   60.0668    60.0668   0.67  0.42152
+## Efeito quadratico    1  4,751.7200 4,751.7200 53.28    0   
+## Desvios de Regressao 1  3,159.0540 3,159.0540 35.42  1e-05 
+## Residuos             20 1,783.8380  89.1919                
+## -----------------------------------------------------------
+## ------------------------------------------------------------------------
+## 
+## Modelo cubico
+## =========================================
+##    Estimativa Erro.padrao   tc    valor.p
+## -----------------------------------------
+## b0  39.2833     3.8556    10.1888    0   
+## b1  -1.4702     0.5917    -2.4846 0.0219 
+## b2   0.1006     0.0209    4.8101  0.0001 
+## b3  -0.0011     0.0002    -5.9514 0.00001
+## -----------------------------------------
+## 
+## R2 do modelo cubico
+## -
+## 1
+## -
+## 
+## Analise de variancia do modelo cubico
+## ===========================================================
+##                      GL     SQ         QM      Fc   valor.p
+## -----------------------------------------------------------
+## Efeito linear        1   60.0668    60.0668   0.67  0.42152
+## Efeito quadratico    1  4,751.7200 4,751.7200 53.28    0   
+## Efeito cubico        1  3,159.0540 3,159.0540 35.42  1e-05 
+## Desvios de Regressao 0      0          0        0      1   
+## Residuos             20 1,783.8380  89.1919                
+## -----------------------------------------------------------
+## ------------------------------------------------------------------------</code></pre>
+<p>Note que o comando utilizado é muito semelhante ao exemplo anterior, com apenas uma diferença no parâmetro quali. Neste experimento, utiliza-se o parâmetro como FALSE por se tratar de um experimento com tratamento quantitativo.</p>
+<p>O modelo estatístico pode ser aceito uma vez que não há evidências para rejeitar a hipótese de normalidade dos resíduos. Desta forma, pode-se dar sequência na interpretação dos resultados da análise do experimento.</p>
+<p>Os tratamentos podem ser considerados significativos já que seu p-valor é inferior a 1%. O desdobramento do tratamento é realizado através de um teste de regressão, já que os níveis do tratamento são quantitativos.</p>
+<p>Como padrão, a função dic() desdobra os níveis do tratamento em três modelos: linear , quadrático e cúbico. Pelo gráfico de dispersão criado na fase de exploração dos dados, espera-se que o modelo quadrático seja o mais adequado para representação dos experimento. Com base nos resultados do desdobramento, nota-se que o modelo linear e cúbico são claramente inadequados. No caso do modelo linear, o p-valor indica não significância do efeito linear, reforçado pelo coeficiente de determinação próximo a zero. O efeito cúbico, também foi inadequado pela falta de graus de liberdade. Como experimento analisado conta apenas com 4 níveis no tratamento, não sobra graus de liberdade para o resíduo. O modelo quadrático, por sua vez, apresenta um efeito significativo frente à análise de variância, tanto do efeito quanto dos coeficientes. O coeficiente de determinação de 60.36 % também indica um ajuste satisfatório.</p>
+<p>A dose ótima do nutriente pode ser encontrado através do ponto de máximo do modelo quadrático considerando o intervalo dos níveis analisados, isto é, de 0 a 75. Cuidado com extrapolações, uma vez que o experimento não contempla doses fora do intervalo analisado.</p>
+</div>
+<div id="o-caso-desbalanceado" class="section level2">
+<h2><span class="header-section-number">6.4</span> O caso desbalanceado</h2>
+<p>Experimentos desbalanceados são muito comuns na área das ciências agrárias. Isto ocorre principalmente devido à perda de parcelas ou unidades experimentais devido à contaminação, morte ou eventos não previstos. Voltaremos ao experimento em delineamento inteiramente casualizado, em que se avalia a resposta no desenvolvimento em altura das plantas de quatro níveis de um nutriente. Cada nível de nutriente foi repetido 6 vezes.</p>
+<ul>
+<li>Tratamento: 4 dosagens de um nutriente</li>
+<li>6 repetições</li>
+<li>Variável de interesse: altura</li>
+</ul>
+<p>No entanto, perceba que duas medições foram perdidas por morte das plantas:</p>
+<ul>
+<li>dose 0 repetição 4</li>
+<li>dose 75 repetição 2</li>
+</ul>
+<table>
+<caption><span id="tab:unnamed-chunk-46">Table 6.3: </span>Dados de outro delineamento inteiramente casualizado, porém neste caso desbalanceado</caption>
+<thead>
+<tr class="header">
+<th align="right">tratamento</th>
+<th align="right">rep</th>
+<th align="right">altura</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">32.3</td>
+</tr>
+<tr class="even">
+<td align="right">0</td>
+<td align="right">2</td>
+<td align="right">50.6</td>
+</tr>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">50.6</td>
+</tr>
+<tr class="even">
+<td align="right">0</td>
+<td align="right">5</td>
+<td align="right">37.1</td>
+</tr>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">6</td>
+<td align="right">26.3</td>
+</tr>
+<tr class="even">
+<td align="right">25</td>
+<td align="right">1</td>
+<td align="right">46.3</td>
+</tr>
+<tr class="odd">
+<td align="right">25</td>
+<td align="right">2</td>
+<td align="right">50.3</td>
+</tr>
+<tr class="even">
+<td align="right">25</td>
+<td align="right">3</td>
+<td align="right">47.5</td>
+</tr>
+<tr class="odd">
+<td align="right">25</td>
+<td align="right">4</td>
+<td align="right">45.6</td>
+</tr>
+<tr class="even">
+<td align="right">25</td>
+<td align="right">5</td>
+<td align="right">63.9</td>
+</tr>
+<tr class="odd">
+<td align="right">25</td>
+<td align="right">6</td>
+<td align="right">36.3</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">1</td>
+<td align="right">68.5</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">2</td>
+<td align="right">93.9</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">3</td>
+<td align="right">96.5</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">4</td>
+<td align="right">77.7</td>
+</tr>
+<tr class="even">
+<td align="right">50</td>
+<td align="right">5</td>
+<td align="right">77.7</td>
+</tr>
+<tr class="odd">
+<td align="right">50</td>
+<td align="right">6</td>
+<td align="right">68.8</td>
+</tr>
+<tr class="even">
+<td align="right">75</td>
+<td align="right">1</td>
+<td align="right">26.3</td>
+</tr>
+<tr class="odd">
+<td align="right">75</td>
+<td align="right">3</td>
+<td align="right">37.7</td>
+</tr>
+<tr class="even">
+<td align="right">75</td>
+<td align="right">4</td>
+<td align="right">35.1</td>
+</tr>
+<tr class="odd">
+<td align="right">75</td>
+<td align="right">5</td>
+<td align="right">33.9</td>
+</tr>
+<tr class="even">
+<td align="right">75</td>
+<td align="right">6</td>
+<td align="right">26.3</td>
+</tr>
+</tbody>
+</table>
+<p>O primeiro passo é importar o arquivo csv contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1">dic3 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DIC 3.csv&quot;</span>)</a></code></pre></div>
+<p>Antes de chamar a análise estatística, recomenda-se explorar os dados graficamente. Por se tratar de um tratamento de níveis quantitativos, o gráfico de dispersão é mais adequado:</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> dic3, altura <span class="op">~</span><span class="st"> </span>tratamento)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<p>Mesmo se tratando de um experimento desbalanceado, por se tratar de um DIC e consequentemente não existir interações a serem calculadas, pode-se utilizar a ANOVA Tipo I. Com relação aos parâmetros opcionais, apenas o parâmetro quali precisa ser alterado para FALSE, por se tratar tratamento quantitativo:</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
+<a class="sourceLine" id="cb90-2" title="2"><span class="kw">dic</span>(dic3<span class="op">$</span>tratamento, dic3<span class="op">$</span>altura, <span class="dt">quali =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<pre><code>## ------------------------------------------------------------------------
+## Quadro da analise de variancia
+## ------------------------------------------------------------------------
+##            GL     SQ QM     Fc      Pr&gt;Fc
+## Tratamento  3 7775.1  2 27.056 6.8921e-07
+## Residuo    18 1724.2  3                  
+## Total      21 9499.3  1                  
+## ------------------------------------------------------------------------
+## CV = 19.07 %
+## 
+## ------------------------------------------------------------------------
+## Teste de normalidade dos residuos 
+## Valor-p:  0.1497467 
+## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
+## ------------------------------------------------------------------------
+## 
+## ------------------------------------------------------------------------
+## Teste de homogeneidade de variancia 
+## valor-p:  0.4610355 
+## De acordo com o teste de bartlett a 5% de significancia, as variancias podem ser consideradas homogeneas.
+## ------------------------------------------------------------------------
+## 
+## Ajuste de modelos polinomiais de regressao
+## ------------------------------------------------------------------------
+## 
+## Modelo Linear
+## =========================================
+##    Estimativa Erro.padrao   tc    valor.p
+## -----------------------------------------
+## b0  48.9626     3.5785    13.6823    0   
+## b1   0.0631     0.0775    0.8134  0.4266 
+## -----------------------------------------
+## 
+## R2 do modelo linear
+## --------
+## 0.008151
+## --------
+## 
+## Analise de variancia do modelo linear
+## ===========================================================
+##                      GL     SQ         QM      Fc   valor.p
+## -----------------------------------------------------------
+## Efeito linear        1   63.3741    63.3741   0.66  0.42662
+## Desvios de Regressao 2  7,711.6930 3,855.8460 40.25    0   
+## Residuos             18 1,724.1970  95.7887                
+## -----------------------------------------------------------
+## ------------------------------------------------------------------------
+## 
+## Modelo quadratico
+## =========================================
+##    Estimativa Erro.padrao   tc    valor.p
+## -----------------------------------------
+## b0  33.2553     4.2463    7.8316     0   
+## b1   1.7909     0.2631    6.8063     0   
+## b2  -0.0230     0.0034    -6.8717    0   
+## -----------------------------------------
+## 
+## R2 do modelo quadratico
+## --------
+## 0.589904
+## --------
+## 
+## Analise de variancia do modelo quadratico
+## ===========================================================
+##                      GL     SQ         QM      Fc   valor.p
+## -----------------------------------------------------------
+## Efeito linear        1   63.3741    63.3741   0.66  0.42662
+## Efeito quadratico    1  4,523.1710 4,523.1710 47.22    0   
+## Desvios de Regressao 1  3,188.5220 3,188.5220 33.29  2e-05 
+## Residuos             18 1,724.1970  95.7887                
+## -----------------------------------------------------------
+## ------------------------------------------------------------------------
+## 
+## Modelo cubico
+## =========================================
+##    Estimativa Erro.padrao   tc    valor.p
+## -----------------------------------------
+## b0  39.3800     4.3770    8.9971     0   
+## b1  -1.4961     0.6275    -2.3840 0.0283 
+## b2   0.1019     0.0219    4.6503  0.0002 
+## b3  -0.0011     0.0002    -5.7695 0.00002
+## -----------------------------------------
+## 
+## R2 do modelo cubico
+## -
+## 1
+## -
+## 
+## Analise de variancia do modelo cubico
+## ===========================================================
+##                      GL     SQ         QM      Fc   valor.p
+## -----------------------------------------------------------
+## Efeito linear        1   63.3741    63.3741   0.66  0.42662
+## Efeito quadratico    1  4,523.1710 4,523.1710 47.22    0   
+## Efeito cubico        1  3,188.5220 3,188.5220 33.29  2e-05 
+## Desvios de Regressao 0      0          0        0      1   
+## Residuos             18 1,724.1970  95.7887                
+## -----------------------------------------------------------
+## ------------------------------------------------------------------------</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="investigando-os-dados.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="investigando-os-dados-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/Gorgens/compR-experimental/edit/master/06-dic.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/Gorgens/compR-experimental/blob/master/06-dic.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

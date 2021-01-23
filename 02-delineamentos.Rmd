@@ -1,10 +1,5 @@
 # Delineamentos experimentais
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(knitr)
-```
-
 Delineamento experimental define a organização das unidades experimentais, em função da pergunta científica que se deseja responder. Com base no delineamento escolhido, regras precisam ser seguidas, especialmente relacionados à maneira que os tratamentos são distribuídos nas unidades experimentais.
 
 A unidade experimental é o material experimental que identifica um sistema de interesse numa pesquisa experimental e representa uma unidade da população. É sobre a unidade experimental que os tratamento serão aplicados e avaliados.

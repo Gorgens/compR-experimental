@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Cap. 8 Fatorial duplo inteiramento casualizado | Computação em R: estatística experimental</title>
+  <meta name="description" content="Cap. 8 Fatorial duplo inteiramento casualizado | Computação em R: estatística experimental" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Cap. 8 Fatorial duplo inteiramento casualizado | Computação em R: estatística experimental" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Cap. 8 Fatorial duplo inteiramento casualizado | Computação em R: estatística experimental" />
+  
+  
+  
+
+<meta name="author" content="Eric Bastos Gorgens &amp; Marcio Leles Romarco de Oliveira" />
+
+
+<meta name="date" content="2021-01-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="delineamento-em-blocos-casualizados.html"/>
+<link rel="next" href="fatorial-duplo-em-blocos-casualizados.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Experimental</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Sobre o livro</a></li>
+<li class="chapter" data-level="2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html"><i class="fa fa-check"></i><b>2</b> Delineamentos experimentais</a><ul>
+<li class="chapter" data-level="2.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova"><i class="fa fa-check"></i><b>2.1</b> ANOVA</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#partição-da-variação"><i class="fa fa-check"></i><b>2.1.1</b> Partição da variação</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#tipos-de-anova"><i class="fa fa-check"></i><b>2.2</b> Tipos de ANOVA</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-i"><i class="fa fa-check"></i><b>2.2.1</b> ANOVA Tipo I</a></li>
+<li class="chapter" data-level="2.2.2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-ii"><i class="fa fa-check"></i><b>2.2.2</b> ANOVA Tipo II</a></li>
+<li class="chapter" data-level="2.2.3" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-iii"><i class="fa fa-check"></i><b>2.2.3</b> ANOVA Tipo III</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html"><i class="fa fa-check"></i><b>3</b> Pressuposições e transformações</a><ul>
+<li class="chapter" data-level="3.1" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#logarítmica"><i class="fa fa-check"></i><b>3.1</b> Logarítmica</a></li>
+<li class="chapter" data-level="3.2" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#raiz-quadrada"><i class="fa fa-check"></i><b>3.2</b> Raiz quadrada</a></li>
+<li class="chapter" data-level="3.3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#arcoseno"><i class="fa fa-check"></i><b>3.3</b> Arcoseno</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="anova-no-r.html"><a href="anova-no-r.html"><i class="fa fa-check"></i><b>4</b> ANOVA no R</a><ul>
+<li class="chapter" data-level="4.1" data-path="anova-no-r.html"><a href="anova-no-r.html#pacote-expdes.pt"><i class="fa fa-check"></i><b>4.1</b> Pacote ExpDes.pt</a></li>
+<li class="chapter" data-level="4.2" data-path="anova-no-r.html"><a href="anova-no-r.html#pacote-easyanova"><i class="fa fa-check"></i><b>4.2</b> Pacote easyanova</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="investigando-os-dados.html"><a href="investigando-os-dados.html"><i class="fa fa-check"></i><b>5</b> Investigando os dados</a><ul>
+<li class="chapter" data-level="5.1" data-path="investigando-os-dados.html"><a href="investigando-os-dados.html#plot-gráfico-de-dispersão"><i class="fa fa-check"></i><b>5.1</b> Plot: Gráfico de dispersão</a></li>
+<li class="chapter" data-level="5.2" data-path="investigando-os-dados.html"><a href="investigando-os-dados.html#boxplot-gráfico-de-caixas"><i class="fa fa-check"></i><b>5.2</b> Boxplot: Gráfico de caixas</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html"><i class="fa fa-check"></i><b>6</b> Delineamento inteiramente casualizado</a><ul>
+<li class="chapter" data-level="6.1" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#recapitulando"><i class="fa fa-check"></i><b>6.1</b> Recapitulando</a></li>
+<li class="chapter" data-level="6.2" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#o-caso-balanceado"><i class="fa fa-check"></i><b>6.2</b> O caso balanceado</a></li>
+<li class="chapter" data-level="6.3" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#outro-caso-balanceado"><i class="fa fa-check"></i><b>6.3</b> Outro caso balanceado</a></li>
+<li class="chapter" data-level="6.4" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#o-caso-desbalanceado"><i class="fa fa-check"></i><b>6.4</b> O caso desbalanceado</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html"><i class="fa fa-check"></i><b>7</b> Delineamento em blocos casualizados</a><ul>
+<li class="chapter" data-level="7.1" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html#o-caso-balanceado-1"><i class="fa fa-check"></i><b>7.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="7.2" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html#o-caso-desbalanceado-1"><i class="fa fa-check"></i><b>7.2</b> O caso desbalanceado</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html"><i class="fa fa-check"></i><b>8</b> Fatorial duplo inteiramento casualizado</a><ul>
+<li class="chapter" data-level="8.1" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html#o-caso-balanceado-2"><i class="fa fa-check"></i><b>8.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="8.2" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html#o-caso-desbalanceado-2"><i class="fa fa-check"></i><b>8.2</b> O caso desbalanceado</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="fatorial-duplo-em-blocos-casualizados.html"><a href="fatorial-duplo-em-blocos-casualizados.html"><i class="fa fa-check"></i><b>9</b> Fatorial duplo em blocos casualizados</a><ul>
+<li class="chapter" data-level="9.1" data-path="fatorial-duplo-em-blocos-casualizados.html"><a href="fatorial-duplo-em-blocos-casualizados.html#o-caso-balanceado-3"><i class="fa fa-check"></i><b>9.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="9.2" data-path="fatorial-duplo-em-blocos-casualizados.html"><a href="fatorial-duplo-em-blocos-casualizados.html#o-caso-desbalanceado-3"><i class="fa fa-check"></i><b>9.2</b> O caso desbalanceado</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="parcela-subdividida.html"><a href="parcela-subdividida.html"><i class="fa fa-check"></i><b>10</b> Parcela subdividida</a><ul>
+<li class="chapter" data-level="10.1" data-path="parcela-subdividida.html"><a href="parcela-subdividida.html#o-caso-balanceado-4"><i class="fa fa-check"></i><b>10.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="10.2" data-path="parcela-subdividida.html"><a href="parcela-subdividida.html#o-caso-desbalanceado-4"><i class="fa fa-check"></i><b>10.2</b> O caso desbalanceado</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="análise-experimental-não-paramétrica.html"><a href="análise-experimental-não-paramétrica.html"><i class="fa fa-check"></i><b>11</b> Análise experimental não paramétrica</a><ul>
+<li class="chapter" data-level="11.1" data-path="análise-experimental-não-paramétrica.html"><a href="análise-experimental-não-paramétrica.html#kruskal-wallis-equivalente-ao-dic"><i class="fa fa-check"></i><b>11.1</b> Kruskal-Wallis (equivalente ao DIC)</a></li>
+<li class="chapter" data-level="11.2" data-path="análise-experimental-não-paramétrica.html"><a href="análise-experimental-não-paramétrica.html#friedman-equivalente-ao-dbc"><i class="fa fa-check"></i><b>11.2</b> Friedman (equivalente ao DBC)</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="proximos-passos.html"><a href="proximos-passos.html"><i class="fa fa-check"></i><b>12</b> Proximos passos</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computação em R: estatística experimental</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="fatorial-duplo-inteiramento-casualizado" class="section level1">
+<h1><span class="header-section-number">Cap. 8</span> Fatorial duplo inteiramento casualizado</h1>
+<p>Os experimentos fatoriais podem ocorrer de maneira inteiramente casualizado ou em blocos casualizados. No caso de um fatorial inteiramente casualizado, a ANOVA contará com quatro fontes de variação: uma fonte de variação conhecida determinada pelo tratamento A, outra fonte de variação conhecida determinada pelo tratamento B, outra fonte de variação conhecida determinada pela interação entre os dois tratamentos e uma quarta fonte de variação desconhecida determinada pelo resíduo. O modelo estatístico do delineamento fatorial duplo inteiramente casualizado é:</p>
+<p><span class="math display">\[Y = Xmed + TRAT A + TRAT B + (TRAT A * TRAT B) + Erro\]</span></p>
+<p>A análise começa pela determinação das somas de quadrados total, composta pela soma de quadrados do fator 1, pela soma de quadrados do fator 2, pela soma de quadrados da interação dos dois fatores e pela soma de quadrados do resíduo. Em seguida, calculam-se os quadrados médios do fator 1, fator 2, interação e do resíduo. A estatística F será computada para cada um dos fatores, bem como sua interação. Se F calculado for superior ao F tabelado, assume-se que existe um efeito devido ao respectivo fator (ou interação), ao passo que se F calculado for inferior ao F tabelado, não há evidências suficientes para rejeitar a hipótese nula, aceitando-se a hipótese de que não existe efeito do fator (ou interação). Sendo a interação significativa, parte-se direto para o desdobramento de um fator dentro do outro. Apenas no caso de interação não significativa, considera-se o desdobramento dos fatores isolados.</p>
+<div id="o-caso-balanceado-2" class="section level2">
+<h2><span class="header-section-number">8.1</span> O caso balanceado</h2>
+<p>Neste exemplo de delineamento inteiramente casualizado em esquema fatorial temos um experimento que avaliou o efeito de dois indutores de enraizamento em duas concentrações no enraizamento de estacas de uma espécie de árvore nativa do cerrado brasileiro. Os dados podem ser resumidos através dos seguintes tópicos:</p>
+<ul>
+<li>Fator 1: indutor A e indutor B</li>
+<li>Fator 2: Dose 10 e 20%</li>
+<li>5 repetições</li>
+<li>Variável de interesse: número médio de raízes</li>
+</ul>
+<table>
+<caption><span id="tab:unnamed-chunk-62">Table 8.1: </span>Dados de experimento em fatorial em DIC</caption>
+<thead>
+<tr class="header">
+<th align="left">indutor</th>
+<th align="right">concentracao</th>
+<th align="right">rep</th>
+<th align="right">enraizamento</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">10</td>
+<td align="right">1</td>
+<td align="right">7.4</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="right">10</td>
+<td align="right">2</td>
+<td align="right">6.7</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">10</td>
+<td align="right">3</td>
+<td align="right">4.6</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="right">10</td>
+<td align="right">4</td>
+<td align="right">7.4</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">10</td>
+<td align="right">5</td>
+<td align="right">6.0</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="right">20</td>
+<td align="right">1</td>
+<td align="right">6.7</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">20</td>
+<td align="right">2</td>
+<td align="right">8.9</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="right">20</td>
+<td align="right">3</td>
+<td align="right">5.3</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">20</td>
+<td align="right">4</td>
+<td align="right">1.5</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">4.6</td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">10</td>
+<td align="right">1</td>
+<td align="right">0.7</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">10</td>
+<td align="right">2</td>
+<td align="right">1.5</td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">10</td>
+<td align="right">3</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">10</td>
+<td align="right">4</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">10</td>
+<td align="right">5</td>
+<td align="right">1.5</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">20</td>
+<td align="right">1</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">20</td>
+<td align="right">2</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">20</td>
+<td align="right">3</td>
+<td align="right">2.3</td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">20</td>
+<td align="right">4</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">0.0</td>
+</tr>
+</tbody>
+</table>
+<p>O primeiro passo é importar o arquivo csv contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1">fatDIC1 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento Fatorial Duplo DIC 1.csv&quot;</span>)</a></code></pre></div>
+<p>Antes da análise estatística, exploramos os dados através dos gráficos boxplot() ou plot(). Com base nos dados do experimento em questão, vamos analisá-lo através de uma série de gráficos boxplot. Embora a concentração seja uma variável contínua, este fator possui apenas dois níveis e portanto não é suficiente para considerar uma análise de tendência utilizando regressão.</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="co"># Considerando apenas fator 1</span></a>
+<a class="sourceLine" id="cb108-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1, enraizamento <span class="op">~</span><span class="st"> </span>indutor)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1"><span class="co"># Considerando apenas fator 2</span></a>
+<a class="sourceLine" id="cb109-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1, enraizamento <span class="op">~</span><span class="st"> </span>concentracao)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-64-2.png" width="672" /></p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1"><span class="co"># Interação dos fatores</span></a>
+<a class="sourceLine" id="cb110-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1, enraizamento <span class="op">~</span><span class="st"> </span>indutor<span class="op">/</span>concentracao)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-64-3.png" width="672" /></p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1"><span class="co"># Isolando os níveis do fator 2</span></a>
+<a class="sourceLine" id="cb111-2" title="2"><span class="co"># Fixando concentracao igual a 10</span></a>
+<a class="sourceLine" id="cb111-3" title="3"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1[fatDIC1<span class="op">$</span>concentracao <span class="op">==</span><span class="st"> </span><span class="dv">10</span>,], </a>
+<a class="sourceLine" id="cb111-4" title="4">        enraizamento <span class="op">~</span><span class="st"> </span>indutor)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-64-4.png" width="672" /></p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1"><span class="co"># Fixando concentracao igual a 20</span></a>
+<a class="sourceLine" id="cb112-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1[fatDIC1<span class="op">$</span>concentracao <span class="op">==</span><span class="st"> </span><span class="dv">20</span>,], </a>
+<a class="sourceLine" id="cb112-3" title="3">        enraizamento <span class="op">~</span><span class="st"> </span>indutor)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-64-5.png" width="672" /></p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1"><span class="co"># Isolando os níveis do fator 1</span></a>
+<a class="sourceLine" id="cb113-2" title="2"><span class="co"># Fixando Indutor igual a &#39;A&#39;</span></a>
+<a class="sourceLine" id="cb113-3" title="3"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1[fatDIC1<span class="op">$</span>indutor <span class="op">==</span><span class="st"> &quot;A&quot;</span>,], </a>
+<a class="sourceLine" id="cb113-4" title="4">        enraizamento <span class="op">~</span><span class="st"> </span>concentracao)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-64-6.png" width="672" /></p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1"><span class="co"># Fixando Indutor igual a &#39;B&#39;</span></a>
+<a class="sourceLine" id="cb114-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1[fatDIC1<span class="op">$</span>indutor <span class="op">==</span><span class="st"> &quot;B&quot;</span>,], </a>
+<a class="sourceLine" id="cb114-3" title="3">        enraizamento <span class="op">~</span><span class="st"> </span>concentracao)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-64-7.png" width="672" /></p>
+<p>Com base nos gráficos, é razoável apontar que o fator Indutor apresentou maior variação do que o fator Concentração. A interação também não parece influenciar o comportamento já identificado pelos fatores, quando analisados isoladamente.
+A função do pacote ExpDes.pt para análise deste tipo de experimento é a fat2.dic(). A sintaxe desta função é:</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1"><span class="kw">fat2.dic</span>(fator1, fator2, resp, <span class="dt">quali =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb115-2" title="2">         <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>, <span class="dt">fac.names =</span> <span class="kw">c</span>(<span class="st">&quot;F1&quot;</span>, <span class="st">&quot;F2&quot;</span>), </a>
+<a class="sourceLine" id="cb115-3" title="3">         <span class="dt">sigT =</span> <span class="fl">0.05</span>, <span class="dt">sigF =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<p>Ajustando com base nos dados do experimento, o comando fica:</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
+<a class="sourceLine" id="cb116-2" title="2"><span class="kw">fat2.dic</span>(fatDIC1<span class="op">$</span>indutor, fatDIC1<span class="op">$</span>concentracao,                        </a>
+<a class="sourceLine" id="cb116-3" title="3">         fatDIC1<span class="op">$</span>enraizamento, <span class="dt">quali =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb116-4" title="4">         <span class="dt">fac.names =</span> <span class="kw">c</span>(<span class="st">&quot;Indutor&quot;</span>, <span class="st">&quot;Concentração&quot;</span>))</a></code></pre></div>
+<pre><code>## ------------------------------------------------------------------------
+## Legenda:
+## FATOR 1:  Indutor 
+## FATOR 2:  Concentração 
+## ------------------------------------------------------------------------
+## 
+## 
+## Quadro da analise de variancia
+## ------------------------------------------------------------------------
+##                      GL      SQ QM     Fc   Pr&gt;Fc
+## Indutor               1 140.981  3 54.000 0.00000
+## Concentração          1   2.113  4  0.809 0.38171
+## Indutor*Concentração  1   0.684  2  0.262 0.61562
+## Residuo              16  41.772  5               
+## Total                19 185.550  1               
+## ------------------------------------------------------------------------
+## CV = 49.64 %
+## 
+## ------------------------------------------------------------------------
+## Teste de normalidade dos residuos (Shapiro-Wilk)
+## valor-p:  0.144 
+## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
+## ------------------------------------------------------------------------
+## 
+## Interacao nao significativa: analisando os efeitos simples
+## ------------------------------------------------------------------------
+## Indutor
+## Teste de Tukey
+## ------------------------------------------------------------------------
+## Grupos Tratamentos Medias
+## a     A   5.91 
+##  b    B   0.6 
+## ------------------------------------------------------------------------
+## 
+## Concentração
+## De acordo com o teste F, as medias desse fator sao estatisticamente iguais.
+## ------------------------------------------------------------------------
+##   Niveis Medias
+## 1     10   3.58
+## 2     20   2.93
+## ------------------------------------------------------------------------</code></pre>
+<p>O teste Shapiro-Wilk indica que os resíduos podem ser considerados normais. Assim, o modelo estatístico é adequado e os demais resultados podem ser considerados e analisados. A interação foi não significativa, e portanto os fatores devem ser analisados de forma independente. Apenas o fator Indutor foi significativo, levando então a um desdobramento dos níveis, que indica uma média do Indutor A superior à média do Indutor B.</p>
+</div>
+<div id="o-caso-desbalanceado-2" class="section level2">
+<h2><span class="header-section-number">8.2</span> O caso desbalanceado</h2>
+<p>Neste exemplo de delineamento inteiramente casualizado em esquema fatorial, com dados desbalanceados, temos um experimento para avaliar o enraizamento de dois tipos de substratos e duas intensidades de irrigação. Infelizmente, uma das bandejas de enraizamento foi contaminada e com fungo e portanto foi considerada perdida. Por isto, este experimento é considerado desbalanceado. Os dados podem ser resumidos através dos seguintes tópicos:</p>
+<ul>
+<li>Fator 1: substrato A e B</li>
+<li>Fator 2: intensidade de irrigação 10 mm e 20 mm</li>
+<li>5 repetições</li>
+<li>Informação perdida: Repetição 5 do substrato A, intensidade de irrigação 10 mm</li>
+<li>Variável de interesse: número médio de raízes</li>
+</ul>
+<table>
+<caption><span id="tab:unnamed-chunk-67">Table 8.2: </span>Dados de experimento em fatorial em DIC, porém desbalanceado.</caption>
+<thead>
+<tr class="header">
+<th align="left">substrato</th>
+<th align="right">irrigacao</th>
+<th align="right">rep</th>
+<th align="right">enraizamento</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">10</td>
+<td align="right">1</td>
+<td align="right">7.4</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="right">10</td>
+<td align="right">2</td>
+<td align="right">6.7</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">10</td>
+<td align="right">3</td>
+<td align="right">4.6</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="right">10</td>
+<td align="right">4</td>
+<td align="right">7.4</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">20</td>
+<td align="right">1</td>
+<td align="right">6.7</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="right">20</td>
+<td align="right">2</td>
+<td align="right">8.9</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">20</td>
+<td align="right">3</td>
+<td align="right">5.3</td>
+</tr>
+<tr class="even">
+<td align="left">A</td>
+<td align="right">20</td>
+<td align="right">4</td>
+<td align="right">1.5</td>
+</tr>
+<tr class="odd">
+<td align="left">A</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">4.6</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">10</td>
+<td align="right">1</td>
+<td align="right">0.7</td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">10</td>
+<td align="right">2</td>
+<td align="right">1.5</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">10</td>
+<td align="right">3</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">10</td>
+<td align="right">4</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">10</td>
+<td align="right">5</td>
+<td align="right">1.5</td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">20</td>
+<td align="right">1</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">20</td>
+<td align="right">2</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">20</td>
+<td align="right">3</td>
+<td align="right">2.3</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="right">20</td>
+<td align="right">4</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">B</td>
+<td align="right">20</td>
+<td align="right">5</td>
+<td align="right">0.0</td>
+</tr>
+</tbody>
+</table>
+<p>O primeiro passo é importar o arquivo csv contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1">fatDIC2 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento Fatorial Duplo DIC 2.csv&quot;</span>, </a>
+<a class="sourceLine" id="cb118-2" title="2">                   <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
+<p>Assim como no caso balanceado, é fundamental analisar os dados do experimento em gráficos e buscar antecipar os resultados que serão obtidos no teste estatístico. Os mesmo gráficos do exemplo balanceado podem ser utilizados:</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" title="1"><span class="co"># Considerando apenas fator 1</span></a>
+<a class="sourceLine" id="cb119-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2, enraizamento <span class="op">~</span><span class="st"> </span>substrato)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1"><span class="co"># Considerando apenas fator 2</span></a>
+<a class="sourceLine" id="cb120-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2, enraizamento <span class="op">~</span><span class="st"> </span>irrigacao)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-69-2.png" width="672" /></p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1"><span class="co"># Interação dos fatores</span></a>
+<a class="sourceLine" id="cb121-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2, enraizamento <span class="op">~</span><span class="st"> </span>substrato<span class="op">/</span>irrigacao)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-69-3.png" width="672" /></p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1"><span class="co"># Isolando os níveis do fator 2</span></a>
+<a class="sourceLine" id="cb122-2" title="2"><span class="co"># Fixando concentracao igual a 10</span></a>
+<a class="sourceLine" id="cb122-3" title="3"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2[fatDIC2<span class="op">$</span>irrigacao <span class="op">==</span><span class="st"> </span><span class="dv">10</span>,], </a>
+<a class="sourceLine" id="cb122-4" title="4">        enraizamento <span class="op">~</span><span class="st"> </span>substrato)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-69-4.png" width="672" /></p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1"><span class="co"># Fixando concentracao igual a 20</span></a>
+<a class="sourceLine" id="cb123-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2[fatDIC2<span class="op">$</span>irrigacao <span class="op">==</span><span class="st"> </span><span class="dv">20</span>,], </a>
+<a class="sourceLine" id="cb123-3" title="3">        enraizamento <span class="op">~</span><span class="st"> </span>substrato)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-69-5.png" width="672" /></p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1"><span class="co"># Isolando os níveis do fator 1</span></a>
+<a class="sourceLine" id="cb124-2" title="2"><span class="co"># Fixando Indutor igual a &#39;A&#39;</span></a>
+<a class="sourceLine" id="cb124-3" title="3"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2[fatDIC2<span class="op">$</span>substrato <span class="op">==</span><span class="st"> &quot;A&quot;</span>,], </a>
+<a class="sourceLine" id="cb124-4" title="4">        enraizamento <span class="op">~</span><span class="st"> </span>irrigacao)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-69-6.png" width="672" /></p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1"><span class="co"># Fixando Indutor igual a &#39;B&#39;</span></a>
+<a class="sourceLine" id="cb125-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2[fatDIC2<span class="op">$</span>substrato <span class="op">==</span><span class="st"> &quot;B&quot;</span>,], </a>
+<a class="sourceLine" id="cb125-3" title="3">        enraizamento <span class="op">~</span><span class="st"> </span>irrigacao)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-69-7.png" width="672" /></p>
+<p>Os gráficos mostram que é razoável apontar que o fator substrato apresentou maior variação do que o fator irrigacao. Na mesma linha do exemplo anterior, a interação também não parece influenciar o comportamento já identificado pelos fatores, quando analisados isoladamente. Sendo o nosso experimento desbalanceado, a função para rodar a ANOVA do tipo III é o ea2() (do pacote easyanova). A sintaxe da função é:</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1"><span class="kw">ea2</span>(data, <span class="dt">design =</span> <span class="dv">1</span>, <span class="dt">alpha =</span> <span class="fl">0.05</span>, <span class="dt">cov =</span> <span class="dv">4</span>, <span class="dt">list =</span> <span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb126-2" title="2">    <span class="dt">p.adjust=</span><span class="dv">1</span>, <span class="dt">plot=</span><span class="dv">2</span>)</a></code></pre></div>
+<p>Como já mencionado, o pacote easyanova exige que os dados sejam apresentados numa forma específica contendo apenas as colunas relevantes para a análise. No caso de um experimento fatorial duplo inteiramente casualizado, a ordem esperada das colunas é:</p>
+<ol style="list-style-type: decimal">
+<li>Fator A</li>
+<li>Fator B</li>
+<li>Repetição</li>
+<li>Variável resposta</li>
+</ol>
+<p>Considerando as colunas substrato, irrigacao e enraizamento do dataframe fatDIC2. Os demais parâmetros da função ea2() serão definidos como design = 1 e plot = 2.</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1"><span class="kw">require</span>(easyanova)</a>
+<a class="sourceLine" id="cb127-2" title="2">r.aov =<span class="st"> </span><span class="kw">ea2</span>(fatDIC2[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)], <span class="dt">design =</span> <span class="dv">1</span>)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
+<p>A saída da função ea2() é uma lista contendo os seguintes resultados:</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1"><span class="kw">names</span>(r.aov)</a></code></pre></div>
+<pre><code>##  [1] &quot;Analysis of variance&quot;                                     
+##  [2] &quot;Adjusted means (factor 1)&quot;                                
+##  [3] &quot;Multiple comparison test (factor 1)&quot;                      
+##  [4] &quot;Adjusted means (factor 2)&quot;                                
+##  [5] &quot;Multiple comparison test (factor 2)&quot;                      
+##  [6] &quot;Adjusted means (factor 1 in levels of factor 2)&quot;          
+##  [7] &quot;Multiple comparison test (factor 1 in levels of factor 2)&quot;
+##  [8] &quot;Adjusted means (factor 2 in levels of factor 1)&quot;          
+##  [9] &quot;Multiple comparison test (factor 2 in levels of factor 1)&quot;
+## [10] &quot;Residual analysis&quot;</code></pre>
+<p>A lista acima contém os seguintes resultados:</p>
+<ol style="list-style-type: decimal">
+<li>Análise de variância</li>
+<li>Comparação de médias do fator 1</li>
+<li>Teste de comparação múltipla do fator 1</li>
+<li>Comparação de médias do fator 2<br />
+</li>
+<li>Teste de comparação múltipla do fator 2</li>
+<li>Comparação de médias do fator 1 dentro dos níveis do fator 2</li>
+<li>Teste de comparação múltipla do fator 1 dentro dos níveis do fator 2</li>
+<li>Comparação de médias do fator 2 dentro dos níveis do fator 1</li>
+<li>Teste de comparação múltipla do fator 2 dentro dos níveis do fator 1</li>
+<li>Análise das pressuposições</li>
+</ol>
+<p>A primeira saída que deve ser verificada é a análise das pressuposição, na posição 10 da lista:</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1">r.aov[<span class="dv">10</span>]</a></code></pre></div>
+<pre><code>## $`Residual analysis`
+## $`Residual analysis`$`residual analysis`
+##                                     values
+## p.value Shapiro-Wilk test           0.2084
+## p.value Bartlett test (factor_1)    0.0146
+## p.value Bartlett test (factor_2)    0.0610
+## p.value Bartlett test (treatments)  0.0765
+## coefficient of variation (%)       53.5100
+## first value most discrepant         8.0000
+## second value most discrepant        6.0000
+## third value most discrepant         3.0000
+## 
+## $`Residual analysis`$residuals
+##      1      2      3      4      5      6      7      8      9     10     11 
+##  0.875  0.175 -1.925  0.875  1.300  3.500 -0.100 -3.900 -0.800 -0.040  0.760 
+##     12     13     14     15     16     17     18     19 
+## -0.740 -0.740  0.760 -0.460 -0.460  1.840 -0.460 -0.460 
+## 
+## $`Residual analysis`$`standardized residuals`
+##           1           2           3           4           5           6 
+##  0.57590514  0.11518103 -1.26699130  0.57590514  0.85563049  2.30362055 
+##           7           8           9          10          11          12 
+## -0.06581773 -2.56689147 -0.52654184 -0.02632709  0.50021475 -0.48705120 
+##          13          14          15          16          17          18 
+## -0.48705120  0.50021475 -0.30276156 -0.30276156  1.21104623 -0.30276156 
+##          19 
+## -0.30276156</code></pre>
+<p>O teste de normalidade Shapiro-Wilk indica que não há evidência suficientes para rejeitar a pressuposição de normalidade do modelo estatístico e portanto, este é adequado para representar o experimento analisado. Desta forma, a análise de variância contido na posição 1 da lista de resultados pode ser analisado:</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1">r.aov[<span class="dv">1</span>]</a></code></pre></div>
+<pre><code>## $`Analysis of variance`
+##                   df type III SS mean square F value    p&gt;F
+## factor_1           1    135.3243    135.3243 48.8518 &lt;0.001
+## factor_2           1      2.3224      2.3224  0.8384 0.3743
+## factor_1:factor_2  1      0.8400      0.8400  0.3032   0.59
+## residuals         15     41.5515      2.7701       -      -</code></pre>
+<p>O fator 1 (Indutor) foi altamente significativo, apresentando teste F inferior a 1%. Já o fator 2 (Concentração), bem como a interação não foram significativas. Como a interação não foi significativa, não há necessidade de desdobramento, e o fator 1 - Indutor pode ser analisado diretamente. Lembrando que no exemplo apresentado, o fator 1 possui apenas dois níveis e portanto o teste F é conclusivo. De qualquer maneira, o teste de médias do fator 1 pode ser obtido na posição 2 da lista de resultado.</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1">r.aov[<span class="dv">2</span>]</a></code></pre></div>
+<pre><code>## $`Adjusted means (factor 1)`
+##   factor_1 adjusted.mean standard.error tukey snk duncan t scott_knott
+## 1        A        5.9625         0.5582     a   a      a a           a
+## 2        B        0.6000         0.5263     b   b      b b           b</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="delineamento-em-blocos-casualizados.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="fatorial-duplo-em-blocos-casualizados.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/Gorgens/compR-experimental/edit/master/08-fatorialdic.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/Gorgens/compR-experimental/blob/master/08-fatorialdic.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
