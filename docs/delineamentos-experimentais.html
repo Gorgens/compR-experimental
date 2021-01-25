@@ -24,7 +24,7 @@
 <meta name="author" content="Eric Bastos Gorgens &amp; Marcio Leles Romarco de Oliveira" />
 
 
-<meta name="date" content="2021-01-23" />
+<meta name="date" content="2021-01-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -137,9 +137,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#partição-da-variação"><i class="fa fa-check"></i><b>2.1.1</b> Partição da variação</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#tipos-de-anova"><i class="fa fa-check"></i><b>2.2</b> Tipos de ANOVA</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-i"><i class="fa fa-check"></i><b>2.2.1</b> ANOVA Tipo I</a></li>
-<li class="chapter" data-level="2.2.2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-ii"><i class="fa fa-check"></i><b>2.2.2</b> ANOVA Tipo II</a></li>
-<li class="chapter" data-level="2.2.3" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-iii"><i class="fa fa-check"></i><b>2.2.3</b> ANOVA Tipo III</a></li>
+<li class="chapter" data-level="2.2.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#variações-no-cálculo-da-soma-de-quadrados"><i class="fa fa-check"></i><b>2.2.1</b> Variações no cálculo da soma de quadrados</a></li>
+<li class="chapter" data-level="2.2.2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-i"><i class="fa fa-check"></i><b>2.2.2</b> ANOVA Tipo I</a></li>
+<li class="chapter" data-level="2.2.3" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-ii"><i class="fa fa-check"></i><b>2.2.3</b> ANOVA Tipo II</a></li>
+<li class="chapter" data-level="2.2.4" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-iii"><i class="fa fa-check"></i><b>2.2.4</b> ANOVA Tipo III</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html"><i class="fa fa-check"></i><b>3</b> Pressuposições e transformações</a><ul>
@@ -203,22 +204,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="delineamentos-experimentais" class="section level1">
 <h1><span class="header-section-number">Cap. 2</span> Delineamentos experimentais</h1>
-<p>Delineamento experimental define a organização das unidades experimentais, em função da pergunta científica que se deseja responder. Com base no delineamento escolhido, regras precisam ser seguidas, especialmente relacionados à maneira que os tratamentos são distribuídos nas unidades experimentais.</p>
-<p>A unidade experimental é o material experimental que identifica um sistema de interesse numa pesquisa experimental e representa uma unidade da população. É sobre a unidade experimental que os tratamento serão aplicados e avaliados.</p>
-<p>Os tratamentos são variáveis manipuladas e controladas pelo analista. Desta forma, qualquer outra influência tem que ocorrer ao acaso, e por isto, as unidades experimentais devem ser o mais homogêneas possível e o tratamento deve ser a ela atribuída de forma aleatória.</p>
-<p>Outro ponto importante num delineamento experimental, é o número de repetições. Desta forma, deve possuir unidades experimentais suficientes para que os tratamentos sejam aplicados e repetidos. Quando maior o número de repetições, menor o intervalo de confiança e, portanto, mais precisa as inferências estatísticas. Existem metodologias específicas para a determinação do número ideal de repetições, mas na prática, adota-se trabalhos anteriores como referência, ou mesmo a disponibilidade de material acaba definindo o número de repetições.</p>
+<p>Delineamento experimental define a organização das unidades experimentais em função da pergunta científica que se deseja responder. Com base no delineamento escolhido, regras precisam ser seguidas, especialmente relacionados à maneira que os tratamentos são distribuídos nas unidades experimentais.</p>
+<p>A unidade experimental é o objeto que identifica um sistema de interesse de uma pesquisa e representa uma unidade da população. É sobre a unidade experimental que os tratamento serão aplicados e avaliados.</p>
+<p>Os tratamentos são variáveis manipuladas e controladas pelo pesquisador. Desta forma, qualquer outra influência tem que ocorrer ao acaso, e por isto, as unidades experimentais devem ser o homogêneas e o tratamento deve ser a ela atribuída de forma aleatória.</p>
+<p>Outro ponto importante num delineamento experimental, é o número de repetições. Desta forma, deve haver unidades experimentais suficientes para que os tratamentos sejam aplicados e repetidos. Quanto maior o número de repetições, menor o intervalo de confiança e, portanto, mais precisa as inferências estatísticas. Existem metodologias específicas para a determinação do número ideal de repetições, mas na prática, adotam-se trabalhos anteriores como referência, ou mesmo a disponibilidade de material acaba definindo o número de repetições.</p>
 <div id="anova" class="section level2">
 <h2><span class="header-section-number">2.1</span> ANOVA</h2>
-<p>A Análise de Variância, ou simplesmente ANOVA, é uma análise estatística para determinar a contribuição de diferentes fatores na variância total de um experimento. O método foi desenvolvido em 1925 por Ronald Fisher para experimentos balanceados, ou seja, experimentos com o mesmo número de repetições em cada tratamento. No entanto, correções foram desenvolvidas para também tratar experimentos desbalanceados, como veremos mais adiante. Assim, podemos definir Análise de Variância (ANOVA) como uma técnica que decompõe a variância total e seus graus de liberdade em partes atribuídas a fatores controlados (tratamento) e a uma outra parte associada a uma causa não controlada, também chamada de resíduo.</p>
+<p>A Análise de Variância, ou simplesmente ANOVA, é uma análise estatística para determinar a contribuição de diferentes fatores na variância total de um experimento.</p>
+<p>O método foi desenvolvido em 1925 por Ronald Fisher para experimentos balanceados, ou seja, experimentos com o mesmo número de repetições em cada tratamento. No entanto, correções foram desenvolvidas para tratar experimentos desbalanceados, como será observado mais adiante. Assim, podemos definir Análise de Variância (ANOVA) como uma técnica que decompõe a variância total e seus graus de liberdade em partes atribuídas a fatores controlados (tratamento) e a uma outra parte associada a uma causa não controlada, também chamada de resíduo.</p>
 <div id="partição-da-variação" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Partição da variação</h3>
-<p>Suponha que estamos analisando o efeito de três materiais genéticos através de um experimento inteiramente casualizado. Cada tratamento foi formado por seis repetições (parcela), cada uma contendo 36 plantas, tratando-se assim de um experimento balanceado. Resumindo:</p>
+<p>Suponha que estamos analisando o efeito de três materiais genéticos através de um experimento inteiramente casualizado. Cada tratamento foi formado por seis repetições, cada uma contendo 36 plantas, tratando-se assim de um experimento balanceado. Resumindo:</p>
 <ul>
-<li>3 tratamentos (i variando de 1 a 3)</li>
-<li>6 repetições por tratamento (j variando de 1 a 6)</li>
+<li>Um fator com 3 tratamentos (<code>i</code> variando de 1 a 3)</li>
+<li>6 repetições por tratamento (<code>j</code> variando de 1 a 6)</li>
 <li>18 unidades experimentais presentes no experimento</li>
 </ul>
-<p>A média de altura em metros de cada uma das repetições por tratamento é:</p>
+<p>A variável de interesse é a altura. Portanto, deseja observar se os tratamentos influenciam a altura das plantas. A média das alturas das árvores de cada uma das repetições é:</p>
 <table>
 <caption><span id="tab:unnamed-chunk-1">Table 2.1: </span>Dados de exemplo.</caption>
 <thead>
@@ -268,8 +270,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
-## incomplete final line found by readTableHeader on &#39;./data/anova_sumRep.csv&#39;</code></pre>
+<p>Para analisar o experimento, será necessario obter a média e a soma para cada tratamento:</p>
+<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote
+## = quote, : incomplete final line found by readTableHeader on &#39;./
+## data/anova_sumRep.csv&#39;</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-2">Table 2.2: </span>Média e soma de cada tratamento.</caption>
 <thead>
@@ -295,8 +299,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
-## incomplete final line found by readTableHeader on &#39;./data/anova_sumTotal.csv&#39;</code></pre>
+<p>E também a soma e média global:</p>
+<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote
+## = quote, : incomplete final line found by readTableHeader on &#39;./
+## data/anova_sumTotal.csv&#39;</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-3">Table 2.3: </span>Média e soma total.</caption>
 <thead>
@@ -316,49 +322,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>Vamos utilizar o R para calcular as somas - sum() e médias - mean() que faltam nas tabelas acimas. Desta forma, aproveitamos para relembrar um pouco da sintaxe, bem como dos operadores matemáticos:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># Cria os vetores correspondentes a cada tratamentos com suas respectivas repetições</span></a>
-<a class="sourceLine" id="cb3-2" title="2">matGen1 =<span class="st"> </span><span class="kw">c</span>(<span class="dv">21</span>, <span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">17</span>)</a>
-<a class="sourceLine" id="cb3-3" title="3">matGen2 =<span class="st"> </span><span class="kw">c</span>(<span class="dv">19</span>, <span class="dv">19</span>, <span class="dv">17</span>, <span class="dv">13</span>, <span class="dv">16</span>, <span class="dv">14</span>)</a>
-<a class="sourceLine" id="cb3-4" title="4">matGen3 =<span class="st"> </span><span class="kw">c</span>(<span class="dv">18</span>, <span class="dv">18</span>, <span class="dv">15</span>, <span class="dv">13</span>, <span class="dv">13</span>, <span class="dv">13</span>)</a>
-<a class="sourceLine" id="cb3-5" title="5"></a>
-<a class="sourceLine" id="cb3-6" title="6"><span class="co"># Soma das repetições do tratamento 1 </span></a>
-<a class="sourceLine" id="cb3-7" title="7">s1 =<span class="st"> </span><span class="kw">sum</span>(matGen1)</a>
-<a class="sourceLine" id="cb3-8" title="8"><span class="kw">print</span> (<span class="kw">paste</span>(<span class="st">&quot;Soma MATGEN1 = &quot;</span>, s1, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</a></code></pre></div>
+<p>Todas as somas - <code>sum()</code> e médias - <code>mean()</code> que faltam nas tabelas acimas serão computadas uma a uma por meio de linhas de comando no R. Desta forma, aproveite para relembrar um pouco da sintaxe, bem como dos operadores matemáticos:</p>
+<ol style="list-style-type: decimal">
+<li>Entrar com os vetores correspondentes a cada tratamento com os valore de suas respectivas repetições.</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">matGen1 =<span class="st"> </span><span class="kw">c</span>(<span class="dv">21</span>, <span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">17</span>)</a>
+<a class="sourceLine" id="cb3-2" title="2">matGen2 =<span class="st"> </span><span class="kw">c</span>(<span class="dv">19</span>, <span class="dv">19</span>, <span class="dv">17</span>, <span class="dv">13</span>, <span class="dv">16</span>, <span class="dv">14</span>)</a>
+<a class="sourceLine" id="cb3-3" title="3">matGen3 =<span class="st"> </span><span class="kw">c</span>(<span class="dv">18</span>, <span class="dv">18</span>, <span class="dv">15</span>, <span class="dv">13</span>, <span class="dv">13</span>, <span class="dv">13</span>)</a></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Calcular a soma das repetições do tratamento 1.</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">s1 =<span class="st"> </span><span class="kw">sum</span>(matGen1)</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="kw">print</span> (<span class="kw">paste</span>(<span class="st">&quot;Soma MATGEN1 = &quot;</span>, s1, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;Soma MATGEN1 =  113&quot;</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># Média das repetições do tratamento 1</span></a>
-<a class="sourceLine" id="cb5-2" title="2">m1 =<span class="st"> </span><span class="kw">mean</span>(matGen1)</a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="kw">print</span> (<span class="kw">paste</span>(<span class="st">&quot;Media MATGEN1 = &quot;</span>, m1, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</a></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Calcular a média das repetições do tratamento 1.</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">m1 =<span class="st"> </span><span class="kw">mean</span>(matGen1)</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="kw">print</span> (<span class="kw">paste</span>(<span class="st">&quot;Media MATGEN1 = &quot;</span>, m1, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;Media MATGEN1 =  18.8333333333333&quot;</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co"># Soma das repetições do tratamento 2</span></a>
-<a class="sourceLine" id="cb7-2" title="2">s2 =<span class="st"> </span><span class="kw">sum</span>(matGen2)</a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="kw">print</span> (<span class="kw">paste</span>(<span class="st">&quot;Soma MATGEN2 = &quot;</span>, s2, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</a></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Calcular a soma das repetições do tratamento 2.</li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">s2 =<span class="st"> </span><span class="kw">sum</span>(matGen2)</a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="kw">print</span> (<span class="kw">paste</span>(<span class="st">&quot;Soma MATGEN2 = &quot;</span>, s2, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;Soma MATGEN2 =  98&quot;</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># Média das repetições do tratamento 2</span></a>
-<a class="sourceLine" id="cb9-2" title="2">m2 =<span class="st"> </span><span class="kw">mean</span>(matGen2)</a>
-<a class="sourceLine" id="cb9-3" title="3"><span class="kw">print</span> (<span class="kw">paste</span>(<span class="st">&quot;Media MATGEN1 = &quot;</span>, m2, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</a></code></pre></div>
+<ol start="5" style="list-style-type: decimal">
+<li>Calcular a média das repetições do tratamento 2.</li>
+</ol>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">m2 =<span class="st"> </span><span class="kw">mean</span>(matGen2)</a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="kw">print</span> (<span class="kw">paste</span>(<span class="st">&quot;Media MATGEN1 = &quot;</span>, m2, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;Media MATGEN1 =  16.3333333333333&quot;</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co"># Soma das repetições do tratamento 3</span></a>
-<a class="sourceLine" id="cb11-2" title="2">s3 =<span class="st"> </span><span class="kw">sum</span>(matGen3)</a>
-<a class="sourceLine" id="cb11-3" title="3"><span class="kw">print</span> (<span class="kw">paste</span>(<span class="st">&quot;Soma MATGEN3 = &quot;</span>, s3, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</a></code></pre></div>
+<ol start="6" style="list-style-type: decimal">
+<li>Calcular a soma das repetições do tratamento 3.</li>
+</ol>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">s3 =<span class="st"> </span><span class="kw">sum</span>(matGen3)</a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="kw">print</span> (<span class="kw">paste</span>(<span class="st">&quot;Soma MATGEN3 = &quot;</span>, s3, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;Soma MATGEN3 =  90&quot;</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="co"># Média das repetições do tratamento 3</span></a>
-<a class="sourceLine" id="cb13-2" title="2">m3 =<span class="st"> </span><span class="kw">mean</span>(matGen3)</a>
-<a class="sourceLine" id="cb13-3" title="3"><span class="kw">print</span> (<span class="kw">paste</span>(<span class="st">&quot;Media MATGEN3 = &quot;</span>, m3, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</a></code></pre></div>
+<ol start="7" style="list-style-type: decimal">
+<li>Calcular a média das repetições do tratamento 3.</li>
+</ol>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">m3 =<span class="st"> </span><span class="kw">mean</span>(matGen3)</a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="kw">print</span> (<span class="kw">paste</span>(<span class="st">&quot;Media MATGEN3 = &quot;</span>, m3, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;Media MATGEN3 =  15&quot;</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="co"># Soma de todas as repetições, dos três tratamentos</span></a>
-<a class="sourceLine" id="cb15-2" title="2">somaTotal =<span class="st"> </span><span class="kw">sum</span>(<span class="kw">c</span>(matGen1, matGen2, matGen3))</a>
-<a class="sourceLine" id="cb15-3" title="3"><span class="kw">print</span> (<span class="kw">paste</span>(<span class="st">&quot;Soma total = &quot;</span>, somaTotal, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</a></code></pre></div>
+<ol start="8" style="list-style-type: decimal">
+<li>Calcular a soma de todas as repetições, dos três tratamentos.</li>
+</ol>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">somaTotal =<span class="st"> </span><span class="kw">sum</span>(<span class="kw">c</span>(matGen1, matGen2, matGen3))</a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="kw">print</span> (<span class="kw">paste</span>(<span class="st">&quot;Soma total = &quot;</span>, somaTotal, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;Soma total =  301&quot;</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="co"># Média de todos os tratamentos e repetições</span></a>
-<a class="sourceLine" id="cb17-2" title="2">mediaGeral =<span class="st"> </span><span class="kw">mean</span>(<span class="kw">c</span>(matGen1, matGen2, matGen3))</a>
-<a class="sourceLine" id="cb17-3" title="3"><span class="kw">print</span> (<span class="kw">paste</span>(<span class="st">&quot;Media geral = &quot;</span>, mediaGeral, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</a></code></pre></div>
+<ol start="9" style="list-style-type: decimal">
+<li>Calcular a média geral de todos os tratamentos e repetições.</li>
+</ol>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">mediaGeral =<span class="st"> </span><span class="kw">mean</span>(<span class="kw">c</span>(matGen1, matGen2, matGen3))</a>
+<a class="sourceLine" id="cb18-2" title="2"><span class="kw">print</span> (<span class="kw">paste</span>(<span class="st">&quot;Media geral = &quot;</span>, mediaGeral, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;Media geral =  16.7222222222222&quot;</code></pre>
-<p>A partir dos resultado apresentados pelo R, nossa tabela fica assim:</p>
-<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
-## incomplete final line found by readTableHeader on &#39;./data/anova_sumRep2.csv&#39;</code></pre>
+<p>A partir dos resultados obtidos nas etapas anteriores, as tabelas ficarão assim:</p>
+<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote
+## = quote, : incomplete final line found by readTableHeader on &#39;./
+## data/anova_sumRep2.csv&#39;</code></pre>
 <table>
-<caption><span id="tab:unnamed-chunk-5">Table 2.4: </span>Média e soma de cada tratamento calculado.</caption>
+<caption><span id="tab:unnamed-chunk-13">Table 2.4: </span>Média e soma de cada tratamento calculado.</caption>
 <thead>
 <tr class="header">
 <th align="left">Estatistica</th>
@@ -382,10 +406,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
-## incomplete final line found by readTableHeader on &#39;./data/anova_sumTotal2.csv&#39;</code></pre>
+<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote
+## = quote, : incomplete final line found by readTableHeader on &#39;./
+## data/anova_sumTotal2.csv&#39;</code></pre>
 <table>
-<caption><span id="tab:unnamed-chunk-6">Table 2.5: </span>Média e soma total calculado.</caption>
+<caption><span id="tab:unnamed-chunk-14">Table 2.5: </span>Média e soma total calculado.</caption>
 <thead>
 <tr class="header">
 <th align="left">Estatistica</th>
@@ -405,22 +430,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <div id="soma-de-quadrados-total" class="section level4">
 <h4><span class="header-section-number">2.1.1.1</span> Soma de quadrados total</h4>
-<p>O próximo passo será analisar a diferença de cada uma das 18 observações (3 tratamentos * 6 repetições cada) em relação à média geral:</p>
+<p>O próximo passo é analisar a diferença de cada uma das 18 observações (3 tratamentos * 6 repetições cada) em relação à média geral:</p>
 <p><span class="math display">\[desvio = x_{ij} - \bar{x}\]</span></p>
-<p>em que j indica a repetição variando de 1 a 6 e i indica o tratamento variando de 1 a 3.
-No R, esta operação fica fácil, pois é possível fazer de uma única vez a subtração dos elementos de um vetor pela média geral:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">desvio1 =<span class="st"> </span>matGen1 <span class="op">-</span><span class="st"> </span>mediaGeral</a>
-<a class="sourceLine" id="cb21-2" title="2">desvio1</a></code></pre></div>
+<p>em que <code>j</code> indica a repetição variando de 1 a 6 e <code>i</code> indica o tratamento variando de 1 a 3.</p>
+<p>No R, esta operação fica fácil, pois é possível fazer de uma única vez a subtração dos elementos de um vetor pela média geral:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">desvio1 =<span class="st"> </span>matGen1 <span class="op">-</span><span class="st"> </span>mediaGeral</a>
+<a class="sourceLine" id="cb22-2" title="2">desvio1</a></code></pre></div>
 <pre><code>## [1] 4.2777778 3.2777778 3.2777778 0.2777778 1.2777778 0.2777778</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">desvio2 =<span class="st"> </span>matGen2 <span class="op">-</span><span class="st"> </span>mediaGeral</a>
-<a class="sourceLine" id="cb23-2" title="2">desvio2</a></code></pre></div>
-<pre><code>## [1]  2.2777778  2.2777778  0.2777778 -3.7222222 -0.7222222 -2.7222222</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">desvio3 =<span class="st"> </span>matGen3 <span class="op">-</span><span class="st"> </span>mediaGeral</a>
-<a class="sourceLine" id="cb25-2" title="2">desvio3</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1">desvio2 =<span class="st"> </span>matGen2 <span class="op">-</span><span class="st"> </span>mediaGeral</a>
+<a class="sourceLine" id="cb24-2" title="2">desvio2</a></code></pre></div>
+<pre><code>## [1]  2.2777778  2.2777778  0.2777778 -3.7222222 -0.7222222
+## [6] -2.7222222</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">desvio3 =<span class="st"> </span>matGen3 <span class="op">-</span><span class="st"> </span>mediaGeral</a>
+<a class="sourceLine" id="cb26-2" title="2">desvio3</a></code></pre></div>
 <pre><code>## [1]  1.277778  1.277778 -1.722222 -3.722222 -3.722222 -3.722222</code></pre>
-<p>Tabulando os desvios que calculamos acima, teríamos uma tabela da seguinte forma:</p>
+<p>Tabulando os desvios calculados acima, tem-se uma tabela da seguinte forma:</p>
 <table>
-<caption><span id="tab:unnamed-chunk-8">Table 2.6: </span>Desvio da observação para e média geral.</caption>
+<caption><span id="tab:unnamed-chunk-16">Table 2.6: </span>Desvio da observação para e média geral.</caption>
 <thead>
 <tr class="header">
 <th align="right">MatGen1</th>
@@ -461,30 +487,31 @@ No R, esta operação fica fácil, pois é possível fazer de uma única vez a s
 </tr>
 </tbody>
 </table>
-<p>Se elevarmos cada um dos desvios ao quadrado e somá-los, obtemos a soma de quadrados total (SQTotal). Esta soma de quadrados é a variação total dos dados sem levar em conta os tratamentos.</p>
+<p>Elevando cada um dos desvios ao quadrado e somando, obtem-se a soma de quadrados total (SQTotal). Esta soma de quadrados é a variação total dos dados.</p>
 <p><span class="math display">\[SQTotal = \sum (x_{ij} - \bar{x})^2\]</span></p>
-<p>em que i indica a repetição variando de 1 a 6 e j indica o tratamento variando de 1 a 3. No R podemos calcular a soma de quadrados total como:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">sqTotal =<span class="st"> </span><span class="kw">sum</span>(desvio1<span class="op">^</span><span class="dv">2</span>, desvio2<span class="op">^</span><span class="dv">2</span>, desvio3<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb27-2" title="2"><span class="kw">print</span>(sqTotal)</a></code></pre></div>
+<p>em que <code>i</code> indica a repetição variando de 1 a 6 e <code>j</code> indica o tratamento variando de 1 a 3. A soma de quadrados total pode ser obtida com:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">sqTotal =<span class="st"> </span><span class="kw">sum</span>(desvio1<span class="op">^</span><span class="dv">2</span>, desvio2<span class="op">^</span><span class="dv">2</span>, desvio3<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb28-2" title="2"><span class="kw">print</span>(sqTotal)</a></code></pre></div>
 <pre><code>## [1] 121.6111</code></pre>
 </div>
 <div id="soma-de-quadrados-dos-tratamentos" class="section level4">
 <h4><span class="header-section-number">2.1.1.2</span> Soma de quadrados dos tratamentos</h4>
-<p>A soma de quadrados dos tratamentos, ou a soma de quadrados entre os tratamentos, pode ser calculado pela diferença entre a média de cada tratamento em relação à média geral.</p>
+<p>A soma de quadrados dos tratamentos, ou a soma de quadrados entre os tratamentos, pode ser calculada pela diferença entre a média de cada tratamento em relação à média geral.</p>
 <p><span class="math display">\[desvio_{i} = \bar{x}_{i} - \bar{x}\]</span></p>
-<p>em que j indica a repetição variando de 1 a 6 e i indica o tratamento variando de 1 a 3. Para isto, o valor de cada repetição é substituído pela média do seu tratamento. Isto é, através da fórmula rep, cria-se um vetor com a média do material genético repetida 6 vezes. Neste caso estamos eliminando o efeito do erro, já que cada tratamento será representado j vezes pelo valor da sua média. Finalmente, cada repetição é subtraída pela média geral.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">desvioTrat1 =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">mean</span>(matGen1), <span class="dv">6</span>) <span class="op">-</span><span class="st"> </span>mediaGeral</a>
-<a class="sourceLine" id="cb29-2" title="2">desvioTrat1</a></code></pre></div>
+<p>em que <code>j</code> indica a repetição variando de 1 a 6 e <code>i</code> indica o tratamento variando de 1 a 3. Para isto, o valor de cada repetição é substituído pela média do seu tratamento. Isto é, através da fórmula <code>rep</code>, cria-se um vetor com a média do material genético repetida 6 vezes. Com esse procedimento, elimina-se o efeito do erro, já que cada tratamento será representado <code>j</code> vezes pelo valor da sua média. Finalmente, cada repetição é subtraída pela média geral.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">desvioTrat1 =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">mean</span>(matGen1), <span class="dv">6</span>) <span class="op">-</span><span class="st"> </span>mediaGeral</a>
+<a class="sourceLine" id="cb30-2" title="2">desvioTrat1</a></code></pre></div>
 <pre><code>## [1] 2.111111 2.111111 2.111111 2.111111 2.111111 2.111111</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1">desvioTrat2 =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">mean</span>(matGen2), <span class="dv">6</span>) <span class="op">-</span><span class="st"> </span>mediaGeral</a>
-<a class="sourceLine" id="cb31-2" title="2">desvioTrat2</a></code></pre></div>
-<pre><code>## [1] -0.3888889 -0.3888889 -0.3888889 -0.3888889 -0.3888889 -0.3888889</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1">desvioTrat3 =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">mean</span>(matGen3), <span class="dv">6</span>) <span class="op">-</span><span class="st"> </span>mediaGeral</a>
-<a class="sourceLine" id="cb33-2" title="2">desvioTrat3</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1">desvioTrat2 =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">mean</span>(matGen2), <span class="dv">6</span>) <span class="op">-</span><span class="st"> </span>mediaGeral</a>
+<a class="sourceLine" id="cb32-2" title="2">desvioTrat2</a></code></pre></div>
+<pre><code>## [1] -0.3888889 -0.3888889 -0.3888889 -0.3888889 -0.3888889
+## [6] -0.3888889</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1">desvioTrat3 =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">mean</span>(matGen3), <span class="dv">6</span>) <span class="op">-</span><span class="st"> </span>mediaGeral</a>
+<a class="sourceLine" id="cb34-2" title="2">desvioTrat3</a></code></pre></div>
 <pre><code>## [1] -1.722222 -1.722222 -1.722222 -1.722222 -1.722222 -1.722222</code></pre>
-<p>Trazendo os resultados do R para uma tabela de desvios temos:</p>
+<p>Trazendo os resultados do R para uma tabela de desvios tem-se:</p>
 <table>
-<caption><span id="tab:unnamed-chunk-11">Table 2.7: </span>Desvio entre a média do tratamento e média geral.</caption>
+<caption><span id="tab:unnamed-chunk-19">Table 2.7: </span>Desvio entre a média do tratamento e média geral.</caption>
 <thead>
 <tr class="header">
 <th align="right">MatGen1</th>
@@ -526,27 +553,29 @@ No R, esta operação fica fácil, pois é possível fazer de uma única vez a s
 </tbody>
 </table>
 <p>Os desvios são então elevados ao quadrado e somados, resultando na soma de quadrados dos tratamentos (SQTrat):</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">sqTrat =<span class="st"> </span><span class="kw">sum</span>(desvioTrat1<span class="op">^</span><span class="dv">2</span>, desvioTrat2<span class="op">^</span><span class="dv">2</span>, desvioTrat3<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb35-2" title="2"><span class="kw">print</span>(sqTrat)</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1">sqTrat =<span class="st"> </span><span class="kw">sum</span>(desvioTrat1<span class="op">^</span><span class="dv">2</span>, desvioTrat2<span class="op">^</span><span class="dv">2</span>, desvioTrat3<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb36-2" title="2"><span class="kw">print</span>(sqTrat)</a></code></pre></div>
 <pre><code>## [1] 45.44444</code></pre>
 </div>
 <div id="soma-de-quadrados-dos-resíduos" class="section level4">
 <h4><span class="header-section-number">2.1.1.3</span> Soma de quadrados dos resíduos</h4>
-<p>A soma de quadrados dos resíduos (SQRes) pode ser denominada também como soma de quadrados dentro do tratamento. Primeiro, calculamos o desvio entre a cada uma das repetições e a média do respectivo tratamento:</p>
-<p><span class="math display">\[desvio = x_{ij} - \bar{x}_{i}\]</span></p>
-<p>No R, podemos calcular da seguinte forma:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1">desvioRes1 =<span class="st"> </span>matGen1 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(matGen1)</a>
-<a class="sourceLine" id="cb37-2" title="2">desvioRes1</a></code></pre></div>
-<pre><code>## [1]  2.1666667  1.1666667  1.1666667 -1.8333333 -0.8333333 -1.8333333</code></pre>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1">desvioRes2 =<span class="st"> </span>matGen2 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(matGen2)</a>
-<a class="sourceLine" id="cb39-2" title="2">desvioRes2</a></code></pre></div>
-<pre><code>## [1]  2.6666667  2.6666667  0.6666667 -3.3333333 -0.3333333 -2.3333333</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">desvioRes3 =<span class="st"> </span>matGen3 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(matGen3)</a>
-<a class="sourceLine" id="cb41-2" title="2">desvioRes3</a></code></pre></div>
+<p>A soma de quadrados dos resíduos (SQRes) é também conhecida como soma de quadrados dentro do tratamento. Primeiro, calcula-se o desvio entre a cada uma das repetições e a média do respectivo tratamento:</p>
+<p><span class="math display">\[desvio = x_{ij} - \bar{x}_{i}\]</span>
+No R, podemos calcular da seguinte forma:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1">desvioRes1 =<span class="st"> </span>matGen1 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(matGen1)</a>
+<a class="sourceLine" id="cb38-2" title="2">desvioRes1</a></code></pre></div>
+<pre><code>## [1]  2.1666667  1.1666667  1.1666667 -1.8333333 -0.8333333
+## [6] -1.8333333</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1">desvioRes2 =<span class="st"> </span>matGen2 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(matGen2)</a>
+<a class="sourceLine" id="cb40-2" title="2">desvioRes2</a></code></pre></div>
+<pre><code>## [1]  2.6666667  2.6666667  0.6666667 -3.3333333 -0.3333333
+## [6] -2.3333333</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1">desvioRes3 =<span class="st"> </span>matGen3 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(matGen3)</a>
+<a class="sourceLine" id="cb42-2" title="2">desvioRes3</a></code></pre></div>
 <pre><code>## [1]  3  3  0 -2 -2 -2</code></pre>
-<p>Trazendo os resultados do R para uma tabela de desvios temos:</p>
+<p>Trazendo os resultados do R para uma tabela de desvios tem-se:</p>
 <table>
-<caption><span id="tab:unnamed-chunk-14">Table 2.8: </span>Desvio da observação para e média do tratamento</caption>
+<caption><span id="tab:unnamed-chunk-22">Table 2.8: </span>Desvio da observação para e média do tratamento</caption>
 <thead>
 <tr class="header">
 <th align="right">MatGen1</th>
@@ -587,18 +616,19 @@ No R, esta operação fica fácil, pois é possível fazer de uma única vez a s
 </tr>
 </tbody>
 </table>
-<p>Elevando cada desvio ao quadrado e somando-os, calculamos a soma de quadrados dos resíduos:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">sqRes =<span class="st"> </span><span class="kw">sum</span>(desvioRes1<span class="op">^</span><span class="dv">2</span>, desvioRes2<span class="op">^</span><span class="dv">2</span>, desvioRes3<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb43-2" title="2"><span class="kw">print</span>(sqRes)</a></code></pre></div>
+<p>Elevando cada desvio ao quadrado e somando-os, calcula-se a soma de quadrados dos resíduos:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">sqRes =<span class="st"> </span><span class="kw">sum</span>(desvioRes1<span class="op">^</span><span class="dv">2</span>, desvioRes2<span class="op">^</span><span class="dv">2</span>, desvioRes3<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb44-2" title="2"><span class="kw">print</span>(sqRes)</a></code></pre></div>
 <pre><code>## [1] 76.16667</code></pre>
 </div>
 <div id="quadrado-médio" class="section level4">
 <h4><span class="header-section-number">2.1.1.4</span> Quadrado médio</h4>
 <p>O próximo passo é montar o quadro da ANOVA e determinar os quadrados médios:</p>
-<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
-## incomplete final line found by readTableHeader on &#39;./data/anova_qm.csv&#39;</code></pre>
+<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote
+## = quote, : incomplete final line found by readTableHeader on &#39;./
+## data/anova_qm.csv&#39;</code></pre>
 <table>
-<caption><span id="tab:unnamed-chunk-16">Table 2.9: </span>Fórmulas para o caluclo do quandrado médio.</caption>
+<caption><span id="tab:unnamed-chunk-24">Table 2.9: </span>Fórmulas para o caluclo do quandrado médio.</caption>
 <thead>
 <tr class="header">
 <th align="left">Fonte.de.variacao</th>
@@ -628,26 +658,34 @@ No R, esta operação fica fácil, pois é possível fazer de uma única vez a s
 </tr>
 </tbody>
 </table>
-<p>Tanto a soma de quadrados, como os graus de liberdade são aditivos, isto é, obtendo dois termos do quadro de variância, o terceiro pode ser derivado. Na prática, calcula-se a soma de quadrados total e a soma de quadrados do tratamento. Por diferença, obtém-se a soma de quadrados dos resíduos. O mesmo raciocínio vale para os graus de liberdade.</p>
+<p>Tanto a soma de quadrados, como os graus de liberdade são aditivos. Isto é, obtendo dois termos do quadro de variância, o terceiro pode ser derivado.</p>
+<p>Na prática, calcula-se a soma de quadrados total e a soma de quadrados do tratamento. Por diferença, obtém-se a soma de quadrados dos resíduos. O mesmo raciocínio vale para os graus de liberdade.</p>
 <p>O quadrado médio, nada mais é que uma variância. Por isso, divide-se a soma de quadrados pelos graus de liberdade. Os quadrados médios são calculados da seguinte forma:</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">qmTrat =<span class="st"> </span>sqTrat <span class="op">/</span><span class="st"> </span>(<span class="dv">3</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb46-2" title="2"><span class="kw">print</span>(qmTrat)</a></code></pre></div>
+<ol style="list-style-type: decimal">
+<li>Quadrado médio dos tratamentos</li>
+</ol>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1">qmTrat =<span class="st"> </span>sqTrat <span class="op">/</span><span class="st"> </span>(<span class="dv">3</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb47-2" title="2"><span class="kw">print</span>(qmTrat)</a></code></pre></div>
 <pre><code>## [1] 22.72222</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1">qmRes =<span class="st"> </span>sqRes <span class="op">/</span><span class="st"> </span>(<span class="dv">3</span> <span class="op">*</span><span class="st"> </span>(<span class="dv">6</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb48-2" title="2"><span class="kw">print</span>(qmRes)</a></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Quadrado médio do residuo</li>
+</ol>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1">qmRes =<span class="st"> </span>sqRes <span class="op">/</span><span class="st"> </span>(<span class="dv">3</span> <span class="op">*</span><span class="st"> </span>(<span class="dv">6</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb49-2" title="2"><span class="kw">print</span>(qmRes)</a></code></pre></div>
 <pre><code>## [1] 5.077778</code></pre>
 </div>
 <div id="teste-f" class="section level4">
 <h4><span class="header-section-number">2.1.1.5</span> Teste F</h4>
 <p>Assim, o objetivo final da ANOVA é comparar a variância dos tratamentos relativa à variância dos resíduos. O valor da razão entre estas duas variâncias segue a distribuição F, recorrendo-se então à uma tabela de distribuição amostral da razão F para avaliar a significância do teste.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1">Fcalc =<span class="st"> </span>qmTrat <span class="op">/</span><span class="st"> </span>qmRes</a>
-<a class="sourceLine" id="cb50-2" title="2"><span class="kw">print</span>(Fcalc)</a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1">Fcalc =<span class="st"> </span>qmTrat <span class="op">/</span><span class="st"> </span>qmRes</a>
+<a class="sourceLine" id="cb51-2" title="2"><span class="kw">print</span>(Fcalc)</a></code></pre></div>
 <pre><code>## [1] 4.474836</code></pre>
 <p>O quadro final da ANOVA será:</p>
-<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
-## incomplete final line found by readTableHeader on &#39;./data/anova_final.csv&#39;</code></pre>
+<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote
+## = quote, : incomplete final line found by readTableHeader on &#39;./
+## data/anova_final.csv&#39;</code></pre>
 <table>
-<caption><span id="tab:unnamed-chunk-19">Table 2.10: </span>Quandro final da ANOVA</caption>
+<caption><span id="tab:unnamed-chunk-28">Table 2.10: </span>Quandro final da ANOVA</caption>
 <colgroup>
 <col width="25%" />
 <col width="22%" />
@@ -689,14 +727,14 @@ No R, esta operação fica fácil, pois é possível fazer de uma única vez a s
 </tbody>
 </table>
 <p>A hipótese nula é de que as variâncias dos tratamentos é igual à variância populacional, ou variância dos resíduos. Um teste não significativo aceita-se a hipótese nula. Já um teste significativo rejeita-se a hipótese nula.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">Ftabelado =<span class="st"> </span><span class="kw">qf</span>(<span class="fl">0.95</span>, <span class="dv">2</span>, <span class="dv">15</span>)</a>
-<a class="sourceLine" id="cb53-2" title="2"><span class="kw">print</span>(Ftabelado)</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1">Ftabelado =<span class="st"> </span><span class="kw">qf</span>(<span class="fl">0.95</span>, <span class="dv">2</span>, <span class="dv">15</span>)</a>
+<a class="sourceLine" id="cb54-2" title="2"><span class="kw">print</span>(Ftabelado)</a></code></pre></div>
 <pre><code>## [1] 3.68232</code></pre>
-<p>No nosso exercício, o Fcalc &gt; Ftabelado, assim o teste F é significativo e a hipótese nula é rejeitada para um nível de significância de 95%. A variância dos tratamentos não pode ser considerada igual à variância da população. Na prática isto indica que existe um efeito significativo dos tratamentos.</p>
-<p>Se o teste F é não significativo (F calculado &lt; F tabelado), entende-se que os tratamentos não influenciaram as observações e a análise de seu experimento encerra-se aqui.</p>
+<p>Neste exercício, o <code>Fcalc</code> é superior ao <code>Ftabelado</code>. Assim o teste F é significativo e a hipótese nula é rejeitada para um nível de significância de 95%. A variância dos tratamentos não pode ser considerada igual à variância da população. Na prática isto indica que existe um efeito significativo dos tratamentos.</p>
+<p>Se o teste F é não significativo (<code>F calculado &lt; F tabelado</code>), entende-se que os tratamentos não influenciaram as observações e a análise de seu experimento encerra-se aqui.</p>
 <p>Por outro lado, o teste F significativo indica que pelo menos um dos tratamentos influenciou os dados observados. Se apenas dois tratamentos tiverem sido realizados, o teste F é conclusivo e as médias dos tratamentos podem ser comparadas diretamente. Se três ou mais tratamentos estiverem sendo comparados, o teste F é inconclusivo, uma vez que diz apenas que existe uma influência dos tratamentos, sem no entanto indicar qual deles é melhor ou pior. Assim uma pergunta surge: como os tratamentos se diferem uns dos outros?</p>
-<p>Entram em cena os testes de médias ou a análise de regressão. Sendo os tratamentos qualitativos e significativos, o teste de médias irá dizer quais tratamentos são iguais e quais tratamentos são diferentes. Sendo os tratamentos quantitativos e significativos, utiliza-se a análise de regressão para definir o ponto ótimo.</p>
-<p>Para facilitar, vamos resumir o que vimos até agora numa árvore de decisão:</p>
+<p>Entram em cena os testes de médias ou a análise de regressão. Quando os tratamentos são qualitativos e significativos, o teste de médias irá dizer quais tratamentos são iguais e quais tratamentos são diferentes. Quando os tratamentos são quantitativos e significativos, utiliza-se a análise de regressão para definir o ponto ótimo.</p>
+<p>Para facilitar, a figura a seguir resume o que foi visto até agora por meio de uma árvore de decisão:</p>
 <div class="figure">
 <img src="figuras/resumo_anova.png" alt="Fluxograma de decisão para interpretação de uma ANOVA" />
 <p class="caption">Fluxograma de decisão para interpretação de uma ANOVA</p>
@@ -707,35 +745,38 @@ No R, esta operação fica fácil, pois é possível fazer de uma única vez a s
 <div id="tipos-de-anova" class="section level2">
 <h2><span class="header-section-number">2.2</span> Tipos de ANOVA</h2>
 <p>Existem pelo menos 3 formas para se calcular a soma de quadrados da ANOVA, que são conhecidos como soma de quadrados do TIPO I, TIPO II e TIPO III. Esta notação foi introduzida pelo software SAS, mas acabou sendo adotada pela comunidade para diferenciar entre as diferentes formas de se calcular a soma de quadrados para composição da ANOVA.</p>
-<p>A recomendação de uso dos diferentes tipos de soma de quadrados leva a calorosas discussões entre estatísticos. De modo geral, o tipo I é indicado para dados balanceados. O tipo II e tipo III são mais indicados para dados desbalanceados. No caso de experimentos balanceados, os três tipos de ANOVA apresentam resultados idênticos.
-Variações no cálculo da soma de quadrados</p>
-<p>Vamos partir de um modelo que considere dois fatores A e B; sendo portanto dois fatores principais e a interação AB. O modelo completo pode ser então representado por SQ(A, B, AB). Também podem ser considerados modelos parciais como SQ(A, B) que indica um modelo sem interação, SQ(B, AB) um modelo que não considera efeitos do fator A e assim por diante.</p>
-<p>A influência de um determinado fator (ou interação) pode ser testada examinando as diferenças entre modelos. Por exemplo, para determinar a presença de interação entre os fatores, um teste F é conduzido comparando o modelo com interação SQ(A, B, AB) e o modelo sem interação SQ(A, B).</p>
+<p>A recomendação de uso dos diferentes tipos de soma de quadrados leva a calorosas discussões entre estatísticos. De modo geral, o tipo I é o padrão usado para dados balanceados. O tipo II e tipo III são mais indicados para dados desbalanceados. Quando o experimento é balanceado, os três tipos de ANOVA apresentam resultados idênticos.</p>
+<div id="variações-no-cálculo-da-soma-de-quadrados" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Variações no cálculo da soma de quadrados</h3>
+<p>Partindo de um experimento que considere dois fatores A e B; sendo dois fatores principais e a interação AB, o modelo completo pode ser representado por <code>SQ(A, B, AB)</code>. Também podem ser considerados modelos parciais como <code>SQ(A, B)</code> que indica um modelo sem interação, ou como <code>SQ(B, AB)</code> que indica um modelo que não considera efeitos do fator A.</p>
+<p>A influência de um determinado fator (ou interação) é testada examinando as diferenças entre os modelos. Por exemplo, para determinar a presença de interação entre os fatores, um teste F é conduzido comparando o modelo com interação <code>SQ(A, B, AB)</code> e o modelo sem interação <code>SQ(A, B)</code>.</p>
+</div>
 <div id="anova-tipo-i" class="section level3">
-<h3><span class="header-section-number">2.2.1</span> ANOVA Tipo I</h3>
-<p>A ANOVA tipo I testa primeiro o efeito de A, seguido do efeito de B dado que se conhece A, seguido pela interação dado que os efeitos principais já são conhecidos. Esta ordem é a razão desta ANOVA ser conhecida como soma de quadrados sequencial.</p>
+<h3><span class="header-section-number">2.2.2</span> ANOVA Tipo I</h3>
+<p>A ANOVA tipo I testa primeiro o efeito de A, seguido do efeito de B dado que se conhece A, seguido pela interação dado que os efeitos principais já são conhecidos. Esta ordem natural (<code>A -&gt; B -&gt; AB</code>) é a razão desta ANOVA ser conhecida como soma de quadrados sequencial.</p>
 <ol style="list-style-type: decimal">
-<li>SQ(A) para o fator A.</li>
-<li>SQ(B | A) para fator B.</li>
-<li>SQ(AB | B, A) para interação AB.</li>
+<li><code>SQ(A)</code> para o fator A.</li>
+<li><code>SQ(B | A)</code> para fator B.</li>
+<li><code>SQ(AB | B, A)</code> para interação AB.</li>
 </ol>
 </div>
 <div id="anova-tipo-ii" class="section level3">
-<h3><span class="header-section-number">2.2.2</span> ANOVA Tipo II</h3>
-<p>Este tipo de ANOVA testa o efeito de um dos fatores principais dado que o outro já é conhecido. Assim, assume-se a não significância da interação. Sugere-se então que se teste primeiro SQ(AB | A, B). Se de fato a interação for não significativa, então o tipo II é estatisticamente mais poderoso que o tipo III. Computacionalmente, a ANOVA do tipo II é equivalente à ANOVA tipo I, alterando a ordem dos fatores e selecionando as saídas corretas.</p>
+<h3><span class="header-section-number">2.2.3</span> ANOVA Tipo II</h3>
+<p>Este tipo de ANOVA testa o efeito de um dos fatores principais dado que o outro já é conhecido. Assim, assume-se a não significância da interação.</p>
+<p>Sugere-se no entanto que se teste <code>SQ(AB | A, B)</code>. Se de fato a interação for não significativa, então o tipo II é estatisticamente mais poderoso que o tipo III.</p>
 <ol style="list-style-type: decimal">
-<li>SQ(A | B) para o fator A.</li>
-<li>SQ(B | A) para o fator B.</li>
+<li><code>SQ(A | B)</code> para o fator A.</li>
+<li><code>SQ(B | A)</code> para o fator B.</li>
 </ol>
 </div>
 <div id="anova-tipo-iii" class="section level3">
-<h3><span class="header-section-number">2.2.3</span> ANOVA Tipo III</h3>
-<p>Este tipo de ANOVA só é válido quando a interação é significativa. No entanto, em muitos casos não se tem interesse em analisar os fatores principais quando a interação está presente, ou seja, na presença de interação, os efeitos principais deixam de ser interessantes isoladamente).</p>
+<h3><span class="header-section-number">2.2.4</span> ANOVA Tipo III</h3>
+<p>Este tipo de ANOVA só é válido quando a interação é significativa. No entanto, em muitos casos não se tem interesse em analisar os fatores principais quando a interação está presente, ou seja, na presença de interação, os efeitos principais deixam de ser interessantes isoladamente.</p>
 <ol style="list-style-type: decimal">
-<li>SQ(A | B, AB) para o fator A.</li>
-<li>SQ(B | A, AB) para o fator B.</li>
+<li><code>SQ(A | B, AB)</code> para o fator A.</li>
+<li><code>SQ(B | A, AB)</code> para o fator B.</li>
 </ol>
-<p>Assim, na prática, só é necessário preocupar com dados desbalanceados quando a interação entre fontes de variação for considerada no modelo estatístico do experimento. Ao longo dos capítulos, veremos caso a caso, quando a interação deve ou não deve ser considerada.</p>
+<p>Assim, na prática, só é necessário preocupar com dados desbalanceados quando a interação entre fontes de variação for considerada no modelo estatístico do experimento.</p>
 
 </div>
 </div>

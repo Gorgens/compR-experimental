@@ -24,7 +24,7 @@
 <meta name="author" content="Eric Bastos Gorgens &amp; Marcio Leles Romarco de Oliveira" />
 
 
-<meta name="date" content="2021-01-23" />
+<meta name="date" content="2021-01-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -137,9 +137,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#partição-da-variação"><i class="fa fa-check"></i><b>2.1.1</b> Partição da variação</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#tipos-de-anova"><i class="fa fa-check"></i><b>2.2</b> Tipos de ANOVA</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-i"><i class="fa fa-check"></i><b>2.2.1</b> ANOVA Tipo I</a></li>
-<li class="chapter" data-level="2.2.2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-ii"><i class="fa fa-check"></i><b>2.2.2</b> ANOVA Tipo II</a></li>
-<li class="chapter" data-level="2.2.3" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-iii"><i class="fa fa-check"></i><b>2.2.3</b> ANOVA Tipo III</a></li>
+<li class="chapter" data-level="2.2.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#variações-no-cálculo-da-soma-de-quadrados"><i class="fa fa-check"></i><b>2.2.1</b> Variações no cálculo da soma de quadrados</a></li>
+<li class="chapter" data-level="2.2.2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-i"><i class="fa fa-check"></i><b>2.2.2</b> ANOVA Tipo I</a></li>
+<li class="chapter" data-level="2.2.3" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-ii"><i class="fa fa-check"></i><b>2.2.3</b> ANOVA Tipo II</a></li>
+<li class="chapter" data-level="2.2.4" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-iii"><i class="fa fa-check"></i><b>2.2.4</b> ANOVA Tipo III</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html"><i class="fa fa-check"></i><b>3</b> Pressuposições e transformações</a><ul>
@@ -212,7 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="pacote-expdes.pt" class="section level2">
 <h2><span class="header-section-number">4.1</span> Pacote ExpDes.pt</h2>
 <p>O pacote ExpDes.pt (e sua versão em inglês ExpDes) foi desenvolvido por uma equipe da Universidade de Alfenas (Unifal) composta por Eric Batista Ferreira, Pórtya Piscitelli Cavalcanti, Denismar Alves Nogueira. Este pacote realiza a análise de diversos delineamentos experimentais e desdobramento tanto de fatores qualitativos quanto de fatores quantitativos. O pacote ExpDes.pt só realiza o teste de normalidade dos resíduos. Para instalar o ExpDes.pt:</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;ExpDes.pt&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;ExpDes.pt&quot;</span>)</a></code></pre></div>
 <p>O pacote ExpDes.pt ao ser instalado trás diversas funções para analisar os seguintes delineamentos experimentais:</p>
 <ul>
 <li>DIC: delineamento inteiramente casualizado</li>
@@ -235,11 +236,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Teste Bootstrap</li>
 </ul>
 <p>Uma vez instalados, os pacotes precisam ser ativados sempre que sua utilização for necessária. A ativação pode ser feita pelo comando:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a></code></pre></div>
 <p>Uma vez ativado, as funções do pacote passam a estar disponíveis para o usuário. Para conhecer os parâmetros e o funcionamento da função, a página de ajuda pode ser consultada digitando no console ? seguido do nome da função:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1">?dic</a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">?dic</a></code></pre></div>
 <p>Toda função no R é composta por parâmetros obrigatórios e parâmetros opcionais. Esta indicação será obtido analisando a sintaxe da função, também disponível na página de ajuda. Como exemplo, consultando a página de ajuda da função dic, veremos que a sintaxe básica da funçao é:</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1"><span class="kw">dic</span>(trat, resp, <span class="dt">quali =</span> <span class="ot">TRUE</span>, <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>, <span class="dt">sigT =</span> <span class="fl">0.05</span>, <span class="dt">sigF =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="kw">dic</span>(trat, resp, <span class="dt">quali =</span> <span class="ot">TRUE</span>, <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>, <span class="dt">sigT =</span> <span class="fl">0.05</span>, <span class="dt">sigF =</span> <span class="fl">0.05</span>)</a></code></pre></div>
 <p>Pela sintaxe apresentada acima, dois parâmetros são obrigatórios: trat e resp. Estes parâmetros correspondem às colunas da nossa base de dados que correspondem ao tratamento e à variável resposta. Os demais parâmetros não são obrigatório pois já estão pré-definidos. Por exemplo, o parâmetro quali está pré-definido como TRUE. Isto implica que os níveis do tratamento serão interpretados como qualitativos. Assim, se o experimento possuir tratamento com níveis quantitativos, como por exemplo dosagem de nutrientes, o parâmetro quali deverá ser definido como FALSE. Os demais parâmetros optativos indicam:</p>
 <ul>
 <li>mcomp: o teste de média que será aplicado caso seja necessário realizar o desdobramento dos tratamentos. O parâmetro vem pré-definido como Teste de Tukey (Tukey).</li>
@@ -251,9 +252,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="pacote-easyanova" class="section level2">
 <h2><span class="header-section-number">4.2</span> Pacote easyanova</h2>
 <p>O pacote easyanova foi desenvolvido pelo professor Emmanuel Arnhold, que leciona disciplinas de estatística aplicada à experimentação agropecuária em nível de graduação e pós-graduação na Universidade Federal de Goiás (UFG). O pacote easyanova pode ser utilizado para qualquer tipo de experimento - balanceado e desbalanceado - já que possui um mecanismo que define o tipo de ANOVA com base na estrutura dos dados apresentados. Outra vantagem é que este pacote realiza tanto o teste de normalidade quanto o teste de homogeneidade de variâncias. Para instalar o easyanova:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;easyanova&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;easyanova&quot;</span>)</a></code></pre></div>
 <p>Estando o pacote instalado, a sua ativação pode ser feita através da função require():</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="kw">require</span>(easyanova)</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="kw">require</span>(easyanova)</a></code></pre></div>
 <p>Diferentemente do pacote ExpDes.pt, o easyanova possui apenas duas funções básicas para análise de experimentos:</p>
 <ul>
 <li>ea1()</li>
@@ -296,7 +297,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Uma diferença importante entre os pacotes ExpDes.pt e easyanova é a forma de apresentação dos dados. No ExpDes.pt apresentamos os vetores correspondentes às fontes de variação isoladamente. Isto é, apresentamos um vetor com os tratamentos (ex: dic2<span class="math inline">\(Tratamento), depois um vetor com a variável de interesse (ex: dic2\)</span>Altura).</p>
 <p>Já no pacote easyanova, as fontes de variação devem ser apresentadas em forma de dataframe contendo exatamente as fontes de variação (colunas tratamento e altura) e a repetição. Para cada um dos delineamentos suportados, o pacote easyanova apresenta uma base exemplo que pode ser identificada via página de ajuda: ?ea1 ou ?ea2.
 Tendo como exemplo o experimento em delineamento inteiramente casualizado seria analisado através da função ea1() cuja sintaxe básica é:</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="kw">ea2</span>(data, <span class="dt">design =</span> <span class="dv">1</span>, <span class="dt">alpha =</span> <span class="fl">0.05</span>, <span class="dt">list =</span> <span class="ot">FALSE</span>, <span class="dt">p.adjust=</span><span class="dv">1</span>, <span class="dt">plot=</span><span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1"><span class="kw">ea2</span>(data, <span class="dt">design =</span> <span class="dv">1</span>, <span class="dt">alpha =</span> <span class="fl">0.05</span>, <span class="dt">list =</span> <span class="ot">FALSE</span>, <span class="dt">p.adjust=</span><span class="dv">1</span>, <span class="dt">plot=</span><span class="dv">2</span>)</a></code></pre></div>
 <p>O parâmetro design vem pré-definido como 1. Assim, fique atento em defini-lo de acordo com o design correto para o seu experimento.</p>
 <p>Embora pela sintaxe acima, o único parâmetro obrigatório seja a base de dados - data, fica evidente que o design também precisa ser corretamente informado, de acordo com o delineamento do experimento a ser analisado. Um outro parâmetro opcional que vale a pena ser mencionado aqui é o plot. Três opções podem ser utilizadas para este parâmetro:</p>
 <ol style="list-style-type: decimal">

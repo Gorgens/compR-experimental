@@ -24,7 +24,7 @@
 <meta name="author" content="Eric Bastos Gorgens &amp; Marcio Leles Romarco de Oliveira" />
 
 
-<meta name="date" content="2021-01-23" />
+<meta name="date" content="2021-01-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -137,9 +137,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#partição-da-variação"><i class="fa fa-check"></i><b>2.1.1</b> Partição da variação</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#tipos-de-anova"><i class="fa fa-check"></i><b>2.2</b> Tipos de ANOVA</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-i"><i class="fa fa-check"></i><b>2.2.1</b> ANOVA Tipo I</a></li>
-<li class="chapter" data-level="2.2.2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-ii"><i class="fa fa-check"></i><b>2.2.2</b> ANOVA Tipo II</a></li>
-<li class="chapter" data-level="2.2.3" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-iii"><i class="fa fa-check"></i><b>2.2.3</b> ANOVA Tipo III</a></li>
+<li class="chapter" data-level="2.2.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#variações-no-cálculo-da-soma-de-quadrados"><i class="fa fa-check"></i><b>2.2.1</b> Variações no cálculo da soma de quadrados</a></li>
+<li class="chapter" data-level="2.2.2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-i"><i class="fa fa-check"></i><b>2.2.2</b> ANOVA Tipo I</a></li>
+<li class="chapter" data-level="2.2.3" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-ii"><i class="fa fa-check"></i><b>2.2.3</b> ANOVA Tipo II</a></li>
+<li class="chapter" data-level="2.2.4" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova-tipo-iii"><i class="fa fa-check"></i><b>2.2.4</b> ANOVA Tipo III</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html"><i class="fa fa-check"></i><b>3</b> Pressuposições e transformações</a><ul>
@@ -216,19 +217,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="plot-gráfico-de-dispersão" class="section level2">
 <h2><span class="header-section-number">5.1</span> Plot: Gráfico de dispersão</h2>
 <p>A função plot() é indicada para analisar duas variáveis quantitativas, já que uma assumirá o eixo x e outra o eixo y, sendo ambos os eixos numéricos e contínuos. Para exemplificar o uso das funções gráficas, utilizaremos os dados de um experimento sobre o aparecimento de brotos em função do mês em que a poda é realizada. Deseja-se encontrar em qual mês que a poda deve ser realizada visando minimizar o número de brotos.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1">exp.grafico =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Exemplo para Graficos.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a>
-<a class="sourceLine" id="cb71-2" title="2"><span class="kw">plot</span>(<span class="dt">data =</span> exp.grafico, Brotos <span class="op">~</span><span class="st"> </span>MesPoda, <span class="dt">xlab =</span> <span class="st">&quot;Mes da poda&quot;</span>, </a>
-<a class="sourceLine" id="cb71-3" title="3">     <span class="dt">ylab =</span> <span class="st">&quot;Numero de brotos&quot;</span>)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1">exp.grafico =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Exemplo para Graficos.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a>
+<a class="sourceLine" id="cb72-2" title="2"><span class="kw">plot</span>(<span class="dt">data =</span> exp.grafico, Brotos <span class="op">~</span><span class="st"> </span>MesPoda, <span class="dt">xlab =</span> <span class="st">&quot;Mes da poda&quot;</span>, </a>
+<a class="sourceLine" id="cb72-3" title="3">     <span class="dt">ylab =</span> <span class="st">&quot;Numero de brotos&quot;</span>)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
 <p>A interpretação de um gráfico de dispersão é bastante intuitiva e direta. Em geral, no eixo X (horizontal) coloca-se a variável que espera-se influenciar de alguma maneira a variável que está no eixo Y (vertical). Desta maneira, analisa-se o quanto a variável do eixo X está influenciando a variável do eixo Y. No exemplo apresentado acima, a nossa variável mês de poda, influencia positivamente o número de brotos. Uma vez que quanto maior o mês de poda, maior é o número de brotos. Neste caso, estamos observando uma relação diretamente proporcional.</p>
 </div>
 <div id="boxplot-gráfico-de-caixas" class="section level2">
 <h2><span class="header-section-number">5.2</span> Boxplot: Gráfico de caixas</h2>
 <p>A função boxplot() é indicada para analisar uma variável categórica e outra variável contínua. Situação ideal, por exemplo, para verificar a influência de tratamentos qualitativos sobre uma variável de interesse. Ou ainda, avaliar o efeito do bloco sobre a variável de interesse.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1">exp.grafico =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Exemplo para Graficos.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a>
-<a class="sourceLine" id="cb72-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> exp.grafico, Brotos <span class="op">~</span><span class="st"> </span>Bloco, <span class="dt">xlab =</span> <span class="st">&quot;Bloco&quot;</span>, </a>
-<a class="sourceLine" id="cb72-3" title="3">        <span class="dt">ylab =</span> <span class="st">&quot;Numero de brotos&quot;</span>)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1">exp.grafico =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Exemplo para Graficos.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a>
+<a class="sourceLine" id="cb73-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> exp.grafico, Brotos <span class="op">~</span><span class="st"> </span>Bloco, <span class="dt">xlab =</span> <span class="st">&quot;Bloco&quot;</span>, </a>
+<a class="sourceLine" id="cb73-3" title="3">        <span class="dt">ylab =</span> <span class="st">&quot;Numero de brotos&quot;</span>)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
 <p>A interpretação do boxplot pode parecer complicada, já que este gráfico apresenta uma série de informações estatísticas em um único gráfico. Mas é justamente esta característica que torna este gráfico tão utilizado e tão importante.</p>
 <p>Existem variações do boxplot considerando diferentes estatísticas na sua construção, mas vamos ficar com a estrutura clássica formada por uma linha horizontal, dentro de uma caixa, sobreposta a uma linha vertical (do inglês whisker, também conhecida como fios do bigode).</p>
 <p>A linha horizontal no interior da caixa indica a mediana, ou o segundo quartil. Os limites da caixa indicam o primeiro e o terceiro quartil. Os fios do bigode (ou whiskers) indicam o máximo e o mínimo, excluindo outliers. No exemplo que apresentamos acima, não houve a presença de outliers. A função boxplot assume como outlier dados que estão acima ou abaixo de 1.5 vezes a distância inter-quartil. Estes pontos considerados <em>outlier</em> serão marcadas pontualmente no gráfico.</p>
