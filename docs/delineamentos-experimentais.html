@@ -24,7 +24,7 @@
 <meta name="author" content="Eric Bastos Gorgens &amp; Marcio Leles Romarco de Oliveira" />
 
 
-<meta name="date" content="2021-01-25" />
+<meta name="date" content="2021-01-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -144,9 +144,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html"><i class="fa fa-check"></i><b>3</b> Pressuposições e transformações</a><ul>
-<li class="chapter" data-level="3.1" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#logarítmica"><i class="fa fa-check"></i><b>3.1</b> Logarítmica</a></li>
-<li class="chapter" data-level="3.2" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#raiz-quadrada"><i class="fa fa-check"></i><b>3.2</b> Raiz quadrada</a></li>
-<li class="chapter" data-level="3.3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#arcoseno"><i class="fa fa-check"></i><b>3.3</b> Arcoseno</a></li>
+<li class="chapter" data-level="3.1" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#transformação-logarítmica"><i class="fa fa-check"></i><b>3.1</b> Transformação Logarítmica</a></li>
+<li class="chapter" data-level="3.2" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#transformação-da-raiz-quadrada"><i class="fa fa-check"></i><b>3.2</b> Transformação da Raiz quadrada</a></li>
+<li class="chapter" data-level="3.3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#transformação-do-arcoseno"><i class="fa fa-check"></i><b>3.3</b> Transformação do Arcoseno</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="anova-no-r.html"><a href="anova-no-r.html"><i class="fa fa-check"></i><b>4</b> ANOVA no R</a><ul>
 <li class="chapter" data-level="4.1" data-path="anova-no-r.html"><a href="anova-no-r.html#pacote-expdes.pt"><i class="fa fa-check"></i><b>4.1</b> Pacote ExpDes.pt</a></li>
@@ -271,9 +271,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Para analisar o experimento, será necessario obter a média e a soma para cada tratamento:</p>
-<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote
-## = quote, : incomplete final line found by readTableHeader on &#39;./
-## data/anova_sumRep.csv&#39;</code></pre>
+<pre><code>## Warning in read.table(file = file, header = header, sep
+## = sep, quote = quote, : incomplete final line found by
+## readTableHeader on &#39;./data/anova_sumRep.csv&#39;</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-2">Table 2.2: </span>Média e soma de cada tratamento.</caption>
 <thead>
@@ -300,9 +300,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>E também a soma e média global:</p>
-<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote
-## = quote, : incomplete final line found by readTableHeader on &#39;./
-## data/anova_sumTotal.csv&#39;</code></pre>
+<pre><code>## Warning in read.table(file = file, header = header, sep
+## = sep, quote = quote, : incomplete final line found by
+## readTableHeader on &#39;./data/anova_sumTotal.csv&#39;</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-3">Table 2.3: </span>Média e soma total.</caption>
 <thead>
@@ -378,9 +378,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb18-2" title="2"><span class="kw">print</span> (<span class="kw">paste</span>(<span class="st">&quot;Media geral = &quot;</span>, mediaGeral, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;Media geral =  16.7222222222222&quot;</code></pre>
 <p>A partir dos resultados obtidos nas etapas anteriores, as tabelas ficarão assim:</p>
-<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote
-## = quote, : incomplete final line found by readTableHeader on &#39;./
-## data/anova_sumRep2.csv&#39;</code></pre>
+<pre><code>## Warning in read.table(file = file, header = header, sep
+## = sep, quote = quote, : incomplete final line found by
+## readTableHeader on &#39;./data/anova_sumRep2.csv&#39;</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-13">Table 2.4: </span>Média e soma de cada tratamento calculado.</caption>
 <thead>
@@ -406,9 +406,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote
-## = quote, : incomplete final line found by readTableHeader on &#39;./
-## data/anova_sumTotal2.csv&#39;</code></pre>
+<pre><code>## Warning in read.table(file = file, header = header, sep
+## = sep, quote = quote, : incomplete final line found by
+## readTableHeader on &#39;./data/anova_sumTotal2.csv&#39;</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-14">Table 2.5: </span>Média e soma total calculado.</caption>
 <thead>
@@ -436,14 +436,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>No R, esta operação fica fácil, pois é possível fazer de uma única vez a subtração dos elementos de um vetor pela média geral:</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">desvio1 =<span class="st"> </span>matGen1 <span class="op">-</span><span class="st"> </span>mediaGeral</a>
 <a class="sourceLine" id="cb22-2" title="2">desvio1</a></code></pre></div>
-<pre><code>## [1] 4.2777778 3.2777778 3.2777778 0.2777778 1.2777778 0.2777778</code></pre>
+<pre><code>## [1] 4.2777778 3.2777778 3.2777778 0.2777778 1.2777778
+## [6] 0.2777778</code></pre>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1">desvio2 =<span class="st"> </span>matGen2 <span class="op">-</span><span class="st"> </span>mediaGeral</a>
 <a class="sourceLine" id="cb24-2" title="2">desvio2</a></code></pre></div>
 <pre><code>## [1]  2.2777778  2.2777778  0.2777778 -3.7222222 -0.7222222
 ## [6] -2.7222222</code></pre>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">desvio3 =<span class="st"> </span>matGen3 <span class="op">-</span><span class="st"> </span>mediaGeral</a>
 <a class="sourceLine" id="cb26-2" title="2">desvio3</a></code></pre></div>
-<pre><code>## [1]  1.277778  1.277778 -1.722222 -3.722222 -3.722222 -3.722222</code></pre>
+<pre><code>## [1]  1.277778  1.277778 -1.722222 -3.722222 -3.722222
+## [6] -3.722222</code></pre>
 <p>Tabulando os desvios calculados acima, tem-se uma tabela da seguinte forma:</p>
 <table>
 <caption><span id="tab:unnamed-chunk-16">Table 2.6: </span>Desvio da observação para e média geral.</caption>
@@ -508,7 +510,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [6] -0.3888889</code></pre>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1">desvioTrat3 =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">mean</span>(matGen3), <span class="dv">6</span>) <span class="op">-</span><span class="st"> </span>mediaGeral</a>
 <a class="sourceLine" id="cb34-2" title="2">desvioTrat3</a></code></pre></div>
-<pre><code>## [1] -1.722222 -1.722222 -1.722222 -1.722222 -1.722222 -1.722222</code></pre>
+<pre><code>## [1] -1.722222 -1.722222 -1.722222 -1.722222 -1.722222
+## [6] -1.722222</code></pre>
 <p>Trazendo os resultados do R para uma tabela de desvios tem-se:</p>
 <table>
 <caption><span id="tab:unnamed-chunk-19">Table 2.7: </span>Desvio entre a média do tratamento e média geral.</caption>
@@ -624,9 +627,9 @@ No R, podemos calcular da seguinte forma:</p>
 <div id="quadrado-médio" class="section level4">
 <h4><span class="header-section-number">2.1.1.4</span> Quadrado médio</h4>
 <p>O próximo passo é montar o quadro da ANOVA e determinar os quadrados médios:</p>
-<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote
-## = quote, : incomplete final line found by readTableHeader on &#39;./
-## data/anova_qm.csv&#39;</code></pre>
+<pre><code>## Warning in read.table(file = file, header = header, sep
+## = sep, quote = quote, : incomplete final line found by
+## readTableHeader on &#39;./data/anova_qm.csv&#39;</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-24">Table 2.9: </span>Fórmulas para o caluclo do quandrado médio.</caption>
 <thead>
@@ -681,9 +684,9 @@ No R, podemos calcular da seguinte forma:</p>
 <a class="sourceLine" id="cb51-2" title="2"><span class="kw">print</span>(Fcalc)</a></code></pre></div>
 <pre><code>## [1] 4.474836</code></pre>
 <p>O quadro final da ANOVA será:</p>
-<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote
-## = quote, : incomplete final line found by readTableHeader on &#39;./
-## data/anova_final.csv&#39;</code></pre>
+<pre><code>## Warning in read.table(file = file, header = header, sep
+## = sep, quote = quote, : incomplete final line found by
+## readTableHeader on &#39;./data/anova_final.csv&#39;</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-28">Table 2.10: </span>Quandro final da ANOVA</caption>
 <colgroup>

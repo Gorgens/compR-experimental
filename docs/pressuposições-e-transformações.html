@@ -24,7 +24,7 @@
 <meta name="author" content="Eric Bastos Gorgens &amp; Marcio Leles Romarco de Oliveira" />
 
 
-<meta name="date" content="2021-01-25" />
+<meta name="date" content="2021-01-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -144,9 +144,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html"><i class="fa fa-check"></i><b>3</b> Pressuposições e transformações</a><ul>
-<li class="chapter" data-level="3.1" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#logarítmica"><i class="fa fa-check"></i><b>3.1</b> Logarítmica</a></li>
-<li class="chapter" data-level="3.2" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#raiz-quadrada"><i class="fa fa-check"></i><b>3.2</b> Raiz quadrada</a></li>
-<li class="chapter" data-level="3.3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#arcoseno"><i class="fa fa-check"></i><b>3.3</b> Arcoseno</a></li>
+<li class="chapter" data-level="3.1" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#transformação-logarítmica"><i class="fa fa-check"></i><b>3.1</b> Transformação Logarítmica</a></li>
+<li class="chapter" data-level="3.2" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#transformação-da-raiz-quadrada"><i class="fa fa-check"></i><b>3.2</b> Transformação da Raiz quadrada</a></li>
+<li class="chapter" data-level="3.3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#transformação-do-arcoseno"><i class="fa fa-check"></i><b>3.3</b> Transformação do Arcoseno</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="anova-no-r.html"><a href="anova-no-r.html"><i class="fa fa-check"></i><b>4</b> ANOVA no R</a><ul>
 <li class="chapter" data-level="4.1" data-path="anova-no-r.html"><a href="anova-no-r.html#pacote-expdes.pt"><i class="fa fa-check"></i><b>4.1</b> Pacote ExpDes.pt</a></li>
@@ -209,22 +209,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Homogeneidade de variâncias</li>
 <li>Normalidade dos resíduos</li>
 </ul>
-<p>Neste momento, não vamos nos preocupar com os testes estatísticos utilizados para a verificação das pressuposições. Até mesmo, porque as pressuposições precisam ser analisadas após a análise de variância ser realizada, já que a normalidade da variável não garante a normalidade dos resíduos.</p>
-<p>No caso de uma das pressuposições não serem atendidas, os dados devem ser transformados, a análise refeita e as pressuposições novamente verificadas. Na sequência vamos conhecer as principais transformações na área das ciências florestais e biológicas.</p>
-<div id="logarítmica" class="section level2">
-<h2><span class="header-section-number">3.1</span> Logarítmica</h2>
-<p>Esta transformação é indicada para variáveis contínuas e consiste em obter o log de cada uma das observações. É possível usar tanto o log base-10 quanto o log base-e. Utilizar um ou outro não faz nenhuma diferença para o teste estatístico, pois a única diferença é a constante logarítmica: a base-10 ou a base-e.</p>
-<p>Não deixe de registrar qual a base você utilizou já que esta decisão influencia a interpretação do coeficiente angular e o coeficiente de inclinação da regressão num eventual desdobramento.</p>
+<p>Neste momento, não se preocupe com os testes estatísticos utilizados para a verificação dessas pressuposições. Até mesmo, porque as pressuposições precisam ser analisadas após a análise de variância ser realizada, já que a normalidade da variável não garante a normalidade dos resíduos.</p>
+<p>No caso de uma das pressuposições não serem atendidas, os dados devem ser transformados, a análise refeita e as pressuposições novamente verificadas. Na sequência serao apresentadas as principais transformações usadas na área das ciências florestais e biológicas.</p>
+<div id="transformação-logarítmica" class="section level2">
+<h2><span class="header-section-number">3.1</span> Transformação Logarítmica</h2>
+<p>Esta transformação é indicada para variáveis contínuas e consiste em obter o <code>log</code> de cada uma das observações. É possível usar tanto o log base 10 quanto o log base <strong>e</strong>. Utilizar um ou outro não faz nenhuma diferença para o teste estatístico, pois a única diferença é a constante logarítmica.</p>
+<p>Não deixe de registrar qual a base foi utilizada já que esta decisão influencia a interpretação do coeficiente angular e o coeficiente de inclinação da regressão num eventual desdobramento.</p>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1">a =<span class="st"> </span><span class="fl">5.7</span></a>
 <a class="sourceLine" id="cb56-2" title="2">trans_a =<span class="st"> </span><span class="kw">log</span>(a)</a></code></pre></div>
-<p>Para reverter a transformação realizada acima no R:</p>
+<p>Para reverter a transformação logarítmica:</p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1"><span class="kw">exp</span>(trans_a)</a></code></pre></div>
 <pre><code>## [1] 5.7</code></pre>
-<p>Lembre-se de que se seus dados possuem zeros ou valores negativos você não pode usar a transformação logarítmica. Uma saída é adicionar uma constante a cada número para torná-lo positivo e não zero. Se o seus dados forem contagem com presença de zero, a solução é adicionar 0,5 a cada observação.</p>
-<p>Muitas variáveis biológicas tem distribuição log-normal, isto mostra que após a transformação logarítmica, os valores passam a ter distribuição normal. Isto se deve ao fato de que se você pega um conjunto de fatores independentes e os multiplica, o produto é log-normal. Por exemplo, a altura de uma árvore é uma função de (nitrogênio x água x luz x pragas). Matematicamente esta função é uma log-normal.</p>
+<p>Lembre-se de que se os dados possuem zeros ou valores negativos, não se pode usar a transformação logarítmica. Uma saída é adicionar uma constante a cada número para torná-lo positivo e não zero. Se os dados forem contagem com presença de zero, a solução é adicionar 0,5 a cada observação.</p>
+<p>Muitas variáveis biológicas tem distribuição log-normal. Desta forma, após a transformação logarítmica, os valores passam a ter distribuição normal. O produto de conjunto de fatores independentes é log-normal. Por exemplo, a altura de uma árvore é uma função de (nitrogênio x água x luz x pragas). Matematicamente esta função é uma log-normal.</p>
 </div>
-<div id="raiz-quadrada" class="section level2">
-<h2><span class="header-section-number">3.2</span> Raiz quadrada</h2>
+<div id="transformação-da-raiz-quadrada" class="section level2">
+<h2><span class="header-section-number">3.2</span> Transformação da Raiz quadrada</h2>
 <p>Esta transformação consiste na obtenção da raiz quadrada de cada uma das observações. Esta transformação é muito utilizada para variáveis de contagem. No entanto ela só pode ser utilizada para dados positivos. Em caso de número negativos, uma saída é adicionar uma constante a todas as observações eliminando assim as observações negativas.</p>
 <div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" title="1">b =<span class="st"> </span><span class="dv">10</span></a>
 <a class="sourceLine" id="cb59-2" title="2">trans_b =<span class="st"> </span><span class="kw">sqrt</span>(b)</a></code></pre></div>
@@ -232,10 +232,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1">trans_b<span class="op">^</span><span class="dv">2</span></a></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 </div>
-<div id="arcoseno" class="section level2">
-<h2><span class="header-section-number">3.3</span> Arcoseno</h2>
-<p>Esta transformação consiste em calcular o arcoseno da raiz quadrada de cada uma das observações. O resultado é dado em radianos e não em graus, e pode variar de -π/2 a π/2. Os números para serem transformados pelo arcoseno precisam estar entre -1 e 1. Por isso, é comum utilizar esta transformação para proporções, cuja amplitude geralmente está entre 0 e 1.</p>
-<p>Embora recomendado na literatura, tenha cuidado ao utilizar esta transformação, especialmente quando você não tiver certeza se sua variável é categórica (binária) ou contínua.</p>
+<div id="transformação-do-arcoseno" class="section level2">
+<h2><span class="header-section-number">3.3</span> Transformação do Arcoseno</h2>
+<p>Esta transformação consiste em calcular o arcoseno da raiz quadrada de cada uma das observações. O resultado é dado em radianos e não em graus, e pode variar de -π/2 a π/2. Os números para serem transformados pelo arcoseno precisam estar entre -1 e 1. Por isso, é comum utilizar esta transformação para proporções, cuja amplitude geralmente está entre 0 e 1</p>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1">c =<span class="st"> </span><span class="fl">0.8</span></a>
 <a class="sourceLine" id="cb62-2" title="2">trans_c =<span class="st"> </span><span class="kw">asin</span>(<span class="kw">sqrt</span>(c))</a></code></pre></div>
 <p>Para reverter a transformação:</p>

@@ -24,7 +24,7 @@
 <meta name="author" content="Eric Bastos Gorgens &amp; Marcio Leles Romarco de Oliveira" />
 
 
-<meta name="date" content="2021-01-25" />
+<meta name="date" content="2021-01-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -144,9 +144,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html"><i class="fa fa-check"></i><b>3</b> Pressuposições e transformações</a><ul>
-<li class="chapter" data-level="3.1" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#logarítmica"><i class="fa fa-check"></i><b>3.1</b> Logarítmica</a></li>
-<li class="chapter" data-level="3.2" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#raiz-quadrada"><i class="fa fa-check"></i><b>3.2</b> Raiz quadrada</a></li>
-<li class="chapter" data-level="3.3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#arcoseno"><i class="fa fa-check"></i><b>3.3</b> Arcoseno</a></li>
+<li class="chapter" data-level="3.1" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#transformação-logarítmica"><i class="fa fa-check"></i><b>3.1</b> Transformação Logarítmica</a></li>
+<li class="chapter" data-level="3.2" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#transformação-da-raiz-quadrada"><i class="fa fa-check"></i><b>3.2</b> Transformação da Raiz quadrada</a></li>
+<li class="chapter" data-level="3.3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#transformação-do-arcoseno"><i class="fa fa-check"></i><b>3.3</b> Transformação do Arcoseno</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="anova-no-r.html"><a href="anova-no-r.html"><i class="fa fa-check"></i><b>4</b> ANOVA no R</a><ul>
 <li class="chapter" data-level="4.1" data-path="anova-no-r.html"><a href="anova-no-r.html#pacote-expdes.pt"><i class="fa fa-check"></i><b>4.1</b> Pacote ExpDes.pt</a></li>
@@ -204,17 +204,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="anova-no-r" class="section level1">
 <h1><span class="header-section-number">Cap. 4</span> ANOVA no R</h1>
-<p>A boa notícia é que o R conta com diversos pacotes desenvolvidos que realizam toda a sequência de análise, tanto para o caso balanceado, quanto para o caso desbalanceado. Ao longo deste livro usaremos dois pacotes:</p>
+<p>Este capítulo começa com uma boa notícia. O R conta com diversos pacotes desenvolvidos que realizam toda a sequência de uma análise de variância, tanto para o caso balanceado, quanto para o caso desbalanceado. Ao longo deste livro serão utilizados dois pacotes:</p>
 <ul>
-<li>ExpDes.pt</li>
-<li>easyanova</li>
+<li><code>ExpDes.pt</code></li>
+<li><code>easyanova</code></li>
 </ul>
-<p>Os pacotes no R são desenvolvidos e disponibilizados de forma oficial no repositório do R, chamado de CRAN. Embora um pacote precise seguir determinadas regras mínimas para ser disponibilizado no repositório oficial, o estilo de cada desenvolvedor leva a diferenças significativas nas características e no funcionamento dos pacotes.</p>
+<p>Os pacotes no R são desenvolvidos e disponibilizados de forma oficial no repositório chamado de CRAN. Embora um pacote precise seguir determinadas regras mínimas para ser disponibilizado no repositório oficial, o estilo de cada desenvolvedor leva a diferenças significativas nas características e no funcionamento dos pacotes.</p>
 <div id="pacote-expdes.pt" class="section level2">
 <h2><span class="header-section-number">4.1</span> Pacote ExpDes.pt</h2>
-<p>O pacote ExpDes.pt (e sua versão em inglês ExpDes) foi desenvolvido por uma equipe da Universidade de Alfenas (Unifal) composta por Eric Batista Ferreira, Pórtya Piscitelli Cavalcanti, Denismar Alves Nogueira. Este pacote realiza a análise de diversos delineamentos experimentais e desdobramento tanto de fatores qualitativos quanto de fatores quantitativos. O pacote ExpDes.pt só realiza o teste de normalidade dos resíduos. Para instalar o ExpDes.pt:</p>
+<p>O pacote <code>ExpDes.pt</code> (e sua versão em inglês <code>ExpDes</code>) foi desenvolvido por uma equipe da Universidade de Alfenas (Unifal) composta por Eric Batista Ferreira, Pórtya Piscitelli Cavalcanti, Denismar Alves Nogueira e outros. Este pacote realiza a análise de diversos delineamentos experimentais e desdobramentos tanto de fatores qualitativos quanto de fatores quantitativos. Para instalar o <code>ExpDes.pt</code>:</p>
 <div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;ExpDes.pt&quot;</span>)</a></code></pre></div>
-<p>O pacote ExpDes.pt ao ser instalado trás diversas funções para analisar os seguintes delineamentos experimentais:</p>
+<p>O pacote <code>ExpDes.pt</code> ao ser instalado trás diversas funções para analisar os seguintes delineamentos experimentais:</p>
 <ul>
 <li>DIC: delineamento inteiramente casualizado</li>
 <li>DBC: delineamento em blocos casualizados</li>
@@ -225,7 +225,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Experimentos em esquema de fatorial triplo (em DIC e DBC)</li>
 <li>Experimentos em esquema de fatorial triplo com um tratamento adicional (em DIC e DBC)</li>
 </ul>
-<p>O pacote permite ainda o desdobramento de níveis quantitativos a partir de modelos de regressão até o terceiro grau. Ou no caso de níveis qualitativos, o desdobramento ocorre por testes de comparação múltipla por meio dos testes:</p>
+<p>O pacote permite ainda o desdobramento de níveis quantitativos a partir de modelos de regressão até o terceiro grau. No caso de níveis qualitativos, o desdobramento ocorre por testes de comparação múltipla incluindo:</p>
 <ul>
 <li>Teste de Tukey</li>
 <li>Teste de Student-Newman-Keuls (SNK)</li>
@@ -235,32 +235,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Teste t de Bonferroni (LSD protegido)</li>
 <li>Teste Bootstrap</li>
 </ul>
-<p>Uma vez instalados, os pacotes precisam ser ativados sempre que sua utilização for necessária. A ativação pode ser feita pelo comando:</p>
+<p>Mesmo depois de instalados, os pacotes precisam ser ativados antes de serem utilizados. A ativação pode ser feita pelo comando:</p>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a></code></pre></div>
-<p>Uma vez ativado, as funções do pacote passam a estar disponíveis para o usuário. Para conhecer os parâmetros e o funcionamento da função, a página de ajuda pode ser consultada digitando no console ? seguido do nome da função:</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">?dic</a></code></pre></div>
-<p>Toda função no R é composta por parâmetros obrigatórios e parâmetros opcionais. Esta indicação será obtido analisando a sintaxe da função, também disponível na página de ajuda. Como exemplo, consultando a página de ajuda da função dic, veremos que a sintaxe básica da funçao é:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="kw">dic</span>(trat, resp, <span class="dt">quali =</span> <span class="ot">TRUE</span>, <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>, <span class="dt">sigT =</span> <span class="fl">0.05</span>, <span class="dt">sigF =</span> <span class="fl">0.05</span>)</a></code></pre></div>
-<p>Pela sintaxe apresentada acima, dois parâmetros são obrigatórios: trat e resp. Estes parâmetros correspondem às colunas da nossa base de dados que correspondem ao tratamento e à variável resposta. Os demais parâmetros não são obrigatório pois já estão pré-definidos. Por exemplo, o parâmetro quali está pré-definido como TRUE. Isto implica que os níveis do tratamento serão interpretados como qualitativos. Assim, se o experimento possuir tratamento com níveis quantitativos, como por exemplo dosagem de nutrientes, o parâmetro quali deverá ser definido como FALSE. Os demais parâmetros optativos indicam:</p>
+<pre><code>## Loading required package: ExpDes.pt</code></pre>
+<pre><code>## 
+## Attaching package: &#39;ExpDes.pt&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:stats&#39;:
+## 
+##     ccf</code></pre>
+<p>Uma vez ativado, as funções do pacote passam a estar disponíveis para o usuário. Para conhecer os parâmetros e o funcionamento da função, a página de ajuda pode ser consultada digitando no console <code>?</code> seguido do nome da função:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1">?dic</a></code></pre></div>
+<p>Toda função no R é composta por parâmetros obrigatórios e parâmetros opcionais. Esta indicação será obtida analisando a sintaxe da função, também disponível na página de ajuda. Como exemplo, consultando a página de ajuda da função <code>dic</code>, nota-se que a sintaxe básica da funçao é:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1"><span class="kw">dic</span>(trat, resp, <span class="dt">quali =</span> <span class="ot">TRUE</span>, <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>, <span class="dt">sigT =</span> <span class="fl">0.05</span>, <span class="dt">sigF =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<p>Pela sintaxe apresentada acima, dois parâmetros são obrigatórios: <code>trat</code> e <code>resp</code>. Estes parâmetros correspondem às colunas da nossa base de dados em que <code>trat</code> indica tratamento e <code>resp</code> indica variável resposta. Os demais parâmetros não são obrigatórios pois já estão pré-definidos. Por exemplo, o parâmetro <code>quali</code> está pré-definido como <code>TRUE</code>. Isto implica que os níveis do tratamento serão interpretados como qualitativos. Assim, se o experimento possuir tratamento com níveis quantitativos, como por exemplo dosagem de nutrientes, o parâmetro <code>quali</code> deverá ser definido como <code>FALSE</code>. Os demais parâmetros optativos indicam:</p>
 <ul>
-<li>mcomp: o teste de média que será aplicado caso seja necessário realizar o desdobramento dos tratamentos. O parâmetro vem pré-definido como Teste de Tukey (Tukey).</li>
-<li>sigT: o nível de significância para o teste de médias. Pré-definido como 5% (0,05).</li>
-<li>sigF: o nível de significância para o teste F da análise de variância. Pré-definido como 5% (0,05).</li>
+<li><code>mcomp</code>: o teste de média que será aplicado caso seja necessário realizar o desdobramento dos tratamentos. O parâmetro vem pré-definido como Teste de Tukey (<code>tukey</code>).</li>
+<li><code>sigT</code>: o nível de significância para o teste de médias. Pré-definido como 5% (<code>0,05</code>).</li>
+<li><code>sigF</code>: o nível de significância para o teste F da análise de variância. Pré-definido como 5% (<code>0,05</code>).</li>
 </ul>
-<p>Infelizmente, o pacote ExpDes.pt só é capaz de computar a ANOVA do Tipo I, e é por isto os experimentos desbalanceados não devem ser analisados por este pacote.</p>
+<p>O pacote <code>ExpDes.pt</code> só é capaz de computar a ANOVA do Tipo I, e é por isto que os experimentos desbalanceados não devem ser analisados por meio desse pacote.</p>
 </div>
 <div id="pacote-easyanova" class="section level2">
 <h2><span class="header-section-number">4.2</span> Pacote easyanova</h2>
-<p>O pacote easyanova foi desenvolvido pelo professor Emmanuel Arnhold, que leciona disciplinas de estatística aplicada à experimentação agropecuária em nível de graduação e pós-graduação na Universidade Federal de Goiás (UFG). O pacote easyanova pode ser utilizado para qualquer tipo de experimento - balanceado e desbalanceado - já que possui um mecanismo que define o tipo de ANOVA com base na estrutura dos dados apresentados. Outra vantagem é que este pacote realiza tanto o teste de normalidade quanto o teste de homogeneidade de variâncias. Para instalar o easyanova:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;easyanova&quot;</span>)</a></code></pre></div>
-<p>Estando o pacote instalado, a sua ativação pode ser feita através da função require():</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="kw">require</span>(easyanova)</a></code></pre></div>
-<p>Diferentemente do pacote ExpDes.pt, o easyanova possui apenas duas funções básicas para análise de experimentos:</p>
+<p>O pacote <code>easyanova</code> foi desenvolvido pelo professor Emmanuel Arnhold, que leciona disciplinas de estatística aplicada à experimentação agropecuária em nível de graduação e pós-graduação na Universidade Federal de Goiás (UFG). O pacote <code>easyanova</code> pode ser utilizado para qualquer tipo de experimento - balanceado e desbalanceado - já que possui um mecanismo que define o tipo de ANOVA com base na estrutura dos dados apresentados. Outra vantagem é que este pacote realiza tanto o teste de normalidade quanto o teste de homogeneidade de variâncias. Para instalar o <code>easyanova</code>:</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;easyanova&quot;</span>)</a></code></pre></div>
+<p>Estando o pacote instalado, a sua ativação pode ser feita através da função <code>require()</code>:</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1"><span class="kw">require</span>(easyanova)</a></code></pre></div>
+<pre><code>## Loading required package: easyanova</code></pre>
+<pre><code>## Warning: package &#39;easyanova&#39; was built under R version 4.0.3</code></pre>
+<p>Diferentemente do pacote <code>ExpDes.pt</code>, o easyanova possui apenas duas funções básicas para análise de experimentos:</p>
 <ul>
-<li>ea1()</li>
-<li>ea2()</li>
+<li><code>ea1()</code></li>
+<li><code>ea2()</code></li>
 </ul>
-<p>A definição do delineamento e/ou do esquema é feito através de um parâmetro dentro destas duas funções. Assim, através da definição do parâmetro design, a função ea1() é capaz de analisar os seguintes delineamentos:</p>
+<p>A definição do delineamento e/ou do esquema é feito através de um parâmetro dentro destas duas funções. Assim, através da definição do parâmetro <code>design</code>, a função <code>ea1()</code> é capaz de analisar os seguintes delineamentos:</p>
 <ol style="list-style-type: decimal">
 <li>inteiramente casualizado</li>
 <li>blocos casualizados</li>
@@ -278,7 +286,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>teste Kruskal-Wallis</li>
 <li>teste Friedman</li>
 </ol>
-<p>Já a função ea2() é é capaz, através da definição do parâmetro design, de analisar os seguintes delineamentos:</p>
+<p>Já a função <code>ea2()</code> é capaz, através da definição do parâmetro <code>design</code>, de analisar os seguintes delineamentos:</p>
 <ol style="list-style-type: decimal">
 <li>fatorial duplo inteiramente casualizado</li>
 <li>fatorial duplo em blocos casualizados</li>
@@ -294,19 +302,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>quadrado latino com linhas hierárquicas</li>
 <li>quadrado latino com linhas e colunas hierárquicas</li>
 </ol>
-<p>Uma diferença importante entre os pacotes ExpDes.pt e easyanova é a forma de apresentação dos dados. No ExpDes.pt apresentamos os vetores correspondentes às fontes de variação isoladamente. Isto é, apresentamos um vetor com os tratamentos (ex: dic2<span class="math inline">\(Tratamento), depois um vetor com a variável de interesse (ex: dic2\)</span>Altura).</p>
-<p>Já no pacote easyanova, as fontes de variação devem ser apresentadas em forma de dataframe contendo exatamente as fontes de variação (colunas tratamento e altura) e a repetição. Para cada um dos delineamentos suportados, o pacote easyanova apresenta uma base exemplo que pode ser identificada via página de ajuda: ?ea1 ou ?ea2.
-Tendo como exemplo o experimento em delineamento inteiramente casualizado seria analisado através da função ea1() cuja sintaxe básica é:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1"><span class="kw">ea2</span>(data, <span class="dt">design =</span> <span class="dv">1</span>, <span class="dt">alpha =</span> <span class="fl">0.05</span>, <span class="dt">list =</span> <span class="ot">FALSE</span>, <span class="dt">p.adjust=</span><span class="dv">1</span>, <span class="dt">plot=</span><span class="dv">2</span>)</a></code></pre></div>
-<p>O parâmetro design vem pré-definido como 1. Assim, fique atento em defini-lo de acordo com o design correto para o seu experimento.</p>
-<p>Embora pela sintaxe acima, o único parâmetro obrigatório seja a base de dados - data, fica evidente que o design também precisa ser corretamente informado, de acordo com o delineamento do experimento a ser analisado. Um outro parâmetro opcional que vale a pena ser mencionado aqui é o plot. Três opções podem ser utilizadas para este parâmetro:</p>
-<ol style="list-style-type: decimal">
-<li>indicando gráfico boxplot dos resíduos.</li>
-<li>indicando gráfico de dispersão dos resíduos padronizados em função dos dados sequenciais.</li>
-<li>indicando gráfico de dispersão dos resíduos padronizados em função dos quantis teóricos.</li>
-</ol>
-<p>As funções ea1() e ea2() retornam uma lista contendo a análise de variância, os desdobramentos e os testes de comparações múltiplas. Veremos o conteúdo da lista durante as análises, uma vez que pode variar em função do delineamento que será sendo analisado.</p>
-<p>Lembre-se! Delineamentos balanceados serão analisados no pacote ExpDes.pt (ou sua versão com saídas em inglês ExpDes). Já os delineamentos desbalanceados serão analisados com o pacote easyanova.</p>
+<p>Uma diferença importante entre os pacotes <code>ExpDes.pt</code> e <code>easyanova</code> é a forma de apresentação dos dados. No <code>ExpDes.pt</code> apresenta-se os vetores correspondentes às fontes de variação isoladamente: um vetor com os tratamentos (ex: <code>dic2$Tratamento</code>), depois um vetor com a variável de interesse (ex: <code>dic2$Altura</code>).</p>
+<p>Já no pacote <code>easyanova</code>, as fontes de variação devem ser apresentadas em forma de dataframe contendo exatamente as fontes de variação, variável de interesse e a repetição. Para cada um dos delineamentos suportados, o pacote <code>easyanova</code> apresenta uma base exemplo que pode ser verificada via página de ajuda: <code>?ea1</code> ou <code>?ea2</code>.</p>
+<p>Como exemplo, o experimento em delineamento inteiramente casualizado seria analisado através da função <code>ea1()</code> cuja sintaxe básica é:</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1"><span class="kw">ea2</span>(data, <span class="dt">design =</span> <span class="dv">1</span>, <span class="dt">alpha =</span> <span class="fl">0.05</span>, <span class="dt">list =</span> <span class="ot">FALSE</span>, <span class="dt">p.adjust=</span><span class="dv">1</span>, <span class="dt">plot=</span><span class="dv">2</span>)</a></code></pre></div>
+<p>O parâmetro <code>design</code> vem pré-definido como 1. Assim, fique atento em defini-lo de acordo com o delineamento correto do seu experimento.</p>
+<p>Embora pela sintaxe acima, o único parâmetro obrigatório seja a base de dados - <code>data</code>, fica evidente que o <code>design</code> também precisa ser corretamente informado, de acordo com o delineamento do experimento a ser analisado. Um outro parâmetro opcional que vale a pena ser mencionado aqui é o <code>plot</code>. Três opções podem ser utilizadas para este parâmetro:</p>
+<p><code>1</code> - indicando gráfico boxplot dos resíduos.</p>
+<p><code>2</code> - indicando gráfico de dispersão dos resíduos padronizados em função dos dados sequenciais.</p>
+<p><code>3</code> - indicando gráfico de dispersão dos resíduos padronizados em função dos quantis teóricos.</p>
+<p>As funções <code>ea1()</code> e <code>ea2()</code> retornam uma lista contendo a análise de variância, os desdobramentos e os testes de comparações múltiplas. O conteúdo da lista serão apresentados durante os exemplos dos capítulos subsequentes.</p>
+<p>Lembre-se! Delineamentos balanceados serão analisados no pacote <code>ExpDes.pt</code> (ou sua versão com saídas em inglês <code>ExpDes</code>). Já os delineamentos desbalanceados serão analisados com o pacote <code>easyanova</code>.</p>
 
 </div>
 </div>

@@ -24,7 +24,7 @@
 <meta name="author" content="Eric Bastos Gorgens &amp; Marcio Leles Romarco de Oliveira" />
 
 
-<meta name="date" content="2021-01-25" />
+<meta name="date" content="2021-01-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -144,9 +144,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html"><i class="fa fa-check"></i><b>3</b> Pressuposições e transformações</a><ul>
-<li class="chapter" data-level="3.1" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#logarítmica"><i class="fa fa-check"></i><b>3.1</b> Logarítmica</a></li>
-<li class="chapter" data-level="3.2" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#raiz-quadrada"><i class="fa fa-check"></i><b>3.2</b> Raiz quadrada</a></li>
-<li class="chapter" data-level="3.3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#arcoseno"><i class="fa fa-check"></i><b>3.3</b> Arcoseno</a></li>
+<li class="chapter" data-level="3.1" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#transformação-logarítmica"><i class="fa fa-check"></i><b>3.1</b> Transformação Logarítmica</a></li>
+<li class="chapter" data-level="3.2" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#transformação-da-raiz-quadrada"><i class="fa fa-check"></i><b>3.2</b> Transformação da Raiz quadrada</a></li>
+<li class="chapter" data-level="3.3" data-path="pressuposições-e-transformações.html"><a href="pressuposições-e-transformações.html#transformação-do-arcoseno"><i class="fa fa-check"></i><b>3.3</b> Transformação do Arcoseno</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="anova-no-r.html"><a href="anova-no-r.html"><i class="fa fa-check"></i><b>4</b> ANOVA no R</a><ul>
 <li class="chapter" data-level="4.1" data-path="anova-no-r.html"><a href="anova-no-r.html#pacote-expdes.pt"><i class="fa fa-check"></i><b>4.1</b> Pacote ExpDes.pt</a></li>
@@ -204,23 +204,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="delineamento-inteiramente-casualizado" class="section level1">
 <h1><span class="header-section-number">Cap. 6</span> Delineamento inteiramente casualizado</h1>
-<p>Este é sem dúvida o caso mais simples dos delineamentos experimentais. Aqui, o fenômeno de estudo se resume a apenas duas fontes de variação: uma fonte de variação conhecida determinada pelo tratamento e uma fonte de variação desconhecida determinada pelo resíduo.</p>
+<p>Este é sem dúvida o caso mais simples dos delineamentos experimentais. Aqui, o fenômeno de estudo se resume a apenas duas fontes de variação: uma fonte de variação conhecida, determinada pelo tratamento e uma fonte de variação desconhecida, determinada pelo resíduo.</p>
 <div id="recapitulando" class="section level2">
 <h2><span class="header-section-number">6.1</span> Recapitulando</h2>
-<p>A análise começa pela determinação das somas de quadrados total, composta pela soma de quadrados do tratamento e pela soma de quadrados do resíduo. Uma vez obtidas as somas de quadrados, calculam-se os quadrados médios e o valor da estatística F. Se F calculado for superior ao F tabelado, assume-se que existe um efeito devido aos tratamentos, ao passo que se F calculado for inferior ao F tabelado, não há evidências suficientes para rejeitar a hipótese nula, aceitando-se a hipótese de que não existe efeito dos tratamentos.</p>
-<p>Sendo o efeito dos tratamentos significativo, realiza-se o desdobramento do efeito dos tratamentos através de um teste de médias se os tratamentos forem qualitativos, ou uma análise de regressão se os tratamentos forem quantitativos.</p>
+<p>A análise começa pela determinação das somas de quadrados total, que é formada pela soma de quadrados do tratamento e pela soma de quadrados do resíduo. Uma vez obtidas as somas de quadrados, calculam-se os quadrados médios e o valor da estatística F. Se F calculado for superior ao F tabelado, assume-se que existe um efeito devido aos tratamentos, ao passo que se F calculado for inferior ao F tabelado, não há evidências suficientes para rejeitar a hipótese nula, aceitando-se a hipótese de que não existe efeito dos tratamentos.</p>
+<p>Sendo o efeito dos tratamentos significativo, realiza-se o desdobramento por meio de um teste de médias, se os tratamentos forem qualitativos, ou por meio de uma análise de regressão se os tratamentos forem quantitativos.</p>
 </div>
 <div id="o-caso-balanceado" class="section level2">
 <h2><span class="header-section-number">6.2</span> O caso balanceado</h2>
-<p>Para exemplificar o caso balanceado, será analisado um estudo sobre a influência de três diferentes tipos de substrato no crescimento em altura de mudas. Cada tipo de substrato foi utilizado na germinação de 10 plantas. 90 dias após o semeio, as alturas das plântulas foram medidas e registradas numa planilha eletrônica (extensão .csv). Os dados podem ser resumidos através dos seguintes tópicos:</p>
+<p>Para exemplificar o caso balanceado, será analisado um estudo sobre a influência de três diferentes tipos de substrato no crescimento em altura de mudas. Cada tipo de substrato foi utilizado na germinação de 10 plantas. 90 dias após o semeio, as alturas das plântulas foram medidas e registradas numa planilha eletrônica. Os dados podem ser assim resumidos:</p>
 <ul>
 <li>Tratamento: 3 substratos</li>
 <li>10 repetições</li>
 <li>Variável de interesse: altura</li>
 </ul>
-<p>Abaixo seguem as medições de altura tabuladas. Embora o R seja compatível com diversas extensões de planilhas eletrônicas, utilizaremos ao longo do livro arquivos em extensão .csv.</p>
+<p>Abaixo seguem as medições de altura tabuladas. Embora o R seja compatível com diversas extensões de planilhas eletrônicas, serão utilizados ao longo do livro arquivos em extensão <code>.csv</code>.</p>
 <table>
-<caption><span id="tab:unnamed-chunk-45">Table 6.1: </span>Dados de delineamento inteiramente casualizado</caption>
+<caption><span id="tab:unnamed-chunk-47">Table 6.1: </span>Dados de delineamento inteiramente casualizado</caption>
 <thead>
 <tr class="header">
 <th align="left">tratamento</th>
@@ -381,24 +381,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>O primeiro passo é importar o arquivo csv contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1">dic1 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DIC 1.csv&quot;</span>)</a></code></pre></div>
+<p>O primeiro passo é importar o arquivo csv contendo o experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1">dic1 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DIC 1.csv&quot;</span>)</a></code></pre></div>
 <p>Lembre-se que de acordo com a formatação regional do seu computador pode ser necessário informar o separador de coluna e/ou separador decimal. Veja alguns exemplos de sintaxe logo em sequência.</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="co"># Para o caso de separador decimal &#39;.&#39; e deparador de coluna&#39;,&#39;</span></a>
-<a class="sourceLine" id="cb75-2" title="2">dic1 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Experimento DIC 1.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a>
-<a class="sourceLine" id="cb75-3" title="3"></a>
-<a class="sourceLine" id="cb75-4" title="4"><span class="co"># Para o caso de separador decimal &#39;,&#39; e separador de colune &#39;;&#39;</span></a>
-<a class="sourceLine" id="cb75-5" title="5">dic1 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Experimento DIC 1.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>)</a></code></pre></div>
-<p>Com a importação, cria-se um objeto chamado dic1, contendo os dados do experimento num formato de dataframe. Antes de partir para a análise, é fundamental explorar os dados de forma gráfica para conhecer melhor os dados e antecipar o resultado da análise estatística. A construção do gráfico ajuda na compreensão do fenômeno estudado e na validação da análise estatística escolhida. Por se tratar de um experimento com o tratamento formado por níveis qualitativos, recomenda-se o uso do boxplot().</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dic1, altura <span class="op">~</span><span class="st"> </span>tratamento)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<ol style="list-style-type: decimal">
+<li>Para o caso de separador decimal <code>.</code> e separador de coluna <code>,</code>:</li>
+</ol>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1">dic1 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Experimento DIC 1.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Para o caso de separador decimal <code>,</code> e separador de coluna <code>;</code>:</li>
+</ol>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1">dic1 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;Experimento DIC 1.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>)</a></code></pre></div>
+<p>Com a importação, cria-se um objeto chamado <code>dic1</code>, contendo os dados do experimento num formato de <code>dataframe</code>.</p>
+<p>Antes de partir para a análise, é fundamental explorar os dados de forma gráfica para conhecer melhor as relações e antecipar o resultado da análise estatística. A construção do gráfico ajuda na compreensão do fenômeno estudado e na validação da análise estatística escolhida. Por se tratar de um experimento com o tratamento formado por níveis qualitativos, recomenda-se o uso do <code>boxplot()</code>.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dic1, altura <span class="op">~</span><span class="st"> </span>tratamento)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
 <p>Pelo gráfico obtido, é razoável esperar que não haja diferenças significativas entre os tratamentos (3 substratos), pois existe uma grande sobreposição entre os interquartis dos substratos. Assim, espera-se que a análise estatística do experimento corrobore a conclusão empírica baseada no interpretação do gráfico.</p>
-<p>Com a função dic() do pacote ExpDes.pt será possível realizar toda a análise de um experimento de delineamento inteiramente casualizado, inclusive o desdobramento caso o teste F seja significativo e o tratamento tenha três ou mais níveis.</p>
-<p>Lembre-se que O pacote ExpDes.pt não faz parte da instalação padrão do R, e precisa ser adicionado à parte. A sintaxe básica da função dic() é:</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="kw">dic</span>(trat, resp, <span class="dt">quali =</span> <span class="ot">TRUE</span>, <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>, <span class="dt">sigT =</span> <span class="fl">0.05</span>, <span class="dt">sigF =</span> <span class="fl">0.05</span>)</a></code></pre></div>
-<p>No nosso experimento, não será necessário alterar nenhum parâmetro opcional, sendo então nosso comando construído da seguinte maneira:</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
-<a class="sourceLine" id="cb78-2" title="2"><span class="kw">dic</span>(dic1<span class="op">$</span>tratamento, dic1<span class="op">$</span>altura)</a></code></pre></div>
+<p>Com a função <code>dic()</code> do pacote <code>ExpDes.pt</code> será possível realizar toda a análise de um experimento de delineamento inteiramente casualizado, inclusive o desdobramento caso o teste F seja significativo e o tratamento tenha três ou mais níveis.</p>
+<p>Lembre-se que o pacote <code>ExpDes.pt</code> não faz parte da instalação padrão do R, e precisa ser adicionado à parte. A sintaxe básica da função <code>dic()</code> é:</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1"><span class="kw">dic</span>(trat, resp, <span class="dt">quali =</span> <span class="ot">TRUE</span>, <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>, <span class="dt">sigT =</span> <span class="fl">0.05</span>, <span class="dt">sigF =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<p>Neste experimento, não será necessário alterar nenhum parâmetro opcional, sendo então o comando construído da seguinte maneira:</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
+<a class="sourceLine" id="cb85-2" title="2"><span class="kw">dic</span>(dic1<span class="op">$</span>tratamento, dic1<span class="op">$</span>altura)</a></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
@@ -428,25 +432,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2 Substrato 2   5.44
 ## 3 Substrato 3   8.02
 ## ------------------------------------------------------------------------</code></pre>
-<p>A primeira parte da análise é o quadro da variância que apresenta as fontes de variação com seus respectivos graus de liberdade, somas de quadrados e quadrados médio. Neste quadro também é apresentado o resultado do F calculado, que é a razão do quadrado médio do resíduo com o quadrado médio do tratamento. No capítulo sobre a análise de variância, o quadro da ANOVA terminava aqui com o F calculado, sendo seguido pela análise de uma tabela da estatística F para comparar o valor do F calculado com o valor de F tabelado. Nos softwares, não é necessário recorrer à tabela F, já que o p-valor oferece uma interpretação direta da significância.</p>
-<p>O p-valor do <em>experimento’</em> foi 0.079121, o que equivale à um grau de significância de 7.9%. Sendo o nível de significância do nosso experimento é de 5%, o p-valor ficou acima da tolerância, indicando assim que o experimento não é significativo para um nível de 5%. Obviamente, também não é significativo para um nível de 1%.</p>
-<p>Logo abaixo do quadro da ANOVA, é apresentado o coeficiente de variação do experimento (CV): 47.83%. O CV é utilizado para medir a precisão do experimento, representado pelo o desvio-padrão expresso como porcentagem da média. A interpretação do CV é muito subjetiva e varia muito entre as áreas da ciência. Na área das ciências agrárias, convencionou-se que valores acima de 30% são considerados excessivos.</p>
+<p>A primeira parte da análise é o quadro da variância que apresenta as fontes de variação com seus respectivos graus de liberdade, somas de quadrado e quadrados médio. Neste quadro também é apresentado o resultado do F calculado, que é a razão do quadrado médio do resíduo com o quadrado médio do tratamento.</p>
+<p>No capítulo sobre a análise de variância, o quadro da ANOVA terminava com o F calculado, sendo seguido pela análise de uma tabela da estatística F para comparar o valor do F calculado com o valor de F tabelado. Nos softwares, não é necessário recorrer à tabela F, já que o <em>p-valor</em> oferece uma interpretação direta da significância.</p>
+<p>O <em>p-valor</em> do experimento foi 0,079121, o que equivale à um grau de significância de 7,9%. Sendo o nível de significância do experimento de 5%, o <em>p-valor</em> ficou acima da tolerância, indicando que o experimento não é significativo para um nível de 5%. Obviamente, também não é significativo para um nível de 1%.</p>
+<p>Logo abaixo do quadro da ANOVA, é apresentado o coeficiente de variação do experimento (CV): 47,83%. O CV é utilizado para medir a precisão do experimento, representado pelo o desvio-padrão expresso como porcentagem da média. A interpretação do CV é muito subjetiva e varia muito entre as áreas da ciência. Na área das ciências agrárias, convencionou-se que valores acima de 30% são considerados excessivos.</p>
 <p>Outra informação importante antes de aceitar o resultado da ANOVA, é verificar se os resíduos apresentam normalidade. Esta é uma pressuposição importante, uma vez que valida a escolha do modelo teórico do DIC para explicar o fenômeno:</p>
-<p><span class="math display">\[Y = Xmed + TRAT + Erro\]</span></p>
+<p><span class="math display">\[Y = \bar{X} + TRAT + Erro\]</span></p>
 <p>A não normalidade coloca em xeque o modelo teórico escolhido. Sendo então indicado a transformação dos dados e novo processamento da análise. A pressuposição deve então ser novamente verificada. Obtendo normalidade, os resultados obtidos com a variável transformada podem ser utilizados. Caso contrário, recomenda-se o uso de testes não paramétricos.</p>
-<p>No nosso exemplo, o teste de normalidade foi não significativo (p-valor = 0.06) e portanto não há evidências para rejeitar a hipótese de normalidade dos resíduos.</p>
-<p>A última parte da saída apresenta o resultado do desdobramento caso o teste F seja significativo. No nosso experimento, os tratamentos não são significativos e portanto, apresenta-se apenas a média de cada tratamento.</p>
+<p>Neste exemplo, o teste de normalidade foi não significativo (<em>p-valor</em> = 0,06) e portanto não há evidências para rejeitar a hipótese de normalidade dos resíduos.</p>
+<p>A última parte da saída apresenta o resultado do desdobramento caso o teste F seja significativo. Neste experimento, os tratamentos não são significativos e portanto, apresenta-se apenas a média de cada tratamento.</p>
 </div>
 <div id="outro-caso-balanceado" class="section level2">
 <h2><span class="header-section-number">6.3</span> Outro caso balanceado</h2>
-<p>Neste exemplo, segue um experimento em delineamento inteiramente casualizado, em que se avalia a resposta no desenvolvimento em altura das plantas de quatro níveis de um nutriente. Cada nível de nutriente foi repetido 6 vezes. Assim o experimento pode ser resumido como:</p>
+<p>Neste exemplo, segue outro experimento em delineamento inteiramente casualizado, em que se avalia a resposta no desenvolvimento em altura das plantas de quatro níveis de um nutriente. Cada nível de nutriente foi repetido 6 vezes. Assim o experimento pode ser resumido como:</p>
 <ul>
 <li>Tratamento: 4 dosagens de um nutriente</li>
 <li>6 repetições</li>
 <li>Variável de interesse: altura</li>
 </ul>
 <table>
-<caption><span id="tab:unnamed-chunk-51">Table 6.2: </span>Dados de outro delineamento inteiramente casualizado</caption>
+<caption><span id="tab:unnamed-chunk-54">Table 6.2: </span>Dados de outro delineamento inteiramente casualizado</caption>
 <thead>
 <tr class="header">
 <th align="right">tratamento</th>
@@ -578,13 +583,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>O primeiro passo é importar o arquivo csv contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1">dic2 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DIC 2.csv&quot;</span>)</a></code></pre></div>
-<p>Antes de chamar a análise estatística, recomenda-se explorar os dados graficamente. Por se tratar de um tratamento de níveis quantitativos, o gráfico de dispersão é mais adequado:</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> dic2, altura <span class="op">~</span><span class="st"> </span>tratamento)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
-<p>O gráfico indica que a dosagem de 50 apresenta um desenvolvimento em altura superior às demais dosagens. Outro ponto que fica claro com o gráfico, é que o tratamento tem um efeito quadrático sobre a altura. Por se tratar de um caso balanceado, a análise estatística pode ser realizada com a função dic() do pacote ExpDes.pt:</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
-<a class="sourceLine" id="cb82-2" title="2"><span class="kw">dic</span>(dic2<span class="op">$</span>tratamento, dic2<span class="op">$</span>altura, <span class="dt">quali =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1">dic2 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DIC 2.csv&quot;</span>)</a></code></pre></div>
+<p>Antes de chamar a análise estatística, recomenda-se explorar os dados graficamente. Por se tratar de um experimento de níveis quantitativos, o gráfico de dispersão é mais adequado:</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> dic2, altura <span class="op">~</span><span class="st"> </span>tratamento)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<p>O gráfico indica que a dosagem de 50 apresenta um desenvolvimento em altura superior às demais dosagens. Outro ponto que fica claro com o gráfico, é que o tratamento tem um efeito quadrático sobre a altura. Por se tratar de um caso balanceado, a análise estatística pode ser realizada com a função <code>dic()</code> do pacote <code>ExpDes.pt</code>:</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
+<a class="sourceLine" id="cb89-2" title="2"><span class="kw">dic</span>(dic2<span class="op">$</span>tratamento, dic2<span class="op">$</span>altura, <span class="dt">quali =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
@@ -684,15 +689,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residuos             20 1,783.8380  89.1919                
 ## -----------------------------------------------------------
 ## ------------------------------------------------------------------------</code></pre>
-<p>Note que o comando utilizado é muito semelhante ao exemplo anterior, com apenas uma diferença no parâmetro quali. Neste experimento, utiliza-se o parâmetro como FALSE por se tratar de um experimento com tratamento quantitativo.</p>
+<p>Note que o comando utilizado é muito semelhante ao exemplo anterior, com apenas uma diferença no parâmetro <code>quali</code>. Neste experimento, utiliza-se o parâmetro como <code>FALSE</code> por se tratar de um experimento com tratamento quantitativo.</p>
 <p>O modelo estatístico pode ser aceito uma vez que não há evidências para rejeitar a hipótese de normalidade dos resíduos. Desta forma, pode-se dar sequência na interpretação dos resultados da análise do experimento.</p>
-<p>Os tratamentos podem ser considerados significativos já que seu p-valor é inferior a 1%. O desdobramento do tratamento é realizado através de um teste de regressão, já que os níveis do tratamento são quantitativos.</p>
-<p>Como padrão, a função dic() desdobra os níveis do tratamento em três modelos: linear , quadrático e cúbico. Pelo gráfico de dispersão criado na fase de exploração dos dados, espera-se que o modelo quadrático seja o mais adequado para representação dos experimento. Com base nos resultados do desdobramento, nota-se que o modelo linear e cúbico são claramente inadequados. No caso do modelo linear, o p-valor indica não significância do efeito linear, reforçado pelo coeficiente de determinação próximo a zero. O efeito cúbico, também foi inadequado pela falta de graus de liberdade. Como experimento analisado conta apenas com 4 níveis no tratamento, não sobra graus de liberdade para o resíduo. O modelo quadrático, por sua vez, apresenta um efeito significativo frente à análise de variância, tanto do efeito quanto dos coeficientes. O coeficiente de determinação de 60.36 % também indica um ajuste satisfatório.</p>
-<p>A dose ótima do nutriente pode ser encontrado através do ponto de máximo do modelo quadrático considerando o intervalo dos níveis analisados, isto é, de 0 a 75. Cuidado com extrapolações, uma vez que o experimento não contempla doses fora do intervalo analisado.</p>
+<p>Os tratamentos podem ser considerados significativos já que seu <em>p-valor</em> é inferior a 1%. O desdobramento do tratamento é realizado através de um teste de regressão, já que os níveis do tratamento são quantitativos.</p>
+<p>Como padrão, a função <code>dic()</code> desdobra os níveis do tratamento em três modelos: linear, quadrático e cúbico. Pelo gráfico de dispersão criado na fase de exploração dos dados, espera-se que o modelo quadrático seja o mais adequado para representação do experimento.</p>
+<p>Com base nos resultados do desdobramento, nota-se que o modelo linear e cúbico são claramente inadequados. No caso do modelo linear, o <em>p-valor</em> indica não significância do efeito linear, reforçado pelo coeficiente de determinação próximo a zero. O efeito cúbico, também foi inadequado pela falta de graus de liberdade. Como experimento analisado conta apenas com 4 níveis no tratamento, não sobra graus de liberdade para o resíduo. O modelo quadrático, por sua vez, apresenta um efeito significativo frente à análise de variância, tanto do efeito quanto dos coeficientes. O coeficiente de determinação de 60,36% também indica um ajuste satisfatório.</p>
+<p>A dose ótima do nutriente pode ser encontrada através do ponto de máximo do modelo quadrático considerando o intervalo dos níveis analisados, isto é, de 0 a 75. Cuidado com extrapolações, uma vez que o experimento não contempla doses fora do intervalo analisado.</p>
 </div>
 <div id="o-caso-desbalanceado" class="section level2">
 <h2><span class="header-section-number">6.4</span> O caso desbalanceado</h2>
-<p>Experimentos desbalanceados são muito comuns na área das ciências agrárias. Isto ocorre principalmente devido à perda de parcelas ou unidades experimentais devido à contaminação, morte ou eventos não previstos. Voltaremos ao experimento em delineamento inteiramente casualizado, em que se avalia a resposta no desenvolvimento em altura das plantas de quatro níveis de um nutriente. Cada nível de nutriente foi repetido 6 vezes.</p>
+<p>Experimentos desbalanceados são muito comuns na área das ciências agrárias. Isto ocorre principalmente devido à perda unidades experimentais devido à contaminação, morte ou eventos não previstos. Veja o experimento em delineamento inteiramente casualizado, em que se avalia a resposta no desenvolvimento em altura das plantas de quatro níveis de um nutriente. Cada nível de nutriente foi repetido 6 vezes.</p>
 <ul>
 <li>Tratamento: 4 dosagens de um nutriente</li>
 <li>6 repetições</li>
@@ -704,7 +710,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>dose 75 repetição 2</li>
 </ul>
 <table>
-<caption><span id="tab:unnamed-chunk-55">Table 6.3: </span>Dados de outro delineamento inteiramente casualizado, porém neste caso desbalanceado</caption>
+<caption><span id="tab:unnamed-chunk-58">Table 6.3: </span>Dados de outro delineamento inteiramente casualizado, porém neste caso desbalanceado</caption>
 <thead>
 <tr class="header">
 <th align="right">tratamento</th>
@@ -825,14 +831,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>O primeiro passo é importar o arquivo csv contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1">dic3 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DIC 3.csv&quot;</span>)</a></code></pre></div>
+<p>O primeiro passo é importar o arquivo contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1">dic3 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DIC 3.csv&quot;</span>)</a></code></pre></div>
 <p>Antes de chamar a análise estatística, recomenda-se explorar os dados graficamente. Por se tratar de um tratamento de níveis quantitativos, o gráfico de dispersão é mais adequado:</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> dic3, altura <span class="op">~</span><span class="st"> </span>tratamento)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
-<p>Mesmo se tratando de um experimento desbalanceado, por se tratar de um DIC e consequentemente não existir interações a serem calculadas, pode-se utilizar a ANOVA Tipo I. Com relação aos parâmetros opcionais, apenas o parâmetro quali precisa ser alterado para FALSE, por se tratar tratamento quantitativo:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
-<a class="sourceLine" id="cb86-2" title="2"><span class="kw">dic</span>(dic3<span class="op">$</span>tratamento, dic3<span class="op">$</span>altura, <span class="dt">quali =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> dic3, altura <span class="op">~</span><span class="st"> </span>tratamento)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<p>Mesmo se tratando de um experimento desbalanceado, por se tratar de um DIC e consequentemente não existir interações a serem calculadas, pode-se utilizar a ANOVA Tipo I. Com relação aos parâmetros opcionais, apenas o parâmetro <code>quali</code> precisa ser alterado para <code>FALSE</code>, por se tratar tratamento quantitativo:</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
+<a class="sourceLine" id="cb93-2" title="2"><span class="kw">dic</span>(dic3<span class="op">$</span>tratamento, dic3<span class="op">$</span>altura, <span class="dt">quali =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
