@@ -2,9 +2,9 @@
 
 No caso de um fatorial duplo em blocos casualizados, a ANOVA contará com cinco fontes de variação: uma fonte de variação conhecida atribuída ao bloco, outra fonte de variação conhecida determinada pelo tratamento A, outra fonte de variação conhecida determinada pelo tratamento B, outra fonte de variação conhecida determinada pela interação entre os dois tratamentos e uma quinta fonte de variação desconhecida determinada pelo resíduo. O modelo estatístico do delineamento fatorial duplo inteiramente casualizado é:
 
-$$Y = Xmed + BLOCO + TRAT A + TRAT B + (TRAT A * TRAT B) + Erro$$
+$$Y = \bar{X} + BLOCO + TRAT A + TRAT B + (TRAT A * TRAT B) + Erro$$
 
-De forma semelhante ao experimento fatorial inteiramente casualizado, o caso balanceado será analisado através do pacote ExpDes.pt (função fat2.dbc()). Já o caso desbalanceado será analisado pelo pacote easyanova (função ea2() e design=2).
+De forma semelhante ao experimento fatorial inteiramente casualizado, o caso balanceado será analisado através do pacote `ExpDes.pt` (função `fat2.dbc()`). Já o caso desbalanceado será analisado pelo pacote `easyanova` (função `ea2()` e `design=2`).
 
 ## O caso balanceado
 
@@ -20,63 +20,90 @@ fatDBC1 = read.csv('./data/Experimento Fatorial Duplo DBC 1.csv')
 kable(fatDBC1, caption = "Dados de experimento em fatorial DBC")
 ```
 
-O primeiro passo é importar o arquivo csv contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:
+O primeiro passo é importar o arquivo contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:
 
 ```{r}
 fatDBC1 = read.csv("./data/Experimento Fatorial Duplo DBC 1.csv", 
                    sep = ",", dec = ".")
 ```
 
-Para explorar este experimento graficamente, tanto a função boxplot() quanto a função plot() serão usadas. Isto ocorre porque temos um fator quantitativo (doses) e outro fator qualitativos (espécies). Assim, sempre que estivermos analisando o efeito das doses, devemos utilizar gráficos de dispersão. Enquanto que ao analisarmos o efeito dos clones, o boxplot será mais indicado. 
+Para explorar este experimento graficamente, tanto a função `boxplot()` quanto a função `plot()` serão usadas. Isto ocorre porque o experimento apresenta um fator quantitativo (doses) e outro fator qualitativo (espécies). Assim, sempre que for analisado o efeito das doses, serão utilizar gráficos de dispersão. Enquanto que ao analisar o efeito dos clones, o boxplot será utilizado. 
+
+1. Considerando apenas fator 1:
 
 ```{r}
-# Considerando apenas fator 1
 plot(data = fatDBC1, altura ~ dose)
+```
 
-# Considerando apenas fator 2
+2. Considerando apenas fator 2:
+
+```{r}
 boxplot(data = fatDBC1, altura ~ especie)
+```
 
-# Interação dos fatores
+3. Interação dos fatores:
+
+```{r}
 boxplot(data = fatDBC1, altura ~ especie/dose)
+```
 
-# Efeito dos blocos
+4. Efeito dos blocos:
+
+```{r}
 boxplot(data = fatDBC1, altura ~ especie/bloco)
 boxplot(data = fatDBC1, altura ~ dose/bloco)
+```
 
-# Isolando os níveis do fator 2
-# Fixando especie igual a 2
+5. Fixando especie igual a 2:
+```{r}
 plot(data = fatDBC1[fatDBC1$especie == 2,], altura ~ dose)
+```
 
-# Fixando especie igual a 5
+6. Fixando especie igual a 5:
+```{r}
 plot(data = fatDBC1[fatDBC1$especie == 5,], altura ~ dose)
+```
 
-# Fixando especie igual a 7
+7. Fixando especie igual a 7:
+
+```{r}
 plot(data = fatDBC1[fatDBC1$especie == 7,], altura ~ dose)
+```
 
+8. Fixando dose igual a 0:
 
-# Isolando os níveis do fator 1
-# Fixando dose igual a 0
+```{r}
 boxplot(data = fatDBC1[fatDBC1$dose == 0,], altura ~ especie)
+```
 
-# Fixando dose igual a 25
+9. Fixando dose igual a 25:
+```{r}
 boxplot(data = fatDBC1[fatDBC1$dose == 25,], altura ~ especie)
+```
 
-# Fixando dose igual a 50
+10. Fixando dose igual a 50:
+
+```{r}
 boxplot(data = fatDBC1[fatDBC1$dose == 50,], altura ~ especie)
+```
 
-# Fixando dose igual a 75
+11. Fixando dose igual a 75:
+
+```{r}
 boxplot(data = fatDBC1[fatDBC1$dose == 75,], altura ~ especie)
+```
 
-# Fixando dose igual a 100
+12. Fixando dose igual a 100:
+
+```{r}
 boxplot(data = fatDBC1[fatDBC1$dose == 100,], altura ~ especie)
 ```
 
-
 Com base nos gráficos apresentados, é razoável acreditar que há um efeito significativo da espécie, mas não não fica muito evidente o efeito significativo da dose, da interação e do bloco. Nota-se que as doses possuem comportamentos diferentes, variando de uma tendência quadrática à uma tendência sigmoidal (cúbica).
 
-Note que quanto mais fatores e interações estiverem presentes em nosso experimento, mais complicado vai ficando a análise gráfica e também a análise estatística. E é por este motivo que desencoraja-se o uso de experimentos fatoriais triplos. Embora os pacotes de análise experimental possuam funções para experimentos fatoriais triplos, não apresentaremos exemplos aqui neste livro. Tente discutir um experimento fatorial triplo com efeito dos fatores, interações duplas e interação tripla significativa!
+Note que quanto mais fatores e interações estiverem presentes no experimento, mais complicado vai ficando a análise gráfica e também a análise estatística. E é por este motivo que desencoraja-se o uso de experimentos fatoriais triplos. Embora os pacotes de análise experimental possuam funções para experimentos fatoriais triplos, eles não serão apresentados aqui neste livro.
 
-A análise estatística será feita pela função fat2.dbc() do pacote ExpDes.pt. A sintaxe básica da função pode ser vista acessando a página de ajuda da função:
+A análise estatística será feita pela função `fat2.dbc()` do pacote `ExpDes.pt`. A sintaxe básica da função pode ser vista acessando a página de ajuda da função:
 
 ```{r eval=FALSE}
 fat2.dbc(fator1, fator2, bloco, resp, quali = c(TRUE, TRUE), 
@@ -85,7 +112,7 @@ fat2.dbc(fator1, fator2, bloco, resp, quali = c(TRUE, TRUE),
 ```
 
 
-Lembrando que como temos um fator quantitativo e um fator qualitativo, além dos parâmetros obrigatórios, será necessário ajustar o parâmetro quali:
+Lembrando que como se tem um fator quantitativo e um fator qualitativo, além dos parâmetros obrigatórios, será necessário ajustar o parâmetro `quali`:
 
 ```{r}
 require(ExpDes.pt)
@@ -96,9 +123,9 @@ fat2.dbc(fatDBC1$dose, fatDBC1$especie, fatDBC1$bloco,
 ```
 
 
-Uma vez que os dados apresentaram normalidade, o modelo estatístico escolhido é adequado e a ANOVA pode ser então considerada. Com exceção do efeito do bloco, todos apresentaram alta significância, incluindo a interação. Desta forma, os efeitos devem ser analisados em conjunto através do desdobramento. O pacote ExpDes.pt já realiza para você. 
+Uma vez que os dados apresentaram normalidade, o modelo estatístico escolhido é adequado e a ANOVA pode ser então considerada. Com exceção do efeito do bloco, todos apresentaram significância, incluindo a interação. Desta forma, os efeitos devem ser analisados em conjunto através do desdobramento. 
 
-Fique atento! Não esqueça de definir na função se os fatores são qualitativos ou quantitativos. Como vimos anteriormente, experimentos qualitativos são desdobrados com teste de médias dentro fixando um dos fatores, enquanto que fatores quantitativos são desdobrados através da análise de regressão fixando um dos fatores. 
+Fique atento! Não esqueça de definir na função se os fatores são qualitativos ou quantitativos. Experimentos qualitativos são desdobrados com teste de médias fixando um dos fatores, enquanto que fatores quantitativos são desdobrados através da análise de regressão fixando um dos fatores. 
 
 ## O caso desbalanceado
 
@@ -115,46 +142,71 @@ fatDBC2 = read.csv('./data/Experimento Fatorial Duplo DBC 2.csv')
 kable(fatDBC2, caption = "Dados de outro experimento em fatorial DBC")
 ```
 
-O primeiro passo é importar o arquivo csv contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:
+O primeiro passo é importar o arquivo contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:
 
 ```{r}
 fatDBC2 = read.csv('./data/Experimento Fatorial Duplo DBC 2.csv', 
                    sep = ",", dec = ".")
 ```
 
-Assim como no experimento balanceado, os dados devem ser explorados graficamente. Diversas opções podem ser utilizadas a partir do pacote gráfico básico. Veja alguns exemplos e tente tirar sua próprias conclusões sobre a análise do experimento que será feita logo em seguida:
+Assim como no experimento balanceado, os dados devem ser explorados graficamente. Diversas opções podem ser utilizadas a partir do pacote gráfico básico.
+
+1. Considerando apenas fator 1:
 
 ```{r}
-# Considerando apenas fator 1
 plot(data = fatDBC2, peso ~ combate)
+```
 
-# Considerando apenas fator 2
+2. Considerando apenas fator 2:
+
+```{r}
 boxplot(data = fatDBC2, peso ~ especie)
+```
 
-# Interação dos fatores
+3. Interação dos fatores:
+
+```{r}
 boxplot(data = fatDBC2, peso ~ especie/combate)
+```
 
-# Efeito dos blocos
+4. Efeito dos blocos:
+
+```{r}
 boxplot(data = fatDBC2, peso ~ especie/bloco)
 boxplot(data = fatDBC2, peso ~ combate/bloco)
+```
 
-# Isolando os níveis do fator 2
-# Fixando especie igual a 2
+5. Fixando especie igual a 2:
+
+```{r}
 plot(data = fatDBC2[fatDBC2$especie == 2,], peso ~ combate)
+```
 
-# Fixando especie igual a 5
+6. Fixando especie igual a 5:
+
+```{r}
 plot(data = fatDBC2[fatDBC2$especie == 5,], peso ~ combate)
+```
 
-# Isolando os níveis do fator 1
-# Fixando combate igual a 0
+7. Fixando combate igual a 0:
+
+```{r}
 boxplot(data = fatDBC2[fatDBC2$combate == 0,], peso ~ especie)
+```
 
-# Fixando combate igual a 50
+8. Fixando combate igual a 50:
+
+```{r}
 boxplot(data = fatDBC2[fatDBC2$combate == 50,], peso ~ especie)
 
-# Fixando combate igual a 100
+```
+
+9. Fixando combate igual a 100:
+
+```{r}
 boxplot(data = fatDBC2[fatDBC2$combate == 100,], peso ~ especie)
 ```
+
 
 Como o delineamento fatorial duplo em blocos casualizados pode ter a interação significativa, é fundamental considerar a análise através da ANOVA tipo III. A sintaxe da função é:
 
@@ -164,26 +216,26 @@ ea2(data, design = 1, alpha = 0.05, cov = 4, list = FALSE,
 ```
 
 
-Como já mencionado, o pacote easyanova exige que os dados sejam apresentados em forma de dataframe contendo apenas as colunas relevantes para a análise. No caso de um experimento fatorial duplo em blocos casualizados, a ordem esperada das colunas é:
+Como já mencionado, o pacote `easyanova` exige que os dados sejam apresentados em forma de dataframe contendo apenas as colunas relevantes para a análise. No caso de um experimento fatorial duplo em blocos casualizados, a ordem esperada das colunas é:
 
 1. Fator A
 2. Fator B
 3. Bloco
 4. Variável resposta
 
-Qualquer variável extra deve ser removida dos dados e a ordem acima deve ser respeitada para o correto uso do pacote. Além de apresentar os dados na estrutura correta, o parâmetro design deve ser ajustado para 2, indicando fatorial duplo em blocos casualizados.
+Qualquer variável extra deve ser removida dos dados e a ordem acima deve ser respeitada para o correto uso do pacote. Além de apresentar os dados na estrutura correta, o parâmetro `design` deve ser ajustado para `2`, indicando fatorial duplo em blocos casualizados.
 
 ```{r}
 require(easyanova)
 r.aov = ea2(fatDBC2, design = 2)
 ```
 
-Os resultados são armazenados numa lista de 10 posições, aqui salva numa variável denominada de r.aov. As 10 posições contém:
+Os resultados são armazenados numa lista de 10 posições, aqui salva numa variável denominada de `r.aov`. As 10 posições contém:
 
 1. Análise de variância
 2. Comparação de médias do fator 1
 3. Teste de comparação múltipla do fator 1
-4. Comparação de médias do fator 2                            
+4. Comparação de médias do fator 2
 5. Teste de comparação múltipla do fator 2
 6. Comparação de médias do fator 1 dentro dos níveis do fator 2
 7. Teste de comparação múltipla do fator 1 dentro dos níveis do fator 2
@@ -191,7 +243,7 @@ Os resultados são armazenados numa lista de 10 posições, aqui salva numa vari
 9. Teste de comparação múltipla do fator 2 dentro dos níveis do fator 1
 10. Análise das pressuposições
 
-Nota-se que o teste de Shapiro-Wilk não é significativo, aceitando-se portanto o teste de nulidade: os resíduos são normais.
+Nota-se que o teste de Shapiro-Wilk não é significativo, aceitando-se portanto o teste de nulidade, e portanto de resíduos normais.
 
 ```{r}
 r.aov[10]
@@ -204,14 +256,18 @@ r.aov[1]
 ```
 
 
-Parte-se direto, portanto, para a análise dos respectivos desdobramentos presentes nas posições 6 e 8 da lista de resultados (r.aov[6] e r.aov[8]):
+Parte-se direto, portanto, para a análise dos respectivos desdobramentos presentes nas posições 6 e 8 da lista de resultados (`r.aov[6]` e `r.aov[8]`):
+
+1. Comparação de médias do fator 1 dentro do fator 2:
 
 ```{r}
-# Comparação de médias do fator 1 dentro do fator 2
 r.aov[6]
+```
 
-# Comparação de médias do fator 2 dentro do fator 1
+2. Comparação de médias do fator 2 dentro do fator 1:
+
+```{r}
 r.aov[8]
 ```
 
-Fique atento! O pacote easyanova não diferencia fatores qualitativos e quantitativos, analisando todos os fatores e seus desdobramentos com teste comparativo de média.
+Fique atento! O pacote `easyanova` não diferencia fatores qualitativos e quantitativos, analisando todos os fatores e seus desdobramentos com teste comparativo de média.

@@ -4,22 +4,22 @@ No delineamento em parcelas subdivididas existem dois tipos de tratamento: o pri
 
 Indica-se o uso de parcelas subdivididas quando:
 
-1. A parcela é uma “unidade” que pode receber vários tratamentos secundários. No setor florestal esta unidade pode ser uma vaso, ou mesmo uma árvore.
+1. A parcela é uma “unidade” que pode receber vários tratamentos secundários. No setor florestal esta unidade pode ser um vaso, ou mesmo uma árvore.
 2. Não é possível instalar o experimento no esquema fatorial.
 3. O tratamento principal exige parcelas custosas, seja do ponto de vista financeiro ou do esforço.
 4. A busca pela precisão está no tratamento secundário.
-5. Deseja-se que a Variação entre subparcelas seja menor que entre as parcelas.
+5. Deseja-se que a variação entre subparcelas seja menor que entre as parcelas.
 
-O modelo estatístico do delineamento fatorial duplo inteiramente casualizado é:
+O modelo estatístico do delineamento em parcela subdividida é:
 
-$$Y = Xmed + BLOCO + TRAT A + Erro Parcela + TRAT B + (TRAT A * TRAT B) + Erro Subparcela$$
+$$Y = \bar{X} + BLOCO + TRAT A + Erro_{Parcela} + TRAT B + (TRAT A * TRAT B) + Erro_{Subparcela}$$
 
 ## O caso balanceado
 
-Como exemplo de um desenho de parcela subdividida balanceado, vamos analisar um experimento de regeneração natural do sub bosque de três formações florestais. Nas parcelas de cada uma das área naturais estudadas, implantaram-se subparcelas correspondendo a três alturas de desrama. O efeito dos tratamentos foi medido através do número de indivíduos regenerantes.
+Como exemplo de um desenho de parcela subdividida balanceado, tem-se um experimento de regeneração natural do sub bosque de três formações florestais. Nas parcelas de cada uma das área naturais estudadas, implantaram-se subparcelas correspondendo a três alturas de desrama. O efeito dos tratamentos foi medido através do número de indivíduos regenerantes.
 
 - Fator na parcela: Floresta A, B e C
-- Fator nas subparcelas: Desrama 2, 5 e 7 metros
+- Fator nas subparcelas: Desrama a 2, 5 e 7 metros
 - 3 repetições
 - Variável de interesse: número de indivíduos regenerantes
 
@@ -28,48 +28,69 @@ sub = read.csv('./data/Experimento Subdividida.csv')
 kable(sub, caption = "Dados de experimento em parcela subdividida")
 ```
 
-O primeiro passo é importar o arquivo csv contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:
+O primeiro passo é importar o arquivo contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:
 
 ```{r}
 sub = read.csv("./data/Experimento Subdividida.csv", 
                sep = ",", dec = ".")
 ```
 
-Você já sabe! Antes de ir para análise estatística explore graficamente seus dados. Veja alguns exemplos de gráficos que podem ajudá-lo a construir suas hipóteses e antecipar os resultados que serão apresentados pelas análise estatística:
+Você já sabe! Antes de ir para análise estatística explore graficamente os dados.
+
+1. Considerando apenas tratamento principal:
 
 ```{r}
-# Considerando apenas tratamento principal
 boxplot(data = sub, indiv ~ floresta)
+```
 
-# Considerando apenas tratamento secundário
+2. Considerando apenas tratamento secundário:
+
+```{r}
 plot(data = sub, indiv ~ desrama)
+```
 
-# Interação dos tratamentos
+3. Interação dos tratamentos:
+
+```{r}
 boxplot(data = sub, indiv ~ floresta/desrama)
+```
 
-# Isolando os níveis de desrana 
-# Fixando desrana até 2 metros
+4. Fixando desrana até 2 metros:
+```{r}
 boxplot(data = sub[sub$desrama == 2,], indiv ~ floresta)
+```
 
-# Fixando desrana até 5 metros
+5. Fixando desrana até 5 metros:
+```{r}
 boxplot(data = sub[sub$desrama == 5,], indiv ~ floresta)
+```
 
-# Fixando desrana até 7 metros
+6. Fixando desrana até 7 metros:
+
+```{r}
 boxplot(data = sub[sub$desrama == 7,], indiv ~ floresta)
+```
 
-# Isolando os tipos de floresta
-# Fixando floresta igual a A
+7. Fixando floresta igual a A:
+
+```{r}
 plot(data = sub[sub$floresta == "A",], indiv ~ desrama)
+```
 
-# Fixando floresta igual a B
+8. Fixando floresta igual a B:
+
+```{r}
 plot(data = sub[sub$floresta == "B",], indiv ~ desrama)
+```
 
-# Fixando floresta igual a C
+9. Fixando floresta igual a C:
+
+```{r}
 plot(data = sub[sub$floresta == "C",], indiv ~ desrama)
 ```
 
 
-Analisando os gráficos acima, os fatores parecem significativos, assim como a interação. Os dados apresentam-se consistentes, sem a presença pontos fora da tendência. Infelizmente o pacote ExpDes.pt não inclui as análises de pressuposição para o delineamento de parcelas subdivididas. Existem várias maneiras de contornar esta questão, uma delas é combinar as qualidades de diferentes pacotes. Aqui por exemplo, podemos rodar a ANOVA a partir de ambos os pacotes easyanova e ExpDes.pt. Assim podemos utilizar os testes estatísticos das pressuposições de um e a ANOVA e desdobramentos do outro.
+Analisando os gráficos acima, os fatores parecem significativos, assim como a interação. Os dados apresentam-se consistentes, sem a presença de pontos fora da tendência. O pacote `ExpDes.pt` não inclui as análises de pressuposiçôes para o delineamento de parcelas subdivididas. Existem várias maneiras de contornar esta questão, uma delas é combinar as qualidades de diferentes pacotes. Aqui por exemplo, utiliza-se os testes estatísticos das pressuposições de um pacote e a ANOVA e desdobramentos do outro.
 
 ```{r}
 require(easyanova)
@@ -77,20 +98,13 @@ r.aov = ea2(sub, design=4)
 ```
 
 
-Para conferência, é possível verificar que a ANOVA é igual em ambos os pacotes.
-
-```{r}
-r.aov[1]
-```
-
-
-Como já vimos anteriormente, o teste de normalidade e de homogeneidade de variâncias pode ser obtida através da posição 10 da lista de resultados da função easyanova. 
+Como já foi visto, o teste de normalidade e de homogeneidade podem ser obtidos na posição 10 da função `ea2()` do pacote `easyanova`. 
 
 ```{r}
 r.aov[10]
 ```
 
-A sintaxe da função para análise de parcela subdividida no pacote ExpDes.pt é:
+Uma vez confirmadas as pressuposições, retorna-se ao pacote `ExpDes.pt`. A sintaxe da função para análise de parcela subdividida no pacote é:
 
 ```{r eval=FALSE}
 psub2.dic(fator1, fator2, repet, resp, quali = c(TRUE, TRUE),
@@ -99,7 +113,7 @@ psub2.dic(fator1, fator2, repet, resp, quali = c(TRUE, TRUE),
 ```
 
 
-No nosso exemplo temos o fator principal (fator 1) como qualitativo e o fator secundário (fator 2) como quantitativo. Assim informando os parâmetros obrigatórios juntamente com os parâmetros quali e fac.names (nomes dos fatores) temos:
+No exemplo tem-se o fator principal (fator 1) como qualitativo e o fator secundário (fator 2) como quantitativo. Assim informando os parâmetros obrigatórios juntamente com os parâmetros `quali` e `fac.names` (nomes dos fatores) tem-se:
 
 ```{r}
 require(ExpDes.pt)
@@ -109,11 +123,11 @@ psub2.dic(sub$floresta, sub$desrama, sub$rep, sub$indiv,
 ```
 
 
-Como esperado significância dos fatores: floresta e desrama. No entanto, a interação não foi significativa a 5%. Desta forma, não é necessário analisar a interação entre os fatores.
+Como esperado, foi observado a significância dos fatores: floresta e desrama. No entanto, a interação não foi significativa a 5%. Desta forma, não é necessário analisar a interação entre os fatores.
 
 ## O caso desbalanceado
 
-Neste exemplo desbalanceado vamos analisar um experimento em que três alturas de desrama são subdivididos em três espécies florestais. O efeito dos tratamentos foi medido através da produção de madeira em metros cúbicos.
+Neste exemplo desbalanceado será analisado um experimento em que três alturas de desrama são subdivididos em três espécies florestais. O efeito dos tratamentos foi medido através da produção de madeira em metros cúbicos.
 
 - Fator na parcela: Espécie florestal: A, B ou C.
 - Fator nas subparcelas: Desrama 2, 5 e 7 metros.
@@ -126,48 +140,70 @@ sub2 = read.csv('./data/Experimento Subdividida 2.csv')
 kable(sub2, caption = "Dados de outro experimento em parcela subdividida, porém desbalanceado.")
 ```
 
-O primeiro passo é importar o arquivo csv contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:
+O primeiro passo é importar o arquivo contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:
 
 ```{r}
 sub2 = read.csv("./data/Experimento Subdividida 2.csv", sep = ",", dec = ".")
 ```
 
-Os dados devem ser explorados graficamente antes de seguir com a análise de variância do experimento. Veja os gráficos abaixo e tente antecipar os resultados dos testes estatísticos.
+Os dados devem ser explorados graficamente antes de seguir com a análise de variância do experimento.
+
+1. Considerando apenas tratamento principal:
 
 ```{r}
-# Considerando apenas tratamento principal
 boxplot(data = sub2, volume ~ especie)
+```
 
-# Considerando apenas tratamento secundário
+2. Considerando apenas tratamento secundário:
+
+```{r}
 plot(data = sub2, volume ~ desrama)
+```
 
-# Interação dos tratamentos
+3. Interação dos tratamentos:
+
+```{r}
 boxplot(data = sub2, volume ~ especie/desrama)
+```
 
-# Isolando os níveis de desrama
-# Fixando desrana até 2 metros
+4. Fixando desrana até 2 metros:
+
+```{r}
 boxplot(data = sub2[sub2$desrama == 2,], volume ~ especie)
+```
 
-# Fixando desrama até 5 metros
+5. Fixando desrama até 5 metros:
+
+```{r}
 boxplot(data = sub2[sub2$desrama == 5,], volume ~ especie)
+```
 
-# Fixando desrama até 7 metros
+6. Fixando desrama até 7 metros:
+
+```{r}
 boxplot(data = sub2[sub2$desrama == 7,], volume ~ especie)
+```
 
+7. Fixando espécie igual a A:
 
-# Isolando os tipos de floresta
-# Fixando espécie igual a A
+```{r}
 plot(data = sub2[sub2$especie == "A",], volume ~ desrama)
+```
 
-# Fixando espécie igual a B
+8. Fixando espécie igual a B:
+
+```{r}
 plot(data = sub2[sub2$especie == "B",], volume ~ desrama)
+```
 
-# Fixando espécie igual a C
+9. Fixando espécie igual a C:
+
+```{r}
 plot(data = sub2[sub2$especie == "C",], volume ~ desrama)
 ```
 
 	
-Os dados por se tratarem de experimento desbalanceados com efeito da interação relevante devem ser analisados com o pacote easyanova. A função será ea2() e possui a sintaxe básica:
+Os dados por se tratarem de experimento desbalanceados com efeito da interação relevante devem ser analisados com o pacote `easyanova`. A função será `ea2()` e possui a sintaxe básica:
 
 ```{r eval=FALSE}
 ea2(data, design = 1, alpha = 0.05, cov = 4, list = FALSE, 
@@ -181,7 +217,7 @@ Os dados devem ser apresentados na ordem:
 3. Fator nas subparcelas
 4. Variável resposta
 
-O parâmetro design deve ser ajustado para 4, resultando no seguinte comando:
+O parâmetro `design` deve ser definido como `4`, resultando no seguinte comando:
 
 ```{r}
 require(easyanova)
@@ -189,26 +225,31 @@ r.aov = ea2(sub2, design=4)
 ```
 
 
-Os resultados podem ser acessados escolhendo qual elemento da lista deseja ser visualizado:
+Os resultados podem ser acessados escolhendo um dos elementos da lista:
 
 ```{r}
 r.aov[10]
 ```
 
 
-	O teste de normalidade apresentou valor não significativo, indicando assim que não há evidências para rejeitar a normalidade dos resíduos.
+O teste de normalidade apresentou valor não significativo, indicando assim que não há evidências para rejeitar a normalidade dos resíduos.
 
 ```{r}
 r.aov[1]
 ```
 
 
-Sendo a interação não significativa, os fatores (da parcela e da subparcela) devem ser analisados independentemente.
+Sendo a interação não significativa, os fatores (da parcela e da subparcela) devem ser analisados de forma independente.
+
+1. Comparação das parcelas:
 
 ```{r}
-# Comparação das parcelas
 r.aov[2]
+```
 
-# Comparação das subdivisões
+2. Comparação das subdivisões:
+
+```{r}
 r.aov[4]
 ```
+

@@ -1,2 +1,7 @@
-# Proximos passos
+# Próximos passos
 
+Este livro não tem a pretenção de esgotar o assunto relacionado à análise de expermentos. Ao longo do texto foi possível se familiarizar com os comandos, funções e pacotes estátisticos disponíveis no R.
+
+Sem dúvida existem muitos materiais interessante que podem ser acessados para ir mais a fundo no tema. Programas de pós graduação, bem como cursos de extensão também são um excelente caminho para o desevolvimento das habilidades.
+
+Sucesso na sua caminhada.

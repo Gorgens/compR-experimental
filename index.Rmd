@@ -5,6 +5,8 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
 
+![Capa](./figuras/capa.png)
+
 # Sobre o livro
 
 Bem-vindo ao mundo do R. O R não é só um software, nem se resume a uma linguagem. O R é um estilo de pesquisar, estudar e ensinar. Através de seus códigos e scripts você entrará num mundo sem limites, aberto à experimentação e à troca de experiência. Um mundo em que não existe apenas uma forma de se chegar à resposta correta, mas sim uma gama de alternativas! Você deve estar se perguntando: porque começar a trabalhar com o R? A resposta passa por algumas perspectivas interessantes.
