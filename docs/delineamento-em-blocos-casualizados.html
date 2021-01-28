@@ -21,7 +21,7 @@
   
   
 
-<meta name="author" content="Eric Bastos Gorgens &amp; Marcio Leles Romarco de Oliveira" />
+<meta name="author" content="Eric Bastos Gorgens, Marcio Leles Romarco de Oliveira" />
 
 
 <meta name="date" content="2021-01-28" />
@@ -131,7 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Experimental</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Sobre o livro</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução</a></li>
 <li class="chapter" data-level="2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html"><i class="fa fa-check"></i><b>2</b> Delineamentos experimentais</a><ul>
 <li class="chapter" data-level="2.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova"><i class="fa fa-check"></i><b>2.1</b> ANOVA</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#partição-da-variação"><i class="fa fa-check"></i><b>2.1.1</b> Partição da variação</a></li>
@@ -220,7 +220,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Variável de interesse: diâmetro</li>
 </ul>
 <table>
-<caption><span id="tab:unnamed-chunk-66">Table 7.1: </span>Dados de delineamento em blocos casualizado</caption>
+<caption><span id="tab:unnamed-chunk-62">Table 7.1: </span>Dados de delineamento em blocos casualizado</caption>
 <thead>
 <tr class="header">
 <th align="right">desbaste</th>
@@ -473,46 +473,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>O primeiro passo é importar o arquivo do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1">dbc1 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DBC 1.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1">dbc1 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DBC 1.csv&quot;</span>)</a></code></pre></div>
 <p>Antes de partir para a análise, é fundamental explorar os dados de forma gráfica para conhecer melhor os dados e antecipar o resultado da análise estatística. A construção do gráfico ajuda na compreensão do fenômeno estudado e na validação da análise estatística escolhida. Por se tratar de um experimento com o tratamento formado por níveis quantitativos, porém com apenas dois níveis, recomenda-se o uso do <code>boxplot()</code>.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc1, diametro <span class="op">~</span><span class="st"> </span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc1, diametro <span class="op">~</span><span class="st"> </span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
 <p>Note que os rótulo do eixo X são compostos pela união do desbaste e do bloco. Pode ser que dependendo do espaço disponível alguns rótulos sejam omitidos, mas ele devem ser lidos alternadamente, uma caixa para 30.1, outra para 50.1, depois 30.2, seguido de 50.2 e assim por diante.</p>
 <p>Os tratamentos podem ser analisados isoladamente em relação a cada bloco, utilizando um filtro para escolher qual bloco considerar.</p>
 <ol style="list-style-type: decimal">
 <li>Para bloco igual a 1:</li>
 </ol>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc1[dbc1<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">1</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc1[dbc1<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">1</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Para bloco igual a 2:</li>
 </ol>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc1[dbc1<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">2</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc1[dbc1<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">2</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Para bloco igual a 3:</li>
 </ol>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc1[dbc1<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">3</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc1[dbc1<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">3</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Para bloco igual a 4:</li>
 </ol>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc1[dbc1<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">4</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc1[dbc1<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">4</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li>Para bloco igual a 5:</li>
 </ol>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc1[dbc1<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">5</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc1[dbc1<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">5</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
 <p>Pelo gráfico obtido, é razoável esperar que haja diferenças significativas entre as intensidades de desbaste (30% e 50%), pois existe um distanciamento entre os interquartis especialmente nos blocos 1 e 2. Também é possível esperar que não haja um efeito significativo dos blocos. Assim, espera-se que a análise estatística do experimento corrobore a conclusão empírica baseada no interpretação do gráfico.</p>
 <p>Com a função <code>dbc()</code> do pacote <code>ExpDes.pt</code> será possível realizar toda a análise de um experimento de delineamento em blocos casualizados, inclusive desdobramentos. Para consultar a sintaxe do comando digita-se no console:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1">?dbc</a></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1">?dbc</a></code></pre></div>
 <p>Nas informações sobre a função <code>?dbc</code>, nota-se que a sintaxe básica da função <code>dbc()</code> é:</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1"><span class="kw">dbc</span>(trat, bloco, resp, <span class="dt">quali =</span> <span class="ot">TRUE</span>, <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>, </a>
-<a class="sourceLine" id="cb100-2" title="2">    <span class="dt">sigT =</span> <span class="fl">0.05</span>, <span class="dt">sigF =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1"><span class="kw">dbc</span>(trat, bloco, resp, <span class="dt">quali =</span> <span class="ot">TRUE</span>, <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>, </a>
+<a class="sourceLine" id="cb98-2" title="2">    <span class="dt">sigT =</span> <span class="fl">0.05</span>, <span class="dt">sigF =</span> <span class="fl">0.05</span>)</a></code></pre></div>
 <p>A análise do experimento em questão pode ser então realizada pelo comando:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
-<a class="sourceLine" id="cb101-2" title="2"><span class="kw">dbc</span>(dbc1<span class="op">$</span>desbaste, dbc1<span class="op">$</span>bloco, dbc1<span class="op">$</span>diametro, <span class="dt">hvar=</span><span class="st">&#39;han&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
+<a class="sourceLine" id="cb99-2" title="2"><span class="kw">dbc</span>(dbc1<span class="op">$</span>desbaste, dbc1<span class="op">$</span>bloco, dbc1<span class="op">$</span>diametro, <span class="dt">hvar=</span><span class="st">&#39;han&#39;</span>)</a></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
@@ -557,7 +557,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Parcela perdida: Tratamento 30, Bloco 2, Repetição 1.</li>
 </ul>
 <table>
-<caption><span id="tab:unnamed-chunk-77">Table 7.2: </span>Dados de outro delineamento em blocos casualizado, porém neste caso desbalanceado.</caption>
+<caption><span id="tab:unnamed-chunk-73">Table 7.2: </span>Dados de outro delineamento em blocos casualizado, porém neste caso desbalanceado.</caption>
 <thead>
 <tr class="header">
 <th align="right">desbaste</th>
@@ -804,39 +804,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>O primeiro passo é importar o arquivo csv contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1">dbc2 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DBC 2.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1">dbc2 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DBC 2.csv&quot;</span>)</a></code></pre></div>
 <p>Mesmo no caso desbalanceado, a análise gráfica é fundamental e deve preceder qualquer análise estatística:</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc2, diametro <span class="op">~</span><span class="st"> </span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc2, diametro <span class="op">~</span><span class="st"> </span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
 <p>Os tratamentos podem ser analisados isoladamente em relação a cada bloco, utilizando um filtro para escolher qual bloco considerar.</p>
 <ol style="list-style-type: decimal">
 <li>Para bloco igual a 1:</li>
 </ol>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc2[dbc2<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">1</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc2[dbc2<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">1</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Para bloco igual a 2:</li>
 </ol>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc2[dbc2<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">2</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc2[dbc2<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">2</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Para bloco igual a 3:</li>
 </ol>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc2[dbc2<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">3</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc2[dbc2<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">3</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Para bloco igual a 4:</li>
 </ol>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc2[dbc2<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">4</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc2[dbc2<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">4</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li>Para bloco igual a 5:</li>
 </ol>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc2[dbc2<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">5</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc2[dbc2<span class="op">$</span>bloco <span class="op">==</span><span class="st"> </span><span class="dv">5</span>,], diametro<span class="op">~</span>desbaste<span class="op">/</span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
 <p>Como já discutido anteriormente, por não haver cálculo de interação entre fontes de variação, o DBC pode ser analisado usando o pacote <code>ExpDes.pt</code> e sua função <code>dbc()</code>:</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
-<a class="sourceLine" id="cb110-2" title="2"><span class="kw">dbc</span>(dbc2<span class="op">$</span>desbaste, dbc2<span class="op">$</span>bloco, dbc2<span class="op">$</span>diametro, <span class="dt">hvar=</span><span class="st">&#39;han&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
+<a class="sourceLine" id="cb108-2" title="2"><span class="kw">dbc</span>(dbc2<span class="op">$</span>desbaste, dbc2<span class="op">$</span>bloco, dbc2<span class="op">$</span>diametro, <span class="dt">hvar=</span><span class="st">&#39;han&#39;</span>)</a></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------

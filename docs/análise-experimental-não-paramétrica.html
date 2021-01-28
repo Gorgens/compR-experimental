@@ -21,7 +21,7 @@
   
   
 
-<meta name="author" content="Eric Bastos Gorgens &amp; Marcio Leles Romarco de Oliveira" />
+<meta name="author" content="Eric Bastos Gorgens, Marcio Leles Romarco de Oliveira" />
 
 
 <meta name="date" content="2021-01-28" />
@@ -131,7 +131,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Experimental</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Sobre o livro</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução</a></li>
 <li class="chapter" data-level="2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html"><i class="fa fa-check"></i><b>2</b> Delineamentos experimentais</a><ul>
 <li class="chapter" data-level="2.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova"><i class="fa fa-check"></i><b>2.1</b> ANOVA</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#partição-da-variação"><i class="fa fa-check"></i><b>2.1.1</b> Partição da variação</a></li>
@@ -205,10 +205,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="análise-experimental-não-paramétrica" class="section level1">
 <h1><span class="header-section-number">Cap. 11</span> Análise experimental não paramétrica</h1>
 <p>Os testes estatísticos não paramétricos não levam em consideração a distribuição original dos resíduos. Em geral eles seguem o mesmo procedimento que os testes paramétricos, iniciando pela formulação da hipótese, computando o valor da estatística do teste com base nos dados obtidos de amostras aleatórias e comparando a grandeza estatística do valor calculado com a referência. Assim como os teste paramétricos, existem inúmeros testes não-paramétricos para as diferentes hipóteses a serem testadas.</p>
-<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
-## incomplete final line found by readTableHeader on &#39;./data/naoParam.csv&#39;</code></pre>
+<pre><code>## Warning in read.table(file = file, header = header,
+## sep = sep, quote = quote, : incomplete final line
+## found by readTableHeader on &#39;./data/naoParam.csv&#39;</code></pre>
 <table>
-<caption><span id="tab:unnamed-chunk-177">Table 11.1: </span>Testes não paramétricos e referência para utilização</caption>
+<caption><span id="tab:unnamed-chunk-173">Table 11.1: </span>Testes não paramétricos e referência para utilização</caption>
 <thead>
 <tr class="header">
 <th align="left">Tipo</th>
@@ -249,7 +250,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">11.1</span> Kruskal-Wallis (equivalente ao DIC)</h2>
 <p>Neste exemplo sera analisado um experimento que avalia o crescimento em altura das árvores remanescentes em de três intensidades de desbaste.</p>
 <table>
-<caption><span id="tab:unnamed-chunk-178">Table 11.2: </span>Experimento em delineamento inteiramente casualizado.</caption>
+<caption><span id="tab:unnamed-chunk-174">Table 11.2: </span>Experimento em delineamento inteiramente casualizado.</caption>
 <thead>
 <tr class="header">
 <th align="right">desbaste</th>
@@ -411,13 +412,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>O primeiro passo é importar o arquivo contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" title="1">dic.np =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DIC NP.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" title="1">dic.np =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DIC NP.csv&quot;</span>)</a></code></pre></div>
 <p>Em seguida, os dados devem ser explorados por meio de gráficos:</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> dic.np, dap <span class="op">~</span><span class="st"> </span>desbaste)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-180-1.png" width="672" /></p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> dic.np, dap <span class="op">~</span><span class="st"> </span>desbaste)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-176-1.png" width="672" /></p>
 <p>Os dados indicam que o incremento médio das árvores remanescentes de um desbaste de 60% da área basal cresceram aproximadamente 0.8 cm, ao passo que as árvores remanescentes de um desbaste de 40 % e 30 %, cresceram apenas ~ 0.6 e 0.5 cm respectivamente. Espera-se que o desbaste 60% seja significativamente diferente dos demais.</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
-<a class="sourceLine" id="cb218-2" title="2"><span class="kw">dic</span>(dic.np<span class="op">$</span>desbaste, dic.np<span class="op">$</span>dap, <span class="dt">quali =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
+<a class="sourceLine" id="cb216-2" title="2"><span class="kw">dic</span>(dic.np<span class="op">$</span>desbaste, dic.np<span class="op">$</span>dap, <span class="dt">quali =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
@@ -491,19 +492,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## --------------------------------------------------
 ## ------------------------------------------------------------------------</code></pre>
 <p>O teste de normalidade de resíduos é significativo, indicando que o modelo estatístico paramétrico não é adequado aos dados, e mesmo transformando, a normalidade de resíduos continua sendo rejeitada. Neste caso, recomenda-se o uso do teste não-paramétrico de <em>Kruskal-Wallis</em>.</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" title="1"><span class="kw">kruskal.test</span>(dic.np<span class="op">$</span>dap, dic.np<span class="op">$</span>desbaste)</a></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" title="1"><span class="kw">kruskal.test</span>(dic.np<span class="op">$</span>dap, dic.np<span class="op">$</span>desbaste)</a></code></pre></div>
 <pre><code>## 
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  dic.np$dap and dic.np$desbaste
-## Kruskal-Wallis chi-squared = 7.8861, df = 2, p-value = 0.01939</code></pre>
+## Kruskal-Wallis chi-squared = 7.8861, df = 2,
+## p-value = 0.01939</code></pre>
 <p>O teste indica que o tratamento é significativo, e portanto, as médias dos diferentes desbastes não podem ser consideradas iguais. Como foi antecipado pelo gráfico, pelo menos um nível de desbaste se difere dos demais. Não há desdobramento específico para os testes não-paramétricos, sendo a interpretação gráfica e a estatística descritiva o caminho ideal para avaliar desdobramento.</p>
 </div>
 <div id="friedman-equivalente-ao-dbc" class="section level2">
 <h2><span class="header-section-number">11.2</span> Friedman (equivalente ao DBC)</h2>
 <p>Neste exemplo, sera analisado um experimento que avalia o crescimento em diâmetro das árvores remanescente após duas intensidades de desbaste. O delineamento foi construído considerando blocos.</p>
 <table>
-<caption><span id="tab:unnamed-chunk-183">Table 11.3: </span>Experimento em delineamento em blocos casualizados.</caption>
+<caption><span id="tab:unnamed-chunk-179">Table 11.3: </span>Experimento em delineamento em blocos casualizados.</caption>
 <thead>
 <tr class="header">
 <th align="right">desbaste</th>
@@ -756,15 +758,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>O primeiro passo é importar o arquivo contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" title="1">dbc.np =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DBC 3.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" title="1">dbc.np =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DBC 3.csv&quot;</span>)</a></code></pre></div>
 <p>É fundamental explorar os dados de forma gráfica para antecipar o resultado da análise estatística. A construção do gráfico ajuda na compreensão do fenômeno estudado e na validação da análise estatística escolhida. Por se tratar de um experimento com o tratamento formado por níveis qualitativos, recomenda-se o uso do boxplot.</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc.np, diametro <span class="op">~</span><span class="st"> </span>desbaste)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-185-1.png" width="672" /></p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc.np, diametro <span class="op">~</span><span class="st"> </span>bloco)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-186-1.png" width="672" /></p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc.np, diametro <span class="op">~</span><span class="st"> </span>desbaste)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-181-1.png" width="672" /></p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc.np, diametro <span class="op">~</span><span class="st"> </span>bloco)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-182-1.png" width="672" /></p>
 <p>A análise do experimento em questão pode ser então realizada construindo a função <code>dbc()</code> da seguinte maneira:</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
-<a class="sourceLine" id="cb225-2" title="2"><span class="kw">dbc</span>(dbc.np<span class="op">$</span>desbaste, dbc.np<span class="op">$</span>bloco, dbc.np<span class="op">$</span>diametro, <span class="dt">hvar =</span> <span class="st">&#39;han&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
+<a class="sourceLine" id="cb223-2" title="2"><span class="kw">dbc</span>(dbc.np<span class="op">$</span>desbaste, dbc.np<span class="op">$</span>bloco, dbc.np<span class="op">$</span>diametro, <span class="dt">hvar =</span> <span class="st">&#39;han&#39;</span>)</a></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
@@ -795,7 +797,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  b    30      27.258 
 ## ------------------------------------------------------------------------</code></pre>
 <p>Veja que o teste de normalidade deu significativo, indicando assim que a hipótese de normalidade de resíduos deve ser rejeitada. A variável diametro é contínua e portanto a transformação logarítmica é a mais indicada para a transformação dos dados.</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" title="1"><span class="kw">dbc</span>(dbc.np<span class="op">$</span>desbaste, dbc.np<span class="op">$</span>bloco, <span class="kw">log</span>(dbc.np<span class="op">$</span>diametro), <span class="dt">hvar =</span> <span class="st">&#39;han&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" title="1"><span class="kw">dbc</span>(dbc.np<span class="op">$</span>desbaste, dbc.np<span class="op">$</span>bloco, <span class="kw">log</span>(dbc.np<span class="op">$</span>diametro), <span class="dt">hvar =</span> <span class="st">&#39;han&#39;</span>)</a></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
@@ -826,11 +828,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  b    30      3.278376 
 ## ------------------------------------------------------------------------</code></pre>
 <p>Infelizmente, mesmo com a transformação os resíduos continuam não apresentando normalidade. A recomendação portanto é seguir com a análise não paramétrica. Por se tratar de um DBC, o teste indicado é o Teste de Friedman. O teste de Friedman não aceita repetições dentro do bloco. Por isso, será necessário agregar as repetições através de média.</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" title="1">dbc.aggr =<span class="st"> </span><span class="kw">aggregate</span>(dbc.np<span class="op">$</span>diametro, </a>
-<a class="sourceLine" id="cb229-2" title="2">                     <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">desb =</span> dbc.np<span class="op">$</span>desbaste,</a>
-<a class="sourceLine" id="cb229-3" title="3">                               <span class="dt">bloco =</span> dbc.np<span class="op">$</span>bloco), </a>
-<a class="sourceLine" id="cb229-4" title="4">                     <span class="dt">FUN =</span> mean)</a>
-<a class="sourceLine" id="cb229-5" title="5"><span class="kw">print</span>(dbc.aggr)</a></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" title="1">dbc.aggr =<span class="st"> </span><span class="kw">aggregate</span>(dbc.np<span class="op">$</span>diametro, </a>
+<a class="sourceLine" id="cb227-2" title="2">                     <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">desb =</span> dbc.np<span class="op">$</span>desbaste,</a>
+<a class="sourceLine" id="cb227-3" title="3">                               <span class="dt">bloco =</span> dbc.np<span class="op">$</span>bloco), </a>
+<a class="sourceLine" id="cb227-4" title="4">                     <span class="dt">FUN =</span> mean)</a>
+<a class="sourceLine" id="cb227-5" title="5"><span class="kw">print</span>(dbc.aggr)</a></code></pre></div>
 <pre><code>##    desb bloco      x
 ## 1    30     1 29.370
 ## 2    50     1 32.835
@@ -843,12 +845,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 9    30     5 28.875
 ## 10   50     5 28.875</code></pre>
 <p>O teste de Friedman pode ser assim chamado:</p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" title="1"><span class="kw">friedman.test</span>(x <span class="op">~</span><span class="st"> </span>desb <span class="op">|</span><span class="st"> </span>bloco, <span class="dt">data =</span> dbc.aggr)</a></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" title="1"><span class="kw">friedman.test</span>(x <span class="op">~</span><span class="st"> </span>desb <span class="op">|</span><span class="st"> </span>bloco, <span class="dt">data =</span> dbc.aggr)</a></code></pre></div>
 <pre><code>## 
 ##  Friedman rank sum test
 ## 
 ## data:  x and desb and bloco
-## Friedman chi-squared = 4, df = 1, p-value = 0.0455</code></pre>
+## Friedman chi-squared = 4, df = 1, p-value =
+## 0.0455</code></pre>
 <p>Segundo o teste de Friedman, existe uma diferença significativa entre os desbaste. Uma exploração gráfica dos dados, ou uma análise estatística descritiva podem auxiliar no desdobramento do tratamento.</p>
 
 </div>
