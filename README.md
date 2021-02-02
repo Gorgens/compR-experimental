@@ -6,7 +6,7 @@ Este livro foi criado para você que precisa rodar análises experimentais no R.
 
 - [ ] 2. Render locally with `bookdown::render_book("index.Rmd")`.
 
-- [ ] 3. Render pdf with `bookdown::render_book("index.Rmd", "bookdown::pdf_document2")`
+- [ ] 3. Render pdf with `bookdown::render_book("index.Rmd", "bookdown::pdf_book")`
 
 - [ ] 3. Use `` to view your book locally (or just open `index.html` in a browser).
 
