@@ -24,7 +24,7 @@
 <meta name="author" content="Eric Bastos Gorgens, Marcio Leles Romarco de Oliveira" />
 
 
-<meta name="date" content="2021-01-28" />
+<meta name="date" content="2021-02-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -185,6 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12" data-path="próximos-passos.html"><a href="próximos-passos.html"><i class="fa fa-check"></i><b>12</b> Próximos passos</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
       </nav>
@@ -472,36 +473,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Coefficient of Variation b                7.1785
 ## 
 ## $`Residual analysis`$residuals
-##           1           2           3           4 
-##   0.6605916  -0.3252332  -0.3353584  10.3272582 
-##           5           6           7           8 
-##  -6.6585666  -3.6686917  -5.0060751  -0.9918999 
-##           9          10          11          12 
-##   5.9979750 -10.3191581  -3.3333333  13.6524915 
-##          13          14          15          16 
-##  -6.9858248  15.0000000  -8.0141752   3.3475085 
-##          17          18          19          20 
-## -11.6666667   8.3191581  -1.3252332  -0.3323208 
-##          21          22          23          24 
-##   1.6575540  -4.3252332  -1.3323208   5.6575540 
+##           1           2           3 
+##   0.6605916  -0.3252332  -0.3353584 
+##           4           5           6 
+##  10.3272582  -6.6585666  -3.6686917 
+##           7           8           9 
+##  -5.0060751  -0.9918999   5.9979750 
+##          10          11          12 
+## -10.3191581  -3.3333333  13.6524915 
+##          13          14          15 
+##  -6.9858248  15.0000000  -8.0141752 
+##          16          17          18 
+##   3.3475085 -11.6666667   8.3191581 
+##          19          20          21 
+##  -1.3252332  -0.3323208   1.6575540 
+##          22          23          24 
+##  -4.3252332  -1.3323208   5.6575540 
 ##          25          26          27 
 ##  -2.3252332   0.6676792   1.6575540 
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Residuals&quot;
 ## 
 ## $`Residual analysis`$`standardized residuals`
-##           1           2           3           4 
-##  0.09926874 -0.04887361 -0.05039514  1.55190283 
-##           5           6           7           8 
-## -1.00059939 -0.55130344 -0.75227538 -0.14905527 
-##           9          10          11          12 
-##  0.90133065 -1.55068561 -0.50090831  2.05159391 
-##          13          14          15          16 
-## -1.04977730  2.25408738 -1.20431008  0.50303845 
-##          17          18          19          20 
-## -1.75317907  1.25014062 -0.19914610 -0.04993868 
-##          21          22          23          24 
-##  0.24908478 -0.64996357 -0.20021117  0.85017474 
+##           1           2           3 
+##  0.09926874 -0.04887361 -0.05039514 
+##           4           5           6 
+##  1.55190283 -1.00059939 -0.55130344 
+##           7           8           9 
+## -0.75227538 -0.14905527  0.90133065 
+##          10          11          12 
+## -1.55068561 -0.50090831  2.05159391 
+##          13          14          15 
+## -1.04977730  2.25408738 -1.20431008 
+##          16          17          18 
+##  0.50303845 -1.75317907  1.25014062 
+##          19          20          21 
+## -0.19914610 -0.04993868  0.24908478 
+##          22          23          24 
+## -0.64996357 -0.20021117  0.85017474 
 ##          25          26          27 
 ## -0.34941859  0.10033381  0.24908478</code></pre>
 <p>Uma vez confirmadas as pressuposições, retorna-se ao pacote <code>ExpDes.pt</code>. A sintaxe da função para análise de parcela subdividida no pacote é:</p>
@@ -846,68 +855,80 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Coefficient of Variation b               13.6457
 ## 
 ## $`Residual analysis`$residuals
-##           1           2           3           4 
-##  -2.8241221   2.8241221   1.6212788   4.1091983 
-##           5           6           7           8 
-##  -5.7304770  19.6212788 -26.8908017   7.2695230 
-##           9          10          11          12 
-## -12.9589104  -0.6517886  13.6106990  -2.9589104 
-##          13          14          15          16 
-##  14.3482114 -11.3893010   7.3744229 -12.3184553 
-##          17          18          19          20 
-##   4.9440324  -3.5066019   3.5066019   7.9988237 
-##          21          22          23 
-##  -7.9988237   7.4988237  -7.4988237 
+##           1           2           3 
+##  -2.8241221   2.8241221   1.6212788 
+##           4           5           6 
+##   4.1091983  -5.7304770  19.6212788 
+##           7           8           9 
+## -26.8908017   7.2695230 -12.9589104 
+##          10          11          12 
+##  -0.6517886  13.6106990  -2.9589104 
+##          13          14          15 
+##  14.3482114 -11.3893010   7.3744229 
+##          16          17          18 
+## -12.3184553   4.9440324  -3.5066019 
+##          19          20          21 
+##   3.5066019   7.9988237  -7.9988237 
+##          22          23 
+##   7.4988237  -7.4988237 
 ## attr(,&quot;label&quot;)
 ## [1] &quot;Residuals&quot;
 ## 
 ## $`Residual analysis`$`standardized residuals`
-##           1           2           3           4 
-## -0.26911379  0.26911379  0.15449349  0.39157015 
-##           5           6           7           8 
-## -0.54606364  1.86973386 -2.56245492  0.69272107 
-##           9          10          11          12 
-## -1.23486923 -0.06210968  1.29697891 -0.28195792 
-##          13          14          15          16 
-##  1.36725729 -1.08529938  0.70271711 -1.17383954 
-##          17          18          19          20 
-##  0.47112244 -0.33414806  0.33414806  0.76221696 
-##          21          22          23 
-## -0.76221696  0.71457139 -0.71457139</code></pre>
+##           1           2           3 
+## -0.26911379  0.26911379  0.15449349 
+##           4           5           6 
+##  0.39157015 -0.54606364  1.86973386 
+##           7           8           9 
+## -2.56245492  0.69272107 -1.23486923 
+##          10          11          12 
+## -0.06210968  1.29697891 -0.28195792 
+##          13          14          15 
+##  1.36725729 -1.08529938  0.70271711 
+##          16          17          18 
+## -1.17383954  0.47112244 -0.33414806 
+##          19          20          21 
+##  0.33414806  0.76221696 -0.76221696 
+##          22          23 
+##  0.71457139 -0.71457139</code></pre>
 <p>O teste de normalidade apresentou valor não significativo, indicando assim que não há evidências para rejeitar a normalidade dos resíduos.</p>
 <div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" title="1">r.aov[<span class="dv">1</span>]</a></code></pre></div>
 <pre><code>## $`Marginal anova (Type III Sum of Squares)`
-##                 numDF denDF  F-value p-value
-## plot                2     6 16.07861  0.0039
-## split.plot          2     8 21.60633  0.0006
-## plot:split.plot     4     8  1.27547  0.3555</code></pre>
+##                 numDF denDF  F-value
+## plot                2     6 16.07861
+## split.plot          2     8 21.60633
+## plot:split.plot     4     8  1.27547
+##                 p-value
+## plot             0.0039
+## split.plot       0.0006
+## plot:split.plot  0.3555</code></pre>
 <p>Sendo a interação não significativa, os fatores (da parcela e da subparcela) devem ser analisados de forma independente.</p>
 <ol style="list-style-type: decimal">
 <li>Comparação das parcelas:</li>
 </ol>
 <div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" title="1">r.aov[<span class="dv">2</span>]</a></code></pre></div>
 <pre><code>## $`Adjusted means (plot)`
-##   plot adjusted.mean standard.error tukey snk duncan
-## 1    B      131.8889         7.6958     a   a      a
-## 2    C      118.3355         8.6638     a   a      a
-## 3    A       71.1485         8.0186     b   b      b
-##   t
-## 1 a
-## 2 a
-## 3 b</code></pre>
+##   plot adjusted.mean standard.error tukey
+## 1    B      131.8889         7.6958     a
+## 2    C      118.3355         8.6638     a
+## 3    A       71.1485         8.0186     b
+##   snk duncan t
+## 1   a      a a
+## 2   a      a a
+## 3   b      b b</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Comparação das subdivisões:</li>
 </ol>
 <div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" title="1">r.aov[<span class="dv">4</span>]</a></code></pre></div>
 <pre><code>## $`Adjusted means (split.plot)`
-##   split.plot adjusted.mean standard.error tukey snk
-## 1          7      134.5013         6.4491     a   a
-## 2          5      105.4458         6.4491     b   b
-## 3          2       81.4258         6.8129     c   c
-##   duncan t
-## 1      a a
-## 2      b b
-## 3      c c</code></pre>
+##   split.plot adjusted.mean standard.error
+## 1          7      134.5013         6.4491
+## 2          5      105.4458         6.4491
+## 3          2       81.4258         6.8129
+##   tukey snk duncan t
+## 1     a   a      a a
+## 2     b   b      b b
+## 3     c   c      c c</code></pre>
 
 </div>
 </div>
@@ -959,7 +980,7 @@ gitbook.start({
 "link": "https://github.com/Gorgens/compR-experimental/blob/master/10-subdividida.Rmd",
 "text": null
 },
-"download": null,
+"download": ["bookdownproj.pdf", "bookdownproj.epub", "bookdownproj.mobi"],
 "toc": {
 "collapse": "subsection"
 }
