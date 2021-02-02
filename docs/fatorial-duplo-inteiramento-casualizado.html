@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Cap. 8 Fatorial duplo inteiramento casualizado | Computação em R: estatística experimental</title>
-  <meta name="description" content="Cap. 8 Fatorial duplo inteiramento casualizado | Computação em R: estatística experimental" />
+  <title>Cap. 8 Fatorial duplo inteiramento casualizado | Computação em R: Análise experimental</title>
+  <meta name="description" content="Cap. 8 Fatorial duplo inteiramento casualizado | Computação em R: Análise experimental" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cap. 8 Fatorial duplo inteiramento casualizado | Computação em R: estatística experimental" />
+  <meta property="og:title" content="Cap. 8 Fatorial duplo inteiramento casualizado | Computação em R: Análise experimental" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cap. 8 Fatorial duplo inteiramento casualizado | Computação em R: estatística experimental" />
+  <meta name="twitter:title" content="Cap. 8 Fatorial duplo inteiramento casualizado | Computação em R: Análise experimental" />
   
   
   
@@ -185,7 +185,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12" data-path="próximos-passos.html"><a href="próximos-passos.html"><i class="fa fa-check"></i><b>12</b> Próximos passos</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
 </ul>
 
       </nav>
@@ -195,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computação em R: estatística experimental</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computação em R: Análise experimental</a>
           </h1>
         </div>
 
@@ -351,57 +350,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>O primeiro passo é importar o arquivo contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1">fatDIC1 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento Fatorial Duplo DIC 1.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1">fatDIC1 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento Fatorial Duplo DIC 1.csv&quot;</span>)</a></code></pre></div>
 <p>Antes da análise estatística, exploram-se os dados através dos gráficos <code>boxplot()</code> ou <code>plot()</code>. Com base nos dados do experimento em questão, vamos analisá-lo através de uma série de gráficos boxplot. Embora a concentração seja uma variável contínua, este fator possui apenas dois níveis e portanto não é suficiente para considerar uma análise de tendência utilizando regressão.</p>
 <ol style="list-style-type: decimal">
 <li>Considerando apenas fator 1:</li>
 </ol>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1, enraizamento <span class="op">~</span><span class="st"> </span>indutor)</a></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1, enraizamento <span class="op">~</span><span class="st"> </span>indutor)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Considerando apenas fator 2:</li>
 </ol>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1, enraizamento <span class="op">~</span><span class="st"> </span>concentracao)</a></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1, enraizamento <span class="op">~</span><span class="st"> </span>concentracao)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Interação dos fatores:</li>
 </ol>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1, enraizamento <span class="op">~</span><span class="st"> </span>indutor<span class="op">/</span>concentracao)</a></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1, enraizamento <span class="op">~</span><span class="st"> </span>indutor<span class="op">/</span>concentracao)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Fixando concentracao igual a 10:</li>
 </ol>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1[fatDIC1<span class="op">$</span>concentracao <span class="op">==</span><span class="st"> </span><span class="dv">10</span>,], </a>
-<a class="sourceLine" id="cb114-2" title="2">        enraizamento <span class="op">~</span><span class="st"> </span>indutor)</a></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1[fatDIC1<span class="op">$</span>concentracao <span class="op">==</span><span class="st"> </span><span class="dv">10</span>,], </a>
+<a class="sourceLine" id="cb119-2" title="2">        enraizamento <span class="op">~</span><span class="st"> </span>indutor)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li>Fixando concentracao igual a 20:</li>
 </ol>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1[fatDIC1<span class="op">$</span>concentracao <span class="op">==</span><span class="st"> </span><span class="dv">20</span>,], </a>
-<a class="sourceLine" id="cb115-2" title="2">        enraizamento <span class="op">~</span><span class="st"> </span>indutor)</a></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1[fatDIC1<span class="op">$</span>concentracao <span class="op">==</span><span class="st"> </span><span class="dv">20</span>,], </a>
+<a class="sourceLine" id="cb120-2" title="2">        enraizamento <span class="op">~</span><span class="st"> </span>indutor)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
 <ol start="6" style="list-style-type: decimal">
 <li>Fixando Indutor igual a ‘A’:</li>
 </ol>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1[fatDIC1<span class="op">$</span>indutor <span class="op">==</span><span class="st"> &quot;A&quot;</span>,], </a>
-<a class="sourceLine" id="cb116-2" title="2">        enraizamento <span class="op">~</span><span class="st"> </span>concentracao)</a></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1[fatDIC1<span class="op">$</span>indutor <span class="op">==</span><span class="st"> &quot;A&quot;</span>,], </a>
+<a class="sourceLine" id="cb121-2" title="2">        enraizamento <span class="op">~</span><span class="st"> </span>concentracao)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-89-1.png" width="672" /></p>
 <ol start="7" style="list-style-type: decimal">
 <li>Fixando Indutor igual a ‘B’:</li>
 </ol>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1[fatDIC1<span class="op">$</span>indutor <span class="op">==</span><span class="st"> &quot;B&quot;</span>,], </a>
-<a class="sourceLine" id="cb117-2" title="2">        enraizamento <span class="op">~</span><span class="st"> </span>concentracao)</a></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC1[fatDIC1<span class="op">$</span>indutor <span class="op">==</span><span class="st"> &quot;B&quot;</span>,], </a>
+<a class="sourceLine" id="cb122-2" title="2">        enraizamento <span class="op">~</span><span class="st"> </span>concentracao)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-90-1.png" width="672" /></p>
 <p>Com base nos gráficos, é razoável apontar que o fator Indutor apresentou maior variação do que o fator Concentração. A interação também não parece influenciar o comportamento já identificado pelos fatores, quando analisados isoladamente.</p>
 <p>A função do pacote <code>ExpDes.pt</code> para análise deste tipo de experimento é a <code>fat2.dic()</code>. A sintaxe desta função é:</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1"><span class="kw">fat2.dic</span>(fator1, fator2, resp, <span class="dt">quali =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>), </a>
-<a class="sourceLine" id="cb118-2" title="2">         <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>, <span class="dt">fac.names =</span> <span class="kw">c</span>(<span class="st">&quot;F1&quot;</span>, <span class="st">&quot;F2&quot;</span>), </a>
-<a class="sourceLine" id="cb118-3" title="3">         <span class="dt">sigT =</span> <span class="fl">0.05</span>, <span class="dt">sigF =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1"><span class="kw">fat2.dic</span>(fator1, fator2, resp, <span class="dt">quali =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb123-2" title="2">         <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>, <span class="dt">fac.names =</span> <span class="kw">c</span>(<span class="st">&quot;F1&quot;</span>, <span class="st">&quot;F2&quot;</span>), </a>
+<a class="sourceLine" id="cb123-3" title="3">         <span class="dt">sigT =</span> <span class="fl">0.05</span>, <span class="dt">sigF =</span> <span class="fl">0.05</span>)</a></code></pre></div>
 <p>Ajustando com base nos dados do experimento, o comando fica:</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
-<a class="sourceLine" id="cb119-2" title="2"><span class="kw">fat2.dic</span>(fatDIC1<span class="op">$</span>indutor, fatDIC1<span class="op">$</span>concentracao,                        </a>
-<a class="sourceLine" id="cb119-3" title="3">         fatDIC1<span class="op">$</span>enraizamento, <span class="dt">quali =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb119-4" title="4">         <span class="dt">fac.names =</span> <span class="kw">c</span>(<span class="st">&quot;Indutor&quot;</span>, <span class="st">&quot;Concentração&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
+<a class="sourceLine" id="cb124-2" title="2"><span class="kw">fat2.dic</span>(fatDIC1<span class="op">$</span>indutor, fatDIC1<span class="op">$</span>concentracao,                        </a>
+<a class="sourceLine" id="cb124-3" title="3">         fatDIC1<span class="op">$</span>enraizamento, <span class="dt">quali =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb124-4" title="4">         <span class="dt">fac.names =</span> <span class="kw">c</span>(<span class="st">&quot;Indutor&quot;</span>, <span class="st">&quot;Concentração&quot;</span>))</a></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Legenda:
 ## FATOR 1:  Indutor 
@@ -411,18 +410,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##                      GL      SQ QM     Fc
-## Indutor               1 140.981  3 54.000
-## Concentração          1   2.113  4  0.809
-## Indutor*Concentração  1   0.684  2  0.262
-## Residuo              16  41.772  5       
-## Total                19 185.550  1       
-##                        Pr&gt;Fc
-## Indutor              0.00000
-## Concentração         0.38171
-## Indutor*Concentração 0.61562
-## Residuo                     
-## Total                       
+##                      GL      SQ      QM
+## Indutor               1 140.981 140.981
+## Concentração          1   2.113   2.113
+## Indutor*Concentração  1   0.684   0.684
+## Residuo              16  41.772   2.611
+## Total                19 185.550        
+##                          Fc   Pr&gt;Fc
+## Indutor              54.000 0.00000
+## Concentração          0.809 0.38171
+## Indutor*Concentração  0.262 0.61562
+## Residuo                            
+## Total                              
 ## ------------------------------------------------------------------------
 ## CV = 49.64 %
 ## 
@@ -589,50 +588,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>O primeiro passo é importar o arquivo contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1">fatDIC2 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento Fatorial Duplo DIC 2.csv&quot;</span>, </a>
-<a class="sourceLine" id="cb121-2" title="2">                   <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1">fatDIC2 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento Fatorial Duplo DIC 2.csv&quot;</span>, </a>
+<a class="sourceLine" id="cb126-2" title="2">                   <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
 <p>Assim como no caso balanceado, é fundamental analisar os dados do experimento em gráficos e buscar antecipar os resultados que serão obtidos no teste estatístico. Os mesmo gráficos do exemplo balanceado podem ser utilizados:</p>
 <ol style="list-style-type: decimal">
 <li>Considerando apenas fator 1:</li>
 </ol>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2, enraizamento <span class="op">~</span><span class="st"> </span>substrato)</a></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2, enraizamento <span class="op">~</span><span class="st"> </span>substrato)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Considerando apenas fator 2:</li>
 </ol>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2, enraizamento <span class="op">~</span><span class="st"> </span>irrigacao)</a></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2, enraizamento <span class="op">~</span><span class="st"> </span>irrigacao)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Interação dos fatores:</li>
 </ol>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2, enraizamento <span class="op">~</span><span class="st"> </span>substrato<span class="op">/</span>irrigacao)</a></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2, enraizamento <span class="op">~</span><span class="st"> </span>substrato<span class="op">/</span>irrigacao)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-97-1.png" width="672" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Fixando concentracao igual a 10:</li>
 </ol>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2[fatDIC2<span class="op">$</span>irrigacao <span class="op">==</span><span class="st"> </span><span class="dv">10</span>,], </a>
-<a class="sourceLine" id="cb125-2" title="2">        enraizamento <span class="op">~</span><span class="st"> </span>substrato)</a></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2[fatDIC2<span class="op">$</span>irrigacao <span class="op">==</span><span class="st"> </span><span class="dv">10</span>,], </a>
+<a class="sourceLine" id="cb130-2" title="2">        enraizamento <span class="op">~</span><span class="st"> </span>substrato)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li>Fixando concentracao igual a 20:</li>
 </ol>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2[fatDIC2<span class="op">$</span>irrigacao <span class="op">==</span><span class="st"> </span><span class="dv">20</span>,], </a>
-<a class="sourceLine" id="cb126-2" title="2">        enraizamento <span class="op">~</span><span class="st"> </span>substrato)</a></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2[fatDIC2<span class="op">$</span>irrigacao <span class="op">==</span><span class="st"> </span><span class="dv">20</span>,], </a>
+<a class="sourceLine" id="cb131-2" title="2">        enraizamento <span class="op">~</span><span class="st"> </span>substrato)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
 <ol start="6" style="list-style-type: decimal">
 <li>Fixando Indutor igual a ‘A’:</li>
 </ol>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2[fatDIC2<span class="op">$</span>substrato <span class="op">==</span><span class="st"> &quot;A&quot;</span>,], </a>
-<a class="sourceLine" id="cb127-2" title="2">        enraizamento <span class="op">~</span><span class="st"> </span>irrigacao)</a></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2[fatDIC2<span class="op">$</span>substrato <span class="op">==</span><span class="st"> &quot;A&quot;</span>,], </a>
+<a class="sourceLine" id="cb132-2" title="2">        enraizamento <span class="op">~</span><span class="st"> </span>irrigacao)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
 <ol start="7" style="list-style-type: decimal">
 <li>Fixando Indutor igual a ‘B’:</li>
 </ol>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2[fatDIC2<span class="op">$</span>substrato <span class="op">==</span><span class="st"> &quot;B&quot;</span>,], </a>
-<a class="sourceLine" id="cb128-2" title="2">        enraizamento <span class="op">~</span><span class="st"> </span>irrigacao)</a></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDIC2[fatDIC2<span class="op">$</span>substrato <span class="op">==</span><span class="st"> &quot;B&quot;</span>,], </a>
+<a class="sourceLine" id="cb133-2" title="2">        enraizamento <span class="op">~</span><span class="st"> </span>irrigacao)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-101-1.png" width="672" /></p>
 <p>Os gráficos mostram que é razoável apontar que o fator substrato apresentou maior variação do que o fator irrigacao. A interação não parece influenciar o comportamento já identificado pelos fatores, quando analisados isoladamente. Sendo o nosso experimento desbalanceado, a função para rodar a ANOVA do tipo III é o <code>ea2()</code> (do pacote <code>easyanova</code>). A sintaxe da função é:</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1"><span class="kw">ea2</span>(data, <span class="dt">design =</span> <span class="dv">1</span>, <span class="dt">alpha =</span> <span class="fl">0.05</span>, <span class="dt">cov =</span> <span class="dv">4</span>, <span class="dt">list =</span> <span class="ot">FALSE</span>, <span class="dt">p.adjust=</span><span class="dv">1</span>, <span class="dt">plot=</span><span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1"><span class="kw">ea2</span>(data, <span class="dt">design =</span> <span class="dv">1</span>, <span class="dt">alpha =</span> <span class="fl">0.05</span>, <span class="dt">cov =</span> <span class="dv">4</span>, <span class="dt">list =</span> <span class="ot">FALSE</span>, <span class="dt">p.adjust=</span><span class="dv">1</span>, <span class="dt">plot=</span><span class="dv">2</span>)</a></code></pre></div>
 <p>Como já mencionado, o pacote <code>easyanova</code> exige que os dados sejam apresentados numa forma específica contendo apenas as colunas relevantes para a análise. No caso de um experimento fatorial duplo inteiramente casualizado, a ordem esperada das colunas é:</p>
 <ol style="list-style-type: decimal">
 <li>Fator A</li>
@@ -640,11 +639,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Variável resposta</li>
 </ol>
 <p>Considerando as colunas <code>substrato</code>, <code>irrigacao</code> e <code>enraizamento</code> do dataframe <code>fatDIC2</code>. Os demais parâmetros da função <code>ea2()</code> serão definidos como <code>design = 1</code> e <code>plot = 2</code>.</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1"><span class="kw">require</span>(easyanova)</a>
-<a class="sourceLine" id="cb130-2" title="2">r.aov =<span class="st"> </span><span class="kw">ea2</span>(fatDIC2[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)], <span class="dt">design =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1"><span class="kw">require</span>(easyanova)</a>
+<a class="sourceLine" id="cb135-2" title="2">r.aov =<span class="st"> </span><span class="kw">ea2</span>(fatDIC2[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)], <span class="dt">design =</span> <span class="dv">1</span>)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
 <p>A saída da função <code>ea2()</code> é uma lista contendo os seguintes resultados:</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" title="1"><span class="kw">names</span>(r.aov)</a></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1"><span class="kw">names</span>(r.aov)</a></code></pre></div>
 <pre><code>##  [1] &quot;Analysis of variance&quot;                                     
 ##  [2] &quot;Adjusted means (factor 1)&quot;                                
 ##  [3] &quot;Multiple comparison test (factor 1)&quot;                      
@@ -670,7 +669,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Análise das pressuposições</li>
 </ol>
 <p>A primeira saída que deve ser verificada é a análise das pressuposições, na posição 10 da lista:</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" title="1">r.aov[<span class="dv">10</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1">r.aov[<span class="dv">10</span>]</a></code></pre></div>
 <pre><code>## $`Residual analysis`
 ## $`Residual analysis`$`residual analysis`
 ##                                     values
@@ -709,7 +708,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##          19 
 ## -0.30276156</code></pre>
 <p>O teste de normalidade Shapiro-Wilk indica que não há evidência suficientes para rejeitar a pressuposição de normalidade do modelo estatístico e portanto, este é adequado para representar o experimento analisado. Desta forma, a análise de variância contido na posição 1 da lista de resultados pode ser analisado:</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1">r.aov[<span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1">r.aov[<span class="dv">1</span>]</a></code></pre></div>
 <pre><code>## $`Analysis of variance`
 ##                   df type III SS
 ## factor_1           1    135.3243
@@ -727,7 +726,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## factor_1:factor_2   0.59
 ## residuals              -</code></pre>
 <p>O fator 1 (Indutor) foi significativo, apresentando teste F inferior a 1%. Já o fator 2 (Concentração), bem como a interação não foram significativas. Como a interação não foi significativa, não há necessidade de desdobramento, e o fator 1 - Indutor pode ser analisado diretamente. Lembrando que no exemplo apresentado, o fator 1 possui apenas dois níveis e portanto o teste F é conclusivo. De qualquer maneira, o teste de médias do fator 1 pode ser obtido na posição 2 da lista de resultado.</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" title="1">r.aov[<span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1">r.aov[<span class="dv">2</span>]</a></code></pre></div>
 <pre><code>## $`Adjusted means (factor 1)`
 ##   factor_1 adjusted.mean standard.error
 ## 1        A        5.9625         0.5582
@@ -786,7 +785,7 @@ gitbook.start({
 "link": "https://github.com/Gorgens/compR-experimental/blob/master/08-fatorialdic.Rmd",
 "text": null
 },
-"download": ["bookdownproj.pdf", "bookdownproj.epub", "bookdownproj.mobi"],
+"download": null,
 "toc": {
 "collapse": "subsection"
 }

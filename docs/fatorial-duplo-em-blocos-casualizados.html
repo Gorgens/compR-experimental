@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Cap. 9 Fatorial duplo em blocos casualizados | Computação em R: estatística experimental</title>
-  <meta name="description" content="Cap. 9 Fatorial duplo em blocos casualizados | Computação em R: estatística experimental" />
+  <title>Cap. 9 Fatorial duplo em blocos casualizados | Computação em R: Análise experimental</title>
+  <meta name="description" content="Cap. 9 Fatorial duplo em blocos casualizados | Computação em R: Análise experimental" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cap. 9 Fatorial duplo em blocos casualizados | Computação em R: estatística experimental" />
+  <meta property="og:title" content="Cap. 9 Fatorial duplo em blocos casualizados | Computação em R: Análise experimental" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cap. 9 Fatorial duplo em blocos casualizados | Computação em R: estatística experimental" />
+  <meta name="twitter:title" content="Cap. 9 Fatorial duplo em blocos casualizados | Computação em R: Análise experimental" />
   
   
   
@@ -185,7 +185,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12" data-path="próximos-passos.html"><a href="próximos-passos.html"><i class="fa fa-check"></i><b>12</b> Próximos passos</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
 </ul>
 
       </nav>
@@ -195,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computação em R: estatística experimental</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computação em R: Análise experimental</a>
           </h1>
         </div>
 
@@ -1131,83 +1130,83 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>O primeiro passo é importar o arquivo contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" title="1">fatDBC1 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento Fatorial Duplo DBC 1.csv&quot;</span>, </a>
-<a class="sourceLine" id="cb139-2" title="2">                   <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" title="1">fatDBC1 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento Fatorial Duplo DBC 1.csv&quot;</span>, </a>
+<a class="sourceLine" id="cb144-2" title="2">                   <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
 <p>Para explorar este experimento graficamente, tanto a função <code>boxplot()</code> quanto a função <code>plot()</code> serão usadas. Isto ocorre porque o experimento apresenta um fator quantitativo (doses) e outro fator qualitativo (espécies). Assim, sempre que for analisado o efeito das doses, serão utilizar gráficos de dispersão. Enquanto que ao analisar o efeito dos clones, o boxplot será utilizado.</p>
 <ol style="list-style-type: decimal">
 <li>Considerando apenas fator 1:</li>
 </ol>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> fatDBC1, altura <span class="op">~</span><span class="st"> </span>dose)</a></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> fatDBC1, altura <span class="op">~</span><span class="st"> </span>dose)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Considerando apenas fator 2:</li>
 </ol>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC1, altura <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC1, altura <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Interação dos fatores:</li>
 </ol>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC1, altura <span class="op">~</span><span class="st"> </span>especie<span class="op">/</span>dose)</a></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC1, altura <span class="op">~</span><span class="st"> </span>especie<span class="op">/</span>dose)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Efeito dos blocos:</li>
 </ol>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC1, altura <span class="op">~</span><span class="st"> </span>especie<span class="op">/</span>bloco)</a></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC1, altura <span class="op">~</span><span class="st"> </span>especie<span class="op">/</span>bloco)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-113-1.png" width="672" /></p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC1, altura <span class="op">~</span><span class="st"> </span>dose<span class="op">/</span>bloco)</a></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC1, altura <span class="op">~</span><span class="st"> </span>dose<span class="op">/</span>bloco)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-113-2.png" width="672" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li>Fixando especie igual a 2:</li>
 </ol>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> fatDBC1[fatDBC1<span class="op">$</span>especie <span class="op">==</span><span class="st"> </span><span class="dv">2</span>,], altura <span class="op">~</span><span class="st"> </span>dose)</a></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> fatDBC1[fatDBC1<span class="op">$</span>especie <span class="op">==</span><span class="st"> </span><span class="dv">2</span>,], altura <span class="op">~</span><span class="st"> </span>dose)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
 <ol start="6" style="list-style-type: decimal">
 <li>Fixando especie igual a 5:</li>
 </ol>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> fatDBC1[fatDBC1<span class="op">$</span>especie <span class="op">==</span><span class="st"> </span><span class="dv">5</span>,], altura <span class="op">~</span><span class="st"> </span>dose)</a></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> fatDBC1[fatDBC1<span class="op">$</span>especie <span class="op">==</span><span class="st"> </span><span class="dv">5</span>,], altura <span class="op">~</span><span class="st"> </span>dose)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
 <ol start="7" style="list-style-type: decimal">
 <li>Fixando especie igual a 7:</li>
 </ol>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> fatDBC1[fatDBC1<span class="op">$</span>especie <span class="op">==</span><span class="st"> </span><span class="dv">7</span>,], altura <span class="op">~</span><span class="st"> </span>dose)</a></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> fatDBC1[fatDBC1<span class="op">$</span>especie <span class="op">==</span><span class="st"> </span><span class="dv">7</span>,], altura <span class="op">~</span><span class="st"> </span>dose)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
 <ol start="8" style="list-style-type: decimal">
 <li>Fixando dose igual a 0:</li>
 </ol>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC1[fatDBC1<span class="op">$</span>dose <span class="op">==</span><span class="st"> </span><span class="dv">0</span>,], altura <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC1[fatDBC1<span class="op">$</span>dose <span class="op">==</span><span class="st"> </span><span class="dv">0</span>,], altura <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-117-1.png" width="672" /></p>
 <ol start="9" style="list-style-type: decimal">
 <li>Fixando dose igual a 25:</li>
 </ol>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC1[fatDBC1<span class="op">$</span>dose <span class="op">==</span><span class="st"> </span><span class="dv">25</span>,], altura <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC1[fatDBC1<span class="op">$</span>dose <span class="op">==</span><span class="st"> </span><span class="dv">25</span>,], altura <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-118-1.png" width="672" /></p>
 <ol start="10" style="list-style-type: decimal">
 <li>Fixando dose igual a 50:</li>
 </ol>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC1[fatDBC1<span class="op">$</span>dose <span class="op">==</span><span class="st"> </span><span class="dv">50</span>,], altura <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC1[fatDBC1<span class="op">$</span>dose <span class="op">==</span><span class="st"> </span><span class="dv">50</span>,], altura <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-119-1.png" width="672" /></p>
 <ol start="11" style="list-style-type: decimal">
 <li>Fixando dose igual a 75:</li>
 </ol>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC1[fatDBC1<span class="op">$</span>dose <span class="op">==</span><span class="st"> </span><span class="dv">75</span>,], altura <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC1[fatDBC1<span class="op">$</span>dose <span class="op">==</span><span class="st"> </span><span class="dv">75</span>,], altura <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-120-1.png" width="672" /></p>
 <ol start="12" style="list-style-type: decimal">
 <li>Fixando dose igual a 100:</li>
 </ol>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC1[fatDBC1<span class="op">$</span>dose <span class="op">==</span><span class="st"> </span><span class="dv">100</span>,], altura <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC1[fatDBC1<span class="op">$</span>dose <span class="op">==</span><span class="st"> </span><span class="dv">100</span>,], altura <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
 <p>Com base nos gráficos apresentados, é razoável acreditar que há um efeito significativo da espécie, mas não não fica muito evidente o efeito significativo da dose, da interação e do bloco. Nota-se que as doses possuem comportamentos diferentes, variando de uma tendência quadrática à uma tendência sigmoidal (cúbica).</p>
 <p>Note que quanto mais fatores e interações estiverem presentes no experimento, mais complicado vai ficando a análise gráfica e também a análise estatística. E é por este motivo que desencoraja-se o uso de experimentos fatoriais triplos. Embora os pacotes de análise experimental possuam funções para experimentos fatoriais triplos, eles não serão apresentados aqui neste livro.</p>
 <p>A análise estatística será feita pela função <code>fat2.dbc()</code> do pacote <code>ExpDes.pt</code>. A sintaxe básica da função pode ser vista acessando a página de ajuda da função:</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1"><span class="kw">fat2.dbc</span>(fator1, fator2, bloco, resp, <span class="dt">quali =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>), </a>
-<a class="sourceLine" id="cb153-2" title="2">         <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>, <span class="dt">fac.names =</span> <span class="kw">c</span>(<span class="st">&quot;F1&quot;</span>, <span class="st">&quot;F2&quot;</span>), </a>
-<a class="sourceLine" id="cb153-3" title="3">         <span class="dt">sigT =</span> <span class="fl">0.05</span>, <span class="dt">sigF =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" title="1"><span class="kw">fat2.dbc</span>(fator1, fator2, bloco, resp, <span class="dt">quali =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb158-2" title="2">         <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>, <span class="dt">fac.names =</span> <span class="kw">c</span>(<span class="st">&quot;F1&quot;</span>, <span class="st">&quot;F2&quot;</span>), </a>
+<a class="sourceLine" id="cb158-3" title="3">         <span class="dt">sigT =</span> <span class="fl">0.05</span>, <span class="dt">sigF =</span> <span class="fl">0.05</span>)</a></code></pre></div>
 <p>Lembrando que como se tem um fator quantitativo e um fator qualitativo, além dos parâmetros obrigatórios, será necessário ajustar o parâmetro <code>quali</code>:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
-<a class="sourceLine" id="cb154-2" title="2"></a>
-<a class="sourceLine" id="cb154-3" title="3"><span class="kw">fat2.dbc</span>(fatDBC1<span class="op">$</span>dose, fatDBC1<span class="op">$</span>especie, fatDBC1<span class="op">$</span>bloco,</a>
-<a class="sourceLine" id="cb154-4" title="4">         fatDBC1<span class="op">$</span>altura, <span class="dt">quali =</span> <span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">TRUE</span>), </a>
-<a class="sourceLine" id="cb154-5" title="5">         <span class="dt">fac.names =</span> <span class="kw">c</span>(<span class="st">&quot;Dose&quot;</span>, <span class="st">&quot;Espécie&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
+<a class="sourceLine" id="cb159-2" title="2"></a>
+<a class="sourceLine" id="cb159-3" title="3"><span class="kw">fat2.dbc</span>(fatDBC1<span class="op">$</span>dose, fatDBC1<span class="op">$</span>especie, fatDBC1<span class="op">$</span>bloco,</a>
+<a class="sourceLine" id="cb159-4" title="4">         fatDBC1<span class="op">$</span>altura, <span class="dt">quali =</span> <span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb159-5" title="5">         <span class="dt">fac.names =</span> <span class="kw">c</span>(<span class="st">&quot;Dose&quot;</span>, <span class="st">&quot;Espécie&quot;</span>))</a></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Legenda:
 ## FATOR 1:  Dose 
@@ -1217,13 +1216,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##               GL      SQ QM     Fc   Pr&gt;Fc
-## Bloco          9    60.5  6   1.03 0.41738
-## Dose           4   212.6  4   8.16 0.00001
-## Espécie        2  9138.4  3 702.07 0.00000
-## Dose*Espécie   8   224.7  2   4.32 0.00013
-## Residuo      126   820.0  5               
-## Total        149 10456.2  1               
+##               GL      SQ     QM     Fc
+## Bloco          9    60.5    6.7   1.03
+## Dose           4   212.6   53.1   8.16
+## Espécie        2  9138.4 4569.2 702.07
+## Dose*Espécie   8   224.7   28.1   4.32
+## Residuo      126   820.0    6.5       
+## Total        149 10456.2              
+##                Pr&gt;Fc
+## Bloco        0.41738
+## Dose         0.00001
+## Espécie      0.00000
+## Dose*Espécie 0.00013
+## Residuo             
+## Total               
 ## ------------------------------------------------------------------------
 ## CV = 7.5 %
 ## 
@@ -1253,12 +1259,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Total          149 10456.18221   70.17572
 ##                     Fc  Pr.Fc
 ## Bloco           1.0333 0.4174
-## Espécie        702.069      0
+## Espécie        702.069 0.0000
 ## Dose:Espécie 2  1.9379 0.1082
-## Dose:Espécie 5  4.9284  0.001
-## Dose:Espécie 7  9.9306      0
-## Residuo                      
-## Total                        
+## Dose:Espécie 5  4.9284 0.0010
+## Dose:Espécie 7  9.9306 0.0000
+## Residuo                    NA
+## Total                      NA
 ## ------------------------------------------------------------------------
 ## 
 ## 
@@ -1444,26 +1450,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##                   GL          SQ         QM
-## Bloco              9    60.52166    6.72463
-## Dose               4   212.55440   53.13860
-## Espécie:Dose 0     2  1080.11237  540.05619
-## Espécie:Dose 25    2  1820.84094  910.42047
-## Espécie:Dose 50    2  1691.61319  845.80659
-## Espécie:Dose 75    2  2258.11368 1129.05684
-## Espécie:Dose 100   2  2512.39697 1256.19849
-## Residuo          126   820.02899    6.50817
-## Total            149 10456.18221   70.17572
-##                        Fc  Pr.Fc
-## Bloco              1.0333 0.4174
-## Dose               8.1649      0
-## Espécie:Dose 0    82.9813      0
-## Espécie:Dose 25  139.8889      0
-## Espécie:Dose 50  129.9608      0
-## Espécie:Dose 75  173.4831      0
-## Espécie:Dose 100 193.0188      0
-## Residuo                         
-## Total                           
+##                   GL          SQ
+## Bloco              9    60.52166
+## Dose               4   212.55440
+## Espécie:Dose 0     2  1080.11237
+## Espécie:Dose 25    2  1820.84094
+## Espécie:Dose 50    2  1691.61319
+## Espécie:Dose 75    2  2258.11368
+## Espécie:Dose 100   2  2512.39697
+## Residuo          126   820.02899
+## Total            149 10456.18221
+##                          QM       Fc
+## Bloco               6.72463   1.0333
+## Dose               53.13860   8.1649
+## Espécie:Dose 0    540.05619  82.9813
+## Espécie:Dose 25   910.42047 139.8889
+## Espécie:Dose 50   845.80659 129.9608
+## Espécie:Dose 75  1129.05684 173.4831
+## Espécie:Dose 100 1256.19849 193.0188
+## Residuo             6.50817         
+## Total              70.17572         
+##                   Pr.Fc
+## Bloco            0.4174
+## Dose             0.0000
+## Espécie:Dose 0   0.0000
+## Espécie:Dose 25  0.0000
+## Espécie:Dose 50  0.0000
+## Espécie:Dose 75  0.0000
+## Espécie:Dose 100 0.0000
+## Residuo              NA
+## Total                NA
 ## ------------------------------------------------------------------------
 ## 
 ## 
@@ -1902,59 +1918,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>O primeiro passo é importar o arquivo contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" title="1">fatDBC2 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;./data/Experimento Fatorial Duplo DBC 2.csv&#39;</span>, </a>
-<a class="sourceLine" id="cb156-2" title="2">                   <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" title="1">fatDBC2 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;./data/Experimento Fatorial Duplo DBC 2.csv&#39;</span>, </a>
+<a class="sourceLine" id="cb161-2" title="2">                   <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
 <p>Assim como no experimento balanceado, os dados devem ser explorados graficamente. Diversas opções podem ser utilizadas a partir do pacote gráfico básico.</p>
 <ol style="list-style-type: decimal">
 <li>Considerando apenas fator 1:</li>
 </ol>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> fatDBC2, peso <span class="op">~</span><span class="st"> </span>combate)</a></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> fatDBC2, peso <span class="op">~</span><span class="st"> </span>combate)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-126-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Considerando apenas fator 2:</li>
 </ol>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC2, peso <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC2, peso <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-127-1.png" width="672" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Interação dos fatores:</li>
 </ol>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC2, peso <span class="op">~</span><span class="st"> </span>especie<span class="op">/</span>combate)</a></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC2, peso <span class="op">~</span><span class="st"> </span>especie<span class="op">/</span>combate)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-128-1.png" width="672" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Efeito dos blocos:</li>
 </ol>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC2, peso <span class="op">~</span><span class="st"> </span>especie<span class="op">/</span>bloco)</a></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC2, peso <span class="op">~</span><span class="st"> </span>especie<span class="op">/</span>bloco)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-129-1.png" width="672" /></p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC2, peso <span class="op">~</span><span class="st"> </span>combate<span class="op">/</span>bloco)</a></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC2, peso <span class="op">~</span><span class="st"> </span>combate<span class="op">/</span>bloco)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-129-2.png" width="672" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li>Fixando especie igual a 2:</li>
 </ol>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> fatDBC2[fatDBC2<span class="op">$</span>especie <span class="op">==</span><span class="st"> </span><span class="dv">2</span>,], peso <span class="op">~</span><span class="st"> </span>combate)</a></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> fatDBC2[fatDBC2<span class="op">$</span>especie <span class="op">==</span><span class="st"> </span><span class="dv">2</span>,], peso <span class="op">~</span><span class="st"> </span>combate)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-130-1.png" width="672" /></p>
 <ol start="6" style="list-style-type: decimal">
 <li>Fixando especie igual a 5:</li>
 </ol>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> fatDBC2[fatDBC2<span class="op">$</span>especie <span class="op">==</span><span class="st"> </span><span class="dv">5</span>,], peso <span class="op">~</span><span class="st"> </span>combate)</a></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> fatDBC2[fatDBC2<span class="op">$</span>especie <span class="op">==</span><span class="st"> </span><span class="dv">5</span>,], peso <span class="op">~</span><span class="st"> </span>combate)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
 <ol start="7" style="list-style-type: decimal">
 <li>Fixando combate igual a 0:</li>
 </ol>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC2[fatDBC2<span class="op">$</span>combate <span class="op">==</span><span class="st"> </span><span class="dv">0</span>,], peso <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC2[fatDBC2<span class="op">$</span>combate <span class="op">==</span><span class="st"> </span><span class="dv">0</span>,], peso <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
 <ol start="8" style="list-style-type: decimal">
 <li>Fixando combate igual a 50:</li>
 </ol>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC2[fatDBC2<span class="op">$</span>combate <span class="op">==</span><span class="st"> </span><span class="dv">50</span>,], peso <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC2[fatDBC2<span class="op">$</span>combate <span class="op">==</span><span class="st"> </span><span class="dv">50</span>,], peso <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
 <ol start="9" style="list-style-type: decimal">
 <li>Fixando combate igual a 100:</li>
 </ol>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC2[fatDBC2<span class="op">$</span>combate <span class="op">==</span><span class="st"> </span><span class="dv">100</span>,], peso <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC2[fatDBC2<span class="op">$</span>combate <span class="op">==</span><span class="st"> </span><span class="dv">100</span>,], peso <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-134-1.png" width="672" /></p>
 <p>Como o delineamento fatorial duplo em blocos casualizados pode ter a interação significativa, é fundamental considerar a análise através da ANOVA tipo III. A sintaxe da função é:</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" title="1"><span class="kw">ea2</span>(data, <span class="dt">design =</span> <span class="dv">1</span>, <span class="dt">alpha =</span> <span class="fl">0.05</span>, <span class="dt">cov =</span> <span class="dv">4</span>, <span class="dt">list =</span> <span class="ot">FALSE</span>, </a>
-<a class="sourceLine" id="cb167-2" title="2">    <span class="dt">p.adjust=</span><span class="dv">1</span>,<span class="dt">plot=</span><span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" title="1"><span class="kw">ea2</span>(data, <span class="dt">design =</span> <span class="dv">1</span>, <span class="dt">alpha =</span> <span class="fl">0.05</span>, <span class="dt">cov =</span> <span class="dv">4</span>, <span class="dt">list =</span> <span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb172-2" title="2">    <span class="dt">p.adjust=</span><span class="dv">1</span>,<span class="dt">plot=</span><span class="dv">2</span>)</a></code></pre></div>
 <p>Como já mencionado, o pacote <code>easyanova</code> exige que os dados sejam apresentados em forma de dataframe contendo apenas as colunas relevantes para a análise. No caso de um experimento fatorial duplo em blocos casualizados, a ordem esperada das colunas é:</p>
 <ol style="list-style-type: decimal">
 <li>Fator A</li>
@@ -1963,8 +1979,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Variável resposta</li>
 </ol>
 <p>Qualquer variável extra deve ser removida dos dados e a ordem acima deve ser respeitada para o correto uso do pacote. Além de apresentar os dados na estrutura correta, o parâmetro <code>design</code> deve ser ajustado para <code>2</code>, indicando fatorial duplo em blocos casualizados.</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" title="1"><span class="kw">require</span>(easyanova)</a>
-<a class="sourceLine" id="cb168-2" title="2">r.aov =<span class="st"> </span><span class="kw">ea2</span>(fatDBC2, <span class="dt">design =</span> <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" title="1"><span class="kw">require</span>(easyanova)</a>
+<a class="sourceLine" id="cb173-2" title="2">r.aov =<span class="st"> </span><span class="kw">ea2</span>(fatDBC2, <span class="dt">design =</span> <span class="dv">2</span>)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
 <p>Os resultados são armazenados numa lista de 10 posições, aqui salva numa variável denominada de <code>r.aov</code>. As 10 posições contém:</p>
 <ol style="list-style-type: decimal">
@@ -1980,7 +1996,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Análise das pressuposições</li>
 </ol>
 <p>Nota-se que o teste de Shapiro-Wilk não é significativo, aceitando-se portanto o teste de nulidade, e portanto de resíduos normais.</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" title="1">r.aov[<span class="dv">10</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" title="1">r.aov[<span class="dv">10</span>]</a></code></pre></div>
 <pre><code>## $`Residual analysis`
 ## $`Residual analysis`$`residual analysis`
 ##                                     values
@@ -1994,36 +2010,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## third value most discrepant        25.0000
 ## 
 ## $`Residual analysis`$residuals
-##          1          2          3          4 
-## -1.0666667  0.2666667  3.7333333 -1.1666667 
-##          5          6          7          8 
-##  0.4166667 -2.9000000  0.6333333  2.9166667 
-##          9         10         11         12 
-## -2.8333333  0.8853333  0.5186667 -1.0146667 
-##         13         14         15         16 
-##  3.3853333 -0.8313333  2.2520000 -1.8146667 
-##         17         18         19         20 
-## -1.6680000  1.6686667 -3.3813333  2.6053333 
-##         21         22         23         24 
-## -2.2613333 -0.7946667 -2.0946667  0.4886667 
-##         25         26         27         28 
-##  6.5720000 -2.8946667  1.7520000 -3.7113333 
-##         29         30         31         32 
-##  0.3386667 -1.1746667  2.6586667 -0.8746667 
-##         33         34         35         36 
-## -4.9746667  0.1086667  0.1920000  0.9253333 
-##         37         38         39         40 
-##  1.4720000  1.1086667  0.5586667 -1.0546667 
-##         41         42         43         44 
-##  1.1786667 -2.6546667  2.8453333  1.0286667 
-##         45         46         47         48 
-##  0.2120000  7.2453333 -1.0080000 -4.0713333 
-##         49         50         51         52 
-## -3.7213333 -0.1946667 -2.3613333  1.6053333 
-##         53         54         55         56 
-##  2.0053333 -1.2113333 -6.3280000 -4.0946667 
-##         57         58         59 
-## -0.5480000  2.0886667  9.0386667 
+##          1          2          3 
+## -1.0666667  0.2666667  3.7333333 
+##          4          5          6 
+## -1.1666667  0.4166667 -2.9000000 
+##          7          8          9 
+##  0.6333333  2.9166667 -2.8333333 
+##         10         11         12 
+##  0.8853333  0.5186667 -1.0146667 
+##         13         14         15 
+##  3.3853333 -0.8313333  2.2520000 
+##         16         17         18 
+## -1.8146667 -1.6680000  1.6686667 
+##         19         20         21 
+## -3.3813333  2.6053333 -2.2613333 
+##         22         23         24 
+## -0.7946667 -2.0946667  0.4886667 
+##         25         26         27 
+##  6.5720000 -2.8946667  1.7520000 
+##         28         29         30 
+## -3.7113333  0.3386667 -1.1746667 
+##         31         32         33 
+##  2.6586667 -0.8746667 -4.9746667 
+##         34         35         36 
+##  0.1086667  0.1920000  0.9253333 
+##         37         38         39 
+##  1.4720000  1.1086667  0.5586667 
+##         40         41         42 
+## -1.0546667  1.1786667 -2.6546667 
+##         43         44         45 
+##  2.8453333  1.0286667  0.2120000 
+##         46         47         48 
+##  7.2453333 -1.0080000 -4.0713333 
+##         49         50         51 
+## -3.7213333 -0.1946667 -2.3613333 
+##         52         53         54 
+##  1.6053333  2.0053333 -1.2113333 
+##         55         56         57 
+## -6.3280000 -4.0946667 -0.5480000 
+##         58         59 
+##  2.0886667  9.0386667 
 ## 
 ## $`Residual analysis`$`standardized residuals`
 ##           1           2           3 
@@ -2067,7 +2093,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##          58          59 
 ##  0.73732791  3.19077300</code></pre>
 <p>O quadro geral da ANOVA indica que os dois fatores, bem como a interação são significativos:</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" title="1">r.aov[<span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" title="1">r.aov[<span class="dv">1</span>]</a></code></pre></div>
 <pre><code>## $`Analysis of variance`
 ##                   df type III SS
 ## factor_1           2    113.1605
@@ -2091,7 +2117,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>Comparação de médias do fator 1 dentro do fator 2:</li>
 </ol>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" title="1">r.aov[<span class="dv">6</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" title="1">r.aov[<span class="dv">6</span>]</a></code></pre></div>
 <pre><code>## $`Adjusted means (factor 1 in levels of factor 2)`
 ## $`Adjusted means (factor 1 in levels of factor 2)`$`factor_1 in  2`
 ##   treatment adjusted.mean standard.error
@@ -2115,7 +2141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="2" style="list-style-type: decimal">
 <li>Comparação de médias do fator 2 dentro do fator 1:</li>
 </ol>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" title="1">r.aov[<span class="dv">8</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" title="1">r.aov[<span class="dv">8</span>]</a></code></pre></div>
 <pre><code>## $`Adjusted means (factor 2 in levels of factor 1)`
 ## $`Adjusted means (factor 2 in levels of factor 1)`$`factor_2 in  0`
 ##   treatment adjusted.mean standard.error
@@ -2192,7 +2218,7 @@ gitbook.start({
 "link": "https://github.com/Gorgens/compR-experimental/blob/master/09-fatorialdbc.Rmd",
 "text": null
 },
-"download": ["bookdownproj.pdf", "bookdownproj.epub", "bookdownproj.mobi"],
+"download": null,
 "toc": {
 "collapse": "subsection"
 }

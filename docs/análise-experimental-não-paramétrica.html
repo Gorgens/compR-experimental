@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Cap. 11 Análise experimental não paramétrica | Computação em R: estatística experimental</title>
-  <meta name="description" content="Cap. 11 Análise experimental não paramétrica | Computação em R: estatística experimental" />
+  <title>Cap. 11 Análise experimental não paramétrica | Computação em R: Análise experimental</title>
+  <meta name="description" content="Cap. 11 Análise experimental não paramétrica | Computação em R: Análise experimental" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cap. 11 Análise experimental não paramétrica | Computação em R: estatística experimental" />
+  <meta property="og:title" content="Cap. 11 Análise experimental não paramétrica | Computação em R: Análise experimental" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cap. 11 Análise experimental não paramétrica | Computação em R: estatística experimental" />
+  <meta name="twitter:title" content="Cap. 11 Análise experimental não paramétrica | Computação em R: Análise experimental" />
   
   
   
@@ -185,7 +185,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12" data-path="próximos-passos.html"><a href="próximos-passos.html"><i class="fa fa-check"></i><b>12</b> Próximos passos</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
 </ul>
 
       </nav>
@@ -195,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computação em R: estatística experimental</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computação em R: Análise experimental</a>
           </h1>
         </div>
 
@@ -414,25 +413,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>O primeiro passo é importar o arquivo contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" title="1">dic.np =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DIC NP.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" title="1">dic.np =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DIC NP.csv&quot;</span>)</a></code></pre></div>
 <p>Em seguida, os dados devem ser explorados por meio de gráficos:</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> dic.np, dap <span class="op">~</span><span class="st"> </span>desbaste)</a></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> dic.np, dap <span class="op">~</span><span class="st"> </span>desbaste)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-176-1.png" width="672" /></p>
 <p>Os dados indicam que o incremento médio das árvores remanescentes de um desbaste de 60% da área basal cresceram aproximadamente 0.8 cm, ao passo que as árvores remanescentes de um desbaste de 40 % e 30 %, cresceram apenas ~ 0.6 e 0.5 cm respectivamente. Espera-se que o desbaste 60% seja significativamente diferente dos demais.</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
-<a class="sourceLine" id="cb216-2" title="2"><span class="kw">dic</span>(dic.np<span class="op">$</span>desbaste, dic.np<span class="op">$</span>dap, <span class="dt">quali =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
+<a class="sourceLine" id="cb221-2" title="2"><span class="kw">dic</span>(dic.np<span class="op">$</span>desbaste, dic.np<span class="op">$</span>dap, <span class="dt">quali =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL     SQ QM     Fc    Pr&gt;Fc
-## Tratamento  2 0.9236  3 3.9172 0.032084
-## Residuo    27 3.1831  2                
-## Total      29 4.1067  1                
+##            GL     SQ      QM     Fc
+## Tratamento  2 0.9236 0.46181 3.9172
+## Residuo    27 3.1831 0.11789       
+## Total      29 4.1067               
+##               Pr&gt;Fc
+## Tratamento 0.032084
+## Residuo            
+## Total              
 ## ------------------------------------------------------------------------
 ## CV = 57.45 %
 ## 
 ## ------------------------------------------------------------------------
-## Teste de normalidade dos residuos 
+## Teste de normalidade dos residuos ( Shapiro-Wilk ) 
 ## Valor-p:  0.0001554767 
 ## ATENCAO: a 5% de significancia, os residuos nao podem ser considerados normais!
 ## ------------------------------------------------------------------------
@@ -494,7 +497,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## --------------------------------------------------
 ## ------------------------------------------------------------------------</code></pre>
 <p>O teste de normalidade de resíduos é significativo, indicando que o modelo estatístico paramétrico não é adequado aos dados, e mesmo transformando, a normalidade de resíduos continua sendo rejeitada. Neste caso, recomenda-se o uso do teste não-paramétrico de <em>Kruskal-Wallis</em>.</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" title="1"><span class="kw">kruskal.test</span>(dic.np<span class="op">$</span>dap, dic.np<span class="op">$</span>desbaste)</a></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" title="1"><span class="kw">kruskal.test</span>(dic.np<span class="op">$</span>dap, dic.np<span class="op">$</span>desbaste)</a></code></pre></div>
 <pre><code>## 
 ##  Kruskal-Wallis rank sum test
 ## 
@@ -760,23 +763,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>O primeiro passo é importar o arquivo contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" title="1">dbc.np =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DBC 3.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" title="1">dbc.np =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento DBC 3.csv&quot;</span>)</a></code></pre></div>
 <p>É fundamental explorar os dados de forma gráfica para antecipar o resultado da análise estatística. A construção do gráfico ajuda na compreensão do fenômeno estudado e na validação da análise estatística escolhida. Por se tratar de um experimento com o tratamento formado por níveis qualitativos, recomenda-se o uso do boxplot.</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc.np, diametro <span class="op">~</span><span class="st"> </span>desbaste)</a></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc.np, diametro <span class="op">~</span><span class="st"> </span>desbaste)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-181-1.png" width="672" /></p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc.np, diametro <span class="op">~</span><span class="st"> </span>bloco)</a></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> dbc.np, diametro <span class="op">~</span><span class="st"> </span>bloco)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-182-1.png" width="672" /></p>
 <p>A análise do experimento em questão pode ser então realizada construindo a função <code>dbc()</code> da seguinte maneira:</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
-<a class="sourceLine" id="cb223-2" title="2"><span class="kw">dbc</span>(dbc.np<span class="op">$</span>desbaste, dbc.np<span class="op">$</span>bloco, dbc.np<span class="op">$</span>diametro, <span class="dt">hvar =</span> <span class="st">&#39;han&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
+<a class="sourceLine" id="cb228-2" title="2"><span class="kw">dbc</span>(dbc.np<span class="op">$</span>desbaste, dbc.np<span class="op">$</span>bloco, dbc.np<span class="op">$</span>diametro, <span class="dt">hvar =</span> <span class="st">&#39;han&#39;</span>)</a></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL      SQ QM     Fc   Pr&gt;Fc
-## Tratamento  1  123.75  2 5.2404 0.02840
-## Bloco       4   81.30  3 0.8607 0.49731
-## Residuo    34  802.89  4               
-## Total      39 1007.94  1               
+##            GL      SQ      QM     Fc
+## Tratamento  1  123.75 123.749 5.2404
+## Bloco       4   81.30  20.326 0.8607
+## Residuo    34  802.89  23.614       
+## Total      39 1007.94               
+##              Pr&gt;Fc
+## Tratamento 0.02840
+## Bloco      0.49731
+## Residuo           
+## Total             
 ## ------------------------------------------------------------------------
 ## CV = 16.75 %
 ## 
@@ -799,15 +807,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  b    30      27.258 
 ## ------------------------------------------------------------------------</code></pre>
 <p>Veja que o teste de normalidade deu significativo, indicando assim que a hipótese de normalidade de resíduos deve ser rejeitada. A variável diametro é contínua e portanto a transformação logarítmica é a mais indicada para a transformação dos dados.</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" title="1"><span class="kw">dbc</span>(dbc.np<span class="op">$</span>desbaste, dbc.np<span class="op">$</span>bloco, <span class="kw">log</span>(dbc.np<span class="op">$</span>diametro), <span class="dt">hvar =</span> <span class="st">&#39;han&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" title="1"><span class="kw">dbc</span>(dbc.np<span class="op">$</span>desbaste, dbc.np<span class="op">$</span>bloco, <span class="kw">log</span>(dbc.np<span class="op">$</span>diametro), <span class="dt">hvar =</span> <span class="st">&#39;han&#39;</span>)</a></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL      SQ QM     Fc   Pr&gt;Fc
-## Tratamento  1 0.20102  4 5.0766 0.03081
-## Bloco       4 0.12703  2 0.8020 0.53242
-## Residuo    34 1.34633  3               
-## Total      39 1.67439  1               
+##            GL      SQ       QM     Fc
+## Tratamento  1 0.20102 0.201023 5.0766
+## Bloco       4 0.12703 0.031759 0.8020
+## Residuo    34 1.34633 0.039598       
+## Total      39 1.67439                
+##              Pr&gt;Fc
+## Tratamento 0.03081
+## Bloco      0.53242
+## Residuo           
+## Total             
 ## ------------------------------------------------------------------------
 ## CV = 5.94 %
 ## 
@@ -830,11 +843,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  b    30      3.278376 
 ## ------------------------------------------------------------------------</code></pre>
 <p>Infelizmente, mesmo com a transformação os resíduos continuam não apresentando normalidade. A recomendação portanto é seguir com a análise não paramétrica. Por se tratar de um DBC, o teste indicado é o Teste de Friedman. O teste de Friedman não aceita repetições dentro do bloco. Por isso, será necessário agregar as repetições através de média.</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" title="1">dbc.aggr =<span class="st"> </span><span class="kw">aggregate</span>(dbc.np<span class="op">$</span>diametro, </a>
-<a class="sourceLine" id="cb227-2" title="2">                     <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">desb =</span> dbc.np<span class="op">$</span>desbaste,</a>
-<a class="sourceLine" id="cb227-3" title="3">                               <span class="dt">bloco =</span> dbc.np<span class="op">$</span>bloco), </a>
-<a class="sourceLine" id="cb227-4" title="4">                     <span class="dt">FUN =</span> mean)</a>
-<a class="sourceLine" id="cb227-5" title="5"><span class="kw">print</span>(dbc.aggr)</a></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" title="1">dbc.aggr =<span class="st"> </span><span class="kw">aggregate</span>(dbc.np<span class="op">$</span>diametro, </a>
+<a class="sourceLine" id="cb232-2" title="2">                     <span class="dt">by =</span> <span class="kw">list</span>(<span class="dt">desb =</span> dbc.np<span class="op">$</span>desbaste,</a>
+<a class="sourceLine" id="cb232-3" title="3">                               <span class="dt">bloco =</span> dbc.np<span class="op">$</span>bloco), </a>
+<a class="sourceLine" id="cb232-4" title="4">                     <span class="dt">FUN =</span> mean)</a>
+<a class="sourceLine" id="cb232-5" title="5"><span class="kw">print</span>(dbc.aggr)</a></code></pre></div>
 <pre><code>##    desb bloco      x
 ## 1    30     1 29.370
 ## 2    50     1 32.835
@@ -847,7 +860,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 9    30     5 28.875
 ## 10   50     5 28.875</code></pre>
 <p>O teste de Friedman pode ser assim chamado:</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" title="1"><span class="kw">friedman.test</span>(x <span class="op">~</span><span class="st"> </span>desb <span class="op">|</span><span class="st"> </span>bloco, <span class="dt">data =</span> dbc.aggr)</a></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" title="1"><span class="kw">friedman.test</span>(x <span class="op">~</span><span class="st"> </span>desb <span class="op">|</span><span class="st"> </span>bloco, <span class="dt">data =</span> dbc.aggr)</a></code></pre></div>
 <pre><code>## 
 ##  Friedman rank sum test
 ## 
@@ -906,7 +919,7 @@ gitbook.start({
 "link": "https://github.com/Gorgens/compR-experimental/blob/master/11-naoParam.Rmd",
 "text": null
 },
-"download": ["bookdownproj.pdf", "bookdownproj.epub", "bookdownproj.mobi"],
+"download": null,
 "toc": {
 "collapse": "subsection"
 }

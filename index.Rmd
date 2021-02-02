@@ -1,5 +1,5 @@
 --- 
-title: "Computação em R: estatística experimental"
+title: "Computação em R: Análise experimental"
 author: "Eric Bastos Gorgens, Marcio Leles Romarco de Oliveira"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Cap. 4 ANOVA no R | Computação em R: estatística experimental</title>
-  <meta name="description" content="Cap. 4 ANOVA no R | Computação em R: estatística experimental" />
+  <title>Cap. 4 ANOVA no R | Computação em R: Análise experimental</title>
+  <meta name="description" content="Cap. 4 ANOVA no R | Computação em R: Análise experimental" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cap. 4 ANOVA no R | Computação em R: estatística experimental" />
+  <meta property="og:title" content="Cap. 4 ANOVA no R | Computação em R: Análise experimental" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cap. 4 ANOVA no R | Computação em R: estatística experimental" />
+  <meta name="twitter:title" content="Cap. 4 ANOVA no R | Computação em R: Análise experimental" />
   
   
   
@@ -185,7 +185,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12" data-path="próximos-passos.html"><a href="próximos-passos.html"><i class="fa fa-check"></i><b>12</b> Próximos passos</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
 </ul>
 
       </nav>
@@ -195,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computação em R: estatística experimental</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computação em R: Análise experimental</a>
           </h1>
         </div>
 
@@ -214,7 +213,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="pacote-expdes.pt" class="section level2">
 <h2><span class="header-section-number">4.1</span> Pacote ExpDes.pt</h2>
 <p>O pacote <code>ExpDes.pt</code> (e sua versão em inglês <code>ExpDes</code>) foi desenvolvido por uma equipe da Universidade de Alfenas (Unifal) composta por Eric Batista Ferreira, Pórtya Piscitelli Cavalcanti, Denismar Alves Nogueira e outros. Este pacote realiza a análise de diversos delineamentos experimentais e desdobramentos tanto de fatores qualitativos quanto de fatores quantitativos. Para instalar o <code>ExpDes.pt</code>:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;ExpDes.pt&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;ExpDes.pt&quot;</span>)</a></code></pre></div>
 <p>O pacote <code>ExpDes.pt</code> ao ser instalado trás diversas funções para analisar os seguintes delineamentos experimentais:</p>
 <ul>
 <li>DIC: delineamento inteiramente casualizado</li>
@@ -237,11 +236,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Teste Bootstrap</li>
 </ul>
 <p>Mesmo depois de instalados, os pacotes precisam ser ativados antes de serem utilizados. A ativação pode ser feita pelo comando:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a></code></pre></div>
+<pre><code>## Loading required package: ExpDes.pt</code></pre>
+<pre><code>## Warning: package &#39;ExpDes.pt&#39; was built
+## under R version 4.0.3</code></pre>
 <p>Uma vez ativado, as funções do pacote passam a estar disponíveis para o usuário. Para conhecer os parâmetros e o funcionamento da função, a página de ajuda pode ser consultada digitando no console <code>?</code> seguido do nome da função:</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">?dic</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1">?dic</a></code></pre></div>
 <p>Toda função no R é composta por parâmetros obrigatórios e parâmetros opcionais. Esta indicação será obtida analisando a sintaxe da função, também disponível na página de ajuda. Como exemplo, consultando a página de ajuda da função <code>dic</code>, nota-se que a sintaxe básica da funçao é:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="kw">dic</span>(trat, resp, <span class="dt">quali =</span> <span class="ot">TRUE</span>, <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>, <span class="dt">sigT =</span> <span class="fl">0.05</span>, <span class="dt">sigF =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1"><span class="kw">dic</span>(trat, resp, <span class="dt">quali =</span> <span class="ot">TRUE</span>, <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>, <span class="dt">sigT =</span> <span class="fl">0.05</span>, <span class="dt">sigF =</span> <span class="fl">0.05</span>)</a></code></pre></div>
 <p>Pela sintaxe apresentada acima, dois parâmetros são obrigatórios: <code>trat</code> e <code>resp</code>. Estes parâmetros correspondem às colunas da nossa base de dados em que <code>trat</code> indica tratamento e <code>resp</code> indica variável resposta. Os demais parâmetros não são obrigatórios pois já estão pré-definidos. Por exemplo, o parâmetro <code>quali</code> está pré-definido como <code>TRUE</code>. Isto implica que os níveis do tratamento serão interpretados como qualitativos. Assim, se o experimento possuir tratamento com níveis quantitativos, como por exemplo dosagem de nutrientes, o parâmetro <code>quali</code> deverá ser definido como <code>FALSE</code>. Os demais parâmetros optativos indicam:</p>
 <ul>
 <li><code>mcomp</code>: o teste de média que será aplicado caso seja necessário realizar o desdobramento dos tratamentos. O parâmetro vem pré-definido como Teste de Tukey (<code>tukey</code>).</li>
@@ -253,9 +255,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="pacote-easyanova" class="section level2">
 <h2><span class="header-section-number">4.2</span> Pacote easyanova</h2>
 <p>O pacote <code>easyanova</code> foi desenvolvido pelo professor Emmanuel Arnhold, que leciona disciplinas de estatística aplicada à experimentação agropecuária em nível de graduação e pós-graduação na Universidade Federal de Goiás (UFG). O pacote <code>easyanova</code> pode ser utilizado para qualquer tipo de experimento - balanceado e desbalanceado - já que possui um mecanismo que define o tipo de ANOVA com base na estrutura dos dados apresentados. Outra vantagem é que este pacote realiza tanto o teste de normalidade quanto o teste de homogeneidade de variâncias. Para instalar o <code>easyanova</code>:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;easyanova&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;easyanova&quot;</span>)</a></code></pre></div>
 <p>Estando o pacote instalado, a sua ativação pode ser feita através da função <code>require()</code>:</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="kw">require</span>(easyanova)</a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1"><span class="kw">require</span>(easyanova)</a></code></pre></div>
+<pre><code>## Loading required package: easyanova</code></pre>
+<pre><code>## Warning: package &#39;easyanova&#39; was built
+## under R version 4.0.3</code></pre>
 <p>Diferentemente do pacote <code>ExpDes.pt</code>, o easyanova possui apenas duas funções básicas para análise de experimentos:</p>
 <ul>
 <li><code>ea1()</code></li>
@@ -298,7 +303,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Uma diferença importante entre os pacotes <code>ExpDes.pt</code> e <code>easyanova</code> é a forma de apresentação dos dados. No <code>ExpDes.pt</code> apresenta-se os vetores correspondentes às fontes de variação isoladamente: um vetor com os tratamentos (ex: <code>dic2$Tratamento</code>), depois um vetor com a variável de interesse (ex: <code>dic2$Altura</code>).</p>
 <p>Já no pacote <code>easyanova</code>, as fontes de variação devem ser apresentadas em forma de dataframe contendo exatamente as fontes de variação, variável de interesse e a repetição. Para cada um dos delineamentos suportados, o pacote <code>easyanova</code> apresenta uma base exemplo que pode ser verificada via página de ajuda: <code>?ea1</code> ou <code>?ea2</code>.</p>
 <p>Como exemplo, o experimento em delineamento inteiramente casualizado seria analisado através da função <code>ea1()</code> cuja sintaxe básica é:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1"><span class="kw">ea2</span>(data, <span class="dt">design =</span> <span class="dv">1</span>, <span class="dt">alpha =</span> <span class="fl">0.05</span>, <span class="dt">list =</span> <span class="ot">FALSE</span>, <span class="dt">p.adjust=</span><span class="dv">1</span>, <span class="dt">plot=</span><span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1"><span class="kw">ea2</span>(data, <span class="dt">design =</span> <span class="dv">1</span>, <span class="dt">alpha =</span> <span class="fl">0.05</span>, <span class="dt">list =</span> <span class="ot">FALSE</span>, <span class="dt">p.adjust=</span><span class="dv">1</span>, <span class="dt">plot=</span><span class="dv">2</span>)</a></code></pre></div>
 <p>O parâmetro <code>design</code> vem pré-definido como 1. Assim, fique atento em defini-lo de acordo com o delineamento correto do seu experimento.</p>
 <p>Embora pela sintaxe acima, o único parâmetro obrigatório seja a base de dados - <code>data</code>, fica evidente que o <code>design</code> também precisa ser corretamente informado, de acordo com o delineamento do experimento a ser analisado. Um outro parâmetro opcional que vale a pena ser mencionado aqui é o <code>plot</code>. Três opções podem ser utilizadas para este parâmetro:</p>
 <p><code>1</code> - indicando gráfico boxplot dos resíduos.</p>
@@ -357,7 +362,7 @@ gitbook.start({
 "link": "https://github.com/Gorgens/compR-experimental/blob/master/04-anova.Rmd",
 "text": null
 },
-"download": ["bookdownproj.pdf", "bookdownproj.epub", "bookdownproj.mobi"],
+"download": null,
 "toc": {
 "collapse": "subsection"
 }

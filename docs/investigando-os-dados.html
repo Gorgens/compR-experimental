@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Cap. 5 Investigando os dados | Computação em R: estatística experimental</title>
-  <meta name="description" content="Cap. 5 Investigando os dados | Computação em R: estatística experimental" />
+  <title>Cap. 5 Investigando os dados | Computação em R: Análise experimental</title>
+  <meta name="description" content="Cap. 5 Investigando os dados | Computação em R: Análise experimental" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cap. 5 Investigando os dados | Computação em R: estatística experimental" />
+  <meta property="og:title" content="Cap. 5 Investigando os dados | Computação em R: Análise experimental" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cap. 5 Investigando os dados | Computação em R: estatística experimental" />
+  <meta name="twitter:title" content="Cap. 5 Investigando os dados | Computação em R: Análise experimental" />
   
   
   
@@ -185,7 +185,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12" data-path="próximos-passos.html"><a href="próximos-passos.html"><i class="fa fa-check"></i><b>12</b> Próximos passos</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
 </ul>
 
       </nav>
@@ -195,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computação em R: estatística experimental</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computação em R: Análise experimental</a>
           </h1>
         </div>
 
@@ -218,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="plot-gráfico-de-dispersão" class="section level2">
 <h2><span class="header-section-number">5.1</span> Plot: Gráfico de dispersão</h2>
 <p>A função <code>plot()</code> é indicada para analisar duas variáveis quantitativas, já que uma assumirá o eixo x e outra o eixo y, sendo ambos os eixos numéricos e contínuos. Para exemplificar o uso das funções gráficas, será utilizado dados de um experimento sobre o aparecimento de brotos em função do mês em que a poda é realizada. Deseja-se encontrar em qual mês que a poda deve ser realizada visando minimizar o número de brotos.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1">exp.grafico =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Exemplo para Graficos.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1">exp.grafico =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Exemplo para Graficos.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
 <table>
 <caption><span id="tab:unnamed-chunk-44">Table 5.1: </span>Dados de delineamento inteiramente casualizado</caption>
 <thead>
@@ -758,9 +757,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> exp.grafico, Brotos <span class="op">~</span><span class="st"> </span>MesPoda, </a>
-<a class="sourceLine" id="cb73-2" title="2">     <span class="dt">xlab =</span> <span class="st">&quot;Mes da poda&quot;</span>, </a>
-<a class="sourceLine" id="cb73-3" title="3">     <span class="dt">ylab =</span> <span class="st">&quot;Numero de brotos&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> exp.grafico, Brotos <span class="op">~</span><span class="st"> </span>MesPoda, </a>
+<a class="sourceLine" id="cb78-2" title="2">     <span class="dt">xlab =</span> <span class="st">&quot;Mes da poda&quot;</span>, </a>
+<a class="sourceLine" id="cb78-3" title="3">     <span class="dt">ylab =</span> <span class="st">&quot;Numero de brotos&quot;</span>)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
 <p>A interpretação de um gráfico de dispersão é bastante intuitiva e direta. Em geral, no eixo X (horizontal) coloca-se a variável que espera-se influenciar de alguma maneira a variável que está no eixo Y (vertical). Dessa maneira, analisa-se o quanto a variável do eixo X está influenciando a variável do eixo Y.</p>
 <p>No exemplo apresentado acima, a variável mês de poda influencia positivamente o número de brotos. Uma vez que quanto maior o mês de poda, maior é o número de brotos. Neste caso, observa-se uma relação diretamente proporcional.</p>
@@ -768,10 +767,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="boxplot-gráfico-de-caixas" class="section level2">
 <h2><span class="header-section-number">5.2</span> Boxplot: Gráfico de caixas</h2>
 <p>A função <code>boxplot()</code> é indicada para analisar uma variável categórica e outra variável contínua. Situação ideal, por exemplo, para verificar a influência de tratamentos qualitativos sobre uma variável de interesse. Ou ainda, avaliar o efeito do bloco sobre a variável de interesse.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1">exp.grafico =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Exemplo para Graficos.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a>
-<a class="sourceLine" id="cb74-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> exp.grafico, Brotos <span class="op">~</span><span class="st"> </span>Bloco, </a>
-<a class="sourceLine" id="cb74-3" title="3">        <span class="dt">xlab =</span> <span class="st">&quot;Bloco&quot;</span>, </a>
-<a class="sourceLine" id="cb74-4" title="4">        <span class="dt">ylab =</span> <span class="st">&quot;Numero de brotos&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1">exp.grafico =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Exemplo para Graficos.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a>
+<a class="sourceLine" id="cb79-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> exp.grafico, Brotos <span class="op">~</span><span class="st"> </span>Bloco, </a>
+<a class="sourceLine" id="cb79-3" title="3">        <span class="dt">xlab =</span> <span class="st">&quot;Bloco&quot;</span>, </a>
+<a class="sourceLine" id="cb79-4" title="4">        <span class="dt">ylab =</span> <span class="st">&quot;Numero de brotos&quot;</span>)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
 <p>A interpretação do boxplot pode parecer complicada, já que este gráfico apresenta uma série de informações estatísticas em um único gráfico. Mas é justamente esta característica que o torna tão utilizado e tão importante.</p>
 <p>A estrutura clássica do boxplot apresenta uma linha horizontal, dentro de uma caixa, sobreposta a uma linha vertical (do inglês <em>whisker</em>, também conhecida como bigode).</p>
@@ -828,7 +827,7 @@ gitbook.start({
 "link": "https://github.com/Gorgens/compR-experimental/blob/master/05-investigando.Rmd",
 "text": null
 },
-"download": ["bookdownproj.pdf", "bookdownproj.epub", "bookdownproj.mobi"],
+"download": null,
 "toc": {
 "collapse": "subsection"
 }

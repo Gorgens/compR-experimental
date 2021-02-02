@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Cap. 10 Parcela subdividida | Computação em R: estatística experimental</title>
-  <meta name="description" content="Cap. 10 Parcela subdividida | Computação em R: estatística experimental" />
+  <title>Cap. 10 Parcela subdividida | Computação em R: Análise experimental</title>
+  <meta name="description" content="Cap. 10 Parcela subdividida | Computação em R: Análise experimental" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Cap. 10 Parcela subdividida | Computação em R: estatística experimental" />
+  <meta property="og:title" content="Cap. 10 Parcela subdividida | Computação em R: Análise experimental" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Cap. 10 Parcela subdividida | Computação em R: estatística experimental" />
+  <meta name="twitter:title" content="Cap. 10 Parcela subdividida | Computação em R: Análise experimental" />
   
   
   
@@ -185,7 +185,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12" data-path="próximos-passos.html"><a href="próximos-passos.html"><i class="fa fa-check"></i><b>12</b> Próximos passos</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
 </ul>
 
       </nav>
@@ -195,7 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computação em R: estatística experimental</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computação em R: Análise experimental</a>
           </h1>
         </div>
 
@@ -401,60 +400,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>O primeiro passo é importar o arquivo contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" title="1">sub =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento Subdividida.csv&quot;</span>, </a>
-<a class="sourceLine" id="cb177-2" title="2">               <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" title="1">sub =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento Subdividida.csv&quot;</span>, </a>
+<a class="sourceLine" id="cb182-2" title="2">               <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
 <p>Você já sabe! Antes de ir para análise estatística explore graficamente os dados.</p>
 <ol style="list-style-type: decimal">
 <li>Considerando apenas tratamento principal:</li>
 </ol>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub, indiv <span class="op">~</span><span class="st"> </span>floresta)</a></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub, indiv <span class="op">~</span><span class="st"> </span>floresta)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Considerando apenas tratamento secundário:</li>
 </ol>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> sub, indiv <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> sub, indiv <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-144-1.png" width="672" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Interação dos tratamentos:</li>
 </ol>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub, indiv <span class="op">~</span><span class="st"> </span>floresta<span class="op">/</span>desrama)</a></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub, indiv <span class="op">~</span><span class="st"> </span>floresta<span class="op">/</span>desrama)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-145-1.png" width="672" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Fixando desrana até 2 metros:</li>
 </ol>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub[sub<span class="op">$</span>desrama <span class="op">==</span><span class="st"> </span><span class="dv">2</span>,], indiv <span class="op">~</span><span class="st"> </span>floresta)</a></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub[sub<span class="op">$</span>desrama <span class="op">==</span><span class="st"> </span><span class="dv">2</span>,], indiv <span class="op">~</span><span class="st"> </span>floresta)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-146-1.png" width="672" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li>Fixando desrana até 5 metros:</li>
 </ol>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub[sub<span class="op">$</span>desrama <span class="op">==</span><span class="st"> </span><span class="dv">5</span>,], indiv <span class="op">~</span><span class="st"> </span>floresta)</a></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub[sub<span class="op">$</span>desrama <span class="op">==</span><span class="st"> </span><span class="dv">5</span>,], indiv <span class="op">~</span><span class="st"> </span>floresta)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
 <ol start="6" style="list-style-type: decimal">
 <li>Fixando desrana até 7 metros:</li>
 </ol>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub[sub<span class="op">$</span>desrama <span class="op">==</span><span class="st"> </span><span class="dv">7</span>,], indiv <span class="op">~</span><span class="st"> </span>floresta)</a></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub[sub<span class="op">$</span>desrama <span class="op">==</span><span class="st"> </span><span class="dv">7</span>,], indiv <span class="op">~</span><span class="st"> </span>floresta)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-148-1.png" width="672" /></p>
 <ol start="7" style="list-style-type: decimal">
 <li>Fixando floresta igual a A:</li>
 </ol>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> sub[sub<span class="op">$</span>floresta <span class="op">==</span><span class="st"> &quot;A&quot;</span>,], indiv <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> sub[sub<span class="op">$</span>floresta <span class="op">==</span><span class="st"> &quot;A&quot;</span>,], indiv <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
 <ol start="8" style="list-style-type: decimal">
 <li>Fixando floresta igual a B:</li>
 </ol>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> sub[sub<span class="op">$</span>floresta <span class="op">==</span><span class="st"> &quot;B&quot;</span>,], indiv <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> sub[sub<span class="op">$</span>floresta <span class="op">==</span><span class="st"> &quot;B&quot;</span>,], indiv <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-150-1.png" width="672" /></p>
 <ol start="9" style="list-style-type: decimal">
 <li>Fixando floresta igual a C:</li>
 </ol>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> sub[sub<span class="op">$</span>floresta <span class="op">==</span><span class="st"> &quot;C&quot;</span>,], indiv <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> sub[sub<span class="op">$</span>floresta <span class="op">==</span><span class="st"> &quot;C&quot;</span>,], indiv <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-151-1.png" width="672" /></p>
 <p>Analisando os gráficos acima, os fatores parecem significativos, assim como a interação. Os dados apresentam-se consistentes, sem a presença de pontos fora da tendência. O pacote <code>ExpDes.pt</code> não inclui as análises de pressuposiçôes para o delineamento de parcelas subdivididas. Existem várias maneiras de contornar esta questão, uma delas é combinar as qualidades de diferentes pacotes. Aqui por exemplo, utiliza-se os testes estatísticos das pressuposições de um pacote e a ANOVA e desdobramentos do outro.</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" title="1"><span class="kw">require</span>(easyanova)</a>
-<a class="sourceLine" id="cb187-2" title="2">r.aov =<span class="st"> </span><span class="kw">ea2</span>(sub, <span class="dt">design=</span><span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" title="1"><span class="kw">require</span>(easyanova)</a>
+<a class="sourceLine" id="cb192-2" title="2">r.aov =<span class="st"> </span><span class="kw">ea2</span>(sub, <span class="dt">design=</span><span class="dv">4</span>)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-152-1.png" width="672" /></p>
 <p>Como já foi visto, o teste de normalidade e de homogeneidade podem ser obtidos na posição 10 da função <code>ea2()</code> do pacote <code>easyanova</code>.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" title="1">r.aov[<span class="dv">10</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" title="1">r.aov[<span class="dv">10</span>]</a></code></pre></div>
 <pre><code>## $`Residual analysis`
 ## $`Residual analysis`$values
 ##                                           values
@@ -514,14 +513,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##          25          26          27 
 ## -0.34941859  0.10033381  0.24908478</code></pre>
 <p>Uma vez confirmadas as pressuposições, retorna-se ao pacote <code>ExpDes.pt</code>. A sintaxe da função para análise de parcela subdividida no pacote é:</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1"><span class="kw">psub2.dic</span>(fator1, fator2, repet, resp, <span class="dt">quali =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb190-2" title="2">          <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>, <span class="dt">fac.names =</span> <span class="kw">c</span>(<span class="st">&quot;F1&quot;</span>, <span class="st">&quot;F2&quot;</span>), </a>
-<a class="sourceLine" id="cb190-3" title="3">          <span class="dt">sigT =</span> <span class="fl">0.05</span>, <span class="dt">sigF =</span> <span class="fl">0.05</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" title="1"><span class="kw">psub2.dic</span>(fator1, fator2, repet, resp, <span class="dt">quali =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb195-2" title="2">          <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>, <span class="dt">fac.names =</span> <span class="kw">c</span>(<span class="st">&quot;F1&quot;</span>, <span class="st">&quot;F2&quot;</span>), </a>
+<a class="sourceLine" id="cb195-3" title="3">          <span class="dt">sigT =</span> <span class="fl">0.05</span>, <span class="dt">sigF =</span> <span class="fl">0.05</span>)</a></code></pre></div>
 <p>No exemplo tem-se o fator principal (fator 1) como qualitativo e o fator secundário (fator 2) como quantitativo. Assim informando os parâmetros obrigatórios juntamente com os parâmetros <code>quali</code> e <code>fac.names</code> (nomes dos fatores) tem-se:</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
-<a class="sourceLine" id="cb191-2" title="2"><span class="kw">psub2.dic</span>(sub<span class="op">$</span>floresta, sub<span class="op">$</span>desrama, sub<span class="op">$</span>rep, sub<span class="op">$</span>indiv,</a>
-<a class="sourceLine" id="cb191-3" title="3">          <span class="dt">quali =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>), </a>
-<a class="sourceLine" id="cb191-4" title="4">          <span class="dt">fac.names =</span> <span class="kw">c</span>(<span class="st">&quot;Floresta&quot;</span>, <span class="st">&quot;Desrama&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a>
+<a class="sourceLine" id="cb196-2" title="2"><span class="kw">psub2.dic</span>(sub<span class="op">$</span>floresta, sub<span class="op">$</span>desrama, sub<span class="op">$</span>rep, sub<span class="op">$</span>indiv,</a>
+<a class="sourceLine" id="cb196-3" title="3">          <span class="dt">quali =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>), </a>
+<a class="sourceLine" id="cb196-4" title="4">          <span class="dt">fac.names =</span> <span class="kw">c</span>(<span class="st">&quot;Floresta&quot;</span>, <span class="st">&quot;Desrama&quot;</span>))</a></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Legenda:
 ## FATOR 1    (parcela):  Floresta 
@@ -530,13 +529,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## ------------------------------------------------------------------------
 ## $`Quadro da analise de variancia`
-##                  GL    SQ QM Fc Pr(&gt;Fc)
-## Floresta          2 19073  6  3       4
-## Erro a            6   214  3  1       1
-## Desrama           2 14795  4  4       2
-## Floresta*Desrama  4   799  2  2       3
-## Erro b           12   939  5           
-## Total            26 35819  1  1       1
+##                  GL    SQ     QM      Fc
+## Floresta          2 19073 9536.3 267.374
+## Erro a            6   214   35.7        
+## Desrama           2 14795 7397.3  94.568
+## Floresta*Desrama  4   799  199.7   2.553
+## Erro b           12   939   78.2        
+## Total            26 35819               
+##                  Pr(&gt;Fc)    
+## Floresta           1e-06 ***
+## Erro a                      
+## Desrama          &lt; 2e-16 ***
+## Floresta*Desrama 0.09349 .  
+## Erro b                      
+## Total                       
+## ---
+## Signif. codes:  
+##   0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39;
+##   0.1 &#39; &#39; 1
 ## 
 ## ------------------------------------------------------------------------
 ## CV 1 = 5.358865 %
@@ -774,56 +784,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>O primeiro passo é importar o arquivo contendo os resultados do experimento para dentro do R. Esta tarefa pode ser realizada através do seguinte comando:</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" title="1">sub2 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento Subdividida 2.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" title="1">sub2 =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Experimento Subdividida 2.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
 <p>Os dados devem ser explorados graficamente antes de seguir com a análise de variância do experimento.</p>
 <ol style="list-style-type: decimal">
 <li>Considerando apenas tratamento principal:</li>
 </ol>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub2, volume <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub2, volume <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Considerando apenas tratamento secundário:</li>
 </ol>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> sub2, volume <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> sub2, volume <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Interação dos tratamentos:</li>
 </ol>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub2, volume <span class="op">~</span><span class="st"> </span>especie<span class="op">/</span>desrama)</a></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub2, volume <span class="op">~</span><span class="st"> </span>especie<span class="op">/</span>desrama)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-160-1.png" width="672" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Fixando desrana até 2 metros:</li>
 </ol>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub2[sub2<span class="op">$</span>desrama <span class="op">==</span><span class="st"> </span><span class="dv">2</span>,], volume <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub2[sub2<span class="op">$</span>desrama <span class="op">==</span><span class="st"> </span><span class="dv">2</span>,], volume <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-161-1.png" width="672" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li>Fixando desrama até 5 metros:</li>
 </ol>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub2[sub2<span class="op">$</span>desrama <span class="op">==</span><span class="st"> </span><span class="dv">5</span>,], volume <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub2[sub2<span class="op">$</span>desrama <span class="op">==</span><span class="st"> </span><span class="dv">5</span>,], volume <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-162-1.png" width="672" /></p>
 <ol start="6" style="list-style-type: decimal">
 <li>Fixando desrama até 7 metros:</li>
 </ol>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub2[sub2<span class="op">$</span>desrama <span class="op">==</span><span class="st"> </span><span class="dv">7</span>,], volume <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> sub2[sub2<span class="op">$</span>desrama <span class="op">==</span><span class="st"> </span><span class="dv">7</span>,], volume <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-163-1.png" width="672" /></p>
 <ol start="7" style="list-style-type: decimal">
 <li>Fixando espécie igual a A:</li>
 </ol>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> sub2[sub2<span class="op">$</span>especie <span class="op">==</span><span class="st"> &quot;A&quot;</span>,], volume <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> sub2[sub2<span class="op">$</span>especie <span class="op">==</span><span class="st"> &quot;A&quot;</span>,], volume <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-164-1.png" width="672" /></p>
 <ol start="8" style="list-style-type: decimal">
 <li>Fixando espécie igual a B:</li>
 </ol>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> sub2[sub2<span class="op">$</span>especie <span class="op">==</span><span class="st"> &quot;B&quot;</span>,], volume <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> sub2[sub2<span class="op">$</span>especie <span class="op">==</span><span class="st"> &quot;B&quot;</span>,], volume <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-165-1.png" width="672" /></p>
 <ol start="9" style="list-style-type: decimal">
 <li>Fixando espécie igual a C:</li>
 </ol>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> sub2[sub2<span class="op">$</span>especie <span class="op">==</span><span class="st"> &quot;C&quot;</span>,], volume <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> sub2[sub2<span class="op">$</span>especie <span class="op">==</span><span class="st"> &quot;C&quot;</span>,], volume <span class="op">~</span><span class="st"> </span>desrama)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-166-1.png" width="672" /></p>
 <p>Os dados por se tratarem de experimento desbalanceados com efeito da interação relevante devem ser analisados com o pacote <code>easyanova</code>. A função será <code>ea2()</code> e possui a sintaxe básica:</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" title="1"><span class="kw">ea2</span>(data, <span class="dt">design =</span> <span class="dv">1</span>, <span class="dt">alpha =</span> <span class="fl">0.05</span>, <span class="dt">cov =</span> <span class="dv">4</span>, <span class="dt">list =</span> <span class="ot">FALSE</span>, </a>
-<a class="sourceLine" id="cb203-2" title="2">    <span class="dt">p.adjust=</span><span class="dv">1</span>, <span class="dt">plot=</span><span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" title="1"><span class="kw">ea2</span>(data, <span class="dt">design =</span> <span class="dv">1</span>, <span class="dt">alpha =</span> <span class="fl">0.05</span>, <span class="dt">cov =</span> <span class="dv">4</span>, <span class="dt">list =</span> <span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb208-2" title="2">    <span class="dt">p.adjust=</span><span class="dv">1</span>, <span class="dt">plot=</span><span class="dv">2</span>)</a></code></pre></div>
 <p>Os dados devem ser apresentados na ordem:</p>
 <ol style="list-style-type: decimal">
 <li>Fator nas parcelas</li>
@@ -832,11 +842,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Variável resposta</li>
 </ol>
 <p>O parâmetro <code>design</code> deve ser definido como <code>4</code>, resultando no seguinte comando:</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" title="1"><span class="kw">require</span>(easyanova)</a>
-<a class="sourceLine" id="cb204-2" title="2">r.aov =<span class="st"> </span><span class="kw">ea2</span>(sub2, <span class="dt">design=</span><span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" title="1"><span class="kw">require</span>(easyanova)</a>
+<a class="sourceLine" id="cb209-2" title="2">r.aov =<span class="st"> </span><span class="kw">ea2</span>(sub2, <span class="dt">design=</span><span class="dv">4</span>)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-168-1.png" width="672" /></p>
 <p>Os resultados podem ser acessados escolhendo um dos elementos da lista:</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" title="1">r.aov[<span class="dv">10</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb210-1" title="1">r.aov[<span class="dv">10</span>]</a></code></pre></div>
 <pre><code>## $`Residual analysis`
 ## $`Residual analysis`$values
 ##                                           values
@@ -892,7 +902,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##          22          23 
 ##  0.71457139 -0.71457139</code></pre>
 <p>O teste de normalidade apresentou valor não significativo, indicando assim que não há evidências para rejeitar a normalidade dos resíduos.</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" title="1">r.aov[<span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" title="1">r.aov[<span class="dv">1</span>]</a></code></pre></div>
 <pre><code>## $`Marginal anova (Type III Sum of Squares)`
 ##                 numDF denDF  F-value
 ## plot                2     6 16.07861
@@ -906,7 +916,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>Comparação das parcelas:</li>
 </ol>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" title="1">r.aov[<span class="dv">2</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" title="1">r.aov[<span class="dv">2</span>]</a></code></pre></div>
 <pre><code>## $`Adjusted means (plot)`
 ##   plot adjusted.mean standard.error tukey
 ## 1    B      131.8889         7.6958     a
@@ -919,7 +929,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="2" style="list-style-type: decimal">
 <li>Comparação das subdivisões:</li>
 </ol>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" title="1">r.aov[<span class="dv">4</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" title="1">r.aov[<span class="dv">4</span>]</a></code></pre></div>
 <pre><code>## $`Adjusted means (split.plot)`
 ##   split.plot adjusted.mean standard.error
 ## 1          7      134.5013         6.4491
@@ -980,7 +990,7 @@ gitbook.start({
 "link": "https://github.com/Gorgens/compR-experimental/blob/master/10-subdividida.Rmd",
 "text": null
 },
-"download": ["bookdownproj.pdf", "bookdownproj.epub", "bookdownproj.mobi"],
+"download": null,
 "toc": {
 "collapse": "subsection"
 }
