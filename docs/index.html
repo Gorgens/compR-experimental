@@ -24,7 +24,7 @@
 <meta name="author" content="Eric Bastos Gorgens, Marcio Leles Romarco de Oliveira" />
 
 
-<meta name="date" content="2021-02-02" />
+<meta name="date" content="2021-02-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -162,9 +162,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#outro-caso-balanceado"><i class="fa fa-check"></i><b>6.3</b> Outro caso balanceado</a></li>
 <li class="chapter" data-level="6.4" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#o-caso-desbalanceado"><i class="fa fa-check"></i><b>6.4</b> O caso desbalanceado</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html"><i class="fa fa-check"></i><b>7</b> Delineamento em blocos casualizados</a><ul>
-<li class="chapter" data-level="7.1" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html#o-caso-balanceado-1"><i class="fa fa-check"></i><b>7.1</b> O caso balanceado</a></li>
-<li class="chapter" data-level="7.2" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html#o-caso-desbalanceado-1"><i class="fa fa-check"></i><b>7.2</b> O caso desbalanceado</a></li>
+<li class="chapter" data-level="7" data-path="delineamento-casualizado-em-blocos.html"><a href="delineamento-casualizado-em-blocos.html"><i class="fa fa-check"></i><b>7</b> Delineamento casualizado em blocos</a><ul>
+<li class="chapter" data-level="7.1" data-path="delineamento-casualizado-em-blocos.html"><a href="delineamento-casualizado-em-blocos.html#o-caso-balanceado-1"><i class="fa fa-check"></i><b>7.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="7.2" data-path="delineamento-casualizado-em-blocos.html"><a href="delineamento-casualizado-em-blocos.html#o-caso-desbalanceado-1"><i class="fa fa-check"></i><b>7.2</b> O caso desbalanceado</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html"><i class="fa fa-check"></i><b>8</b> Fatorial duplo inteiramento casualizado</a><ul>
 <li class="chapter" data-level="8.1" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html#o-caso-balanceado-2"><i class="fa fa-check"></i><b>8.1</b> O caso balanceado</a></li>
@@ -205,7 +205,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Computação em R: Análise experimental</h1>
 <p class="author"><em>Eric Bastos Gorgens, Marcio Leles Romarco de Oliveira</em></p>
-<p class="date"><em>2021-02-02</em></p>
+<p class="date"><em>2021-02-06</em></p>
 </div>
 <div id="introdução" class="section level1">
 <h1><span class="header-section-number">Cap. 1</span> Introdução</h1>
@@ -213,10 +213,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="figuras/capa.png" alt="Capa" />
 <p class="caption">Capa</p>
 </div>
-<p>Bem-vindo ao mundo do R. O R não é só um software, nem se resume a uma linguagem. O R é um estilo de pesquisar, estudar e ensinar. Através de seus códigos e scripts você entrará num mundo sem limites, aberto à experimentação e à troca de experiência. Um mundo em que não existe apenas uma forma de se chegar à resposta correta, mas sim uma gama de alternativas! Você deve estar se perguntando: porque começar a trabalhar com o R? A resposta passa por algumas perspectivas interessantes.</p>
-<p>R é gratuito. Por se tratar de um projeto de código aberto, você pode usar o R sem nenhum custo adicional: ou seja sem necessidade de pagar por inscrições, assinaturas, licenças ou limitações. Sendo o R aberto, você pode ter acesso ao código e ajustá-lo às suas necessidades (para mais detalhes veja: GNU General Public License version 2). Centenas de experts ao redor do mundo fazem exatamente isto e suas contribuições beneficiam milhares de usuários do R.</p>
-<p>R é uma linguagem. No R, você realiza uma análise escrevendo funções e scripts; e não clicando em botões na tela. Isto pode assustar e parecer difícil, mas na verdade, a linguagem R é uma linguagem simples de aprender e muito natural para análise de dados. Aprender uma linguagem tem vários benefícios. Por se tratar de uma linguagem interativa, o R promove uma oportunidade de experimentar e explorar os dados de forma profunda e detalhada. Um script documenta passo a passo da análise, do acesso aos dados até os resultados das análises, podendo ser executados a qualquer momento, por qualquer pessoa.
-Gráficos e visualização de dados. Faz parte das premissas de criações do R, a certeza de que a visualização dos dados através de gráficos é uma parte essencial de qualquer análise dos dados. Como resultado, o R oferece excelentes ferramentas para criação de gráficos, de barras até multi-painéis. Os recursos gráficos do R é influenciado pelos principais pensadores da área de visualização de dados como Bill Cleveland e Edward Tufte. Gráficos do R podem ser vistos em respeitadas publicações mundiais como The New York Times, The Economist, e o blog FlowingData.</p>
+<p>Bem-vindo ao mundo do R. O R não é só um software, nem se resume a uma linguagem. O R é um estilo de pesquisar, estudar e ensinar. Através de seus códigos e <em>scripts</em> você entrará num mundo sem limites, aberto à experimentação e à troca de experiência. Um mundo em que não existe apenas uma forma de se chegar à resposta correta, mas sim uma gama de alternativas! Você deve estar se perguntando: porque começar a trabalhar com o R? A resposta passa por algumas perspectivas interessantes.</p>
+<p>R é gratuito. Por se tratar de um projeto de código aberto, você pode usar o R sem nenhum custo adicional: ou seja sem necessidade de pagar por inscrições, assinaturas, licenças ou limitações. Sendo o R aberto, você pode ter acesso ao código e ajustá-lo às suas necessidades (para mais detalhes veja: GNU General Public License version 2). Centenas de <em>experts</em> ao redor do mundo fazem exatamente isto e suas contribuições beneficiam milhares de usuários do R.</p>
+<p>R é uma linguagem. No R, você realiza uma análise escrevendo funções e <em>scripts</em>; e não clicando em botões na tela. Isto pode assustar e parecer difícil, mas na verdade, a linguagem R é uma linguagem simples de aprender e muito natural para análise de dados. Aprender uma linguagem tem vários benefícios. Por se tratar de uma linguagem interativa, o R promove uma oportunidade de experimentar e explorar os dados de forma profunda e detalhada. Um <em>script</em> documenta passo a passo da análise, do acesso aos dados até os resultados das análises, podendo ser executados a qualquer momento, por qualquer pessoa.</p>
+<p>Gráficos e visualização de dados. Faz parte das premissas de criações do R, a certeza de que a visualização dos dados através de gráficos é uma parte essencial de qualquer análise dos dados. Como resultado, o R oferece excelentes ferramentas para criação de gráficos, de barras até multi-painéis. Os recursos gráficos do R é influenciado pelos principais pensadores da área de visualização de dados como Bill Cleveland e Edward Tufte. Gráficos do R podem ser vistos em respeitadas publicações mundiais como <em>The New York Times</em>, <em>The Economist</em>, e o blog <em>FlowingData</em>.</p>
 <p>Pacote flexível de análises estatísticas. Você irá encontrar no R um conjunto de ferramentas prontamente disponíveis, desde o acesso à vários tipos de dados, até recursos para manipulação de dados, passando pelos modelos estatísticos tradicionais e modernos. Todos os recursos estão disponíveis numa plataforma orientada a objeto que torna fácil a programação e construção de relatórios.</p>
 <p>Acesso às poderosas e avançadas técnicas estatísticas. Os principais acadêmicos e pesquisadores do mundo utilizam o R para desenvolver as novidades nas áreas de estatística, máquinas de aprendizado e modelagem. Você pode encontrar extensões para o R contendo desenvolvimento de ponta na área econômica, genética e muitos outros campos. Atualmente são mais de 2000 pacotes que incrementam o seu R disponíveis para download.</p>
 <p>Uma brilhante e vibrante comunidade. Com centenas de contribuidores e mais de dois milhões de usuários ao redor do mundo, se você tiver uma dúvida sobre o R, as chances de alguém já ter esbarrada com este problema é muito grande. A comunidade é gigante e participativa. A mediana de tempo que uma pergunta leva para ser respondida no StackOverflow (maior comunidade de programadores do mundo) é de 0.0147 dias, o que equivale a 21 minutos.</p>

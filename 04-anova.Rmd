@@ -60,11 +60,11 @@ Pela sintaxe apresentada acima, dois parâmetros são obrigatórios: `trat` e `r
 - `sigT`: o nível de significância para o teste de médias. Pré-definido como 5% (`0,05`).
 - `sigF`: o nível de significância para o teste F da análise de variância. Pré-definido como 5% (`0,05`).
 
-O pacote `ExpDes.pt` só é capaz de computar a ANOVA do Tipo I, e é por isto que os experimentos desbalanceados não devem ser analisados por meio desse pacote.
+O pacote `ExpDes.pt` só é capaz de computar a ANOVA do Tipo I, e é por isto que os experimentos desbalanceados que possuam interação não serão analisados por meio desse pacote.
 
 ## Pacote easyanova
 
-O pacote `easyanova` foi desenvolvido pelo professor Emmanuel Arnhold, que leciona disciplinas de estatística aplicada à experimentação agropecuária em nível de graduação e pós-graduação na Universidade Federal de Goiás (UFG). O pacote `easyanova` pode ser utilizado para qualquer tipo de experimento - balanceado e desbalanceado - já que possui um mecanismo que define o tipo de ANOVA com base na estrutura dos dados apresentados. Outra vantagem é que este pacote realiza tanto o teste de normalidade quanto o teste de homogeneidade de variâncias. Para instalar o `easyanova`:
+O pacote `easyanova` foi desenvolvido pelo professor Emmanuel Arnhold, que leciona disciplinas de estatística aplicada à experimentação agropecuária em nível de graduação e pós-graduação na Universidade Federal de Goiás (UFG). O pacote `easyanova` pode ser utilizado para qualquer tipo de experimento - balanceado e desbalanceado - já que possui um mecanismo que define o tipo de ANOVA com base na estrutura dos dados apresentados. Para instalar o `easyanova`:
 
 ```{r eval=FALSE}
 install.packages("easyanova")
@@ -122,7 +122,7 @@ Já no pacote `easyanova`, as fontes de variação devem ser apresentadas em for
 Como exemplo, o experimento em delineamento inteiramente casualizado seria analisado através da função `ea1()` cuja sintaxe básica é:
 
 ```{r eval=FALSE}
-ea2(data, design = 1, alpha = 0.05, list = FALSE, p.adjust=1, plot=2)
+ea1(data, design = 1, alpha = 0.05, list = FALSE, p.adjust=1, plot=2)
 ```
 
 O parâmetro `design` vem pré-definido como 1. Assim, fique atento em defini-lo de acordo com o delineamento correto do seu experimento.

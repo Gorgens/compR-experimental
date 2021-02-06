@@ -24,7 +24,7 @@
 <meta name="author" content="Eric Bastos Gorgens, Marcio Leles Romarco de Oliveira" />
 
 
-<meta name="date" content="2021-02-02" />
+<meta name="date" content="2021-02-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -162,9 +162,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#outro-caso-balanceado"><i class="fa fa-check"></i><b>6.3</b> Outro caso balanceado</a></li>
 <li class="chapter" data-level="6.4" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#o-caso-desbalanceado"><i class="fa fa-check"></i><b>6.4</b> O caso desbalanceado</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html"><i class="fa fa-check"></i><b>7</b> Delineamento em blocos casualizados</a><ul>
-<li class="chapter" data-level="7.1" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html#o-caso-balanceado-1"><i class="fa fa-check"></i><b>7.1</b> O caso balanceado</a></li>
-<li class="chapter" data-level="7.2" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html#o-caso-desbalanceado-1"><i class="fa fa-check"></i><b>7.2</b> O caso desbalanceado</a></li>
+<li class="chapter" data-level="7" data-path="delineamento-casualizado-em-blocos.html"><a href="delineamento-casualizado-em-blocos.html"><i class="fa fa-check"></i><b>7</b> Delineamento casualizado em blocos</a><ul>
+<li class="chapter" data-level="7.1" data-path="delineamento-casualizado-em-blocos.html"><a href="delineamento-casualizado-em-blocos.html#o-caso-balanceado-1"><i class="fa fa-check"></i><b>7.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="7.2" data-path="delineamento-casualizado-em-blocos.html"><a href="delineamento-casualizado-em-blocos.html#o-caso-desbalanceado-1"><i class="fa fa-check"></i><b>7.2</b> O caso desbalanceado</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html"><i class="fa fa-check"></i><b>8</b> Fatorial duplo inteiramento casualizado</a><ul>
 <li class="chapter" data-level="8.1" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html#o-caso-balanceado-2"><i class="fa fa-check"></i><b>8.1</b> O caso balanceado</a></li>
@@ -218,8 +218,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.1</span> Plot: Gráfico de dispersão</h2>
 <p>A função <code>plot()</code> é indicada para analisar duas variáveis quantitativas, já que uma assumirá o eixo x e outra o eixo y, sendo ambos os eixos numéricos e contínuos. Para exemplificar o uso das funções gráficas, será utilizado dados de um experimento sobre o aparecimento de brotos em função do mês em que a poda é realizada. Deseja-se encontrar em qual mês que a poda deve ser realizada visando minimizar o número de brotos.</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1">exp.grafico =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Exemplo para Graficos.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
+<p>Lembre-se que de acordo com a formatação regional do seu computador poderá ser necessário informar o separador de coluna e/ou separador decimal. Veja alguns exemplos de sintaxe logo em sequência.</p>
+<ol style="list-style-type: decimal">
+<li>Para o caso de separador decimal <code>.</code> e separador de coluna <code>,</code>:</li>
+</ol>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1">exp.grafico =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Exemplo para Graficos.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Para o caso de separador decimal <code>,</code> e separador de coluna <code>;</code>:</li>
+</ol>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1">exp.grafico =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Exemplo para Graficos.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>)</a></code></pre></div>
+<p>Os dados importador são apresentados logo abaixo:</p>
 <table>
-<caption><span id="tab:unnamed-chunk-44">Table 5.1: </span>Dados de delineamento inteiramente casualizado</caption>
+<caption><span id="tab:unnamed-chunk-46">Table 5.1: </span>Dados de delineamento inteiramente casualizado</caption>
 <thead>
 <tr class="header">
 <th align="right">Irrigacao</th>
@@ -757,21 +767,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> exp.grafico, Brotos <span class="op">~</span><span class="st"> </span>MesPoda, </a>
-<a class="sourceLine" id="cb78-2" title="2">     <span class="dt">xlab =</span> <span class="st">&quot;Mes da poda&quot;</span>, </a>
-<a class="sourceLine" id="cb78-3" title="3">     <span class="dt">ylab =</span> <span class="st">&quot;Numero de brotos&quot;</span>)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
-<p>A interpretação de um gráfico de dispersão é bastante intuitiva e direta. Em geral, no eixo X (horizontal) coloca-se a variável que espera-se influenciar de alguma maneira a variável que está no eixo Y (vertical). Dessa maneira, analisa-se o quanto a variável do eixo X está influenciando a variável do eixo Y.</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1"><span class="kw">plot</span>(<span class="dt">data =</span> exp.grafico, Brotos <span class="op">~</span><span class="st"> </span>MesPoda, </a>
+<a class="sourceLine" id="cb80-2" title="2">     <span class="dt">xlab =</span> <span class="st">&quot;Mes da poda&quot;</span>, </a>
+<a class="sourceLine" id="cb80-3" title="3">     <span class="dt">ylab =</span> <span class="st">&quot;Numero de brotos&quot;</span>)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p>A interpretação de um gráfico de dispersão é bastante intuitiva e direta. Em geral, no eixo X (horizontal) coloca-se a variável que espera-se influenciar de alguma maneira a variável que está no eixo Y (vertical). A variável X é chamada de variável independente ou explicativa e a variável Y é chamada de variável dependente ou explicada.</p>
+<p>Dessa maneira, analisa-se o quanto a variável do eixo X está influenciando a variável do eixo Y.</p>
 <p>No exemplo apresentado acima, a variável mês de poda influencia positivamente o número de brotos. Uma vez que quanto maior o mês de poda, maior é o número de brotos. Neste caso, observa-se uma relação diretamente proporcional.</p>
 </div>
 <div id="boxplot-gráfico-de-caixas" class="section level2">
 <h2><span class="header-section-number">5.2</span> Boxplot: Gráfico de caixas</h2>
 <p>A função <code>boxplot()</code> é indicada para analisar uma variável categórica e outra variável contínua. Situação ideal, por exemplo, para verificar a influência de tratamentos qualitativos sobre uma variável de interesse. Ou ainda, avaliar o efeito do bloco sobre a variável de interesse.</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1">exp.grafico =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Exemplo para Graficos.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a>
-<a class="sourceLine" id="cb79-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> exp.grafico, Brotos <span class="op">~</span><span class="st"> </span>Bloco, </a>
-<a class="sourceLine" id="cb79-3" title="3">        <span class="dt">xlab =</span> <span class="st">&quot;Bloco&quot;</span>, </a>
-<a class="sourceLine" id="cb79-4" title="4">        <span class="dt">ylab =</span> <span class="st">&quot;Numero de brotos&quot;</span>)</a></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1">exp.grafico =<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;./data/Exemplo para Graficos.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>)</a>
+<a class="sourceLine" id="cb81-2" title="2"><span class="kw">boxplot</span>(<span class="dt">data =</span> exp.grafico, Brotos <span class="op">~</span><span class="st"> </span>Bloco, </a>
+<a class="sourceLine" id="cb81-3" title="3">        <span class="dt">xlab =</span> <span class="st">&quot;Bloco&quot;</span>, </a>
+<a class="sourceLine" id="cb81-4" title="4">        <span class="dt">ylab =</span> <span class="st">&quot;Numero de brotos&quot;</span>)</a></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 <p>A interpretação do boxplot pode parecer complicada, já que este gráfico apresenta uma série de informações estatísticas em um único gráfico. Mas é justamente esta característica que o torna tão utilizado e tão importante.</p>
 <p>A estrutura clássica do boxplot apresenta uma linha horizontal, dentro de uma caixa, sobreposta a uma linha vertical (do inglês <em>whisker</em>, também conhecida como bigode).</p>
 <p>A linha horizontal no interior da caixa indica a mediana, ou o segundo quartil. Os limites da caixa indicam o primeiro e o terceiro quartil. Os fios do bigode (ou <em>whiskers</em>) indicam o máximo e o mínimo, excluindo <em>outliers</em>. A função boxplot assume como outlier dados que estão acima ou abaixo de 1.5 vezes a distância inter-quartil. Estes pontos considerados <em>outlier</em> serão marcados pontualmente no gráfico se estiverem presentes. No exemplo que apresentado acima, não houve a presença de <em>outliers</em>.</p>

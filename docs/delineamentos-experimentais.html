@@ -24,7 +24,7 @@
 <meta name="author" content="Eric Bastos Gorgens, Marcio Leles Romarco de Oliveira" />
 
 
-<meta name="date" content="2021-02-02" />
+<meta name="date" content="2021-02-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -162,9 +162,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#outro-caso-balanceado"><i class="fa fa-check"></i><b>6.3</b> Outro caso balanceado</a></li>
 <li class="chapter" data-level="6.4" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#o-caso-desbalanceado"><i class="fa fa-check"></i><b>6.4</b> O caso desbalanceado</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html"><i class="fa fa-check"></i><b>7</b> Delineamento em blocos casualizados</a><ul>
-<li class="chapter" data-level="7.1" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html#o-caso-balanceado-1"><i class="fa fa-check"></i><b>7.1</b> O caso balanceado</a></li>
-<li class="chapter" data-level="7.2" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html#o-caso-desbalanceado-1"><i class="fa fa-check"></i><b>7.2</b> O caso desbalanceado</a></li>
+<li class="chapter" data-level="7" data-path="delineamento-casualizado-em-blocos.html"><a href="delineamento-casualizado-em-blocos.html"><i class="fa fa-check"></i><b>7</b> Delineamento casualizado em blocos</a><ul>
+<li class="chapter" data-level="7.1" data-path="delineamento-casualizado-em-blocos.html"><a href="delineamento-casualizado-em-blocos.html#o-caso-balanceado-1"><i class="fa fa-check"></i><b>7.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="7.2" data-path="delineamento-casualizado-em-blocos.html"><a href="delineamento-casualizado-em-blocos.html#o-caso-desbalanceado-1"><i class="fa fa-check"></i><b>7.2</b> O caso desbalanceado</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html"><i class="fa fa-check"></i><b>8</b> Fatorial duplo inteiramento casualizado</a><ul>
 <li class="chapter" data-level="8.1" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html#o-caso-balanceado-2"><i class="fa fa-check"></i><b>8.1</b> O caso balanceado</a></li>
@@ -204,7 +204,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="delineamentos-experimentais" class="section level1">
 <h1><span class="header-section-number">Cap. 2</span> Delineamentos experimentais</h1>
-<p>Delineamento experimental define a organização das unidades experimentais em função da pergunta científica que se deseja responder. Com base no delineamento escolhido, regras precisam ser seguidas, especialmente relacionados à maneira que os tratamentos são distribuídos nas unidades experimentais.</p>
+<p>Delineamento experimental se trata do desenho do experimento. Ou seja, ele define a organização das unidades experimentais em função da pergunta científica que se deseja responder. Com base no delineamento escolhido, regras precisam ser seguidas, especialmente relacionados à maneira que os tratamentos são distribuídos nas unidades experimentais.</p>
 <p>A unidade experimental é o objeto que identifica um sistema de interesse de uma pesquisa e representa uma unidade da população. É sobre a unidade experimental que os tratamento serão aplicados e avaliados.</p>
 <p>Os tratamentos são variáveis manipuladas e controladas pelo pesquisador. Desta forma, qualquer outra influência tem que ocorrer ao acaso, e por isto, as unidades experimentais devem ser o homogêneas e o tratamento deve ser a ela atribuída de forma aleatória.</p>
 <p>Outro ponto importante num delineamento experimental, é o número de repetições. Desta forma, deve haver unidades experimentais suficientes para que os tratamentos sejam aplicados e repetidos. Quanto maior o número de repetições, menor o intervalo de confiança e, portanto, mais precisa as inferências estatísticas. Existem metodologias específicas para a determinação do número ideal de repetições, mas na prática, adotam-se trabalhos anteriores como referência, ou mesmo a disponibilidade de material acaba definindo o número de repetições.</p>
@@ -214,15 +214,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>O método foi desenvolvido em 1925 por Ronald Fisher para experimentos balanceados, ou seja, experimentos com o mesmo número de repetições em cada tratamento. No entanto, correções foram desenvolvidas para tratar experimentos desbalanceados, como será observado mais adiante. Assim, podemos definir Análise de Variância (ANOVA) como uma técnica que decompõe a variância total e seus graus de liberdade em partes atribuídas a fatores controlados (tratamento) e a uma outra parte associada a uma causa não controlada, também chamada de resíduo.</p>
 <div id="partição-da-variação" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Partição da variação</h3>
-<p>Suponha que estamos analisando o efeito de três materiais genéticos através de um experimento inteiramente casualizado. Cada tratamento foi formado por seis repetições, cada uma contendo 36 plantas, tratando-se assim de um experimento balanceado. Resumindo:</p>
+<p>Suponha que estamos analisando o efeito de três materiais genéticos através de um experimento inteiramente casualizado. Cada tratamento foi formado por seis repetições, e cada repetição contendo 36 plantas. Tratamentos com a mesma quantidade de repetições formam um experimento balanceado. Resumindo:</p>
 <ul>
 <li>Um fator com 3 tratamentos (<code>i</code> variando de 1 a 3)</li>
 <li>6 repetições por tratamento (<code>j</code> variando de 1 a 6)</li>
 <li>18 unidades experimentais presentes no experimento</li>
 </ul>
 <p>A variável de interesse é a altura. Portanto, deseja observar se os tratamentos influenciam a altura das plantas. A média das alturas das árvores de cada uma das repetições é:</p>
-<pre><code>## Warning: package &#39;knitr&#39; was built under R
-## version 4.0.3</code></pre>
+<pre><code>## Warning: package &#39;knitr&#39; was built under R version 4.0.3</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-1">Table 2.1: </span>Dados de exemplo.</caption>
 <thead>
@@ -273,11 +272,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Para analisar o experimento, será necessario obter a média e a soma para cada tratamento:</p>
-<pre><code>## Warning in read.table(file = file,
-## header = header, sep = sep, quote
-## = quote, : incomplete final line
-## found by readTableHeader on &#39;./data/
-## anova_sumRep.csv&#39;</code></pre>
+<pre><code>## Warning in read.table(file = file, header = header, sep
+## = sep, quote = quote, : incomplete final line found by
+## readTableHeader on &#39;./data/anova_sumRep.csv&#39;</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-2">Table 2.2: </span>Média e soma de cada tratamento.</caption>
 <thead>
@@ -303,12 +300,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>E também a soma e média global:</p>
-<pre><code>## Warning in read.table(file = file,
-## header = header, sep = sep, quote
-## = quote, : incomplete final line
-## found by readTableHeader on &#39;./data/
-## anova_sumTotal.csv&#39;</code></pre>
+<p>E também a soma e média geral:</p>
+<pre><code>## Warning in read.table(file = file, header = header, sep
+## = sep, quote = quote, : incomplete final line found by
+## readTableHeader on &#39;./data/anova_sumTotal.csv&#39;</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-3">Table 2.3: </span>Média e soma total.</caption>
 <thead>
@@ -384,11 +379,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb19-2" title="2"><span class="kw">print</span> (<span class="kw">paste</span>(<span class="st">&quot;Media geral = &quot;</span>, mediaGeral, <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;Media geral =  16.7222222222222&quot;</code></pre>
 <p>A partir dos resultados obtidos nas etapas anteriores, as tabelas ficarão assim:</p>
-<pre><code>## Warning in read.table(file = file,
-## header = header, sep = sep, quote
-## = quote, : incomplete final line
-## found by readTableHeader on &#39;./data/
-## anova_sumRep2.csv&#39;</code></pre>
+<pre><code>## Warning in read.table(file = file, header = header, sep
+## = sep, quote = quote, : incomplete final line found by
+## readTableHeader on &#39;./data/anova_sumRep2.csv&#39;</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-13">Table 2.4: </span>Média e soma de cada tratamento calculado.</caption>
 <thead>
@@ -414,11 +407,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<pre><code>## Warning in read.table(file = file,
-## header = header, sep = sep, quote
-## = quote, : incomplete final line
-## found by readTableHeader on &#39;./data/
-## anova_sumTotal2.csv&#39;</code></pre>
+<pre><code>## Warning in read.table(file = file, header = header, sep
+## = sep, quote = quote, : incomplete final line found by
+## readTableHeader on &#39;./data/anova_sumTotal2.csv&#39;</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-14">Table 2.5: </span>Média e soma total calculado.</caption>
 <thead>
@@ -442,20 +433,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">2.1.1.1</span> Soma de quadrados total</h4>
 <p>O próximo passo é analisar a diferença de cada uma das 18 observações (3 tratamentos * 6 repetições cada) em relação à média geral:</p>
 <p><span class="math display">\[desvio = x_{ij} - \bar{x}\]</span></p>
-<p>em que <code>j</code> indica a repetição variando de 1 a 6 e <code>i</code> indica o tratamento variando de 1 a 3.</p>
+<p>em que <code>j</code> indica a repetição variando de 1 a 6; e <code>i</code> indica o tratamento variando de 1 a 3.</p>
 <p>No R, esta operação fica fácil, pois é possível fazer de uma única vez a subtração dos elementos de um vetor pela média geral:</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">desvio1 =<span class="st"> </span>matGen1 <span class="op">-</span><span class="st"> </span>mediaGeral</a>
 <a class="sourceLine" id="cb23-2" title="2">desvio1</a></code></pre></div>
-<pre><code>## [1] 4.2777778 3.2777778 3.2777778 0.2777778
-## [5] 1.2777778 0.2777778</code></pre>
+<pre><code>## [1] 4.2777778 3.2777778 3.2777778 0.2777778 1.2777778
+## [6] 0.2777778</code></pre>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">desvio2 =<span class="st"> </span>matGen2 <span class="op">-</span><span class="st"> </span>mediaGeral</a>
 <a class="sourceLine" id="cb25-2" title="2">desvio2</a></code></pre></div>
-<pre><code>## [1]  2.2777778  2.2777778  0.2777778
-## [4] -3.7222222 -0.7222222 -2.7222222</code></pre>
+<pre><code>## [1]  2.2777778  2.2777778  0.2777778 -3.7222222
+## [5] -0.7222222 -2.7222222</code></pre>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">desvio3 =<span class="st"> </span>matGen3 <span class="op">-</span><span class="st"> </span>mediaGeral</a>
 <a class="sourceLine" id="cb27-2" title="2">desvio3</a></code></pre></div>
-<pre><code>## [1]  1.277778  1.277778 -1.722222 -3.722222
-## [5] -3.722222 -3.722222</code></pre>
+<pre><code>## [1]  1.277778  1.277778 -1.722222 -3.722222 -3.722222
+## [6] -3.722222</code></pre>
 <p>Tabulando os desvios calculados acima, tem-se uma tabela da seguinte forma:</p>
 <table>
 <caption><span id="tab:unnamed-chunk-16">Table 2.6: </span>Desvio da observação para e média geral.</caption>
@@ -513,16 +504,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>em que <code>j</code> indica a repetição variando de 1 a 6 e <code>i</code> indica o tratamento variando de 1 a 3. Para isto, o valor de cada repetição é substituído pela média do seu tratamento. Isto é, através da fórmula <code>rep</code>, cria-se um vetor com a média do material genético repetida 6 vezes. Com esse procedimento, elimina-se o efeito do erro, já que cada tratamento será representado <code>j</code> vezes pelo valor da sua média. Finalmente, cada repetição é subtraída pela média geral.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1">desvioTrat1 =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">mean</span>(matGen1), <span class="dv">6</span>) <span class="op">-</span><span class="st"> </span>mediaGeral</a>
 <a class="sourceLine" id="cb31-2" title="2">desvioTrat1</a></code></pre></div>
-<pre><code>## [1] 2.111111 2.111111 2.111111 2.111111
-## [5] 2.111111 2.111111</code></pre>
+<pre><code>## [1] 2.111111 2.111111 2.111111 2.111111 2.111111
+## [6] 2.111111</code></pre>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1">desvioTrat2 =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">mean</span>(matGen2), <span class="dv">6</span>) <span class="op">-</span><span class="st"> </span>mediaGeral</a>
 <a class="sourceLine" id="cb33-2" title="2">desvioTrat2</a></code></pre></div>
-<pre><code>## [1] -0.3888889 -0.3888889 -0.3888889
-## [4] -0.3888889 -0.3888889 -0.3888889</code></pre>
+<pre><code>## [1] -0.3888889 -0.3888889 -0.3888889 -0.3888889
+## [5] -0.3888889 -0.3888889</code></pre>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">desvioTrat3 =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">mean</span>(matGen3), <span class="dv">6</span>) <span class="op">-</span><span class="st"> </span>mediaGeral</a>
 <a class="sourceLine" id="cb35-2" title="2">desvioTrat3</a></code></pre></div>
-<pre><code>## [1] -1.722222 -1.722222 -1.722222 -1.722222
-## [5] -1.722222 -1.722222</code></pre>
+<pre><code>## [1] -1.722222 -1.722222 -1.722222 -1.722222 -1.722222
+## [6] -1.722222</code></pre>
 <p>Trazendo os resultados do R para uma tabela de desvios tem-se:</p>
 <table>
 <caption><span id="tab:unnamed-chunk-19">Table 2.7: </span>Desvio entre a média do tratamento e média geral.</caption>
@@ -578,12 +569,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 No R, podemos calcular da seguinte forma:</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1">desvioRes1 =<span class="st"> </span>matGen1 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(matGen1)</a>
 <a class="sourceLine" id="cb39-2" title="2">desvioRes1</a></code></pre></div>
-<pre><code>## [1]  2.1666667  1.1666667  1.1666667
-## [4] -1.8333333 -0.8333333 -1.8333333</code></pre>
+<pre><code>## [1]  2.1666667  1.1666667  1.1666667 -1.8333333
+## [5] -0.8333333 -1.8333333</code></pre>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">desvioRes2 =<span class="st"> </span>matGen2 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(matGen2)</a>
 <a class="sourceLine" id="cb41-2" title="2">desvioRes2</a></code></pre></div>
-<pre><code>## [1]  2.6666667  2.6666667  0.6666667
-## [4] -3.3333333 -0.3333333 -2.3333333</code></pre>
+<pre><code>## [1]  2.6666667  2.6666667  0.6666667 -3.3333333
+## [5] -0.3333333 -2.3333333</code></pre>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">desvioRes3 =<span class="st"> </span>matGen3 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(matGen3)</a>
 <a class="sourceLine" id="cb43-2" title="2">desvioRes3</a></code></pre></div>
 <pre><code>## [1]  3  3  0 -2 -2 -2</code></pre>
@@ -638,9 +629,8 @@ No R, podemos calcular da seguinte forma:</p>
 <div id="quadrado-médio" class="section level4">
 <h4><span class="header-section-number">2.1.1.4</span> Quadrado médio</h4>
 <p>O próximo passo é montar o quadro da ANOVA e determinar os quadrados médios:</p>
-<pre><code>## Warning in read.table(file = file,
-## header = header, sep = sep, quote =
-## quote, : incomplete final line found by
+<pre><code>## Warning in read.table(file = file, header = header, sep
+## = sep, quote = quote, : incomplete final line found by
 ## readTableHeader on &#39;./data/anova_qm.csv&#39;</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-24">Table 2.9: </span>Fórmulas para o caluclo do quandrado médio.</caption>
@@ -673,7 +663,7 @@ No R, podemos calcular da seguinte forma:</p>
 </tr>
 </tbody>
 </table>
-<p>Tanto a soma de quadrados, como os graus de liberdade são aditivos. Isto é, obtendo dois termos do quadro de variância, o terceiro pode ser derivado.</p>
+<p>Tanto a soma de quadrados, como os graus de liberdade são aditivos. Isto é, obtendo dois termos do quadro de variância, o terceiro pode ser obtido pela diferença.</p>
 <p>Na prática, calcula-se a soma de quadrados total e a soma de quadrados do tratamento. Por diferença, obtém-se a soma de quadrados dos resíduos. O mesmo raciocínio vale para os graus de liberdade.</p>
 <p>O quadrado médio, nada mais é que uma variância. Por isso, divide-se a soma de quadrados pelos graus de liberdade. Os quadrados médios são calculados da seguinte forma:</p>
 <ol style="list-style-type: decimal">
@@ -696,25 +686,17 @@ No R, podemos calcular da seguinte forma:</p>
 <a class="sourceLine" id="cb52-2" title="2"><span class="kw">print</span>(Fcalc)</a></code></pre></div>
 <pre><code>## [1] 4.474836</code></pre>
 <p>O quadro final da ANOVA será:</p>
-<pre><code>## Warning in read.table(file = file,
-## header = header, sep = sep, quote =
-## quote, : incomplete final line found by
+<pre><code>## Warning in read.table(file = file, header = header, sep
+## = sep, quote = quote, : incomplete final line found by
 ## readTableHeader on &#39;./data/anova_final.csv&#39;</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-28">Table 2.10: </span>Quandro final da ANOVA</caption>
-<colgroup>
-<col width="25%" />
-<col width="22%" />
-<col width="24%" />
-<col width="20%" />
-<col width="7%" />
-</colgroup>
 <thead>
 <tr class="header">
-<th align="left">Fonte.de.variaÃ.Ã.o</th>
+<th align="left">Fonte.de.variacao</th>
 <th align="right">Soma.de.quadrados</th>
 <th align="right">Graus.de.liberdade</th>
-<th align="right">Quadrado.mÃ.dio</th>
+<th align="right">Quadrado.medio</th>
 <th align="right">FCalc</th>
 </tr>
 </thead>
@@ -742,14 +724,14 @@ No R, podemos calcular da seguinte forma:</p>
 </tr>
 </tbody>
 </table>
-<p>A hipótese nula é de que as variâncias dos tratamentos é igual à variância populacional, ou variância dos resíduos. Um teste não significativo aceita-se a hipótese nula. Já um teste significativo rejeita-se a hipótese nula.</p>
+<p>A hipótese nula é de que a variância entre os tratamentos é igual à variância populacional, ou variância dos resíduos. Um teste não significativo aceita-se a hipótese nula. Já um teste significativo rejeita-se a hipótese nula.</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1">Ftabelado =<span class="st"> </span><span class="kw">qf</span>(<span class="fl">0.95</span>, <span class="dv">2</span>, <span class="dv">15</span>)</a>
 <a class="sourceLine" id="cb55-2" title="2"><span class="kw">print</span>(Ftabelado)</a></code></pre></div>
 <pre><code>## [1] 3.68232</code></pre>
-<p>Neste exercício, o <code>Fcalc</code> é superior ao <code>Ftabelado</code>. Assim o teste F é significativo e a hipótese nula é rejeitada para um nível de significância de 95%. A variância dos tratamentos não pode ser considerada igual à variância da população. Na prática isto indica que existe um efeito significativo dos tratamentos.</p>
+<p>Neste exercício, o <code>F</code> calculado é superior ao <code>F</code> tabelado. Assim o teste F é significativo e a hipótese nula é rejeitada para um nível de significância de 95%. A variância dos tratamentos não pode ser considerada igual à variância da população. Na prática isto indica que existe um efeito significativo dos tratamentos, e que pelo menor um dos tratamentos diferem dos demais.</p>
 <p>Se o teste F é não significativo (<code>F calculado &lt; F tabelado</code>), entende-se que os tratamentos não influenciaram as observações e a análise de seu experimento encerra-se aqui.</p>
-<p>Por outro lado, o teste F significativo indica que pelo menos um dos tratamentos influenciou os dados observados. Se apenas dois tratamentos tiverem sido realizados, o teste F é conclusivo e as médias dos tratamentos podem ser comparadas diretamente. Se três ou mais tratamentos estiverem sendo comparados, o teste F é inconclusivo, uma vez que diz apenas que existe uma influência dos tratamentos, sem no entanto indicar qual deles é melhor ou pior. Assim uma pergunta surge: como os tratamentos se diferem uns dos outros?</p>
-<p>Entram em cena os testes de médias ou a análise de regressão. Quando os tratamentos são qualitativos e significativos, o teste de médias irá dizer quais tratamentos são iguais e quais tratamentos são diferentes. Quando os tratamentos são quantitativos e significativos, utiliza-se a análise de regressão para definir o ponto ótimo.</p>
+<p>Por outro lado, o teste F significativo indica que pelo menos um dos tratamentos influenciou os dados observados. Se apenas dois tratamentos tiverem sido realizados, o teste F é conclusivo e as médias dos tratamentos podem ser comparadas diretamente. Se três ou mais tratamentos estiverem sendo comparados, o teste F é inconclusivo, uma vez que diz apenas que existe uma influência dos tratamentos, sem no entanto indicar qual deles é igual ou diferente. Assim uma pergunta surge: como os tratamentos se diferem uns dos outros?</p>
+<p>Entram em cena os testes de médias ou a análise de regressão. Quando os tratamentos são qualitativos e significativos, o teste de médias irá dizer quais tratamentos são iguais e quais tratamentos são diferentes. Quando os tratamentos são quantitativos e significativos, utiliza-se a análise de regressão para definir o ponto ótimo. Dependendo do objetivo do experimento, mesmo tratamentos quantitativos podem ser analisados por meio de um teste de médias.</p>
 <p>Para facilitar, a figura a seguir resume o que foi visto até agora por meio de uma árvore de decisão:</p>
 <div class="figure">
 <img src="figuras/resumo_anova.png" alt="Fluxograma de decisão para interpretação de uma ANOVA" />

@@ -1,6 +1,6 @@
 # Delineamentos experimentais
 
-Delineamento experimental define a organização das unidades experimentais em função da pergunta científica que se deseja responder. Com base no delineamento escolhido, regras precisam ser seguidas, especialmente relacionados à maneira que os tratamentos são distribuídos nas unidades experimentais.
+Delineamento experimental se trata do desenho do experimento. Ou seja, ele define a organização das unidades experimentais em função da pergunta científica que se deseja responder. Com base no delineamento escolhido, regras precisam ser seguidas, especialmente relacionados à maneira que os tratamentos são distribuídos nas unidades experimentais.
 
 A unidade experimental é o objeto que identifica um sistema de interesse de uma pesquisa e representa uma unidade da população. É sobre a unidade experimental que os tratamento serão aplicados e avaliados.
 
@@ -16,7 +16,7 @@ O método foi desenvolvido em 1925 por Ronald Fisher para experimentos balancead
 
 ### Partição da variação
 
-Suponha que estamos analisando o efeito de três materiais genéticos através de um experimento inteiramente casualizado. Cada tratamento foi formado por seis repetições, cada uma contendo 36 plantas, tratando-se assim de um experimento balanceado. Resumindo:
+Suponha que estamos analisando o efeito de três materiais genéticos através de um experimento inteiramente casualizado. Cada tratamento foi formado por seis repetições, e cada repetição contendo 36 plantas. Tratamentos com a mesma quantidade de repetições formam um experimento balanceado. Resumindo:
 
 - Um fator com 3 tratamentos (`i` variando de 1 a 3)
 - 6 repetições por tratamento (`j` variando de 1 a 6)
@@ -38,7 +38,7 @@ tratamentos = read.csv('./data/anova_sumRep.csv')
 kable(tratamentos, caption = "Média e soma de cada tratamento.")
 ```
 
-E também a soma e média global:
+E também a soma e média geral:
 
 ```{r echo = FALSE, results = 'asis'}
 library(knitr)
@@ -133,7 +133,7 @@ O próximo passo é analisar a diferença de cada uma das 18 observações (3 tr
 
 $$desvio = x_{ij} - \bar{x}$$
 
-em que `j` indica a repetição variando de 1 a 6 e `i` indica o tratamento variando de 1 a 3.
+em que `j` indica a repetição variando de 1 a 6; e `i` indica o tratamento variando de 1 a 3.
 
 No R, esta operação fica fácil, pois é possível fazer de uma única vez a subtração dos elementos de um vetor pela média geral:
 
@@ -243,7 +243,7 @@ formulas = read.csv('./data/anova_qm.csv')
 kable(formulas, caption = "Fórmulas para o caluclo do quandrado médio.")
 ```
 
-Tanto a soma de quadrados, como os graus de liberdade são aditivos. Isto é, obtendo dois termos do quadro de variância, o terceiro pode ser derivado. 
+Tanto a soma de quadrados, como os graus de liberdade são aditivos. Isto é, obtendo dois termos do quadro de variância, o terceiro pode ser obtido pela diferença. 
 
 Na prática, calcula-se a soma de quadrados total e a soma de quadrados do tratamento.  Por diferença, obtém-se a soma de quadrados dos resíduos. O mesmo raciocínio vale para os graus de liberdade.
 
@@ -281,20 +281,20 @@ anova.intro = read.csv('./data/anova_final.csv')
 kable(anova.intro, caption = "Quandro final da ANOVA")
 ```
 
-A hipótese nula é de que as variâncias dos tratamentos é igual à variância populacional, ou variância dos resíduos. Um teste não significativo aceita-se a hipótese nula. Já um teste significativo rejeita-se a hipótese nula.
+A hipótese nula é de que a variância entre os tratamentos é igual à variância populacional, ou variância dos resíduos. Um teste não significativo aceita-se a hipótese nula. Já um teste significativo rejeita-se a hipótese nula.
 
 ```{r}
 Ftabelado = qf(0.95, 2, 15)
 print(Ftabelado)
 ```
 
-Neste exercício, o `Fcalc` é superior ao `Ftabelado`. Assim o teste F é significativo e a hipótese nula é rejeitada para um nível de significância de 95%. A variância dos tratamentos não pode ser considerada igual à variância da população. Na prática isto indica que existe um efeito significativo dos tratamentos.
+Neste exercício, o `F` calculado é superior ao `F` tabelado. Assim o teste F é significativo e a hipótese nula é rejeitada para um nível de significância de 95%. A variância dos tratamentos não pode ser considerada igual à variância da população. Na prática isto indica que existe um efeito significativo dos tratamentos, e que pelo menor um dos tratamentos diferem dos demais.
 
 Se o teste F é não significativo (`F calculado < F tabelado`), entende-se que os tratamentos não influenciaram as observações e a análise de seu experimento encerra-se aqui.
 
-Por outro lado, o teste F significativo indica que pelo menos um dos tratamentos influenciou os dados observados. Se apenas dois tratamentos tiverem sido realizados, o teste F é conclusivo e as médias dos tratamentos podem ser comparadas diretamente. Se três ou mais tratamentos estiverem sendo comparados, o teste F é inconclusivo, uma vez que diz apenas que existe uma influência dos tratamentos, sem no entanto indicar qual deles é melhor ou pior. Assim uma pergunta surge: como os tratamentos se diferem uns dos outros?
+Por outro lado, o teste F significativo indica que pelo menos um dos tratamentos influenciou os dados observados. Se apenas dois tratamentos tiverem sido realizados, o teste F é conclusivo e as médias dos tratamentos podem ser comparadas diretamente. Se três ou mais tratamentos estiverem sendo comparados, o teste F é inconclusivo, uma vez que diz apenas que existe uma influência dos tratamentos, sem no entanto indicar qual deles é igual ou diferente. Assim uma pergunta surge: como os tratamentos se diferem uns dos outros?
 
-Entram em cena os testes de médias ou a análise de regressão. Quando os tratamentos são qualitativos e significativos, o teste de médias irá dizer quais tratamentos são iguais e quais tratamentos são diferentes. Quando os tratamentos são quantitativos e significativos, utiliza-se a análise de regressão para definir o ponto ótimo. 
+Entram em cena os testes de médias ou a análise de regressão. Quando os tratamentos são qualitativos e significativos, o teste de médias irá dizer quais tratamentos são iguais e quais tratamentos são diferentes. Quando os tratamentos são quantitativos e significativos, utiliza-se a análise de regressão para definir o ponto ótimo. Dependendo do objetivo do experimento, mesmo tratamentos quantitativos podem ser analisados por meio de um teste de médias.
 
 Para facilitar, a figura a seguir resume o que foi visto até agora por meio de uma árvore de decisão:
 

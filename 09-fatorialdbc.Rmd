@@ -2,7 +2,7 @@
 
 No caso de um fatorial duplo em blocos casualizados, a ANOVA contará com cinco fontes de variação: uma fonte de variação conhecida atribuída ao bloco, outra fonte de variação conhecida determinada pelo tratamento A, outra fonte de variação conhecida determinada pelo tratamento B, outra fonte de variação conhecida determinada pela interação entre os dois tratamentos e uma quinta fonte de variação desconhecida determinada pelo resíduo. O modelo estatístico do delineamento fatorial duplo inteiramente casualizado é:
 
-$$Y = \bar{X} + BLOCO + TRAT A + TRAT B + (TRAT A * TRAT B) + Erro$$
+$$Y = \bar{Y} + BLOCO + TRAT_A + TRAT_B + (TRAT_A * TRAT_B) + Erro$$
 
 De forma semelhante ao experimento fatorial inteiramente casualizado, o caso balanceado será analisado através do pacote `ExpDes.pt` (função `fat2.dbc()`). Já o caso desbalanceado será analisado pelo pacote `easyanova` (função `ea2()` e `design=2`).
 
@@ -99,7 +99,7 @@ boxplot(data = fatDBC1[fatDBC1$dose == 75,], altura ~ especie)
 boxplot(data = fatDBC1[fatDBC1$dose == 100,], altura ~ especie)
 ```
 
-Com base nos gráficos apresentados, é razoável acreditar que há um efeito significativo da espécie, mas não não fica muito evidente o efeito significativo da dose, da interação e do bloco. Nota-se que as doses possuem comportamentos diferentes, variando de uma tendência quadrática à uma tendência sigmoidal (cúbica).
+Com base nos gráficos apresentados, é razoável acreditar que há um efeito significativo da espécie, mas não fica muito evidente o efeito significativo da dose, da interação e do bloco. Nota-se que as doses possuem comportamentos diferentes, variando de uma tendência quadrática à uma tendência sigmoidal (cúbica).
 
 Note que quanto mais fatores e interações estiverem presentes no experimento, mais complicado vai ficando a análise gráfica e também a análise estatística. E é por este motivo que desencoraja-se o uso de experimentos fatoriais triplos. Embora os pacotes de análise experimental possuam funções para experimentos fatoriais triplos, eles não serão apresentados aqui neste livro.
 
@@ -123,7 +123,7 @@ fat2.dbc(fatDBC1$dose, fatDBC1$especie, fatDBC1$bloco,
 ```
 
 
-Uma vez que os dados apresentaram normalidade, o modelo estatístico escolhido é adequado e a ANOVA pode ser então considerada. Com exceção do efeito do bloco, todos apresentaram significância, incluindo a interação. Desta forma, os efeitos devem ser analisados em conjunto através do desdobramento. 
+Uma vez que os resíduos apresentaram normalidade, o modelo estatístico escolhido é adequado e a ANOVA pode ser então considerada. Com exceção do efeito do bloco, todos apresentaram significância, incluindo a interação. Desta forma, os efeitos devem ser analisados em conjunto através do desdobramento. 
 
 Fique atento! Não esqueça de definir na função se os fatores são qualitativos ou quantitativos. Experimentos qualitativos são desdobrados com teste de médias fixando um dos fatores, enquanto que fatores quantitativos são desdobrados através da análise de regressão fixando um dos fatores. 
 

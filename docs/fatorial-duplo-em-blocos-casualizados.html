@@ -24,7 +24,7 @@
 <meta name="author" content="Eric Bastos Gorgens, Marcio Leles Romarco de Oliveira" />
 
 
-<meta name="date" content="2021-02-02" />
+<meta name="date" content="2021-02-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -162,9 +162,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#outro-caso-balanceado"><i class="fa fa-check"></i><b>6.3</b> Outro caso balanceado</a></li>
 <li class="chapter" data-level="6.4" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#o-caso-desbalanceado"><i class="fa fa-check"></i><b>6.4</b> O caso desbalanceado</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html"><i class="fa fa-check"></i><b>7</b> Delineamento em blocos casualizados</a><ul>
-<li class="chapter" data-level="7.1" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html#o-caso-balanceado-1"><i class="fa fa-check"></i><b>7.1</b> O caso balanceado</a></li>
-<li class="chapter" data-level="7.2" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html#o-caso-desbalanceado-1"><i class="fa fa-check"></i><b>7.2</b> O caso desbalanceado</a></li>
+<li class="chapter" data-level="7" data-path="delineamento-casualizado-em-blocos.html"><a href="delineamento-casualizado-em-blocos.html"><i class="fa fa-check"></i><b>7</b> Delineamento casualizado em blocos</a><ul>
+<li class="chapter" data-level="7.1" data-path="delineamento-casualizado-em-blocos.html"><a href="delineamento-casualizado-em-blocos.html#o-caso-balanceado-1"><i class="fa fa-check"></i><b>7.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="7.2" data-path="delineamento-casualizado-em-blocos.html"><a href="delineamento-casualizado-em-blocos.html#o-caso-desbalanceado-1"><i class="fa fa-check"></i><b>7.2</b> O caso desbalanceado</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html"><i class="fa fa-check"></i><b>8</b> Fatorial duplo inteiramento casualizado</a><ul>
 <li class="chapter" data-level="8.1" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html#o-caso-balanceado-2"><i class="fa fa-check"></i><b>8.1</b> O caso balanceado</a></li>
@@ -205,7 +205,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fatorial-duplo-em-blocos-casualizados" class="section level1">
 <h1><span class="header-section-number">Cap. 9</span> Fatorial duplo em blocos casualizados</h1>
 <p>No caso de um fatorial duplo em blocos casualizados, a ANOVA contará com cinco fontes de variação: uma fonte de variação conhecida atribuída ao bloco, outra fonte de variação conhecida determinada pelo tratamento A, outra fonte de variação conhecida determinada pelo tratamento B, outra fonte de variação conhecida determinada pela interação entre os dois tratamentos e uma quinta fonte de variação desconhecida determinada pelo resíduo. O modelo estatístico do delineamento fatorial duplo inteiramente casualizado é:</p>
-<p><span class="math display">\[Y = \bar{X} + BLOCO + TRAT A + TRAT B + (TRAT A * TRAT B) + Erro\]</span></p>
+<p><span class="math display">\[Y = \bar{Y} + BLOCO + TRAT_A + TRAT_B + (TRAT_A * TRAT_B) + Erro\]</span></p>
 <p>De forma semelhante ao experimento fatorial inteiramente casualizado, o caso balanceado será analisado através do pacote <code>ExpDes.pt</code> (função <code>fat2.dbc()</code>). Já o caso desbalanceado será analisado pelo pacote <code>easyanova</code> (função <code>ea2()</code> e <code>design=2</code>).</p>
 <div id="o-caso-balanceado-3" class="section level2">
 <h2><span class="header-section-number">9.1</span> O caso balanceado</h2>
@@ -1195,7 +1195,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" title="1"><span class="kw">boxplot</span>(<span class="dt">data =</span> fatDBC1[fatDBC1<span class="op">$</span>dose <span class="op">==</span><span class="st"> </span><span class="dv">100</span>,], altura <span class="op">~</span><span class="st"> </span>especie)</a></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
-<p>Com base nos gráficos apresentados, é razoável acreditar que há um efeito significativo da espécie, mas não não fica muito evidente o efeito significativo da dose, da interação e do bloco. Nota-se que as doses possuem comportamentos diferentes, variando de uma tendência quadrática à uma tendência sigmoidal (cúbica).</p>
+<p>Com base nos gráficos apresentados, é razoável acreditar que há um efeito significativo da espécie, mas não fica muito evidente o efeito significativo da dose, da interação e do bloco. Nota-se que as doses possuem comportamentos diferentes, variando de uma tendência quadrática à uma tendência sigmoidal (cúbica).</p>
 <p>Note que quanto mais fatores e interações estiverem presentes no experimento, mais complicado vai ficando a análise gráfica e também a análise estatística. E é por este motivo que desencoraja-se o uso de experimentos fatoriais triplos. Embora os pacotes de análise experimental possuam funções para experimentos fatoriais triplos, eles não serão apresentados aqui neste livro.</p>
 <p>A análise estatística será feita pela função <code>fat2.dbc()</code> do pacote <code>ExpDes.pt</code>. A sintaxe básica da função pode ser vista acessando a página de ajuda da função:</p>
 <div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" title="1"><span class="kw">fat2.dbc</span>(fator1, fator2, bloco, resp, <span class="dt">quali =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>), </a>
@@ -1216,20 +1216,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##               GL      SQ     QM     Fc
-## Bloco          9    60.5    6.7   1.03
-## Dose           4   212.6   53.1   8.16
-## Espécie        2  9138.4 4569.2 702.07
-## Dose*Espécie   8   224.7   28.1   4.32
-## Residuo      126   820.0    6.5       
-## Total        149 10456.2              
-##                Pr&gt;Fc
-## Bloco        0.41738
-## Dose         0.00001
-## Espécie      0.00000
-## Dose*Espécie 0.00013
-## Residuo             
-## Total               
+##               GL      SQ     QM     Fc   Pr&gt;Fc
+## Bloco          9    60.5    6.7   1.03 0.41738
+## Dose           4   212.6   53.1   8.16 0.00001
+## Espécie        2  9138.4 4569.2 702.07 0.00000
+## Dose*Espécie   8   224.7   28.1   4.32 0.00013
+## Residuo      126   820.0    6.5               
+## Total        149 10456.2                      
 ## ------------------------------------------------------------------------
 ## CV = 7.5 %
 ## 
@@ -1249,22 +1242,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##                 GL          SQ         QM
-## Bloco            9    60.52166    6.72463
-## Espécie          2  9138.36405 4569.18202
-## Dose:Espécie 2   4    50.44803   12.61201
-## Dose:Espécie 5   4   128.29922   32.07481
-## Dose:Espécie 7   4   258.52025   64.63006
-## Residuo        126   820.02899    6.50817
-## Total          149 10456.18221   70.17572
-##                     Fc  Pr.Fc
-## Bloco           1.0333 0.4174
-## Espécie        702.069 0.0000
-## Dose:Espécie 2  1.9379 0.1082
-## Dose:Espécie 5  4.9284 0.0010
-## Dose:Espécie 7  9.9306 0.0000
-## Residuo                    NA
-## Total                      NA
+##                 GL          SQ         QM      Fc
+## Bloco            9    60.52166    6.72463  1.0333
+## Espécie          2  9138.36405 4569.18202 702.069
+## Dose:Espécie 2   4    50.44803   12.61201  1.9379
+## Dose:Espécie 5   4   128.29922   32.07481  4.9284
+## Dose:Espécie 7   4   258.52025   64.63006  9.9306
+## Residuo        126   820.02899    6.50817        
+## Total          149 10456.18221   70.17572        
+##                 Pr.Fc
+## Bloco          0.4174
+## Espécie        0.0000
+## Dose:Espécie 2 0.1082
+## Dose:Espécie 5 0.0010
+## Dose:Espécie 7 0.0000
+## Residuo            NA
+## Total              NA
 ## ------------------------------------------------------------------------
 ## 
 ## 
@@ -1450,26 +1443,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##                   GL          SQ
-## Bloco              9    60.52166
-## Dose               4   212.55440
-## Espécie:Dose 0     2  1080.11237
-## Espécie:Dose 25    2  1820.84094
-## Espécie:Dose 50    2  1691.61319
-## Espécie:Dose 75    2  2258.11368
-## Espécie:Dose 100   2  2512.39697
-## Residuo          126   820.02899
-## Total            149 10456.18221
-##                          QM       Fc
-## Bloco               6.72463   1.0333
-## Dose               53.13860   8.1649
-## Espécie:Dose 0    540.05619  82.9813
-## Espécie:Dose 25   910.42047 139.8889
-## Espécie:Dose 50   845.80659 129.9608
-## Espécie:Dose 75  1129.05684 173.4831
-## Espécie:Dose 100 1256.19849 193.0188
-## Residuo             6.50817         
-## Total              70.17572         
+##                   GL          SQ         QM       Fc
+## Bloco              9    60.52166    6.72463   1.0333
+## Dose               4   212.55440   53.13860   8.1649
+## Espécie:Dose 0     2  1080.11237  540.05619  82.9813
+## Espécie:Dose 25    2  1820.84094  910.42047 139.8889
+## Espécie:Dose 50    2  1691.61319  845.80659 129.9608
+## Espécie:Dose 75    2  2258.11368 1129.05684 173.4831
+## Espécie:Dose 100   2  2512.39697 1256.19849 193.0188
+## Residuo          126   820.02899    6.50817         
+## Total            149 10456.18221   70.17572         
 ##                   Pr.Fc
 ## Bloco            0.4174
 ## Dose             0.0000
@@ -1537,7 +1520,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  b    5   37.55796 
 ##   c   2   24.10352 
 ## ------------------------------------------------------------------------</code></pre>
-<p>Uma vez que os dados apresentaram normalidade, o modelo estatístico escolhido é adequado e a ANOVA pode ser então considerada. Com exceção do efeito do bloco, todos apresentaram significância, incluindo a interação. Desta forma, os efeitos devem ser analisados em conjunto através do desdobramento.</p>
+<p>Uma vez que os resíduos apresentaram normalidade, o modelo estatístico escolhido é adequado e a ANOVA pode ser então considerada. Com exceção do efeito do bloco, todos apresentaram significância, incluindo a interação. Desta forma, os efeitos devem ser analisados em conjunto através do desdobramento.</p>
 <p>Fique atento! Não esqueça de definir na função se os fatores são qualitativos ou quantitativos. Experimentos qualitativos são desdobrados com teste de médias fixando um dos fatores, enquanto que fatores quantitativos são desdobrados através da análise de regressão fixando um dos fatores.</p>
 </div>
 <div id="o-caso-desbalanceado-3" class="section level2">
@@ -2010,103 +1993,71 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## third value most discrepant        25.0000
 ## 
 ## $`Residual analysis`$residuals
-##          1          2          3 
-## -1.0666667  0.2666667  3.7333333 
-##          4          5          6 
-## -1.1666667  0.4166667 -2.9000000 
-##          7          8          9 
-##  0.6333333  2.9166667 -2.8333333 
-##         10         11         12 
-##  0.8853333  0.5186667 -1.0146667 
-##         13         14         15 
-##  3.3853333 -0.8313333  2.2520000 
-##         16         17         18 
-## -1.8146667 -1.6680000  1.6686667 
-##         19         20         21 
-## -3.3813333  2.6053333 -2.2613333 
-##         22         23         24 
-## -0.7946667 -2.0946667  0.4886667 
-##         25         26         27 
-##  6.5720000 -2.8946667  1.7520000 
-##         28         29         30 
-## -3.7113333  0.3386667 -1.1746667 
-##         31         32         33 
-##  2.6586667 -0.8746667 -4.9746667 
-##         34         35         36 
-##  0.1086667  0.1920000  0.9253333 
-##         37         38         39 
-##  1.4720000  1.1086667  0.5586667 
-##         40         41         42 
-## -1.0546667  1.1786667 -2.6546667 
-##         43         44         45 
-##  2.8453333  1.0286667  0.2120000 
-##         46         47         48 
-##  7.2453333 -1.0080000 -4.0713333 
-##         49         50         51 
-## -3.7213333 -0.1946667 -2.3613333 
-##         52         53         54 
-##  1.6053333  2.0053333 -1.2113333 
-##         55         56         57 
-## -6.3280000 -4.0946667 -0.5480000 
-##         58         59 
-##  2.0886667  9.0386667 
+##          1          2          3          4          5 
+## -1.0666667  0.2666667  3.7333333 -1.1666667  0.4166667 
+##          6          7          8          9         10 
+## -2.9000000  0.6333333  2.9166667 -2.8333333  0.8853333 
+##         11         12         13         14         15 
+##  0.5186667 -1.0146667  3.3853333 -0.8313333  2.2520000 
+##         16         17         18         19         20 
+## -1.8146667 -1.6680000  1.6686667 -3.3813333  2.6053333 
+##         21         22         23         24         25 
+## -2.2613333 -0.7946667 -2.0946667  0.4886667  6.5720000 
+##         26         27         28         29         30 
+## -2.8946667  1.7520000 -3.7113333  0.3386667 -1.1746667 
+##         31         32         33         34         35 
+##  2.6586667 -0.8746667 -4.9746667  0.1086667  0.1920000 
+##         36         37         38         39         40 
+##  0.9253333  1.4720000  1.1086667  0.5586667 -1.0546667 
+##         41         42         43         44         45 
+##  1.1786667 -2.6546667  2.8453333  1.0286667  0.2120000 
+##         46         47         48         49         50 
+##  7.2453333 -1.0080000 -4.0713333 -3.7213333 -0.1946667 
+##         51         52         53         54         55 
+## -2.3613333  1.6053333  2.0053333 -1.2113333 -6.3280000 
+##         56         57         58         59 
+## -4.0946667 -0.5480000  2.0886667  9.0386667 
 ## 
 ## $`Residual analysis`$`standardized residuals`
-##           1           2           3 
-## -0.37654793  0.09413698  1.31791775 
-##           4           5           6 
-## -0.41184930  0.14708903 -1.02373968 
-##           7           8           9 
-##  0.22357533  1.02962324 -1.00020543 
-##          10          11          12 
-##  0.31253478  0.18309643 -0.35819122 
-##          13          14          15 
-##  1.19506899 -0.29347204  0.79498681 
-##          16          17          18 
-## -0.64060216 -0.58882682  0.58906216 
-##          19          20          21 
-## -1.19365693  0.91971831 -0.79828161 
-##          22          23          24 
-## -0.28052821 -0.73944599  0.17250602 
-##          25          26          27 
-##  2.32000592 -1.02185694  0.61847997 
-##          28          29          30 
-## -1.31015145  0.11955397 -0.41467341 
-##          31          32          33 
-##  0.93854571 -0.30876930 -1.75612540 
-##          34          35          36 
-##  0.03836082  0.06777863  0.32665533 
-##          37          38          39 
-##  0.51963614  0.39137450  0.19721698 
-##          40          41          42 
-## -0.37231176  0.41608546 -0.93713365 
-##          43          44          45 
-##  1.00444160  0.36313341  0.07483890 
-##          46          47          48 
-##  2.55770180 -0.35583779 -1.43723637 
-##          49          50          51 
-## -1.31368158 -0.06872000 -0.83358297 
-##          52          53          54 
-##  0.56670463  0.70791010 -0.42761724 
-##          55          56          57 
-## -2.23387058 -1.44547336 -0.19345150 
-##          58          59 
-##  0.73732791  3.19077300</code></pre>
+##           1           2           3           4 
+## -0.37654793  0.09413698  1.31791775 -0.41184930 
+##           5           6           7           8 
+##  0.14708903 -1.02373968  0.22357533  1.02962324 
+##           9          10          11          12 
+## -1.00020543  0.31253478  0.18309643 -0.35819122 
+##          13          14          15          16 
+##  1.19506899 -0.29347204  0.79498681 -0.64060216 
+##          17          18          19          20 
+## -0.58882682  0.58906216 -1.19365693  0.91971831 
+##          21          22          23          24 
+## -0.79828161 -0.28052821 -0.73944599  0.17250602 
+##          25          26          27          28 
+##  2.32000592 -1.02185694  0.61847997 -1.31015145 
+##          29          30          31          32 
+##  0.11955397 -0.41467341  0.93854571 -0.30876930 
+##          33          34          35          36 
+## -1.75612540  0.03836082  0.06777863  0.32665533 
+##          37          38          39          40 
+##  0.51963614  0.39137450  0.19721698 -0.37231176 
+##          41          42          43          44 
+##  0.41608546 -0.93713365  1.00444160  0.36313341 
+##          45          46          47          48 
+##  0.07483890  2.55770180 -0.35583779 -1.43723637 
+##          49          50          51          52 
+## -1.31368158 -0.06872000 -0.83358297  0.56670463 
+##          53          54          55          56 
+##  0.70791010 -0.42761724 -2.23387058 -1.44547336 
+##          57          58          59 
+## -0.19345150  0.73732791  3.19077300</code></pre>
 <p>O quadro geral da ANOVA indica que os dois fatores, bem como a interação são significativos:</p>
 <div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" title="1">r.aov[<span class="dv">1</span>]</a></code></pre></div>
 <pre><code>## $`Analysis of variance`
-##                   df type III SS
-## factor_1           2    113.1605
-## factor_2           1   1890.1081
-## blocks             9     91.7117
-## factor_1:factor_2  2    132.6536
-## residuals         44    465.4199
-##                   mean square  F value
-## factor_1              56.5803    5.349
-## factor_2            1890.1081 178.6876
-## blocks                10.1902   0.9634
-## factor_1:factor_2     66.3268   6.2704
-## residuals             10.5777        -
+##                   df type III SS mean square  F value
+## factor_1           2    113.1605     56.5803    5.349
+## factor_2           1   1890.1081   1890.1081 178.6876
+## blocks             9     91.7117     10.1902   0.9634
+## factor_1:factor_2  2    132.6536     66.3268   6.2704
+## residuals         44    465.4199     10.5777        -
 ##                      p&gt;F
 ## factor_1          0.0083
 ## factor_2          &lt;0.001
@@ -2120,52 +2071,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" title="1">r.aov[<span class="dv">6</span>]</a></code></pre></div>
 <pre><code>## $`Adjusted means (factor 1 in levels of factor 2)`
 ## $`Adjusted means (factor 1 in levels of factor 2)`$`factor_1 in  2`
-##   treatment adjusted.mean standard.error
-## 1       0.2        27.800         1.0285
-## 3     100.2        23.072         1.0285
-## 2      50.2        22.020         1.0285
-##   tukey snk duncan t scott_knott
-## 1     a   a      a a           a
-## 3     b   b      b b           b
-## 2     b   b      b b           b
+##   treatment adjusted.mean standard.error tukey snk
+## 1       0.2        27.800         1.0285     a   a
+## 3     100.2        23.072         1.0285     b   b
+## 2      50.2        22.020         1.0285     b   b
+##   duncan t scott_knott
+## 1      a a           a
+## 3      b b           b
+## 2      b b           b
 ## 
 ## $`Adjusted means (factor 1 in levels of factor 2)`$`factor_1 in  5`
-##   treatment adjusted.mean standard.error
-## 6     100.5         37.58         1.0285
-## 4       0.5         35.10         1.0285
-## 5      50.5         34.26         1.0285
-##   tukey snk duncan  t scott_knott
-## 6     a   a      a  a           a
-## 4     a   a     ab ab           a
-## 5     a   a      b  b           a</code></pre>
+##   treatment adjusted.mean standard.error tukey snk
+## 6     100.5         37.58         1.0285     a   a
+## 4       0.5         35.10         1.0285     a   a
+## 5      50.5         34.26         1.0285     a   a
+##   duncan  t scott_knott
+## 6      a  a           a
+## 4     ab ab           a
+## 5      b  b           a</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Comparação de médias do fator 2 dentro do fator 1:</li>
 </ol>
 <div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" title="1">r.aov[<span class="dv">8</span>]</a></code></pre></div>
 <pre><code>## $`Adjusted means (factor 2 in levels of factor 1)`
 ## $`Adjusted means (factor 2 in levels of factor 1)`$`factor_2 in  0`
-##   treatment adjusted.mean standard.error
-## 4       0.5          35.1         1.0285
-## 1       0.2          27.8         1.0285
-##   tukey snk duncan t scott_knott
-## 4     a   a      a a           a
-## 1     b   b      b b           b
+##   treatment adjusted.mean standard.error tukey snk
+## 4       0.5          35.1         1.0285     a   a
+## 1       0.2          27.8         1.0285     b   b
+##   duncan t scott_knott
+## 4      a a           a
+## 1      b b           b
 ## 
 ## $`Adjusted means (factor 2 in levels of factor 1)`$`factor_2 in  50`
-##   treatment adjusted.mean standard.error
-## 5      50.5         34.26         1.0285
-## 2      50.2         22.02         1.0285
-##   tukey snk duncan t scott_knott
-## 5     a   a      a a           a
-## 2     b   b      b b           b
+##   treatment adjusted.mean standard.error tukey snk
+## 5      50.5         34.26         1.0285     a   a
+## 2      50.2         22.02         1.0285     b   b
+##   duncan t scott_knott
+## 5      a a           a
+## 2      b b           b
 ## 
 ## $`Adjusted means (factor 2 in levels of factor 1)`$`factor_2 in  100`
-##   treatment adjusted.mean standard.error
-## 6     100.5        37.580         1.0285
-## 3     100.2        23.072         1.0285
-##   tukey snk duncan t scott_knott
-## 6     a   a      a a           a
-## 3     b   b      b b           b</code></pre>
+##   treatment adjusted.mean standard.error tukey snk
+## 6     100.5        37.580         1.0285     a   a
+## 3     100.2        23.072         1.0285     b   b
+##   duncan t scott_knott
+## 6      a a           a
+## 3      b b           b</code></pre>
 <p>Fique atento! O pacote <code>easyanova</code> não diferencia fatores qualitativos e quantitativos, analisando todos os fatores e seus desdobramentos com teste comparativo de média.</p>
 
 </div>

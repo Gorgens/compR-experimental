@@ -18,6 +18,21 @@ A função `plot()` é indicada para analisar duas variáveis quantitativas, já
 exp.grafico = read.csv("./data/Exemplo para Graficos.csv", sep = ",", dec = ".")
 ```
 
+Lembre-se que de acordo com a formatação regional do seu computador poderá ser necessário informar o separador de coluna e/ou separador decimal. Veja alguns exemplos de sintaxe logo em sequência.
+
+1. Para o caso de separador decimal `.` e separador de coluna `,`:
+```{r eval=FALSE}
+exp.grafico = read.csv("./data/Exemplo para Graficos.csv", sep = ",", dec = ".")
+```
+
+2. Para o caso de separador decimal `,` e separador de coluna `;`:
+
+```{r eval=FALSE}
+exp.grafico = read.csv("./data/Exemplo para Graficos.csv", sep = ";", dec = ",")
+```
+
+Os dados importador são apresentados logo abaixo:
+
 ```{r echo = FALSE, results = 'asis'}
 kable(exp.grafico, caption = "Dados de delineamento inteiramente casualizado")
 ```
@@ -28,7 +43,9 @@ plot(data = exp.grafico, Brotos ~ MesPoda,
      ylab = "Numero de brotos")
 ```
 
-A interpretação de um gráfico de dispersão é bastante intuitiva e direta. Em geral, no eixo X (horizontal) coloca-se a variável que espera-se influenciar de alguma maneira a variável que está no eixo Y (vertical). Dessa maneira, analisa-se o quanto a variável do eixo X está influenciando a variável do eixo Y. 
+A interpretação de um gráfico de dispersão é bastante intuitiva e direta. Em geral, no eixo X (horizontal) coloca-se a variável que espera-se influenciar de alguma maneira a variável que está no eixo Y (vertical). A variável X é chamada de variável independente ou explicativa e a variável Y é chamada de variável dependente ou explicada.
+
+Dessa maneira, analisa-se o quanto a variável do eixo X está influenciando a variável do eixo Y. 
 
 No exemplo apresentado acima, a variável mês de poda influencia positivamente o número de brotos. Uma vez que quanto maior o mês de poda, maior é o número de brotos. Neste caso, observa-se uma relação diretamente proporcional.
 

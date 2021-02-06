@@ -24,7 +24,7 @@
 <meta name="author" content="Eric Bastos Gorgens, Marcio Leles Romarco de Oliveira" />
 
 
-<meta name="date" content="2021-02-02" />
+<meta name="date" content="2021-02-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -162,9 +162,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#outro-caso-balanceado"><i class="fa fa-check"></i><b>6.3</b> Outro caso balanceado</a></li>
 <li class="chapter" data-level="6.4" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#o-caso-desbalanceado"><i class="fa fa-check"></i><b>6.4</b> O caso desbalanceado</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html"><i class="fa fa-check"></i><b>7</b> Delineamento em blocos casualizados</a><ul>
-<li class="chapter" data-level="7.1" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html#o-caso-balanceado-1"><i class="fa fa-check"></i><b>7.1</b> O caso balanceado</a></li>
-<li class="chapter" data-level="7.2" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html#o-caso-desbalanceado-1"><i class="fa fa-check"></i><b>7.2</b> O caso desbalanceado</a></li>
+<li class="chapter" data-level="7" data-path="delineamento-casualizado-em-blocos.html"><a href="delineamento-casualizado-em-blocos.html"><i class="fa fa-check"></i><b>7</b> Delineamento casualizado em blocos</a><ul>
+<li class="chapter" data-level="7.1" data-path="delineamento-casualizado-em-blocos.html"><a href="delineamento-casualizado-em-blocos.html#o-caso-balanceado-1"><i class="fa fa-check"></i><b>7.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="7.2" data-path="delineamento-casualizado-em-blocos.html"><a href="delineamento-casualizado-em-blocos.html#o-caso-desbalanceado-1"><i class="fa fa-check"></i><b>7.2</b> O caso desbalanceado</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html"><i class="fa fa-check"></i><b>8</b> Fatorial duplo inteiramento casualizado</a><ul>
 <li class="chapter" data-level="8.1" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html#o-caso-balanceado-2"><i class="fa fa-check"></i><b>8.1</b> O caso balanceado</a></li>
@@ -238,8 +238,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Mesmo depois de instalados, os pacotes precisam ser ativados antes de serem utilizados. A ativação pode ser feita pelo comando:</p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1"><span class="kw">require</span>(ExpDes.pt)</a></code></pre></div>
 <pre><code>## Loading required package: ExpDes.pt</code></pre>
-<pre><code>## Warning: package &#39;ExpDes.pt&#39; was built
-## under R version 4.0.3</code></pre>
+<pre><code>## Warning: package &#39;ExpDes.pt&#39; was built under R version
+## 4.0.3</code></pre>
 <p>Uma vez ativado, as funções do pacote passam a estar disponíveis para o usuário. Para conhecer os parâmetros e o funcionamento da função, a página de ajuda pode ser consultada digitando no console <code>?</code> seguido do nome da função:</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1">?dic</a></code></pre></div>
 <p>Toda função no R é composta por parâmetros obrigatórios e parâmetros opcionais. Esta indicação será obtida analisando a sintaxe da função, também disponível na página de ajuda. Como exemplo, consultando a página de ajuda da função <code>dic</code>, nota-se que a sintaxe básica da funçao é:</p>
@@ -250,17 +250,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>sigT</code>: o nível de significância para o teste de médias. Pré-definido como 5% (<code>0,05</code>).</li>
 <li><code>sigF</code>: o nível de significância para o teste F da análise de variância. Pré-definido como 5% (<code>0,05</code>).</li>
 </ul>
-<p>O pacote <code>ExpDes.pt</code> só é capaz de computar a ANOVA do Tipo I, e é por isto que os experimentos desbalanceados não devem ser analisados por meio desse pacote.</p>
+<p>O pacote <code>ExpDes.pt</code> só é capaz de computar a ANOVA do Tipo I, e é por isto que os experimentos desbalanceados que possuam interação não serão analisados por meio desse pacote.</p>
 </div>
 <div id="pacote-easyanova" class="section level2">
 <h2><span class="header-section-number">4.2</span> Pacote easyanova</h2>
-<p>O pacote <code>easyanova</code> foi desenvolvido pelo professor Emmanuel Arnhold, que leciona disciplinas de estatística aplicada à experimentação agropecuária em nível de graduação e pós-graduação na Universidade Federal de Goiás (UFG). O pacote <code>easyanova</code> pode ser utilizado para qualquer tipo de experimento - balanceado e desbalanceado - já que possui um mecanismo que define o tipo de ANOVA com base na estrutura dos dados apresentados. Outra vantagem é que este pacote realiza tanto o teste de normalidade quanto o teste de homogeneidade de variâncias. Para instalar o <code>easyanova</code>:</p>
+<p>O pacote <code>easyanova</code> foi desenvolvido pelo professor Emmanuel Arnhold, que leciona disciplinas de estatística aplicada à experimentação agropecuária em nível de graduação e pós-graduação na Universidade Federal de Goiás (UFG). O pacote <code>easyanova</code> pode ser utilizado para qualquer tipo de experimento - balanceado e desbalanceado - já que possui um mecanismo que define o tipo de ANOVA com base na estrutura dos dados apresentados. Para instalar o <code>easyanova</code>:</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;easyanova&quot;</span>)</a></code></pre></div>
 <p>Estando o pacote instalado, a sua ativação pode ser feita através da função <code>require()</code>:</p>
 <div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1"><span class="kw">require</span>(easyanova)</a></code></pre></div>
 <pre><code>## Loading required package: easyanova</code></pre>
-<pre><code>## Warning: package &#39;easyanova&#39; was built
-## under R version 4.0.3</code></pre>
+<pre><code>## Warning: package &#39;easyanova&#39; was built under R version
+## 4.0.3</code></pre>
 <p>Diferentemente do pacote <code>ExpDes.pt</code>, o easyanova possui apenas duas funções básicas para análise de experimentos:</p>
 <ul>
 <li><code>ea1()</code></li>
@@ -303,7 +303,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Uma diferença importante entre os pacotes <code>ExpDes.pt</code> e <code>easyanova</code> é a forma de apresentação dos dados. No <code>ExpDes.pt</code> apresenta-se os vetores correspondentes às fontes de variação isoladamente: um vetor com os tratamentos (ex: <code>dic2$Tratamento</code>), depois um vetor com a variável de interesse (ex: <code>dic2$Altura</code>).</p>
 <p>Já no pacote <code>easyanova</code>, as fontes de variação devem ser apresentadas em forma de dataframe contendo exatamente as fontes de variação, variável de interesse e a repetição. Para cada um dos delineamentos suportados, o pacote <code>easyanova</code> apresenta uma base exemplo que pode ser verificada via página de ajuda: <code>?ea1</code> ou <code>?ea2</code>.</p>
 <p>Como exemplo, o experimento em delineamento inteiramente casualizado seria analisado através da função <code>ea1()</code> cuja sintaxe básica é:</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1"><span class="kw">ea2</span>(data, <span class="dt">design =</span> <span class="dv">1</span>, <span class="dt">alpha =</span> <span class="fl">0.05</span>, <span class="dt">list =</span> <span class="ot">FALSE</span>, <span class="dt">p.adjust=</span><span class="dv">1</span>, <span class="dt">plot=</span><span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1"><span class="kw">ea1</span>(data, <span class="dt">design =</span> <span class="dv">1</span>, <span class="dt">alpha =</span> <span class="fl">0.05</span>, <span class="dt">list =</span> <span class="ot">FALSE</span>, <span class="dt">p.adjust=</span><span class="dv">1</span>, <span class="dt">plot=</span><span class="dv">2</span>)</a></code></pre></div>
 <p>O parâmetro <code>design</code> vem pré-definido como 1. Assim, fique atento em defini-lo de acordo com o delineamento correto do seu experimento.</p>
 <p>Embora pela sintaxe acima, o único parâmetro obrigatório seja a base de dados - <code>data</code>, fica evidente que o <code>design</code> também precisa ser corretamente informado, de acordo com o delineamento do experimento a ser analisado. Um outro parâmetro opcional que vale a pena ser mencionado aqui é o <code>plot</code>. Três opções podem ser utilizadas para este parâmetro:</p>
 <p><code>1</code> - indicando gráfico boxplot dos resíduos.</p>

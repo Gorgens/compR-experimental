@@ -24,7 +24,7 @@
 <meta name="author" content="Eric Bastos Gorgens, Marcio Leles Romarco de Oliveira" />
 
 
-<meta name="date" content="2021-02-02" />
+<meta name="date" content="2021-02-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -162,9 +162,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#outro-caso-balanceado"><i class="fa fa-check"></i><b>6.3</b> Outro caso balanceado</a></li>
 <li class="chapter" data-level="6.4" data-path="delineamento-inteiramente-casualizado.html"><a href="delineamento-inteiramente-casualizado.html#o-caso-desbalanceado"><i class="fa fa-check"></i><b>6.4</b> O caso desbalanceado</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html"><i class="fa fa-check"></i><b>7</b> Delineamento em blocos casualizados</a><ul>
-<li class="chapter" data-level="7.1" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html#o-caso-balanceado-1"><i class="fa fa-check"></i><b>7.1</b> O caso balanceado</a></li>
-<li class="chapter" data-level="7.2" data-path="delineamento-em-blocos-casualizados.html"><a href="delineamento-em-blocos-casualizados.html#o-caso-desbalanceado-1"><i class="fa fa-check"></i><b>7.2</b> O caso desbalanceado</a></li>
+<li class="chapter" data-level="7" data-path="delineamento-casualizado-em-blocos.html"><a href="delineamento-casualizado-em-blocos.html"><i class="fa fa-check"></i><b>7</b> Delineamento casualizado em blocos</a><ul>
+<li class="chapter" data-level="7.1" data-path="delineamento-casualizado-em-blocos.html"><a href="delineamento-casualizado-em-blocos.html#o-caso-balanceado-1"><i class="fa fa-check"></i><b>7.1</b> O caso balanceado</a></li>
+<li class="chapter" data-level="7.2" data-path="delineamento-casualizado-em-blocos.html"><a href="delineamento-casualizado-em-blocos.html#o-caso-desbalanceado-1"><i class="fa fa-check"></i><b>7.2</b> O caso desbalanceado</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html"><i class="fa fa-check"></i><b>8</b> Fatorial duplo inteiramento casualizado</a><ul>
 <li class="chapter" data-level="8.1" data-path="fatorial-duplo-inteiramento-casualizado.html"><a href="fatorial-duplo-inteiramento-casualizado.html#o-caso-balanceado-2"><i class="fa fa-check"></i><b>8.1</b> O caso balanceado</a></li>
@@ -205,9 +205,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="análise-experimental-não-paramétrica" class="section level1">
 <h1><span class="header-section-number">Cap. 11</span> Análise experimental não paramétrica</h1>
 <p>Os testes estatísticos não paramétricos não levam em consideração a distribuição original dos resíduos. Em geral eles seguem o mesmo procedimento que os testes paramétricos, iniciando pela formulação da hipótese, computando o valor da estatística do teste com base nos dados obtidos de amostras aleatórias e comparando a grandeza estatística do valor calculado com a referência. Assim como os teste paramétricos, existem inúmeros testes não-paramétricos para as diferentes hipóteses a serem testadas.</p>
-<pre><code>## Warning in read.table(file = file,
-## header = header, sep = sep, quote =
-## quote, : incomplete final line found by
+<pre><code>## Warning in read.table(file = file, header = header, sep
+## = sep, quote = quote, : incomplete final line found by
 ## readTableHeader on &#39;./data/naoParam.csv&#39;</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-173">Table 11.1: </span>Testes não paramétricos e referência para utilização</caption>
@@ -423,14 +422,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL     SQ      QM     Fc
-## Tratamento  2 0.9236 0.46181 3.9172
-## Residuo    27 3.1831 0.11789       
-## Total      29 4.1067               
-##               Pr&gt;Fc
-## Tratamento 0.032084
-## Residuo            
-## Total              
+##            GL     SQ      QM     Fc    Pr&gt;Fc
+## Tratamento  2 0.9236 0.46181 3.9172 0.032084
+## Residuo    27 3.1831 0.11789                
+## Total      29 4.1067                        
 ## ------------------------------------------------------------------------
 ## CV = 57.45 %
 ## 
@@ -502,8 +497,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  dic.np$dap and dic.np$desbaste
-## Kruskal-Wallis chi-squared = 7.8861,
-## df = 2, p-value = 0.01939</code></pre>
+## Kruskal-Wallis chi-squared = 7.8861, df = 2,
+## p-value = 0.01939</code></pre>
 <p>O teste indica que o tratamento é significativo, e portanto, as médias dos diferentes desbastes não podem ser consideradas iguais. Como foi antecipado pelo gráfico, pelo menos um nível de desbaste se difere dos demais. Não há desdobramento específico para os testes não-paramétricos, sendo a interpretação gráfica e a estatística descritiva o caminho ideal para avaliar desdobramento.</p>
 </div>
 <div id="friedman-equivalente-ao-dbc" class="section level2">
@@ -775,16 +770,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL      SQ      QM     Fc
-## Tratamento  1  123.75 123.749 5.2404
-## Bloco       4   81.30  20.326 0.8607
-## Residuo    34  802.89  23.614       
-## Total      39 1007.94               
-##              Pr&gt;Fc
-## Tratamento 0.02840
-## Bloco      0.49731
-## Residuo           
-## Total             
+##            GL      SQ      QM     Fc   Pr&gt;Fc
+## Tratamento  1  123.75 123.749 5.2404 0.02840
+## Bloco       4   81.30  20.326 0.8607 0.49731
+## Residuo    34  802.89  23.614               
+## Total      39 1007.94                       
 ## ------------------------------------------------------------------------
 ## CV = 16.75 %
 ## 
@@ -811,16 +801,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##            GL      SQ       QM     Fc
-## Tratamento  1 0.20102 0.201023 5.0766
-## Bloco       4 0.12703 0.031759 0.8020
-## Residuo    34 1.34633 0.039598       
-## Total      39 1.67439                
-##              Pr&gt;Fc
-## Tratamento 0.03081
-## Bloco      0.53242
-## Residuo           
-## Total             
+##            GL      SQ       QM     Fc   Pr&gt;Fc
+## Tratamento  1 0.20102 0.201023 5.0766 0.03081
+## Bloco       4 0.12703 0.031759 0.8020 0.53242
+## Residuo    34 1.34633 0.039598               
+## Total      39 1.67439                        
 ## ------------------------------------------------------------------------
 ## CV = 5.94 %
 ## 
@@ -865,8 +850,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Friedman rank sum test
 ## 
 ## data:  x and desb and bloco
-## Friedman chi-squared = 4, df = 1,
-## p-value = 0.0455</code></pre>
+## Friedman chi-squared = 4, df = 1, p-value =
+## 0.0455</code></pre>
 <p>Segundo o teste de Friedman, existe uma diferença significativa entre os desbaste. Uma exploração gráfica dos dados, ou uma análise estatística descritiva podem auxiliar no desdobramento do tratamento.</p>
 
 </div>

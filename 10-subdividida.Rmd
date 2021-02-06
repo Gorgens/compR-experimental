@@ -1,6 +1,6 @@
 # Parcela subdividida
 
-No delineamento em parcelas subdivididas existem dois tipos de tratamento: o principal e o secundário. As parcelas são subdivididas no espaço, ou no tempo. Depois que os tratamentos principais são sorteados nas parcelas, sorteia-se o tratamento secundário nas subparcelas de cada parcela.
+No delineamento em parcelas subdivididas existem dois tipos de tratamento: o principal e o secundário. As parcelas são subdivididas no espaço, ou no tempo. Depois que os tratamentos principais (parcelas) são sorteados, sorteia-se o tratamento secundário (subparcelas) dentro das parcelas.
 
 Indica-se o uso de parcelas subdivididas quando:
 
@@ -12,7 +12,7 @@ Indica-se o uso de parcelas subdivididas quando:
 
 O modelo estatístico do delineamento em parcela subdividida é:
 
-$$Y = \bar{X} + BLOCO + TRAT A + Erro_{Parcela} + TRAT B + (TRAT A * TRAT B) + Erro_{Subparcela}$$
+$$Y = \bar{Y} + BLOCO + TRAT_A + Erro_{Parcela} + TRAT_B + (TRAT_A * TRAT_B) + Erro_{Subparcela}$$
 
 ## O caso balanceado
 
@@ -90,7 +90,9 @@ plot(data = sub[sub$floresta == "C",], indiv ~ desrama)
 ```
 
 
-Analisando os gráficos acima, os fatores parecem significativos, assim como a interação. Os dados apresentam-se consistentes, sem a presença de pontos fora da tendência. O pacote `ExpDes.pt` não inclui as análises de pressuposiçôes para o delineamento de parcelas subdivididas. Existem várias maneiras de contornar esta questão, uma delas é combinar as qualidades de diferentes pacotes. Aqui por exemplo, utiliza-se os testes estatísticos das pressuposições de um pacote e a ANOVA e desdobramentos do outro.
+Analisando os gráficos acima, os fatores parecem significativos, assim como a interação. Quando o interesse é verificar a questão das pressuposições considerando os tratamentos (Parcela e Subparcela juntos), além das colunas referentes a parcela e subparcela, teria que ser acrescentado uma coluna para tratamentos. Ou seja, é como se fosse uma análise preliminar como DIC ou DBC.
+
+O pacote `ExpDes.pt` não inclui as análises de pressuposições para o delineamento de parcelas subdivididas. Existem várias maneiras de contornar esta questão, uma delas é combinar as qualidades de diferentes pacotes. Aqui por exemplo, utiliza-se os testes estatísticos das pressuposições de um pacote e a ANOVA e desdobramentos do outro.
 
 ```{r}
 require(easyanova)
