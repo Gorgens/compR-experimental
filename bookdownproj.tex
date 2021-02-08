@@ -111,7 +111,7 @@
 
 \title{Computação em R: Análise experimental}
 \author{Eric Bastos Gorgens, Marcio Leles Romarco de Oliveira}
-\date{2021-02-06}
+\date{2021-02-08}
 
 \begin{document}
 \maketitle
@@ -123,28 +123,28 @@
 \hypertarget{introduuxe7uxe3o}{%
 \section{Introdução}\label{introduuxe7uxe3o}}
 
-\begin{figure}
-\centering
-\includegraphics{./figuras/capa.png}
-\caption{Capa}
-\end{figure}
+Delineamento experimental se trata do desenho do experimento. Ou seja, ele define a organização das unidades experimentais em função da pergunta científica que se deseja responder. Com base no delineamento escolhido, regras precisam ser seguidas, especialmente relacionados à maneira que os tratamentos são distribuídos nas unidades experimentais. Este livro apresenta o processamento dos principais delineamentos experimentais por meio da linguagem de programação R. Inicialmente, o livro apresenta o cálculo de uma análise de variância e descreve quais são os principais tipos. Em seguida, por meio de exemplos práticos, são apresentados os principais gráficos para realizar a exploração dos dados e os principais delineamentos amostrais. Por fim, discute-se o que deve ser feito quando os dados não atendem às pressuposições da ANOVA. Propõe-se uma abordagem por meio dos testes não paramétricos. Tudo é apresentado de forma muito prática, utilizando a linguagem de programação R. Com os exemplos apresentados, o leitor é convidado a rodar cada passo junto com o livro. Os dados e os códigos estão livremente distribuídos.
 
-Bem-vindo ao mundo do R. O R não é só um software, nem se resume a uma linguagem. O R é um estilo de pesquisar, estudar e ensinar. Através de seus códigos e scripts você entrará num mundo sem limites, aberto à experimentação e à troca de experiência. Um mundo em que não existe apenas uma forma de se chegar à resposta correta, mas sim uma gama de alternativas! Você deve estar se perguntando: porque começar a trabalhar com o R? A resposta passa por algumas perspectivas interessantes.
+\hypertarget{o-r}{%
+\subsection{O R}\label{o-r}}
 
-R é gratuito. Por se tratar de um projeto de código aberto, você pode usar o R sem nenhum custo adicional: ou seja sem necessidade de pagar por inscrições, assinaturas, licenças ou limitações. Sendo o R aberto, você pode ter acesso ao código e ajustá-lo às suas necessidades (para mais detalhes veja: GNU General Public License version 2). Centenas de experts ao redor do mundo fazem exatamente isto e suas contribuições beneficiam milhares de usuários do R.
+O R é um software e uma linguagem. Através de seus códigos e \emph{scripts} é possível entrar num mundo aberto à experimentação e à troca de experiência. Um mundo em que não existe apenas uma forma de se chegar à resposta correta, mas sim uma gama de alternativas!
 
-R é uma linguagem. No R, você realiza uma análise escrevendo funções e scripts; e não clicando em botões na tela. Isto pode assustar e parecer difícil, mas na verdade, a linguagem R é uma linguagem simples de aprender e muito natural para análise de dados. Aprender uma linguagem tem vários benefícios. Por se tratar de uma linguagem interativa, o R promove uma oportunidade de experimentar e explorar os dados de forma profunda e detalhada. Um script documenta passo a passo da análise, do acesso aos dados até os resultados das análises, podendo ser executados a qualquer momento, por qualquer pessoa.
-Gráficos e visualização de dados. Faz parte das premissas de criações do R, a certeza de que a visualização dos dados através de gráficos é uma parte essencial de qualquer análise dos dados. Como resultado, o R oferece excelentes ferramentas para criação de gráficos, de barras até multi-painéis. Os recursos gráficos do R é influenciado pelos principais pensadores da área de visualização de dados como Bill Cleveland e Edward Tufte. Gráficos do R podem ser vistos em respeitadas publicações mundiais como The New York Times, The Economist, e o blog FlowingData.
+Por se tratar de um projeto de código aberto, é possível usar o R sem nenhum custo adicional, sem a necessidade de pagar por inscrições, assinaturas ou licenças. Centenas de usuários ao redor do mundo compartilham suas contribuições e beneficiam a toda a comunidade.
 
-Pacote flexível de análises estatísticas. Você irá encontrar no R um conjunto de ferramentas prontamente disponíveis, desde o acesso à vários tipos de dados, até recursos para manipulação de dados, passando pelos modelos estatísticos tradicionais e modernos. Todos os recursos estão disponíveis numa plataforma orientada a objeto que torna fácil a programação e construção de relatórios.
+No R, a análise é implementada por meio de um \emph{script}. Um \emph{script} documenta o passo a passo da análise, do acesso aos dados até os resultados, podendo ser executado a qualquer momento, em qualquer lugar, por qualquer pessoa. Nada de sair clicando em botões na tela.
 
-Acesso às poderosas e avançadas técnicas estatísticas. Os principais acadêmicos e pesquisadores do mundo utilizam o R para desenvolver as novidades nas áreas de estatística, máquinas de aprendizado e modelagem. Você pode encontrar extensões para o R contendo desenvolvimento de ponta na área econômica, genética e muitos outros campos. Atualmente são mais de 2000 pacotes que incrementam o seu R disponíveis para download.
+Isto pode assustar e parecer difícil, mas na verdade, a linguagem R é uma linguagem simples de aprender e muito natural para análise de dados. Aprender uma linguagem tem vários benefícios. Por se tratar de uma linguagem interativa, o R promove uma oportunidade de experimentar e explorar os dados de forma profunda e detalhada.
 
-Uma brilhante e vibrante comunidade. Com centenas de contribuidores e mais de dois milhões de usuários ao redor do mundo, se você tiver uma dúvida sobre o R, as chances de alguém já ter esbarrada com este problema é muito grande. A comunidade é gigante e participativa. A mediana de tempo que uma pergunta leva para ser respondida no StackOverflow (maior comunidade de programadores do mundo) é de 0.0147 dias, o que equivale a 21 minutos.
+A visualização dos dados através de gráficos é uma parte essencial de qualquer análise dos dados. Por isto, o R oferece excelentes ferramentas para criação de gráficos, de barras até multi-painéis.
 
-O R é multiplataforma rodando em Linux, Mac ou Windows. Ainda é possível configurar para rodar diretamente da nuvem. O R valoriza o que a empresa tem de mais valioso: você!
+O R apresenta um conjunto de ferramentas prontamente disponíveis, desde o acesso a vários tipos de dados, até recursos para manipulação de dados, passando pelos modelos estatísticos tradicionais e modernos. Todos os recursos estão disponíveis numa plataforma orientada a objeto que torna fácil a programação e construção de relatórios.
 
-Possibilidades infinitas. Com o R você não está limitado por uma sequência pré-definida de rotinas. Você pode usar todo o portfólio de códigos e soluções disponíveis na comunidade ou mesmo criar suas próprias funções. É possível inclusive combinar o R com outros recursos como uma base de dados MySQL, ou um Apache web-server, ou ainda com o Google Maps API. Qual a sua ideia?
+Os principais acadêmicos e pesquisadores do mundo utilizam o R para desenvolver as suas análises. Ao compartilhar \emph{scripts}, pacotes e funções, é possível encontrar o que há de melhor na área de modelagem, estatística, econômica, genética e muitos outros campos. Atualmente são mais de 2000 pacotes que incrementam o seu R disponíveis para download.
+
+O R é multiplataforma, rodando em Linux, Mac ou Windows. Ainda é possível configurar para rodar diretamente da nuvem. Com o R, o usuário não está limitado a uma sequência pré-definida de rotinas. Você pode usar todo o portfólio de códigos e soluções disponíveis na comunidade ou mesmo criar suas próprias funções. É possível inclusive combinar o R com outros recursos como uma base de dados MySQL, ou um Apache web-server, ou ainda com o Google Maps API.
+
+Você está preparado? Qual a sua ideia?
 
 \hypertarget{delineamentos-experimentais}{%
 \section{Delineamentos experimentais}\label{delineamentos-experimentais}}
@@ -207,10 +207,8 @@ Rep 6 & 17 & 14 & 13\\
 Para analisar o experimento, será necessario obter a média e a soma para cada tratamento:
 
 \begin{verbatim}
-## Warning in read.table(file = file, header =
-## header, sep = sep, quote = quote, : incomplete
-## final line found by readTableHeader on './data/
-## anova_sumRep.csv'
+## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
+## incomplete final line found by readTableHeader on './data/anova_sumRep.csv'
 \end{verbatim}
 
 \begin{table}
@@ -231,10 +229,8 @@ Media & ? & ? & ?\\
 E também a soma e média geral:
 
 \begin{verbatim}
-## Warning in read.table(file = file, header =
-## header, sep = sep, quote = quote, : incomplete
-## final line found by readTableHeader on './data/
-## anova_sumTotal.csv'
+## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
+## incomplete final line found by readTableHeader on './data/anova_sumTotal.csv'
 \end{verbatim}
 
 \begin{table}
@@ -424,10 +420,8 @@ Todas as somas - \texttt{sum()} e médias - \texttt{mean()} que faltam nas tabel
 A partir dos resultados obtidos nas etapas anteriores, as tabelas ficarão assim:
 
 \begin{verbatim}
-## Warning in read.table(file = file, header =
-## header, sep = sep, quote = quote, : incomplete
-## final line found by readTableHeader on './data/
-## anova_sumRep2.csv'
+## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
+## incomplete final line found by readTableHeader on './data/anova_sumRep2.csv'
 \end{verbatim}
 
 \begin{table}
@@ -446,10 +440,8 @@ Media & 18.83 & 16.33 & 15\\
 \end{table}
 
 \begin{verbatim}
-## Warning in read.table(file = file, header =
-## header, sep = sep, quote = quote, : incomplete
-## final line found by readTableHeader on './data/
-## anova_sumTotal2.csv'
+## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
+## incomplete final line found by readTableHeader on './data/anova_sumTotal2.csv'
 \end{verbatim}
 
 \begin{table}
@@ -486,8 +478,7 @@ No R, esta operação fica fácil, pois é possível fazer de uma única vez a s
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 4.2777778 3.2777778 3.2777778 0.2777778
-## [5] 1.2777778 0.2777778
+## [1] 4.2777778 3.2777778 3.2777778 0.2777778 1.2777778 0.2777778
 \end{verbatim}
 
 \begin{Shaded}
@@ -498,8 +489,7 @@ No R, esta operação fica fácil, pois é possível fazer de uma única vez a s
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  2.2777778  2.2777778  0.2777778 -3.7222222
-## [5] -0.7222222 -2.7222222
+## [1]  2.2777778  2.2777778  0.2777778 -3.7222222 -0.7222222 -2.7222222
 \end{verbatim}
 
 \begin{Shaded}
@@ -510,8 +500,7 @@ No R, esta operação fica fácil, pois é possível fazer de uma única vez a s
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  1.277778  1.277778 -1.722222 -3.722222
-## [5] -3.722222 -3.722222
+## [1]  1.277778  1.277778 -1.722222 -3.722222 -3.722222 -3.722222
 \end{verbatim}
 
 Tabulando os desvios calculados acima, tem-se uma tabela da seguinte forma:
@@ -573,8 +562,7 @@ em que \texttt{j} indica a repetição variando de 1 a 6 e \texttt{i} indica o t
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2.111111 2.111111 2.111111 2.111111 2.111111
-## [6] 2.111111
+## [1] 2.111111 2.111111 2.111111 2.111111 2.111111 2.111111
 \end{verbatim}
 
 \begin{Shaded}
@@ -585,8 +573,7 @@ em que \texttt{j} indica a repetição variando de 1 a 6 e \texttt{i} indica o t
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -0.3888889 -0.3888889 -0.3888889 -0.3888889
-## [5] -0.3888889 -0.3888889
+## [1] -0.3888889 -0.3888889 -0.3888889 -0.3888889 -0.3888889 -0.3888889
 \end{verbatim}
 
 \begin{Shaded}
@@ -597,8 +584,7 @@ em que \texttt{j} indica a repetição variando de 1 a 6 e \texttt{i} indica o t
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -1.722222 -1.722222 -1.722222 -1.722222
-## [5] -1.722222 -1.722222
+## [1] -1.722222 -1.722222 -1.722222 -1.722222 -1.722222 -1.722222
 \end{verbatim}
 
 Trazendo os resultados do R para uma tabela de desvios tem-se:
@@ -655,8 +641,7 @@ No R, podemos calcular da seguinte forma:
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  2.1666667  1.1666667  1.1666667 -1.8333333
-## [5] -0.8333333 -1.8333333
+## [1]  2.1666667  1.1666667  1.1666667 -1.8333333 -0.8333333 -1.8333333
 \end{verbatim}
 
 \begin{Shaded}
@@ -667,8 +652,7 @@ No R, podemos calcular da seguinte forma:
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  2.6666667  2.6666667  0.6666667 -3.3333333
-## [5] -0.3333333 -2.3333333
+## [1]  2.6666667  2.6666667  0.6666667 -3.3333333 -0.3333333 -2.3333333
 \end{verbatim}
 
 \begin{Shaded}
@@ -726,9 +710,8 @@ Elevando cada desvio ao quadrado e somando-os, calcula-se a soma de quadrados do
 O próximo passo é montar o quadro da ANOVA e determinar os quadrados médios:
 
 \begin{verbatim}
-## Warning in read.table(file = file, header = header,
-## sep = sep, quote = quote, : incomplete final line
-## found by readTableHeader on './data/anova_qm.csv'
+## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
+## incomplete final line found by readTableHeader on './data/anova_qm.csv'
 \end{verbatim}
 
 \begin{table}
@@ -810,10 +793,8 @@ Assim, o objetivo final da ANOVA é comparar a variância dos tratamentos relati
 O quadro final da ANOVA será:
 
 \begin{verbatim}
-## Warning in read.table(file = file, header =
-## header, sep = sep, quote = quote, : incomplete
-## final line found by readTableHeader on './data/
-## anova_final.csv'
+## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
+## incomplete final line found by readTableHeader on './data/anova_final.csv'
 \end{verbatim}
 
 \begin{table}
@@ -1484,7 +1465,7 @@ Irrigacao & IrrigacaoInt & MesPoda & Bloco & Brotos\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-47-1.png}
+\includegraphics{figure-latex/unnamed-chunk-47-1.png}
 
 A interpretação de um gráfico de dispersão é bastante intuitiva e direta. Em geral, no eixo X (horizontal) coloca-se a variável que espera-se influenciar de alguma maneira a variável que está no eixo Y (vertical). A variável X é chamada de variável independente ou explicativa e a variável Y é chamada de variável dependente ou explicada.
 
@@ -1506,7 +1487,7 @@ A função \texttt{boxplot()} é indicada para analisar uma variável categóric
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-48-1.png}
+\includegraphics{figure-latex/unnamed-chunk-48-1.png}
 
 A interpretação do boxplot pode parecer complicada, já que este gráfico apresenta uma série de informações estatísticas em um único gráfico. Mas é justamente esta característica que o torna tão utilizado e tão importante.
 
@@ -1634,7 +1615,7 @@ Antes de partir para a análise, é fundamental explorar os dados de forma gráf
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-51-1.png}
+\includegraphics{figure-latex/unnamed-chunk-51-1.png}
 
 Pelo gráfico obtido, é razoável esperar que não haja diferenças significativas entre os tratamentos (3 substratos), pois existe uma grande sobreposição entre os interquartis dos substratos. Assim, espera-se que a análise estatística do experimento corrobore a conclusão empírica baseada no interpretação do gráfico.
 
@@ -1797,7 +1778,7 @@ Antes de chamar a análise estatística, recomenda-se explorar os dados graficam
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-56-1.png}
+\includegraphics{figure-latex/unnamed-chunk-56-1.png}
 
 O gráfico indica que a dosagem de 50 apresenta um desenvolvimento em altura superior às demais dosagens. Outro ponto que fica claro com o gráfico, é que o tratamento tem um efeito quadrático sobre a altura. Por se tratar de um caso balanceado, a análise estatística pode ser realizada com a função \texttt{dic()} do pacote \texttt{ExpDes.pt}:
 
@@ -2018,7 +1999,7 @@ Antes de chamar a análise estatística, recomenda-se explorar os dados graficam
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-60-1.png}
+\includegraphics{figure-latex/unnamed-chunk-60-1.png}
 
 Mesmo se tratando de um experimento desbalanceado, por se tratar de um DIC e consequentemente não existir interações a serem calculadas, pode-se utilizar a ANOVA Tipo I. Com relação aos parâmetros opcionais, apenas o parâmetro \texttt{quali} precisa ser alterado para \texttt{FALSE}, por se tratar tratamento quantitativo:
 
@@ -2270,7 +2251,7 @@ Antes de partir para a análise, é fundamental explorar os dados de forma gráf
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-64-1.png}
+\includegraphics{figure-latex/unnamed-chunk-64-1.png}
 
 Note que os rótulo do eixo X são compostos pela união do desbaste e do bloco. Pode ser que dependendo do espaço disponível alguns rótulos sejam omitidos, mas ele devem ser lidos alternadamente, uma caixa para 30.1, outra para 50.1, depois 30.2, seguido de 50.2 e assim por diante.
 
@@ -2289,7 +2270,7 @@ Os tratamentos podem ser analisados isoladamente em relação a cada bloco, util
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-65-1.png}
+\includegraphics{figure-latex/unnamed-chunk-65-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2305,7 +2286,7 @@ Os tratamentos podem ser analisados isoladamente em relação a cada bloco, util
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-66-1.png}
+\includegraphics{figure-latex/unnamed-chunk-66-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2321,7 +2302,7 @@ Os tratamentos podem ser analisados isoladamente em relação a cada bloco, util
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-67-1.png}
+\includegraphics{figure-latex/unnamed-chunk-67-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2337,7 +2318,7 @@ Os tratamentos podem ser analisados isoladamente em relação a cada bloco, util
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-68-1.png}
+\includegraphics{figure-latex/unnamed-chunk-68-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2353,7 +2334,7 @@ Os tratamentos podem ser analisados isoladamente em relação a cada bloco, util
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-69-1.png}
+\includegraphics{figure-latex/unnamed-chunk-69-1.png}
 
 Pelo gráfico obtido, é razoável esperar que haja diferenças significativas entre as intensidades de desbaste (30\% e 50\%), pois existe um distanciamento entre os interquartis especialmente nos blocos 1 e 2. Também é possível esperar que não haja um efeito significativo dos blocos. Assim, espera-se que a análise estatística do experimento corrobore a conclusão empírica baseada no interpretação do gráfico.
 
@@ -2547,7 +2528,7 @@ Mesmo no caso desbalanceado, a análise gráfica é fundamental e deve preceder 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-75-1.png}
+\includegraphics{figure-latex/unnamed-chunk-75-1.png}
 
 Os tratamentos podem ser analisados isoladamente em relação a cada bloco, utilizando um filtro para escolher qual bloco considerar.
 
@@ -2564,7 +2545,7 @@ Os tratamentos podem ser analisados isoladamente em relação a cada bloco, util
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-76-1.png}
+\includegraphics{figure-latex/unnamed-chunk-76-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2580,7 +2561,7 @@ Os tratamentos podem ser analisados isoladamente em relação a cada bloco, util
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-77-1.png}
+\includegraphics{figure-latex/unnamed-chunk-77-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2596,7 +2577,7 @@ Os tratamentos podem ser analisados isoladamente em relação a cada bloco, util
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-78-1.png}
+\includegraphics{figure-latex/unnamed-chunk-78-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2612,7 +2593,7 @@ Os tratamentos podem ser analisados isoladamente em relação a cada bloco, util
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-79-1.png}
+\includegraphics{figure-latex/unnamed-chunk-79-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2628,7 +2609,7 @@ Os tratamentos podem ser analisados isoladamente em relação a cada bloco, util
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-80-1.png}
+\includegraphics{figure-latex/unnamed-chunk-80-1.png}
 
 Como já discutido anteriormente, por não haver cálculo de interação entre fontes de variação, o DBC pode ser analisado usando o pacote \texttt{ExpDes.pt} e sua função \texttt{dbc()}:
 
@@ -2771,7 +2752,7 @@ Antes da análise estatística, exploram-se os dados através dos gráficos \tex
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-84-1.png}
+\includegraphics{figure-latex/unnamed-chunk-84-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2787,7 +2768,7 @@ Antes da análise estatística, exploram-se os dados através dos gráficos \tex
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-85-1.png}
+\includegraphics{figure-latex/unnamed-chunk-85-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2803,7 +2784,7 @@ Antes da análise estatística, exploram-se os dados através dos gráficos \tex
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-86-1.png}
+\includegraphics{figure-latex/unnamed-chunk-86-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2820,7 +2801,7 @@ Antes da análise estatística, exploram-se os dados através dos gráficos \tex
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-87-1.png}
+\includegraphics{figure-latex/unnamed-chunk-87-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2837,7 +2818,7 @@ Antes da análise estatística, exploram-se os dados através dos gráficos \tex
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-88-1.png}
+\includegraphics{figure-latex/unnamed-chunk-88-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2854,7 +2835,7 @@ Antes da análise estatística, exploram-se os dados através dos gráficos \tex
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-89-1.png}
+\includegraphics{figure-latex/unnamed-chunk-89-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2871,7 +2852,7 @@ Antes da análise estatística, exploram-se os dados através dos gráficos \tex
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-90-1.png}
+\includegraphics{figure-latex/unnamed-chunk-90-1.png}
 
 Com base nos gráficos, é razoável apontar que o fator Indutor apresentou maior variação do que o fator Concentração. A interação também não parece influenciar o comportamento já identificado pelos fatores, quando analisados isoladamente.
 
@@ -2906,18 +2887,12 @@ Ajustando com base nos dados do experimento, o comando fica:
 ## 
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##                      GL      SQ      QM     Fc
-## Indutor               1 140.981 140.981 54.000
-## Concentração          1   2.113   2.113  0.809
-## Indutor*Concentração  1   0.684   0.684  0.262
-## Residuo              16  41.772   2.611       
-## Total                19 185.550               
-##                        Pr>Fc
-## Indutor              0.00000
-## Concentração         0.38171
-## Indutor*Concentração 0.61562
-## Residuo                     
-## Total                       
+##                      GL      SQ      QM     Fc   Pr>Fc
+## Indutor               1 140.981 140.981 54.000 0.00000
+## Concentração          1   2.113   2.113  0.809 0.38171
+## Indutor*Concentração  1   0.684   0.684  0.262 0.61562
+## Residuo              16  41.772   2.611               
+## Total                19 185.550                       
 ## ------------------------------------------------------------------------
 ## CV = 49.64 %
 ## 
@@ -3040,7 +3015,7 @@ Assim como no caso balanceado, é fundamental analisar os dados do experimento e
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-95-1.png}
+\includegraphics{figure-latex/unnamed-chunk-95-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3056,7 +3031,7 @@ Assim como no caso balanceado, é fundamental analisar os dados do experimento e
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-96-1.png}
+\includegraphics{figure-latex/unnamed-chunk-96-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3072,7 +3047,7 @@ Assim como no caso balanceado, é fundamental analisar os dados do experimento e
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-97-1.png}
+\includegraphics{figure-latex/unnamed-chunk-97-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3089,7 +3064,7 @@ Assim como no caso balanceado, é fundamental analisar os dados do experimento e
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-98-1.png}
+\includegraphics{figure-latex/unnamed-chunk-98-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3106,7 +3081,7 @@ Assim como no caso balanceado, é fundamental analisar os dados do experimento e
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-99-1.png}
+\includegraphics{figure-latex/unnamed-chunk-99-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3123,7 +3098,7 @@ Assim como no caso balanceado, é fundamental analisar os dados do experimento e
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-100-1.png}
+\includegraphics{figure-latex/unnamed-chunk-100-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3140,7 +3115,7 @@ Assim como no caso balanceado, é fundamental analisar os dados do experimento e
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-101-1.png}
+\includegraphics{figure-latex/unnamed-chunk-101-1.png}
 
 Os gráficos mostram que é razoável apontar que o fator substrato apresentou maior variação do que o fator irrigacao. A interação não parece influenciar o comportamento já identificado pelos fatores, quando analisados isoladamente. Sendo o nosso experimento desbalanceado, a função para rodar a ANOVA do tipo III é o \texttt{ea2()} (do pacote \texttt{easyanova}). A sintaxe da função é:
 
@@ -3172,7 +3147,7 @@ Considerando as colunas \texttt{substrato}, \texttt{irrigacao} e \texttt{enraiza
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-103-1.png}
+\includegraphics{figure-latex/unnamed-chunk-103-1.png}
 
 A saída da função \texttt{ea2()} é uma lista contendo os seguintes resultados:
 
@@ -3244,24 +3219,20 @@ A primeira saída que deve ser verificada é a análise das pressuposições, na
 ## third value most discrepant         3.0000
 ## 
 ## $`Residual analysis`$residuals
-##      1      2      3      4      5      6      7 
-##  0.875  0.175 -1.925  0.875  1.300  3.500 -0.100 
-##      8      9     10     11     12     13     14 
-## -3.900 -0.800 -0.040  0.760 -0.740 -0.740  0.760 
-##     15     16     17     18     19 
-## -0.460 -0.460  1.840 -0.460 -0.460 
+##      1      2      3      4      5      6      7      8      9     10     11 
+##  0.875  0.175 -1.925  0.875  1.300  3.500 -0.100 -3.900 -0.800 -0.040  0.760 
+##     12     13     14     15     16     17     18     19 
+## -0.740 -0.740  0.760 -0.460 -0.460  1.840 -0.460 -0.460 
 ## 
 ## $`Residual analysis`$`standardized residuals`
-##           1           2           3           4 
-##  0.57590514  0.11518103 -1.26699130  0.57590514 
-##           5           6           7           8 
-##  0.85563049  2.30362055 -0.06581773 -2.56689147 
-##           9          10          11          12 
-## -0.52654184 -0.02632709  0.50021475 -0.48705120 
-##          13          14          15          16 
-## -0.48705120  0.50021475 -0.30276156 -0.30276156 
-##          17          18          19 
-##  1.21104623 -0.30276156 -0.30276156
+##           1           2           3           4           5           6 
+##  0.57590514  0.11518103 -1.26699130  0.57590514  0.85563049  2.30362055 
+##           7           8           9          10          11          12 
+## -0.06581773 -2.56689147 -0.52654184 -0.02632709  0.50021475 -0.48705120 
+##          13          14          15          16          17          18 
+## -0.48705120  0.50021475 -0.30276156 -0.30276156  1.21104623 -0.30276156 
+##          19 
+## -0.30276156
 \end{verbatim}
 
 O teste de normalidade Shapiro-Wilk indica que não há evidência suficientes para rejeitar a pressuposição de normalidade do modelo estatístico e o teste de homogeneidade de variâncias Bartlett para os tratamentos indica que as variâncias são homogêneas. Portanto, o modelo escolhido é adequado para representar o experimento analisado. Desta forma, a análise de variância contido na posição 1 da lista de resultados pode ser analisado:
@@ -3274,16 +3245,11 @@ O teste de normalidade Shapiro-Wilk indica que não há evidência suficientes p
 
 \begin{verbatim}
 ## $`Analysis of variance`
-##                   df type III SS mean square
-## factor_1           1    135.3243    135.3243
-## factor_2           1      2.3224      2.3224
-## factor_1:factor_2  1      0.8400      0.8400
-## residuals         15     41.5515      2.7701
-##                   F value    p>F
-## factor_1          48.8518 <0.001
-## factor_2           0.8384 0.3743
-## factor_1:factor_2  0.3032   0.59
-## residuals               -      -
+##                   df type III SS mean square F value    p>F
+## factor_1           1    135.3243    135.3243 48.8518 <0.001
+## factor_2           1      2.3224      2.3224  0.8384 0.3743
+## factor_1:factor_2  1      0.8400      0.8400  0.3032   0.59
+## residuals         15     41.5515      2.7701       -      -
 \end{verbatim}
 
 O fator 1 (Indutor) foi significativo, apresentando teste F inferior a 1\%. Já o fator 2 (Concentração), bem como a interação não foram significativas. Como a interação não foi significativa, não há necessidade de desdobramento, e o fator 1 pode ser analisado diretamente. Lembrando que no exemplo apresentado, o fator 1 possui apenas dois níveis e portanto o teste F é conclusivo. De qualquer maneira, o teste de médias do fator 1 pode ser obtido na posição 2 da lista de resultado.
@@ -3296,12 +3262,9 @@ O fator 1 (Indutor) foi significativo, apresentando teste F inferior a 1\%. Já 
 
 \begin{verbatim}
 ## $`Adjusted means (factor 1)`
-##   factor_1 adjusted.mean standard.error tukey snk
-## 1        A        5.9625         0.5582     a   a
-## 2        B        0.6000         0.5263     b   b
-##   duncan t scott_knott
-## 1      a a           a
-## 2      b b           b
+##   factor_1 adjusted.mean standard.error tukey snk duncan t scott_knott
+## 1        A        5.9625         0.5582     a   a      a a           a
+## 2        B        0.6000         0.5263     b   b      b b           b
 \end{verbatim}
 
 \hypertarget{fatorial-duplo-em-blocos-casualizados}{%
@@ -3665,7 +3628,7 @@ Para explorar este experimento graficamente, tanto a função \texttt{boxplot()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-110-1.png}
+\includegraphics{figure-latex/unnamed-chunk-110-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3681,7 +3644,7 @@ Para explorar este experimento graficamente, tanto a função \texttt{boxplot()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-111-1.png}
+\includegraphics{figure-latex/unnamed-chunk-111-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3697,7 +3660,7 @@ Para explorar este experimento graficamente, tanto a função \texttt{boxplot()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-112-1.png}
+\includegraphics{figure-latex/unnamed-chunk-112-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3713,7 +3676,7 @@ Para explorar este experimento graficamente, tanto a função \texttt{boxplot()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-113-1.png}
+\includegraphics{figure-latex/unnamed-chunk-113-1.png}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3721,7 +3684,7 @@ Para explorar este experimento graficamente, tanto a função \texttt{boxplot()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-113-2.png}
+\includegraphics{figure-latex/unnamed-chunk-113-2.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3737,7 +3700,7 @@ Para explorar este experimento graficamente, tanto a função \texttt{boxplot()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-114-1.png}
+\includegraphics{figure-latex/unnamed-chunk-114-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3753,7 +3716,7 @@ Para explorar este experimento graficamente, tanto a função \texttt{boxplot()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-115-1.png}
+\includegraphics{figure-latex/unnamed-chunk-115-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3769,7 +3732,7 @@ Para explorar este experimento graficamente, tanto a função \texttt{boxplot()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-116-1.png}
+\includegraphics{figure-latex/unnamed-chunk-116-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3785,7 +3748,7 @@ Para explorar este experimento graficamente, tanto a função \texttt{boxplot()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-117-1.png}
+\includegraphics{figure-latex/unnamed-chunk-117-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3801,7 +3764,7 @@ Para explorar este experimento graficamente, tanto a função \texttt{boxplot()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-118-1.png}
+\includegraphics{figure-latex/unnamed-chunk-118-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3817,7 +3780,7 @@ Para explorar este experimento graficamente, tanto a função \texttt{boxplot()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-119-1.png}
+\includegraphics{figure-latex/unnamed-chunk-119-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3833,7 +3796,7 @@ Para explorar este experimento graficamente, tanto a função \texttt{boxplot()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-120-1.png}
+\includegraphics{figure-latex/unnamed-chunk-120-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -3849,7 +3812,7 @@ Para explorar este experimento graficamente, tanto a função \texttt{boxplot()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-121-1.png}
+\includegraphics{figure-latex/unnamed-chunk-121-1.png}
 
 Com base nos gráficos apresentados, é razoável acreditar que há um efeito significativo da espécie, mas não fica muito evidente o efeito significativo da dose, da interação e do bloco. Nota-se que as doses possuem comportamentos diferentes, variando de uma tendência quadrática à uma tendência sigmoidal (cúbica).
 
@@ -3913,22 +3876,14 @@ Lembrando que como se tem um fator quantitativo e um fator qualitativo, além do
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##                 GL          SQ         QM      Fc
-## Bloco            9    60.52166    6.72463  1.0333
-## Espécie          2  9138.36405 4569.18202 702.069
-## Dose:Espécie 2   4    50.44803   12.61201  1.9379
-## Dose:Espécie 5   4   128.29922   32.07481  4.9284
-## Dose:Espécie 7   4   258.52025   64.63006  9.9306
-## Residuo        126   820.02899    6.50817        
-## Total          149 10456.18221   70.17572        
-##                 Pr.Fc
-## Bloco          0.4174
-## Espécie        0.0000
-## Dose:Espécie 2 0.1082
-## Dose:Espécie 5 0.0010
-## Dose:Espécie 7 0.0000
-## Residuo            NA
-## Total              NA
+##                 GL          SQ         QM      Fc  Pr.Fc
+## Bloco            9    60.52166    6.72463  1.0333 0.4174
+## Espécie          2  9138.36405 4569.18202 702.069 0.0000
+## Dose:Espécie 2   4    50.44803   12.61201  1.9379 0.1082
+## Dose:Espécie 5   4   128.29922   32.07481  4.9284 0.0010
+## Dose:Espécie 7   4   258.52025   64.63006  9.9306 0.0000
+## Residuo        126   820.02899    6.50817             NA
+## Total          149 10456.18221   70.17572             NA
 ## ------------------------------------------------------------------------
 ## 
 ## 
@@ -4114,26 +4069,16 @@ Lembrando que como se tem um fator quantitativo e um fator qualitativo, além do
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##                   GL          SQ         QM
-## Bloco              9    60.52166    6.72463
-## Dose               4   212.55440   53.13860
-## Espécie:Dose 0     2  1080.11237  540.05619
-## Espécie:Dose 25    2  1820.84094  910.42047
-## Espécie:Dose 50    2  1691.61319  845.80659
-## Espécie:Dose 75    2  2258.11368 1129.05684
-## Espécie:Dose 100   2  2512.39697 1256.19849
-## Residuo          126   820.02899    6.50817
-## Total            149 10456.18221   70.17572
-##                        Fc  Pr.Fc
-## Bloco              1.0333 0.4174
-## Dose               8.1649 0.0000
-## Espécie:Dose 0    82.9813 0.0000
-## Espécie:Dose 25  139.8889 0.0000
-## Espécie:Dose 50  129.9608 0.0000
-## Espécie:Dose 75  173.4831 0.0000
-## Espécie:Dose 100 193.0188 0.0000
-## Residuo                       NA
-## Total                         NA
+##                   GL          SQ         QM       Fc  Pr.Fc
+## Bloco              9    60.52166    6.72463   1.0333 0.4174
+## Dose               4   212.55440   53.13860   8.1649 0.0000
+## Espécie:Dose 0     2  1080.11237  540.05619  82.9813 0.0000
+## Espécie:Dose 25    2  1820.84094  910.42047 139.8889 0.0000
+## Espécie:Dose 50    2  1691.61319  845.80659 129.9608 0.0000
+## Espécie:Dose 75    2  2258.11368 1129.05684 173.4831 0.0000
+## Espécie:Dose 100   2  2512.39697 1256.19849 193.0188 0.0000
+## Residuo          126   820.02899    6.50817              NA
+## Total            149 10456.18221   70.17572              NA
 ## ------------------------------------------------------------------------
 ## 
 ## 
@@ -4369,7 +4314,7 @@ Assim como no experimento balanceado, os dados devem ser explorados graficamente
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-126-1.png}
+\includegraphics{figure-latex/unnamed-chunk-126-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -4385,7 +4330,7 @@ Assim como no experimento balanceado, os dados devem ser explorados graficamente
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-127-1.png}
+\includegraphics{figure-latex/unnamed-chunk-127-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -4401,7 +4346,7 @@ Assim como no experimento balanceado, os dados devem ser explorados graficamente
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-128-1.png}
+\includegraphics{figure-latex/unnamed-chunk-128-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -4417,7 +4362,7 @@ Assim como no experimento balanceado, os dados devem ser explorados graficamente
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-129-1.png}
+\includegraphics{figure-latex/unnamed-chunk-129-1.png}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4425,7 +4370,7 @@ Assim como no experimento balanceado, os dados devem ser explorados graficamente
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-129-2.png}
+\includegraphics{figure-latex/unnamed-chunk-129-2.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -4441,7 +4386,7 @@ Assim como no experimento balanceado, os dados devem ser explorados graficamente
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-130-1.png}
+\includegraphics{figure-latex/unnamed-chunk-130-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -4457,7 +4402,7 @@ Assim como no experimento balanceado, os dados devem ser explorados graficamente
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-131-1.png}
+\includegraphics{figure-latex/unnamed-chunk-131-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -4473,7 +4418,7 @@ Assim como no experimento balanceado, os dados devem ser explorados graficamente
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-132-1.png}
+\includegraphics{figure-latex/unnamed-chunk-132-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -4489,7 +4434,7 @@ Assim como no experimento balanceado, os dados devem ser explorados graficamente
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-133-1.png}
+\includegraphics{figure-latex/unnamed-chunk-133-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -4505,7 +4450,7 @@ Assim como no experimento balanceado, os dados devem ser explorados graficamente
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-134-1.png}
+\includegraphics{figure-latex/unnamed-chunk-134-1.png}
 
 Como o delineamento fatorial duplo em blocos casualizados pode ter a interação significativa, é fundamental considerar a análise através da ANOVA tipo III. A sintaxe da função é:
 
@@ -4540,7 +4485,7 @@ Qualquer variável extra deve ser removida dos dados e a ordem acima deve ser re
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-136-1.png}
+\includegraphics{figure-latex/unnamed-chunk-136-1.png}
 
 Os resultados são armazenados numa lista de 10 posições, aqui salva numa variável denominada de \texttt{r.aov}. As 10 posições contém:
 
@@ -4591,68 +4536,46 @@ Nota-se que o teste de Shapiro-Wilk não é significativo, aceitando-se portanto
 ## third value most discrepant        25.0000
 ## 
 ## $`Residual analysis`$residuals
-##          1          2          3          4 
-## -1.0666667  0.2666667  3.7333333 -1.1666667 
-##          5          6          7          8 
-##  0.4166667 -2.9000000  0.6333333  2.9166667 
-##          9         10         11         12 
-## -2.8333333  0.8853333  0.5186667 -1.0146667 
-##         13         14         15         16 
-##  3.3853333 -0.8313333  2.2520000 -1.8146667 
-##         17         18         19         20 
-## -1.6680000  1.6686667 -3.3813333  2.6053333 
-##         21         22         23         24 
-## -2.2613333 -0.7946667 -2.0946667  0.4886667 
-##         25         26         27         28 
-##  6.5720000 -2.8946667  1.7520000 -3.7113333 
-##         29         30         31         32 
-##  0.3386667 -1.1746667  2.6586667 -0.8746667 
-##         33         34         35         36 
-## -4.9746667  0.1086667  0.1920000  0.9253333 
-##         37         38         39         40 
-##  1.4720000  1.1086667  0.5586667 -1.0546667 
-##         41         42         43         44 
-##  1.1786667 -2.6546667  2.8453333  1.0286667 
-##         45         46         47         48 
-##  0.2120000  7.2453333 -1.0080000 -4.0713333 
-##         49         50         51         52 
-## -3.7213333 -0.1946667 -2.3613333  1.6053333 
-##         53         54         55         56 
-##  2.0053333 -1.2113333 -6.3280000 -4.0946667 
+##          1          2          3          4          5          6          7 
+## -1.0666667  0.2666667  3.7333333 -1.1666667  0.4166667 -2.9000000  0.6333333 
+##          8          9         10         11         12         13         14 
+##  2.9166667 -2.8333333  0.8853333  0.5186667 -1.0146667  3.3853333 -0.8313333 
+##         15         16         17         18         19         20         21 
+##  2.2520000 -1.8146667 -1.6680000  1.6686667 -3.3813333  2.6053333 -2.2613333 
+##         22         23         24         25         26         27         28 
+## -0.7946667 -2.0946667  0.4886667  6.5720000 -2.8946667  1.7520000 -3.7113333 
+##         29         30         31         32         33         34         35 
+##  0.3386667 -1.1746667  2.6586667 -0.8746667 -4.9746667  0.1086667  0.1920000 
+##         36         37         38         39         40         41         42 
+##  0.9253333  1.4720000  1.1086667  0.5586667 -1.0546667  1.1786667 -2.6546667 
+##         43         44         45         46         47         48         49 
+##  2.8453333  1.0286667  0.2120000  7.2453333 -1.0080000 -4.0713333 -3.7213333 
+##         50         51         52         53         54         55         56 
+## -0.1946667 -2.3613333  1.6053333  2.0053333 -1.2113333 -6.3280000 -4.0946667 
 ##         57         58         59 
 ## -0.5480000  2.0886667  9.0386667 
 ## 
 ## $`Residual analysis`$`standardized residuals`
-##           1           2           3           4 
-## -0.37654793  0.09413698  1.31791775 -0.41184930 
-##           5           6           7           8 
-##  0.14708903 -1.02373968  0.22357533  1.02962324 
-##           9          10          11          12 
-## -1.00020543  0.31253478  0.18309643 -0.35819122 
-##          13          14          15          16 
-##  1.19506899 -0.29347204  0.79498681 -0.64060216 
-##          17          18          19          20 
-## -0.58882682  0.58906216 -1.19365693  0.91971831 
-##          21          22          23          24 
-## -0.79828161 -0.28052821 -0.73944599  0.17250602 
-##          25          26          27          28 
-##  2.32000592 -1.02185694  0.61847997 -1.31015145 
-##          29          30          31          32 
-##  0.11955397 -0.41467341  0.93854571 -0.30876930 
-##          33          34          35          36 
-## -1.75612540  0.03836082  0.06777863  0.32665533 
-##          37          38          39          40 
-##  0.51963614  0.39137450  0.19721698 -0.37231176 
-##          41          42          43          44 
-##  0.41608546 -0.93713365  1.00444160  0.36313341 
-##          45          46          47          48 
-##  0.07483890  2.55770180 -0.35583779 -1.43723637 
-##          49          50          51          52 
-## -1.31368158 -0.06872000 -0.83358297  0.56670463 
-##          53          54          55          56 
-##  0.70791010 -0.42761724 -2.23387058 -1.44547336 
-##          57          58          59 
-## -0.19345150  0.73732791  3.19077300
+##           1           2           3           4           5           6 
+## -0.37654793  0.09413698  1.31791775 -0.41184930  0.14708903 -1.02373968 
+##           7           8           9          10          11          12 
+##  0.22357533  1.02962324 -1.00020543  0.31253478  0.18309643 -0.35819122 
+##          13          14          15          16          17          18 
+##  1.19506899 -0.29347204  0.79498681 -0.64060216 -0.58882682  0.58906216 
+##          19          20          21          22          23          24 
+## -1.19365693  0.91971831 -0.79828161 -0.28052821 -0.73944599  0.17250602 
+##          25          26          27          28          29          30 
+##  2.32000592 -1.02185694  0.61847997 -1.31015145  0.11955397 -0.41467341 
+##          31          32          33          34          35          36 
+##  0.93854571 -0.30876930 -1.75612540  0.03836082  0.06777863  0.32665533 
+##          37          38          39          40          41          42 
+##  0.51963614  0.39137450  0.19721698 -0.37231176  0.41608546 -0.93713365 
+##          43          44          45          46          47          48 
+##  1.00444160  0.36313341  0.07483890  2.55770180 -0.35583779 -1.43723637 
+##          49          50          51          52          53          54 
+## -1.31368158 -0.06872000 -0.83358297  0.56670463  0.70791010 -0.42761724 
+##          55          56          57          58          59 
+## -2.23387058 -1.44547336 -0.19345150  0.73732791  3.19077300
 \end{verbatim}
 
 O quadro geral da ANOVA indica que os dois fatores, bem como a interação são significativos:
@@ -4665,18 +4588,12 @@ O quadro geral da ANOVA indica que os dois fatores, bem como a interação são 
 
 \begin{verbatim}
 ## $`Analysis of variance`
-##                   df type III SS mean square
-## factor_1           2    113.1605     56.5803
-## factor_2           1   1890.1081   1890.1081
-## blocks             9     91.7117     10.1902
-## factor_1:factor_2  2    132.6536     66.3268
-## residuals         44    465.4199     10.5777
-##                    F value    p>F
-## factor_1             5.349 0.0083
-## factor_2          178.6876 <0.001
-## blocks              0.9634 0.4825
-## factor_1:factor_2   6.2704  0.004
-## residuals                -      -
+##                   df type III SS mean square  F value    p>F
+## factor_1           2    113.1605     56.5803    5.349 0.0083
+## factor_2           1   1890.1081   1890.1081 178.6876 <0.001
+## blocks             9     91.7117     10.1902   0.9634 0.4825
+## factor_1:factor_2  2    132.6536     66.3268   6.2704  0.004
+## residuals         44    465.4199     10.5777        -      -
 \end{verbatim}
 
 Parte-se direto, portanto, para a análise dos respectivos desdobramentos presentes nas posições 6 e 8 da lista de resultados (\texttt{r.aov{[}6{]}} e \texttt{r.aov{[}8{]}}):
@@ -4697,24 +4614,16 @@ Parte-se direto, portanto, para a análise dos respectivos desdobramentos presen
 \begin{verbatim}
 ## $`Adjusted means (factor 1 in levels of factor 2)`
 ## $`Adjusted means (factor 1 in levels of factor 2)`$`factor_1 in  2`
-##   treatment adjusted.mean standard.error tukey snk
-## 1       0.2        27.800         1.0285     a   a
-## 3     100.2        23.072         1.0285     b   b
-## 2      50.2        22.020         1.0285     b   b
-##   duncan t scott_knott
-## 1      a a           a
-## 3      b b           b
-## 2      b b           b
+##   treatment adjusted.mean standard.error tukey snk duncan t scott_knott
+## 1       0.2        27.800         1.0285     a   a      a a           a
+## 3     100.2        23.072         1.0285     b   b      b b           b
+## 2      50.2        22.020         1.0285     b   b      b b           b
 ## 
 ## $`Adjusted means (factor 1 in levels of factor 2)`$`factor_1 in  5`
-##   treatment adjusted.mean standard.error tukey snk
-## 6     100.5         37.58         1.0285     a   a
-## 4       0.5         35.10         1.0285     a   a
-## 5      50.5         34.26         1.0285     a   a
-##   duncan  t scott_knott
-## 6      a  a           a
-## 4     ab ab           a
-## 5      b  b           a
+##   treatment adjusted.mean standard.error tukey snk duncan  t scott_knott
+## 6     100.5         37.58         1.0285     a   a      a  a           a
+## 4       0.5         35.10         1.0285     a   a     ab ab           a
+## 5      50.5         34.26         1.0285     a   a      b  b           a
 \end{verbatim}
 
 \begin{enumerate}
@@ -4734,28 +4643,19 @@ Parte-se direto, portanto, para a análise dos respectivos desdobramentos presen
 \begin{verbatim}
 ## $`Adjusted means (factor 2 in levels of factor 1)`
 ## $`Adjusted means (factor 2 in levels of factor 1)`$`factor_2 in  0`
-##   treatment adjusted.mean standard.error tukey snk
-## 4       0.5          35.1         1.0285     a   a
-## 1       0.2          27.8         1.0285     b   b
-##   duncan t scott_knott
-## 4      a a           a
-## 1      b b           b
+##   treatment adjusted.mean standard.error tukey snk duncan t scott_knott
+## 4       0.5          35.1         1.0285     a   a      a a           a
+## 1       0.2          27.8         1.0285     b   b      b b           b
 ## 
 ## $`Adjusted means (factor 2 in levels of factor 1)`$`factor_2 in  50`
-##   treatment adjusted.mean standard.error tukey snk
-## 5      50.5         34.26         1.0285     a   a
-## 2      50.2         22.02         1.0285     b   b
-##   duncan t scott_knott
-## 5      a a           a
-## 2      b b           b
+##   treatment adjusted.mean standard.error tukey snk duncan t scott_knott
+## 5      50.5         34.26         1.0285     a   a      a a           a
+## 2      50.2         22.02         1.0285     b   b      b b           b
 ## 
 ## $`Adjusted means (factor 2 in levels of factor 1)`$`factor_2 in  100`
-##   treatment adjusted.mean standard.error tukey snk
-## 6     100.5        37.580         1.0285     a   a
-## 3     100.2        23.072         1.0285     b   b
-##   duncan t scott_knott
-## 6      a a           a
-## 3      b b           b
+##   treatment adjusted.mean standard.error tukey snk duncan t scott_knott
+## 6     100.5        37.580         1.0285     a   a      a a           a
+## 3     100.2        23.072         1.0285     b   b      b b           b
 \end{verbatim}
 
 Fique atento! O pacote \texttt{easyanova} não diferencia fatores qualitativos e quantitativos, analisando todos os fatores e seus desdobramentos com teste comparativo de média.
@@ -4892,7 +4792,7 @@ Você já sabe! Antes de ir para análise estatística explore graficamente os d
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-143-1.png}
+\includegraphics{figure-latex/unnamed-chunk-143-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -4908,7 +4808,7 @@ Você já sabe! Antes de ir para análise estatística explore graficamente os d
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-144-1.png}
+\includegraphics{figure-latex/unnamed-chunk-144-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -4924,7 +4824,7 @@ Você já sabe! Antes de ir para análise estatística explore graficamente os d
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-145-1.png}
+\includegraphics{figure-latex/unnamed-chunk-145-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -4940,7 +4840,7 @@ Você já sabe! Antes de ir para análise estatística explore graficamente os d
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-146-1.png}
+\includegraphics{figure-latex/unnamed-chunk-146-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -4956,7 +4856,7 @@ Você já sabe! Antes de ir para análise estatística explore graficamente os d
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-147-1.png}
+\includegraphics{figure-latex/unnamed-chunk-147-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -4972,7 +4872,7 @@ Você já sabe! Antes de ir para análise estatística explore graficamente os d
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-148-1.png}
+\includegraphics{figure-latex/unnamed-chunk-148-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -4988,7 +4888,7 @@ Você já sabe! Antes de ir para análise estatística explore graficamente os d
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-149-1.png}
+\includegraphics{figure-latex/unnamed-chunk-149-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -5004,7 +4904,7 @@ Você já sabe! Antes de ir para análise estatística explore graficamente os d
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-150-1.png}
+\includegraphics{figure-latex/unnamed-chunk-150-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -5020,7 +4920,7 @@ Você já sabe! Antes de ir para análise estatística explore graficamente os d
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-151-1.png}
+\includegraphics{figure-latex/unnamed-chunk-151-1.png}
 
 Analisando os gráficos acima, os fatores parecem significativos, assim como a interação. Quando o interesse é verificar a questão das pressuposições considerando os tratamentos (Parcela e Subparcela juntos), além das colunas referentes a parcela e subparcela, teria que ser acrescentado uma coluna para tratamentos. Ou seja, é como se fosse uma análise preliminar como DIC ou DBC.
 
@@ -5033,7 +4933,7 @@ O pacote \texttt{ExpDes.pt} não inclui as análises de pressuposições para o 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-152-1.png}
+\includegraphics{figure-latex/unnamed-chunk-152-1.png}
 
 Como já foi visto, o teste de normalidade e de homogeneidade podem ser obtidos na posição 10 da função \texttt{ea2()} do pacote \texttt{easyanova}.
 
@@ -5062,36 +4962,28 @@ Como já foi visto, o teste de normalidade e de homogeneidade podem ser obtidos 
 ## Coefficient of Variation b                7.1785
 ## 
 ## $`Residual analysis`$residuals
-##           1           2           3           4 
-##   0.6605916  -0.3252332  -0.3353584  10.3272582 
-##           5           6           7           8 
-##  -6.6585666  -3.6686917  -5.0060751  -0.9918999 
-##           9          10          11          12 
-##   5.9979750 -10.3191581  -3.3333333  13.6524915 
-##          13          14          15          16 
-##  -6.9858248  15.0000000  -8.0141752   3.3475085 
-##          17          18          19          20 
-## -11.6666667   8.3191581  -1.3252332  -0.3323208 
-##          21          22          23          24 
-##   1.6575540  -4.3252332  -1.3323208   5.6575540 
+##           1           2           3           4           5           6 
+##   0.6605916  -0.3252332  -0.3353584  10.3272582  -6.6585666  -3.6686917 
+##           7           8           9          10          11          12 
+##  -5.0060751  -0.9918999   5.9979750 -10.3191581  -3.3333333  13.6524915 
+##          13          14          15          16          17          18 
+##  -6.9858248  15.0000000  -8.0141752   3.3475085 -11.6666667   8.3191581 
+##          19          20          21          22          23          24 
+##  -1.3252332  -0.3323208   1.6575540  -4.3252332  -1.3323208   5.6575540 
 ##          25          26          27 
 ##  -2.3252332   0.6676792   1.6575540 
 ## attr(,"label")
 ## [1] "Residuals"
 ## 
 ## $`Residual analysis`$`standardized residuals`
-##           1           2           3           4 
-##  0.09926874 -0.04887361 -0.05039514  1.55190283 
-##           5           6           7           8 
-## -1.00059939 -0.55130344 -0.75227538 -0.14905527 
-##           9          10          11          12 
-##  0.90133065 -1.55068561 -0.50090831  2.05159391 
-##          13          14          15          16 
-## -1.04977730  2.25408738 -1.20431008  0.50303845 
-##          17          18          19          20 
-## -1.75317907  1.25014062 -0.19914610 -0.04993868 
-##          21          22          23          24 
-##  0.24908478 -0.64996357 -0.20021117  0.85017474 
+##           1           2           3           4           5           6 
+##  0.09926874 -0.04887361 -0.05039514  1.55190283 -1.00059939 -0.55130344 
+##           7           8           9          10          11          12 
+## -0.75227538 -0.14905527  0.90133065 -1.55068561 -0.50090831  2.05159391 
+##          13          14          15          16          17          18 
+## -1.04977730  2.25408738 -1.20431008  0.50303845 -1.75317907  1.25014062 
+##          19          20          21          22          23          24 
+## -0.19914610 -0.04993868  0.24908478 -0.64996357 -0.20021117  0.85017474 
 ##          25          26          27 
 ## -0.34941859  0.10033381  0.24908478
 \end{verbatim}
@@ -5126,23 +5018,15 @@ No exemplo tem-se o fator principal (fator 1) como qualitativo e o fator secund�
 ## 
 ## ------------------------------------------------------------------------
 ## $`Quadro da analise de variancia`
-##                  GL    SQ     QM      Fc Pr(>Fc)
-## Floresta          2 19073 9536.3 267.374   1e-06
-## Erro a            6   214   35.7                
-## Desrama           2 14795 7397.3  94.568 < 2e-16
-## Floresta*Desrama  4   799  199.7   2.553 0.09349
-## Erro b           12   939   78.2                
-## Total            26 35819                       
-##                     
-## Floresta         ***
-## Erro a              
-## Desrama          ***
-## Floresta*Desrama .  
-## Erro b              
-## Total               
+##                  GL    SQ     QM      Fc Pr(>Fc)    
+## Floresta          2 19073 9536.3 267.374   1e-06 ***
+## Erro a            6   214   35.7                    
+## Desrama           2 14795 7397.3  94.568 < 2e-16 ***
+## Floresta*Desrama  4   799  199.7   2.553 0.09349 .  
+## Erro b           12   939   78.2                    
+## Total            26 35819                           
 ## ---
-## Signif. codes:  
-## 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## ------------------------------------------------------------------------
 ## CV 1 = 5.358865 %
@@ -5319,7 +5203,7 @@ Os dados devem ser explorados graficamente antes de seguir com a análise de var
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-158-1.png}
+\includegraphics{figure-latex/unnamed-chunk-158-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -5335,7 +5219,7 @@ Os dados devem ser explorados graficamente antes de seguir com a análise de var
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-159-1.png}
+\includegraphics{figure-latex/unnamed-chunk-159-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -5351,7 +5235,7 @@ Os dados devem ser explorados graficamente antes de seguir com a análise de var
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-160-1.png}
+\includegraphics{figure-latex/unnamed-chunk-160-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -5367,7 +5251,7 @@ Os dados devem ser explorados graficamente antes de seguir com a análise de var
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-161-1.png}
+\includegraphics{figure-latex/unnamed-chunk-161-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -5383,7 +5267,7 @@ Os dados devem ser explorados graficamente antes de seguir com a análise de var
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-162-1.png}
+\includegraphics{figure-latex/unnamed-chunk-162-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -5399,7 +5283,7 @@ Os dados devem ser explorados graficamente antes de seguir com a análise de var
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-163-1.png}
+\includegraphics{figure-latex/unnamed-chunk-163-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -5415,7 +5299,7 @@ Os dados devem ser explorados graficamente antes de seguir com a análise de var
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-164-1.png}
+\includegraphics{figure-latex/unnamed-chunk-164-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -5431,7 +5315,7 @@ Os dados devem ser explorados graficamente antes de seguir com a análise de var
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-165-1.png}
+\includegraphics{figure-latex/unnamed-chunk-165-1.png}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -5447,7 +5331,7 @@ Os dados devem ser explorados graficamente antes de seguir com a análise de var
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-166-1.png}
+\includegraphics{figure-latex/unnamed-chunk-166-1.png}
 
 Os dados por se tratarem de experimento desbalanceados com efeito da interação relevante devem ser analisados com o pacote \texttt{easyanova}. A função será \texttt{ea2()} e possui a sintaxe básica:
 
@@ -5482,7 +5366,7 @@ O parâmetro \texttt{design} deve ser definido como \texttt{4}, resultando no se
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-168-1.png}
+\includegraphics{figure-latex/unnamed-chunk-168-1.png}
 
 Os resultados podem ser acessados escolhendo um dos elementos da lista:
 
@@ -5511,34 +5395,26 @@ Os resultados podem ser acessados escolhendo um dos elementos da lista:
 ## Coefficient of Variation b               13.6457
 ## 
 ## $`Residual analysis`$residuals
-##           1           2           3           4 
-##  -2.8241221   2.8241221   1.6212788   4.1091983 
-##           5           6           7           8 
-##  -5.7304770  19.6212788 -26.8908017   7.2695230 
-##           9          10          11          12 
-## -12.9589104  -0.6517886  13.6106990  -2.9589104 
-##          13          14          15          16 
-##  14.3482114 -11.3893010   7.3744229 -12.3184553 
-##          17          18          19          20 
-##   4.9440324  -3.5066019   3.5066019   7.9988237 
-##          21          22          23 
-##  -7.9988237   7.4988237  -7.4988237 
+##           1           2           3           4           5           6 
+##  -2.8241221   2.8241221   1.6212788   4.1091983  -5.7304770  19.6212788 
+##           7           8           9          10          11          12 
+## -26.8908017   7.2695230 -12.9589104  -0.6517886  13.6106990  -2.9589104 
+##          13          14          15          16          17          18 
+##  14.3482114 -11.3893010   7.3744229 -12.3184553   4.9440324  -3.5066019 
+##          19          20          21          22          23 
+##   3.5066019   7.9988237  -7.9988237   7.4988237  -7.4988237 
 ## attr(,"label")
 ## [1] "Residuals"
 ## 
 ## $`Residual analysis`$`standardized residuals`
-##           1           2           3           4 
-## -0.26911379  0.26911379  0.15449349  0.39157015 
-##           5           6           7           8 
-## -0.54606364  1.86973386 -2.56245492  0.69272107 
-##           9          10          11          12 
-## -1.23486923 -0.06210968  1.29697891 -0.28195792 
-##          13          14          15          16 
-##  1.36725729 -1.08529938  0.70271711 -1.17383954 
-##          17          18          19          20 
-##  0.47112244 -0.33414806  0.33414806  0.76221696 
-##          21          22          23 
-## -0.76221696  0.71457139 -0.71457139
+##           1           2           3           4           5           6 
+## -0.26911379  0.26911379  0.15449349  0.39157015 -0.54606364  1.86973386 
+##           7           8           9          10          11          12 
+## -2.56245492  0.69272107 -1.23486923 -0.06210968  1.29697891 -0.28195792 
+##          13          14          15          16          17          18 
+##  1.36725729 -1.08529938  0.70271711 -1.17383954  0.47112244 -0.33414806 
+##          19          20          21          22          23 
+##  0.33414806  0.76221696 -0.76221696  0.71457139 -0.71457139
 \end{verbatim}
 
 O teste de normalidade apresentou valor não significativo, indicando assim que não há evidências para rejeitar a normalidade dos resíduos.
@@ -5574,14 +5450,10 @@ Sendo a interação não significativa, os fatores (da parcela e da subparcela) 
 
 \begin{verbatim}
 ## $`Adjusted means (plot)`
-##   plot adjusted.mean standard.error tukey snk
-## 1    B      131.8889         7.6958     a   a
-## 2    C      118.3355         8.6638     a   a
-## 3    A       71.1485         8.0186     b   b
-##   duncan t
-## 1      a a
-## 2      a a
-## 3      b b
+##   plot adjusted.mean standard.error tukey snk duncan t
+## 1    B      131.8889         7.6958     a   a      a a
+## 2    C      118.3355         8.6638     a   a      a a
+## 3    A       71.1485         8.0186     b   b      b b
 \end{verbatim}
 
 \begin{enumerate}
@@ -5600,14 +5472,10 @@ Sendo a interação não significativa, os fatores (da parcela e da subparcela) 
 
 \begin{verbatim}
 ## $`Adjusted means (split.plot)`
-##   split.plot adjusted.mean standard.error tukey
-## 1          7      134.5013         6.4491     a
-## 2          5      105.4458         6.4491     b
-## 3          2       81.4258         6.8129     c
-##   snk duncan t
-## 1   a      a a
-## 2   b      b b
-## 3   c      c c
+##   split.plot adjusted.mean standard.error tukey snk duncan t
+## 1          7      134.5013         6.4491     a   a      a a
+## 2          5      105.4458         6.4491     b   b      b b
+## 3          2       81.4258         6.8129     c   c      c c
 \end{verbatim}
 
 \hypertarget{anuxe1lise-experimental-nuxe3o-paramuxe9trica}{%
@@ -5616,9 +5484,8 @@ Sendo a interação não significativa, os fatores (da parcela e da subparcela) 
 Os testes estatísticos não paramétricos não levam em consideração a distribuição original dos resíduos. Em geral eles seguem o mesmo procedimento que os testes paramétricos, iniciando pela formulação da hipótese, computando o valor da estatística do teste com base nos dados obtidos de amostras aleatórias e comparando a grandeza estatística do valor calculado com a referência. Assim como os teste paramétricos, existem inúmeros testes não-paramétricos para as diferentes hipóteses a serem testadas.
 
 \begin{verbatim}
-## Warning in read.table(file = file, header = header,
-## sep = sep, quote = quote, : incomplete final line
-## found by readTableHeader on './data/naoParam.csv'
+## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
+## incomplete final line found by readTableHeader on './data/naoParam.csv'
 \end{verbatim}
 
 \begin{table}
@@ -5734,7 +5601,7 @@ Em seguida, os dados devem ser explorados por meio de gráficos:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-176-1.png}
+\includegraphics{figure-latex/unnamed-chunk-176-1.png}
 
 Os dados indicam que o incremento médio das árvores remanescentes de um desbaste de 60\% da área basal cresceram aproximadamente 0.8 cm, ao passo que as árvores remanescentes de um desbaste de 40 \% e 30 \%, cresceram apenas \textasciitilde{} 0.6 e 0.5 cm respectivamente. Espera-se que o desbaste 60\% seja significativamente diferente dos demais.
 
@@ -5833,8 +5700,7 @@ O teste de normalidade de resíduos é significativo, indicando que o modelo est
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  dic.np$dap and dic.np$desbaste
-## Kruskal-Wallis chi-squared = 7.8861, df = 2,
-## p-value = 0.01939
+## Kruskal-Wallis chi-squared = 7.8861, df = 2, p-value = 0.01939
 \end{verbatim}
 
 O teste indica que o tratamento é significativo, e portanto, as médias dos diferentes desbastes não podem ser consideradas iguais. Como foi antecipado pelo gráfico, pelo menos um nível de desbaste se difere dos demais. Não há desdobramento específico para os testes não-paramétricos, sendo a interpretação gráfica e a estatística descritiva o caminho ideal para avaliar desdobramento.
@@ -5951,7 +5817,7 @@ O primeiro passo é importar o arquivo contendo os resultados do experimento par
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-181-1.png}
+\includegraphics{figure-latex/unnamed-chunk-181-1.png}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5959,7 +5825,7 @@ O primeiro passo é importar o arquivo contendo os resultados do experimento par
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown_files/unnamed-chunk-182-1.png}
+\includegraphics{figure-latex/unnamed-chunk-182-1.png}
 
 A análise do experimento em questão pode ser então realizada construindo a função \texttt{dbc()} da seguinte maneira:
 
@@ -6081,8 +5947,7 @@ O teste de Friedman pode ser assim chamado:
 ##  Friedman rank sum test
 ## 
 ## data:  x and desb and bloco
-## Friedman chi-squared = 4, df = 1, p-value =
-## 0.0455
+## Friedman chi-squared = 4, df = 1, p-value = 0.0455
 \end{verbatim}
 
 Segundo o teste de Friedman, existe uma diferença significativa entre os desbaste. Uma exploração gráfica dos dados, ou uma análise estatística descritiva podem auxiliar no desdobramento do tratamento.
@@ -6090,9 +5955,9 @@ Segundo o teste de Friedman, existe uma diferença significativa entre os desbas
 \hypertarget{pruxf3ximos-passos}{%
 \section{Próximos passos}\label{pruxf3ximos-passos}}
 
-Este livro não tem a pretenção de esgotar o assunto relacionado à análise de expermentos. Ao longo do texto foi possível se familiarizar com os comandos, funções e pacotes estátisticos disponíveis no R.
+Este livro não tem a pretensão de esgotar o assunto relacionado à análise de experimentos. Ao longo do texto foi possível se familiarizar com os comandos, funções e pacotes estatísticos disponíveis no R.
 
-Sem dúvida existem muitos materiais interessante que podem ser acessados para ir mais a fundo no tema. Programas de pós graduação, bem como cursos de extensão também são um excelente caminho para o desevolvimento das habilidades.
+Sem dúvida existem muitos materiais interessante que podem ser acessados para ir mais a fundo no tema. Programas de pós graduação, bem como cursos de extensão também são um excelente caminho para o desenvolvimento das habilidades.
 
 Sucesso na sua caminhada.
 

@@ -24,7 +24,7 @@
 <meta name="author" content="Eric Bastos Gorgens, Marcio Leles Romarco de Oliveira" />
 
 
-<meta name="date" content="2021-02-06" />
+<meta name="date" content="2021-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -131,7 +131,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Experimental</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#o-r"><i class="fa fa-check"></i><b>1.1</b> O R</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html"><i class="fa fa-check"></i><b>2</b> Delineamentos experimentais</a><ul>
 <li class="chapter" data-level="2.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova"><i class="fa fa-check"></i><b>2.1</b> ANOVA</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#partição-da-variação"><i class="fa fa-check"></i><b>2.1.1</b> Partição da variação</a></li>
@@ -205,9 +207,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="análise-experimental-não-paramétrica" class="section level1">
 <h1><span class="header-section-number">Cap. 11</span> Análise experimental não paramétrica</h1>
 <p>Os testes estatísticos não paramétricos não levam em consideração a distribuição original dos resíduos. Em geral eles seguem o mesmo procedimento que os testes paramétricos, iniciando pela formulação da hipótese, computando o valor da estatística do teste com base nos dados obtidos de amostras aleatórias e comparando a grandeza estatística do valor calculado com a referência. Assim como os teste paramétricos, existem inúmeros testes não-paramétricos para as diferentes hipóteses a serem testadas.</p>
-<pre><code>## Warning in read.table(file = file, header = header, sep
-## = sep, quote = quote, : incomplete final line found by
-## readTableHeader on &#39;./data/naoParam.csv&#39;</code></pre>
+<pre><code>## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
+## incomplete final line found by readTableHeader on &#39;./data/naoParam.csv&#39;</code></pre>
 <table>
 <caption><span id="tab:unnamed-chunk-173">Table 11.1: </span>Testes não paramétricos e referência para utilização</caption>
 <thead>
@@ -497,8 +498,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  dic.np$dap and dic.np$desbaste
-## Kruskal-Wallis chi-squared = 7.8861, df = 2,
-## p-value = 0.01939</code></pre>
+## Kruskal-Wallis chi-squared = 7.8861, df = 2, p-value = 0.01939</code></pre>
 <p>O teste indica que o tratamento é significativo, e portanto, as médias dos diferentes desbastes não podem ser consideradas iguais. Como foi antecipado pelo gráfico, pelo menos um nível de desbaste se difere dos demais. Não há desdobramento específico para os testes não-paramétricos, sendo a interpretação gráfica e a estatística descritiva o caminho ideal para avaliar desdobramento.</p>
 </div>
 <div id="friedman-equivalente-ao-dbc" class="section level2">
@@ -850,8 +850,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Friedman rank sum test
 ## 
 ## data:  x and desb and bloco
-## Friedman chi-squared = 4, df = 1, p-value =
-## 0.0455</code></pre>
+## Friedman chi-squared = 4, df = 1, p-value = 0.0455</code></pre>
 <p>Segundo o teste de Friedman, existe uma diferença significativa entre os desbaste. Uma exploração gráfica dos dados, ou uma análise estatística descritiva podem auxiliar no desdobramento do tratamento.</p>
 
 </div>

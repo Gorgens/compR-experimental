@@ -24,7 +24,7 @@
 <meta name="author" content="Eric Bastos Gorgens, Marcio Leles Romarco de Oliveira" />
 
 
-<meta name="date" content="2021-02-06" />
+<meta name="date" content="2021-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -131,7 +131,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Experimental</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#o-r"><i class="fa fa-check"></i><b>1.1</b> O R</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html"><i class="fa fa-check"></i><b>2</b> Delineamentos experimentais</a><ul>
 <li class="chapter" data-level="2.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#anova"><i class="fa fa-check"></i><b>2.1</b> ANOVA</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="delineamentos-experimentais.html"><a href="delineamentos-experimentais.html#partição-da-variação"><i class="fa fa-check"></i><b>2.1.1</b> Partição da variação</a></li>
@@ -205,24 +207,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Computação em R: Análise experimental</h1>
 <p class="author"><em>Eric Bastos Gorgens, Marcio Leles Romarco de Oliveira</em></p>
-<p class="date"><em>2021-02-06</em></p>
+<p class="date"><em>2021-02-08</em></p>
 </div>
 <div id="introdução" class="section level1">
 <h1><span class="header-section-number">Cap. 1</span> Introdução</h1>
-<div class="figure">
-<img src="figuras/capa.png" alt="Capa" />
-<p class="caption">Capa</p>
-</div>
-<p>Bem-vindo ao mundo do R. O R não é só um software, nem se resume a uma linguagem. O R é um estilo de pesquisar, estudar e ensinar. Através de seus códigos e <em>scripts</em> você entrará num mundo sem limites, aberto à experimentação e à troca de experiência. Um mundo em que não existe apenas uma forma de se chegar à resposta correta, mas sim uma gama de alternativas! Você deve estar se perguntando: porque começar a trabalhar com o R? A resposta passa por algumas perspectivas interessantes.</p>
-<p>R é gratuito. Por se tratar de um projeto de código aberto, você pode usar o R sem nenhum custo adicional: ou seja sem necessidade de pagar por inscrições, assinaturas, licenças ou limitações. Sendo o R aberto, você pode ter acesso ao código e ajustá-lo às suas necessidades (para mais detalhes veja: GNU General Public License version 2). Centenas de <em>experts</em> ao redor do mundo fazem exatamente isto e suas contribuições beneficiam milhares de usuários do R.</p>
-<p>R é uma linguagem. No R, você realiza uma análise escrevendo funções e <em>scripts</em>; e não clicando em botões na tela. Isto pode assustar e parecer difícil, mas na verdade, a linguagem R é uma linguagem simples de aprender e muito natural para análise de dados. Aprender uma linguagem tem vários benefícios. Por se tratar de uma linguagem interativa, o R promove uma oportunidade de experimentar e explorar os dados de forma profunda e detalhada. Um <em>script</em> documenta passo a passo da análise, do acesso aos dados até os resultados das análises, podendo ser executados a qualquer momento, por qualquer pessoa.</p>
-<p>Gráficos e visualização de dados. Faz parte das premissas de criações do R, a certeza de que a visualização dos dados através de gráficos é uma parte essencial de qualquer análise dos dados. Como resultado, o R oferece excelentes ferramentas para criação de gráficos, de barras até multi-painéis. Os recursos gráficos do R é influenciado pelos principais pensadores da área de visualização de dados como Bill Cleveland e Edward Tufte. Gráficos do R podem ser vistos em respeitadas publicações mundiais como <em>The New York Times</em>, <em>The Economist</em>, e o blog <em>FlowingData</em>.</p>
-<p>Pacote flexível de análises estatísticas. Você irá encontrar no R um conjunto de ferramentas prontamente disponíveis, desde o acesso à vários tipos de dados, até recursos para manipulação de dados, passando pelos modelos estatísticos tradicionais e modernos. Todos os recursos estão disponíveis numa plataforma orientada a objeto que torna fácil a programação e construção de relatórios.</p>
-<p>Acesso às poderosas e avançadas técnicas estatísticas. Os principais acadêmicos e pesquisadores do mundo utilizam o R para desenvolver as novidades nas áreas de estatística, máquinas de aprendizado e modelagem. Você pode encontrar extensões para o R contendo desenvolvimento de ponta na área econômica, genética e muitos outros campos. Atualmente são mais de 2000 pacotes que incrementam o seu R disponíveis para download.</p>
-<p>Uma brilhante e vibrante comunidade. Com centenas de contribuidores e mais de dois milhões de usuários ao redor do mundo, se você tiver uma dúvida sobre o R, as chances de alguém já ter esbarrada com este problema é muito grande. A comunidade é gigante e participativa. A mediana de tempo que uma pergunta leva para ser respondida no StackOverflow (maior comunidade de programadores do mundo) é de 0.0147 dias, o que equivale a 21 minutos.</p>
-<p>O R é multiplataforma rodando em Linux, Mac ou Windows. Ainda é possível configurar para rodar diretamente da nuvem. O R valoriza o que a empresa tem de mais valioso: você!</p>
-<p>Possibilidades infinitas. Com o R você não está limitado por uma sequência pré-definida de rotinas. Você pode usar todo o portfólio de códigos e soluções disponíveis na comunidade ou mesmo criar suas próprias funções. É possível inclusive combinar o R com outros recursos como uma base de dados MySQL, ou um Apache web-server, ou ainda com o Google Maps API. Qual a sua ideia?</p>
+<p>Delineamento experimental se trata do desenho do experimento. Ou seja, ele define a organização das unidades experimentais em função da pergunta científica que se deseja responder. Com base no delineamento escolhido, regras precisam ser seguidas, especialmente relacionados à maneira que os tratamentos são distribuídos nas unidades experimentais. Este livro apresenta o processamento dos principais delineamentos experimentais por meio da linguagem de programação R. Inicialmente, o livro apresenta o cálculo de uma análise de variância e descreve quais são os principais tipos. Em seguida, por meio de exemplos práticos, são apresentados os principais gráficos para realizar a exploração dos dados e os principais delineamentos amostrais. Por fim, discute-se o que deve ser feito quando os dados não atendem às pressuposições da ANOVA. Propõe-se uma abordagem por meio dos testes não paramétricos. Tudo é apresentado de forma muito prática, utilizando a linguagem de programação R. Com os exemplos apresentados, o leitor é convidado a rodar cada passo junto com o livro. Os dados e os códigos estão livremente distribuídos.</p>
+<div id="o-r" class="section level2">
+<h2><span class="header-section-number">1.1</span> O R</h2>
+<p>O R é um software e uma linguagem. Através de seus códigos e <em>scripts</em> é possível entrar num mundo aberto à experimentação e à troca de experiência. Um mundo em que não existe apenas uma forma de se chegar à resposta correta, mas sim uma gama de alternativas!</p>
+<p>Por se tratar de um projeto de código aberto, é possível usar o R sem nenhum custo adicional, sem a necessidade de pagar por inscrições, assinaturas ou licenças. Centenas de usuários ao redor do mundo compartilham suas contribuições e beneficiam a toda a comunidade.</p>
+<p>No R, a análise é implementada por meio de um <em>script</em>. Um <em>script</em> documenta o passo a passo da análise, do acesso aos dados até os resultados, podendo ser executado a qualquer momento, em qualquer lugar, por qualquer pessoa. Nada de sair clicando em botões na tela.</p>
+<p>Isto pode assustar e parecer difícil, mas na verdade, a linguagem R é uma linguagem simples de aprender e muito natural para análise de dados. Aprender uma linguagem tem vários benefícios. Por se tratar de uma linguagem interativa, o R promove uma oportunidade de experimentar e explorar os dados de forma profunda e detalhada.</p>
+<p>A visualização dos dados através de gráficos é uma parte essencial de qualquer análise dos dados. Por isto, o R oferece excelentes ferramentas para criação de gráficos, de barras até multi-painéis.</p>
+<p>O R apresenta um conjunto de ferramentas prontamente disponíveis, desde o acesso a vários tipos de dados, até recursos para manipulação de dados, passando pelos modelos estatísticos tradicionais e modernos. Todos os recursos estão disponíveis numa plataforma orientada a objeto que torna fácil a programação e construção de relatórios.</p>
+<p>Os principais acadêmicos e pesquisadores do mundo utilizam o R para desenvolver as suas análises. Ao compartilhar <em>scripts</em>, pacotes e funções, é possível encontrar o que há de melhor na área de modelagem, estatística, econômica, genética e muitos outros campos. Atualmente são mais de 2000 pacotes que incrementam o seu R disponíveis para download.</p>
+<p>O R é multiplataforma, rodando em Linux, Mac ou Windows. Ainda é possível configurar para rodar diretamente da nuvem. Com o R, o usuário não está limitado a uma sequência pré-definida de rotinas. Você pode usar todo o portfólio de códigos e soluções disponíveis na comunidade ou mesmo criar suas próprias funções. É possível inclusive combinar o R com outros recursos como uma base de dados MySQL, ou um Apache web-server, ou ainda com o Google Maps API.</p>
+<p>Você está preparado? Qual a sua ideia?</p>
 
+</div>
 </div>
             </section>
 
