@@ -24,7 +24,7 @@
 <meta name="author" content="Eric Bastos Gorgens, Marcio Leles Romarco de Oliveira" />
 
 
-<meta name="date" content="2021-02-08" />
+<meta name="date" content="2021-02-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1437,16 +1437,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
-##                   GL          SQ         QM       Fc  Pr.Fc
-## Bloco              9    60.52166    6.72463   1.0333 0.4174
-## Dose               4   212.55440   53.13860   8.1649 0.0000
-## Espécie:Dose 0     2  1080.11237  540.05619  82.9813 0.0000
-## Espécie:Dose 25    2  1820.84094  910.42047 139.8889 0.0000
-## Espécie:Dose 50    2  1691.61319  845.80659 129.9608 0.0000
-## Espécie:Dose 75    2  2258.11368 1129.05684 173.4831 0.0000
-## Espécie:Dose 100   2  2512.39697 1256.19849 193.0188 0.0000
-## Residuo          126   820.02899    6.50817              NA
-## Total            149 10456.18221   70.17572              NA
+##                   GL          SQ         QM       Fc
+## Bloco              9    60.52166    6.72463   1.0333
+## Dose               4   212.55440   53.13860   8.1649
+## Espécie:Dose 0     2  1080.11237  540.05619  82.9813
+## Espécie:Dose 25    2  1820.84094  910.42047 139.8889
+## Espécie:Dose 50    2  1691.61319  845.80659 129.9608
+## Espécie:Dose 75    2  2258.11368 1129.05684 173.4831
+## Espécie:Dose 100   2  2512.39697 1256.19849 193.0188
+## Residuo          126   820.02899    6.50817         
+## Total            149 10456.18221   70.17572         
+##                   Pr.Fc
+## Bloco            0.4174
+## Dose             0.0000
+## Espécie:Dose 0   0.0000
+## Espécie:Dose 25  0.0000
+## Espécie:Dose 50  0.0000
+## Espécie:Dose 75  0.0000
+## Espécie:Dose 100 0.0000
+## Residuo              NA
+## Total                NA
 ## ------------------------------------------------------------------------
 ## 
 ## 
@@ -1977,55 +1987,77 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## third value most discrepant        25.0000
 ## 
 ## $`Residual analysis`$residuals
-##          1          2          3          4          5          6          7 
-## -1.0666667  0.2666667  3.7333333 -1.1666667  0.4166667 -2.9000000  0.6333333 
-##          8          9         10         11         12         13         14 
-##  2.9166667 -2.8333333  0.8853333  0.5186667 -1.0146667  3.3853333 -0.8313333 
-##         15         16         17         18         19         20         21 
-##  2.2520000 -1.8146667 -1.6680000  1.6686667 -3.3813333  2.6053333 -2.2613333 
-##         22         23         24         25         26         27         28 
-## -0.7946667 -2.0946667  0.4886667  6.5720000 -2.8946667  1.7520000 -3.7113333 
-##         29         30         31         32         33         34         35 
-##  0.3386667 -1.1746667  2.6586667 -0.8746667 -4.9746667  0.1086667  0.1920000 
-##         36         37         38         39         40         41         42 
-##  0.9253333  1.4720000  1.1086667  0.5586667 -1.0546667  1.1786667 -2.6546667 
-##         43         44         45         46         47         48         49 
-##  2.8453333  1.0286667  0.2120000  7.2453333 -1.0080000 -4.0713333 -3.7213333 
-##         50         51         52         53         54         55         56 
-## -0.1946667 -2.3613333  1.6053333  2.0053333 -1.2113333 -6.3280000 -4.0946667 
-##         57         58         59 
-## -0.5480000  2.0886667  9.0386667 
+##          1          2          3          4          5 
+## -1.0666667  0.2666667  3.7333333 -1.1666667  0.4166667 
+##          6          7          8          9         10 
+## -2.9000000  0.6333333  2.9166667 -2.8333333  0.8853333 
+##         11         12         13         14         15 
+##  0.5186667 -1.0146667  3.3853333 -0.8313333  2.2520000 
+##         16         17         18         19         20 
+## -1.8146667 -1.6680000  1.6686667 -3.3813333  2.6053333 
+##         21         22         23         24         25 
+## -2.2613333 -0.7946667 -2.0946667  0.4886667  6.5720000 
+##         26         27         28         29         30 
+## -2.8946667  1.7520000 -3.7113333  0.3386667 -1.1746667 
+##         31         32         33         34         35 
+##  2.6586667 -0.8746667 -4.9746667  0.1086667  0.1920000 
+##         36         37         38         39         40 
+##  0.9253333  1.4720000  1.1086667  0.5586667 -1.0546667 
+##         41         42         43         44         45 
+##  1.1786667 -2.6546667  2.8453333  1.0286667  0.2120000 
+##         46         47         48         49         50 
+##  7.2453333 -1.0080000 -4.0713333 -3.7213333 -0.1946667 
+##         51         52         53         54         55 
+## -2.3613333  1.6053333  2.0053333 -1.2113333 -6.3280000 
+##         56         57         58         59 
+## -4.0946667 -0.5480000  2.0886667  9.0386667 
 ## 
 ## $`Residual analysis`$`standardized residuals`
-##           1           2           3           4           5           6 
-## -0.37654793  0.09413698  1.31791775 -0.41184930  0.14708903 -1.02373968 
-##           7           8           9          10          11          12 
-##  0.22357533  1.02962324 -1.00020543  0.31253478  0.18309643 -0.35819122 
-##          13          14          15          16          17          18 
-##  1.19506899 -0.29347204  0.79498681 -0.64060216 -0.58882682  0.58906216 
-##          19          20          21          22          23          24 
-## -1.19365693  0.91971831 -0.79828161 -0.28052821 -0.73944599  0.17250602 
-##          25          26          27          28          29          30 
-##  2.32000592 -1.02185694  0.61847997 -1.31015145  0.11955397 -0.41467341 
-##          31          32          33          34          35          36 
-##  0.93854571 -0.30876930 -1.75612540  0.03836082  0.06777863  0.32665533 
-##          37          38          39          40          41          42 
-##  0.51963614  0.39137450  0.19721698 -0.37231176  0.41608546 -0.93713365 
-##          43          44          45          46          47          48 
-##  1.00444160  0.36313341  0.07483890  2.55770180 -0.35583779 -1.43723637 
-##          49          50          51          52          53          54 
-## -1.31368158 -0.06872000 -0.83358297  0.56670463  0.70791010 -0.42761724 
-##          55          56          57          58          59 
-## -2.23387058 -1.44547336 -0.19345150  0.73732791  3.19077300</code></pre>
+##           1           2           3           4 
+## -0.37654793  0.09413698  1.31791775 -0.41184930 
+##           5           6           7           8 
+##  0.14708903 -1.02373968  0.22357533  1.02962324 
+##           9          10          11          12 
+## -1.00020543  0.31253478  0.18309643 -0.35819122 
+##          13          14          15          16 
+##  1.19506899 -0.29347204  0.79498681 -0.64060216 
+##          17          18          19          20 
+## -0.58882682  0.58906216 -1.19365693  0.91971831 
+##          21          22          23          24 
+## -0.79828161 -0.28052821 -0.73944599  0.17250602 
+##          25          26          27          28 
+##  2.32000592 -1.02185694  0.61847997 -1.31015145 
+##          29          30          31          32 
+##  0.11955397 -0.41467341  0.93854571 -0.30876930 
+##          33          34          35          36 
+## -1.75612540  0.03836082  0.06777863  0.32665533 
+##          37          38          39          40 
+##  0.51963614  0.39137450  0.19721698 -0.37231176 
+##          41          42          43          44 
+##  0.41608546 -0.93713365  1.00444160  0.36313341 
+##          45          46          47          48 
+##  0.07483890  2.55770180 -0.35583779 -1.43723637 
+##          49          50          51          52 
+## -1.31368158 -0.06872000 -0.83358297  0.56670463 
+##          53          54          55          56 
+##  0.70791010 -0.42761724 -2.23387058 -1.44547336 
+##          57          58          59 
+## -0.19345150  0.73732791  3.19077300</code></pre>
 <p>O quadro geral da ANOVA indica que os dois fatores, bem como a interação são significativos:</p>
 <div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" title="1">r.aov[<span class="dv">1</span>]</a></code></pre></div>
 <pre><code>## $`Analysis of variance`
-##                   df type III SS mean square  F value    p&gt;F
-## factor_1           2    113.1605     56.5803    5.349 0.0083
-## factor_2           1   1890.1081   1890.1081 178.6876 &lt;0.001
-## blocks             9     91.7117     10.1902   0.9634 0.4825
-## factor_1:factor_2  2    132.6536     66.3268   6.2704  0.004
-## residuals         44    465.4199     10.5777        -      -</code></pre>
+##                   df type III SS mean square  F value
+## factor_1           2    113.1605     56.5803    5.349
+## factor_2           1   1890.1081   1890.1081 178.6876
+## blocks             9     91.7117     10.1902   0.9634
+## factor_1:factor_2  2    132.6536     66.3268   6.2704
+## residuals         44    465.4199     10.5777        -
+##                      p&gt;F
+## factor_1          0.0083
+## factor_2          &lt;0.001
+## blocks            0.4825
+## factor_1:factor_2  0.004
+## residuals              -</code></pre>
 <p>Parte-se direto, portanto, para a análise dos respectivos desdobramentos presentes nas posições 6 e 8 da lista de resultados (<code>r.aov[6]</code> e <code>r.aov[8]</code>):</p>
 <ol style="list-style-type: decimal">
 <li>Comparação de médias do fator 1 dentro do fator 2:</li>
@@ -2033,35 +2065,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" title="1">r.aov[<span class="dv">6</span>]</a></code></pre></div>
 <pre><code>## $`Adjusted means (factor 1 in levels of factor 2)`
 ## $`Adjusted means (factor 1 in levels of factor 2)`$`factor_1 in  2`
-##   treatment adjusted.mean standard.error tukey snk duncan t scott_knott
-## 1       0.2        27.800         1.0285     a   a      a a           a
-## 3     100.2        23.072         1.0285     b   b      b b           b
-## 2      50.2        22.020         1.0285     b   b      b b           b
+##   treatment adjusted.mean standard.error tukey snk duncan
+## 1       0.2        27.800         1.0285     a   a      a
+## 3     100.2        23.072         1.0285     b   b      b
+## 2      50.2        22.020         1.0285     b   b      b
+##   t scott_knott
+## 1 a           a
+## 3 b           b
+## 2 b           b
 ## 
 ## $`Adjusted means (factor 1 in levels of factor 2)`$`factor_1 in  5`
-##   treatment adjusted.mean standard.error tukey snk duncan  t scott_knott
-## 6     100.5         37.58         1.0285     a   a      a  a           a
-## 4       0.5         35.10         1.0285     a   a     ab ab           a
-## 5      50.5         34.26         1.0285     a   a      b  b           a</code></pre>
+##   treatment adjusted.mean standard.error tukey snk duncan
+## 6     100.5         37.58         1.0285     a   a      a
+## 4       0.5         35.10         1.0285     a   a     ab
+## 5      50.5         34.26         1.0285     a   a      b
+##    t scott_knott
+## 6  a           a
+## 4 ab           a
+## 5  b           a</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Comparação de médias do fator 2 dentro do fator 1:</li>
 </ol>
 <div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" title="1">r.aov[<span class="dv">8</span>]</a></code></pre></div>
 <pre><code>## $`Adjusted means (factor 2 in levels of factor 1)`
 ## $`Adjusted means (factor 2 in levels of factor 1)`$`factor_2 in  0`
-##   treatment adjusted.mean standard.error tukey snk duncan t scott_knott
-## 4       0.5          35.1         1.0285     a   a      a a           a
-## 1       0.2          27.8         1.0285     b   b      b b           b
+##   treatment adjusted.mean standard.error tukey snk duncan
+## 4       0.5          35.1         1.0285     a   a      a
+## 1       0.2          27.8         1.0285     b   b      b
+##   t scott_knott
+## 4 a           a
+## 1 b           b
 ## 
 ## $`Adjusted means (factor 2 in levels of factor 1)`$`factor_2 in  50`
-##   treatment adjusted.mean standard.error tukey snk duncan t scott_knott
-## 5      50.5         34.26         1.0285     a   a      a a           a
-## 2      50.2         22.02         1.0285     b   b      b b           b
+##   treatment adjusted.mean standard.error tukey snk duncan
+## 5      50.5         34.26         1.0285     a   a      a
+## 2      50.2         22.02         1.0285     b   b      b
+##   t scott_knott
+## 5 a           a
+## 2 b           b
 ## 
 ## $`Adjusted means (factor 2 in levels of factor 1)`$`factor_2 in  100`
-##   treatment adjusted.mean standard.error tukey snk duncan t scott_knott
-## 6     100.5        37.580         1.0285     a   a      a a           a
-## 3     100.2        23.072         1.0285     b   b      b b           b</code></pre>
+##   treatment adjusted.mean standard.error tukey snk duncan
+## 6     100.5        37.580         1.0285     a   a      a
+## 3     100.2        23.072         1.0285     b   b      b
+##   t scott_knott
+## 6 a           a
+## 3 b           b</code></pre>
 <p>Fique atento! O pacote <code>easyanova</code> não diferencia fatores qualitativos e quantitativos, analisando todos os fatores e seus desdobramentos com teste comparativo de média.</p>
 
 </div>

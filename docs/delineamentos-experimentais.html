@@ -24,7 +24,7 @@
 <meta name="author" content="Eric Bastos Gorgens, Marcio Leles Romarco de Oliveira" />
 
 
-<meta name="date" content="2021-02-08" />
+<meta name="date" content="2021-02-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -443,8 +443,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [6] 0.2777778</code></pre>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">desvio2 =<span class="st"> </span>matGen2 <span class="op">-</span><span class="st"> </span>mediaGeral</a>
 <a class="sourceLine" id="cb25-2" title="2">desvio2</a></code></pre></div>
-<pre><code>## [1]  2.2777778  2.2777778  0.2777778 -3.7222222
-## [5] -0.7222222 -2.7222222</code></pre>
+<pre><code>## [1]  2.2777778  2.2777778  0.2777778 -3.7222222 -0.7222222
+## [6] -2.7222222</code></pre>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">desvio3 =<span class="st"> </span>matGen3 <span class="op">-</span><span class="st"> </span>mediaGeral</a>
 <a class="sourceLine" id="cb27-2" title="2">desvio3</a></code></pre></div>
 <pre><code>## [1]  1.277778  1.277778 -1.722222 -3.722222 -3.722222
@@ -506,12 +506,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>em que <code>j</code> indica a repetição variando de 1 a 6 e <code>i</code> indica o tratamento variando de 1 a 3. Para isto, o valor de cada repetição é substituído pela média do seu tratamento. Isto é, através da fórmula <code>rep</code>, cria-se um vetor com a média do material genético repetida 6 vezes. Com esse procedimento, elimina-se o efeito do erro, já que cada tratamento será representado <code>j</code> vezes pelo valor da sua média. Finalmente, cada repetição é subtraída pela média geral.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1">desvioTrat1 =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">mean</span>(matGen1), <span class="dv">6</span>) <span class="op">-</span><span class="st"> </span>mediaGeral</a>
 <a class="sourceLine" id="cb31-2" title="2">desvioTrat1</a></code></pre></div>
-<pre><code>## [1] 2.111111 2.111111 2.111111 2.111111 2.111111
-## [6] 2.111111</code></pre>
+<pre><code>## [1] 2.111111 2.111111 2.111111 2.111111 2.111111 2.111111</code></pre>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1">desvioTrat2 =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">mean</span>(matGen2), <span class="dv">6</span>) <span class="op">-</span><span class="st"> </span>mediaGeral</a>
 <a class="sourceLine" id="cb33-2" title="2">desvioTrat2</a></code></pre></div>
-<pre><code>## [1] -0.3888889 -0.3888889 -0.3888889 -0.3888889
-## [5] -0.3888889 -0.3888889</code></pre>
+<pre><code>## [1] -0.3888889 -0.3888889 -0.3888889 -0.3888889 -0.3888889
+## [6] -0.3888889</code></pre>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">desvioTrat3 =<span class="st"> </span><span class="kw">rep</span>(<span class="kw">mean</span>(matGen3), <span class="dv">6</span>) <span class="op">-</span><span class="st"> </span>mediaGeral</a>
 <a class="sourceLine" id="cb35-2" title="2">desvioTrat3</a></code></pre></div>
 <pre><code>## [1] -1.722222 -1.722222 -1.722222 -1.722222 -1.722222
@@ -571,12 +570,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 No R, podemos calcular da seguinte forma:</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1">desvioRes1 =<span class="st"> </span>matGen1 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(matGen1)</a>
 <a class="sourceLine" id="cb39-2" title="2">desvioRes1</a></code></pre></div>
-<pre><code>## [1]  2.1666667  1.1666667  1.1666667 -1.8333333
-## [5] -0.8333333 -1.8333333</code></pre>
+<pre><code>## [1]  2.1666667  1.1666667  1.1666667 -1.8333333 -0.8333333
+## [6] -1.8333333</code></pre>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">desvioRes2 =<span class="st"> </span>matGen2 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(matGen2)</a>
 <a class="sourceLine" id="cb41-2" title="2">desvioRes2</a></code></pre></div>
-<pre><code>## [1]  2.6666667  2.6666667  0.6666667 -3.3333333
-## [5] -0.3333333 -2.3333333</code></pre>
+<pre><code>## [1]  2.6666667  2.6666667  0.6666667 -3.3333333 -0.3333333
+## [6] -2.3333333</code></pre>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">desvioRes3 =<span class="st"> </span>matGen3 <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(matGen3)</a>
 <a class="sourceLine" id="cb43-2" title="2">desvioRes3</a></code></pre></div>
 <pre><code>## [1]  3  3  0 -2 -2 -2</code></pre>

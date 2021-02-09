@@ -5,3 +5,7 @@ Este livro não tem a pretensão de esgotar o assunto relacionado à análise de
 Sem dúvida existem muitos materiais interessante que podem ser acessados para ir mais a fundo no tema. Programas de pós graduação, bem como cursos de extensão também são um excelente caminho para o desenvolvimento das habilidades.
 
 Sucesso na sua caminhada.
+
+Como citar:
+
+Gorgens, Eric Bastos; Oliveira, Marcio Leles Romarco. Computação em R: Análise experimental. 1ed. Diamantina, MG: UFVJM, 2021. ISBN: 978-65-87258-20-1. Disponível em: https://gorgens.github.io/compR-experimental/
